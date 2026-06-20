@@ -1,0 +1,50 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+.venv/
+venv/
+env/
+
+# Node / frontend build
+app/node_modules/
+app/dist/
+app/dist-ssr/
+*.local
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+transcription_pipeline.log
+
+# Audio — large source files (keep locally, do not push)
+*.wav
+*.mp3
+*.m4a
+*.flac
+docker_audio.wav
+
+# Transcription pipeline artifacts (regeneratable / duplicates)
+correction_input/
+correction_input.zip
+correction_import_report.json
+*.wav.json
+*.wav.srt
+*.wav.txt
+
+# Optional local authoring drafts
+app/chatgpt5.5/

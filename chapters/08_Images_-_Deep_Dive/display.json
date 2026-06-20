@@ -1,0 +1,820 @@
+{
+  "chapterNumber": 8,
+  "title": "Images - Deep Dive",
+  "folderName": "08_Images_-_Deep_Dive",
+  "formattedAt": "2026-06-20T11:15:49.152Z",
+  "model": "local-curated-display",
+  "sections": [
+    {
+      "id": "image-definition-and-build-time",
+      "heading": "ما هي Docker Image؟",
+      "diagramId": "ImageLayersDiagram",
+      "blocks": [
+        {
+          "type": "definition",
+          "content": "Docker Image\nPackage جاهز فيه application code وdependencies وfilesystem layers، لكنه لا يحتوي Kernel مستقل.",
+          "sourceSegmentRange": [
+            0,
+            1
+          ]
+        },
+        {
+          "type": "comparison",
+          "content": "Build time | الأوامر والتغييرات التي تبني الـ Image\nRun time | ما يحدث عند إنشاء Container من الـ Image",
+          "sourceSegmentRange": [
+            0,
+            1
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "هنتكلم بالتفصيل أكتر عن الـ Images. أخدنا فكرة عامة وشوفنا شكل الـ Image وشوفنا الـ Layers. بس خلينا نتكلم بتفصيل شوية. لأن ده هيفرق معانا في الشغل مع الـ Containers. وهيفرق معانا وإحنا بنعمل Build للـ Image. دلوقتي، إيه هي الـ Image؟ الـ Image هي الـ Packaged Application.",
+          "sourceSegmentRange": [
+            0,
+            6
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "أو الـ Bundled Application. فبيكون فيها كل الـ Layers أو كل الـ Files بداية من الـ Files اللي فوق الـ Kernel level. الـ Kernel أنا واخده من الـ Operating System، واخده من الـ Docker Host. تمام، بعد كده إنت احتجت شوية حاجات زيادة فوق الـ Kernel وشوية حاجات فوق كمان. وشوية Services كمان وشوية Applications وشوية Source Code وحاجات زي كده. كل الكلام ده بيبقى Layers جوه الـ Image دي. في الحقيقة الـ Image دي عبارة عن وصف للـ Template نفسها.",
+          "sourceSegmentRange": [
+            7,
+            13
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "كلمة Image دي عبارة عن File عادي خالص. دي عبارة عن File عادي خالص بيوصف الـ Image دي اتعملت إزاي. بدأت بإيه، نزلت إيه، عملت Copy لفايلات إيه، وعملت Installation لأبليكيشن إيه. فتحت Port إيه، وهكذا لبقية الحاجات. ده مجرد وصف، وده اللي بنسميه الـ Image. اللي بيبقى فيها الـ configuration بتاعها. التوصيف ده بيبقى ليه اسم محدد ومعروف جداً.",
+          "sourceSegmentRange": [
+            14,
+            20
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "إحنا قلنا دايماً هنفهم بمبدأ الـ Virtual Machine. الـ Virtual Machine عشان تكون هي الـ Template. أنا عارف إن الـ Virtual Machine دي هتكون مقفولة، وعارف إن اللي... هياخد Copy هيعمل Import للـ Virtual Machine دي عشان يعمل منها Running Virtual Machine. هيعمل تعديلات تانية، هيغير مثلاً الـ Name، هيعمل Execute... مثلاً لـ Scripts عشان يعمل Initialize لحاجة، هيعدل... الـ IP address، أو أي شيء من هذا القبيل. الحاجات اللي اتعملت في...",
+          "sourceSegmentRange": [
+            21,
+            27
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Virtual Machine علشان تتقفل وتبقى Template، ده اسمه Build time commands. دي الـ Commands اللي اتعملت علشان توصف الـ Image دي اتبنت إزاي. علشان أعمل Create للـ Container أو أعمل الـ Import ده. في Commands تانية بشغلها، زي ما جيت مثلاً شغلت... الـ Bash مثلاً لو تفتكر، وزي ما جيت قلت له... شغل الـ Shell المعينة مثلاً، الحاجات دي... اسمها Run time. أي Commands اتعملت أثناء مرحلة بناء الـ Image دي...",
+          "sourceSegmentRange": [
+            28,
+            34
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "اسمها Build time، وأي Scripts أو أي حاجة هتتعمل وقت ما أعمل... Run، ده هيفرق معانا كمان شوية وإحنا بنبني الـ Image وبنعمل Create... للـ Container. يبقى الـ Image وكل اللي فيها ده بنسميه Build time. والـ Container اللي معمول له Create من الـ Image دي... ده اسمه Run time. أي حاجة هتعملها في الـ Container بتبقى في الـ Run time. تمام؟ شفنا إحنا... مثلاً عليها، وشوفنا لما جينا نكريت الـ Container إزاي عملناها مرة مرة بالـ Start ومرة بالـ Create وبعد كده Start، ومرة",
+          "sourceSegmentRange": [
+            35,
+            41
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بالـ Run على طول، وقلنا إن الـ Run هي عبارة عن الاتنين؛ الـ Create والـ Start. تمام؟ تعال نتكلم بقى على موضوع لما نيجي نعمل للـ Image، اللي إحنا عملنا منها كذا مثال سواء كان Alpine ولا Ubuntu ولا Python ولا أي حاجة. الـ Image المفروض إن هي تبقى صغيرة جداً، والأصل فيها إن هي تبقى صغيرة جداً. لأن أنت في الأصل مش هتشتغل من الـ Image مباشرة. في الأصل المفروض إن الـ Image دي هتبقى مجرد Base وأنت هتبني عليها",
+          "sourceSegmentRange": [
+            42,
+            48
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بتاعك في الـ Container. هتاخد بس الـ Image وتبدأ تضيف أي حاجة زيادة أنت عايزها في الـ Container، مش المفروض إن الـ Image دي تيجي جاهزة إلا لو كانت Image مثلاً Ubuntu. مثلاً يعني أنت عايز Image Ubuntu، ولحد كبير أنت مابتحتاجش حاجة زي كده. إيه اللي هيخليني يبقى عندي Container وظيفته بس إنه Ubuntu؟ مثلاً يعني. في الغالب مابتحتاجش كده. أمال أنا ليه عندي Ubuntu؟ وليه عندي Fedora؟ وليه عندي Linux؟ علشان ده يبقى مجرد Base تكمل أنت",
+          "sourceSegmentRange": [
+            49,
+            55
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "عليه وتعمل Customize للـ Application بتاعتك المميزة العظيمة جداً جداً، وبعدين تعمل Build لـ Image تانية. فتبقى أنت جايب Image ومزود عليها وعامل بعد كده Export لـ Image تانية. كأن بالظبط أنا بعمل لك مثلاً Windows؛ الـ VM دي مافيهاش غير Windows بس. الأصل إنك أنت مش محتاج VM Windows لمجرد إنه Windows، أنت طبيعي إنك أنت عايز تعمل فيه حاجات تانية. إن شاء الله حتى هتنزل عليه SQL مثلاً. إن شاء الله حتى هتنزل عليه أي حاجة، بس أنت",
+          "sourceSegmentRange": [
+            56,
+            62
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "هتاخد الـ Image الـ Base دي بتاعت Windows، تنزل عليها وتعدل حاجات أو إلى آخره، وبعدين تعمل أنت Template تانية. فطبعاً أنت عملت Template من الـ Template الأولى؛ أخدتها وعدلت فيها وعملت Template تانية خاصة بيك. تنزل عليها شوية حاجات وتعدل فيها أو إلى آخره، وبعدين تعمل أنت Template تانية. فطبعاً أنت عامل Template من الـ Template؛ أخدت الـ Template الأولى، أخدت منها Copy، عدلت فيها شوية وعملت Template تانية. أوكي؟ فلذلك الـ Image الأصلية اللي أنت بتعمل لها Pull المفروض إن هي تبقى أقل ما يمكن.",
+          "sourceSegmentRange": [
+            63,
+            69
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وتبقى أصغر ما يمكن. أنت هتلاقي عندك Images مساحتها 1 ميجا؛ حقيقي فيها 1 ميجا لا أكتر ولا أقل، وهتلاقي Images مساحتها 5 ميجا. وفي Images بتوصل لحد الـ Gigabytes على حسب الـ Images دي جاية Shipped بإيه؟ وفيها إيه جواها وإيه اللي نازل معاها وهكذا. حاجة تانية هنا لو أخدت بالك إن إحنا في أوقات اسم الـ Image كان بيتغير سنة؛ يعني مرة استعملنا مثلاً Ubuntu، ومرة استعملنا Ubuntu",
+          "sourceSegmentRange": [
+            70,
+            76
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وبعدين Colon (نقطتين فوق بعض) وLatest مثلاً يعني. فنيجي هنا، خلينا نتكلم على موضوع الـ Image Naming ده وخلينا نتوقف هنا قليلاً بس علشان نشرح الحتة دي.",
+          "sourceSegmentRange": [
+            77,
+            79
+          ]
+        }
+      ]
+    },
+    {
+      "id": "registry-repository-tags",
+      "heading": "Registry وRepository وTags",
+      "diagramId": "RegistryHierarchyDiagram",
+      "blocks": [
+        {
+          "type": "definition",
+          "content": "Image name\nيتكون غالباً من repo:tag، ولو الـ Image غير official نضيف account/repo:tag.",
+          "sourceSegmentRange": [
+            80,
+            81
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وهتلاقي، ولحسن الحظ اللي تابع الكلام بتاعنا في فيديو الـ Git هتلاقي فيه وجه شبه كبير جداً جداً. دلوقتي الـ Images دي اللي أنت بتعملها Pull. الـ Image اللي أنت بتعملها Pull دي، أنت بتعملها Pull منين؟ أنا ما قولتلوش أنا عايز أعمل Pull منين؟ لما جيت قولت له Docker image pull Ubuntu أو Python، أنا ما قولتلوش أنا عايز أعمل Pull منين؟ وإزاي عارف هيجيبها منين؟ By default الـ Pull بتاع الـ Image ده بيتعمل من",
+          "sourceSegmentRange": [
+            80,
+            86
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Registry. By default من غير ما أقول له أي حاجة الـ Registry اللي فيها كل الـ Images اللي أنا محتاجها بتكون موجودة في Hub hub.docker.com، دي الـ Default Registry. يعني إيه بقى Registry؟ الـ Registry ده مجرد مخزن فيه Repositories، وكل Repo فيه الـ Versions بتاعته. طب الـ Registry دي متقسمة إزاي؟ أنا أقولك بقى متقسمة إزاي، الـ Registry دي متقسمة كالتالي، خليني أقول مثلاً دي اللي هي.. تخيل إن هي دي الـ Registry بتاعتي، اللي هي مثلاً hub.docker.com",
+          "sourceSegmentRange": [
+            87,
+            93
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "hub.docker.com، الـ Registry دي متقسمة Repos أو Repositories. ده Repo وده Repo تاني وتالت ورابع وهكذا، في Repo تاني هنا. وهكذا وده كمان برضه Repo وهكذا. إيه الـ Repo ده؟ الـ Repo ده هو عبارة عن مجموعة Versions من Image معينة. يعني إيه؟ يعني أنا مثلاً عندي الـ Repo بتاع Ubuntu مثلاً يعني، الـ Repo اسمه Ubuntu، أوكي؟ جوه الـ Repo بتاع Ubuntu ده فيه كل الـ Versions بتاعة Ubuntu بكل الـ Tags بتاعتها. أنت مش كل مرة بتعمل مثلاً Ubuntu Image",
+          "sourceSegmentRange": [
+            94,
+            100
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "مثلاً وبعد كدة بتنزل فبتعمل Update عليها، بعدين تقوم عامل زي بالظبط ما كنا بنعمل في الـ Git، تقعد تعدل شوية في الـ Code بتاعك وبعدين تقوم عامل Commit فتبعت الكلام ده على الـ History، بعدين تعمل Commit تاني، تعدل تعديلات وCommit تاني، وتعدل تعديل وCommit تاني وهكذا. أوكي؟ فكل مرة أنت بتعمل التعديل ده، كان فيه عندنا حاجة اسمها الـ Tag. الـ Tag ده اللي هو إيه؟ الـ Tag ده هو إنك أنت تيجي على واحدة من الـ Commits وتقول بص بقى يا معلم الـ Commit دي",
+          "sourceSegmentRange": [
+            101,
+            107
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بقت Version، وتعدل وتعمل Commit، تعدل وتعمل Commit، وبعد أسبوعين تلاتة تيجي تقوله: بص بقى الـ Commit دي يا معلم علّم عليها واكتب بين قوسين إن ده Version، ده كده اسمه Tag والـ Tag ده موجود برضه في Git، فتلاقي مثلاً عندي هنا Ubuntu إحنا قلنا إن خلاص الـ Repo ده فيه Image واحدة بـ Versions مختلفة، فعندي هنا مثلاً ده Version 1 أوكي، وبعد كدة Version 1.1 وبعد كدة مثلاً Version 2 وهكذا، تمام؟ اسم الـ Repo أو اسم الـ Image",
+          "sourceSegmentRange": [
+            108,
+            114
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "في Docker. يبقى الـ Image نفسها، مثلاً وليكن الـ Image اللي جاية من الـ Repo دي، اسمها Ubuntu أوكي؟ والـ Tag بتاعها اللي هو هو الـ Version بتاعها مثلاً اللي هو V1.0 الـ Repo اسمه Ubuntu الـ Version أو الـ Tag اسمه V1.0 الـ Tag ده يكون اسمه زي ما يكون، مش هتفرق معانا. إنت بتختار أي اسم.",
+          "sourceSegmentRange": [
+            115,
+            121
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "سميها حسن مش هتفرق كتير. الـ Repo بعد كده colon. الـ Tag كده اسمه الـ Image Name. يبقى الـ Image Name. ده بيساوي. الـ Repo. بعدين نقطتين فوق بعض (colon).",
+          "sourceSegmentRange": [
+            122,
+            128
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Tag. يبقى عندي. الـ Image مثلاً، في عندي Image مثلاً. Python. 3.2. عندي Image مثلاً. Ubuntu.",
+          "sourceSegmentRange": [
+            129,
+            135
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ما إحنا لسه متكلمين على Ubuntu. مثلاً. 20.04. الاثنين مع بعض. كده ده اسمه الـ Image Name. اللي على الشمال دي اسمه الـ Repo. واللي على اليمين ده.",
+          "sourceSegmentRange": [
+            136,
+            142
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ده اللي هو الـ Tag. الـ Repo مع الـ Tag مع بعض. الاثنين اسمهم الـ Image. يبقى الـ Registry عندي. متقسمة لمجموعة من الـ Repo. كل Repo هو عبارة عن. Image واحدة بس بـ Tags مختلفة. يعني ما ينفعش أجي هنا في.",
+          "sourceSegmentRange": [
+            143,
+            149
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Repo بتاع Ubuntu وأعمل مثلاً Image تانية خالص مالهاش. أي علاقة بالموضوع. لا ما ينفعش، هتلاقي فيه. Repo اسمه مثلاً hadoop-sudo، ومثلاً Repo تاني اسمه web، و Repo. تاني اسمه httpd-alpine أو حاجة زي كده، مش فاكر. حاجة كده. كويس كده؟ طيب هنا في نقطة تانية برضه في موضوع. لما أقول له docker image pull مثلاً python:3.9.7. هل الـ Repos دي جوه الـ Registry سايحة على بعض؟ اللي يخطف أول اسم خلاص؟ لا مابتبقاش سايحة كده.",
+          "sourceSegmentRange": [
+            150,
+            156
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "عندنا Official Images. إيه هي الـ Official Images؟ دي الـ Images اللي Docker شايفاها أصلية. من المصدر الأصلي مثلاً من Microsoft أو IBM أو MongoDB أو Apache.",
+          "sourceSegmentRange": [
+            157,
+            159
+          ]
+        }
+      ]
+    },
+    {
+      "id": "official-vs-user-images",
+      "heading": "Official Images مقابل User Images",
+      "blocks": [
+        {
+          "type": "comparison",
+          "content": "Official Image | تكتب python أو ubuntu مباشرة\nUser Image | تكتب account/repository مثل asami76/hadoop-sudo",
+          "sourceSegmentRange": [
+            160,
+            161
+          ]
+        },
+        {
+          "type": "warning",
+          "content": "استخدام latest مريح للتجربة، لكنه مش دايماً أفضل اختيار في production لأنه يتحرك مع آخر tag.",
+          "sourceSegmentRange": [
+            160,
+            161
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Images Official. إذا أردت الـ Image الـ Official عشان تكتب أي شيء، يجب عليك الـ Image الـ Official عشان تكتب Python. إذا أردت الـ Image الـ Official عشان تكتب أي شيء، يجب عليك الـ Image الـ Official عشان تكتب Python. إذا أردت الـ Image الـ Official عشان تكتب أي شيء، لازم تختار الـ Image الـ Official. والـ Tag بتاع Hadoop V1. حلو كده؟ هل لو إنت قلت له docker image pull hadoop-sudo هيجيبها لك؟ لأ مش هيجيبها لك. لأن الـ Image دي مش Official، دي Image عاملها الفقير إلى الله اللي هو أنا.",
+          "sourceSegmentRange": [
+            160,
+            166
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "طيب تعمل إيه علشان تجيب الـ Images اللي مش Official؟ تيجي هنا تقوم حاطط اسم الـ Account قبل الـ Repo. فأنا الـ Account بتاعي مثلاً asami76، أوكيه؟ وتقوم عامل slash، أوكيه؟ كده هيروح للأكونت اللي اسمه asami. 76 ويشوف جوه هل عنده Repo اسمه hadoop-sudo ولا لأ؟ وبعدين يدخل جوه الـ hadoop-sudo ويشوف الـ Tag اللي اسمه 1.0، دي الطريقة اللي بيشتغل بيها. من ضمن الحاجات",
+          "sourceSegmentRange": [
+            167,
+            173
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "اللي تقدر تعملها برضه، إنك مثلاً لو أنا عندي مثلاً Python، ده Repo Official Image. أوكيه؟ جوه الـ Repo بتاع Python ده أنا عندي كتير، مثلاً 2.7.8 مثلاً. عندي مثلاً 3.8.10 مثلاً، وعندي مثلاً 3.9.7، عندي مثلاً 3.10.0. فإنت لو عايز تجيب Image من الـ Images دول، هتقول له أنا عايز docker image pull python:2.7.8 أو python:3.8.10 مثلاً.",
+          "sourceSegmentRange": [
+            174,
+            180
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "يعني، طب افرض إنت مش عارف وعايز أحدث حاجة في Python وخلاص. أحدث حاجة في الـ Repo اللي اسمه Python. تعمل إيه؟ أقدر إني أقول له كده: docker برضه image pull وأقول له python اللي هو اسم الـ Repo",
+          "sourceSegmentRange": [
+            181,
+            187
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وبعد الـ colon أقول له latest. latest دي كلمة، ده مش اسم الـ Tag. ده مجرد keyword. لما Docker Hub يشوف كلمة latest دي، هيعرف إن إنت عايز آخر حاجة خالص اتضافت، آخر Tag موجود جوه الـ Repo. الموجود جوه الـ Repo اللي اسمه Python. أوكيه؟ تعالوا نشوف مثال على كده من Docker Hub، هروح على",
+          "sourceSegmentRange": [
+            188,
+            194
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Docker Hub زي ما اتفقنا، الـ Registry اسمها hub.docker.com. هتعمل Login بالأكونت بتاعك عشان تقدر تعمل Browse. asami76 ده الأكونت بتاعي في Docker عشان لما تيجي تأخد Images من عندي وتكتب الباسورد. أول حاجة هتفتح عندك الـ Home بتاعتك، أنا عندي هنا مثلاً أربعة. عندي مثلاً Hadoop وعندي مثلاً Hadoop Pseudo وعندي مثلاً Docker Host. وعندي New Web. وتلاقي ده برضه ممكن يكون",
+          "sourceSegmentRange": [
+            195,
+            201
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بالظبط زي GitHub. أوكي؟ لو جيت مثلاً على Hadoop Pseudo مثلاً و Hadoop Pseudo ده عبارة عن Image فيها كل الـ Hadoop يعني كلها نازلة فيه تمام؟ فكل Hadoop نازل يعني. هتلاقي حتى هنا الـ Description بتاعها إن أنا لما أجي أجيب الـ Image دي أعمل لها Pull إزاي؟ تمام؟ اللي هو عكس الـ Command، هاجي أقول له وده اسم الـ Image كده. ده كده اسم الـ Image. الـ Account بتاعي slash. فهتلاقي عندي هنا كده لو دخلت على الـ Repo ده ودخلت عليه كده. هتلاقي أنا ما",
+          "sourceSegmentRange": [
+            202,
+            208
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "عندي غير الـ Tag ده. فلو كتبت له أو كتبت له أو ما قلتش حاجة هيجيب دايماً آخر نسخة في آخر Tag أو آخر موجود في الـ Repo ده. أوكي؟ تعالى نبص كده ونروح على الـ Docker Hub. لما تخش عليه كده، هتلاقي دايماً هو بيبدأ بشوية Images. بشوية Images. دي الـ Images اللي موجودة عندي. بتقدر تعمل Search طبعاً. هتلاقي عندك العديد والعديد والعديد من الـ Images. تمام؟ هتلاقي أشهرها مثلاً Nginx.",
+          "sourceSegmentRange": [
+            209,
+            215
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بص مثلاً الـ Image دي كام مرة اتعمل لها Download؟ كام مرة اتعمل لها Pull؟ مليار مرة مليار؟ طيب تخيل إنت فايتك إيه؟ فيه مليار مرة اتعمل لها Download Alpine مثلاً دي اللي هي Version من Linux ومشهورة جداً جداً ومشهورة جداً لما بنتعامل مع موضوع الـ Containers وكده عشان بتستعمل كتير جداً في الـ Containers لأنها Lightweight جداً الـ Image مساحتها 5 ميجا كلام فاضي يعني",
+          "sourceSegmentRange": [
+            216,
+            222
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "هتلاقي حاجات بقى ليها علاقة بالـ Network مثلاً Load Balancer زي ما إحنا عارفين هتلاقي مثلاً Ubuntu مثلاً يعني هتلاقي مثلاً Python هتلاقي Python برضه نزل مثلاً مليار مرة هتلاقي شوية References ودسكربشن، وده MD file بالمناسبة ده Markdown file",
+          "sourceSegmentRange": [
+            223,
+            229
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "برضه زي الـ GitHub Repo. ولو رحت على الـ Tags هتلاقي جوه الـ Tags هنا فيه Tags. يعني بص كده هتلاقي فيه Tags ماشي؟ هتقدر إنك إنت بقى تستعمل الـ Version اللي إنت عايزه. هتلاحظ هنا بقى فيه شوية حاجات. يعني هتلاحظ مثلاً إن فيه الـ Architecture بتاعها مثلاً Windows، وفي تانية Linux. تمام؟ وهتلاقي حاجة تانية، هتلاقي بقى حاجات زي كده يعني. ماشي؟ وده هينقلنا للنقطة",
+          "sourceSegmentRange": [
+            230,
+            236
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "التانية بس خلينا نخلص من دي الأول. أوكي؟ عايز تجيب الـ Image تقول Docker Pull Python وهينزل. بس هنا فيه بقى نقطة. ده اللي هو زي ما قلنا هيسحبنا للنقطة التانية اللي هي بتاعة",
+          "sourceSegmentRange": [
+            237,
+            239
+          ]
+        }
+      ]
+    },
+    {
+      "id": "manifest-and-platform-selection",
+      "heading": "Manifest List واختيار OS/Architecture",
+      "diagramId": "ImageManifestDiagram",
+      "blocks": [
+        {
+          "type": "flow",
+          "content": "Docker client يطلب image\nRegistry يقرأ manifest list\nDocker يختار layers المناسبة للـ OS والـ architecture\nلو platform غير مدعوم، الـ container يفشل",
+          "sourceSegmentRange": [
+            240,
+            241
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بعد ما اتكلمنا عن الـ Naming واتكلمنا عن الـ Registry، قلنا الـ Registry بتتقسم لـ Repos، كل Repo فيها نفس الـ Image هي هي بس بـ Tags مختلفة. ده الـ Concept بتاع الـ Registry. اتكلمنا عن الـ Official. إحنا شفنا كل اللي شفناه من شوية ده كان سواء لما جبنا Ubuntu أو لما جبنا Alpine، كل ده كان Official. أوكي؟ تعالوا بقى نشوف الـ Unofficial من حسابي الشخصي مثلاً، خلينا نشوف الوضع ماشي إزاي.",
+          "sourceSegmentRange": [
+            240,
+            246
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "تمام؟ هنا بقى فيه نقطة تانية، خلينا قبل ما ندخل في الموضوع ده، من ضمن الحاجات الكويسة جداً برضه دي يمكن لو كنت أخدت بالك منها وإحنا بنبص على ودي يمكن لو كنت أخدت بالك منها وإحنا بنبص على الـ Explore، لما نروح كده مثلاً على الـ Explore هتلاقي وإحنا واقفين على الـ Containers",
+          "sourceSegmentRange": [
+            247,
+            253
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "هتلاقي إنه في الـ Filtration بيقولك إنت عايز Verified Publisher ولا Official Image، وهتلاقيها برضه على حسب الغرض منها، عايز مثلاً Base Images، عايز Databases، عايز DevOps Tools، عايز Monitoring، عايز Operating Systems. وفي كمان حاجة تانية وهي إنه هيسألك إنت عايز الـ Operating System إيه بتاع الـ Container",
+          "sourceSegmentRange": [
+            254,
+            260
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وعايز الـ Architecture إيه. الـ Operating System بتاع الـ Container إحنا خلاص اتفقنا عليه، أي Image هتنزلها وتعمل منها Container يا إما هيكون Windows يا إما هيكون Linux، ما فيش حاجة تانية. أوكي؟ الـ Container يا يكون Windows يا يكون Linux. من ضمن الحاجات التانية برضه اللي تقدر إنك تحددها لأن ده بيفرق كمان في الـ Kernel، هي الـ Architecture، الـ Architecture بتاع الجهاز بتاعك. أوكي؟ فإنت عندك بقى كل الـ Architectures موجودة، زي ARM و ARM 64 و IBM و IBM Z و Power",
+          "sourceSegmentRange": [
+            261,
+            267
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "و X86، وكل الـ Architectures موجودة. فإنت ممكن تختار الـ Operating System. يعني الـ Container ده هتنزله على إيه؟ هل Windows Container ولا Linux Container؟ والـ Architecture بتاع الـ Docker Host بتاعك. أوكي؟ فيعمل لك الـ Pull بناءً على كده. بس فيه نقطة ظريفة، إن أنا أقدر لو رحت مثلاً على Python، هتلاقي إنه لما تيجي تسحب الـ Image دي أو تيجي تعمل الـ Image دي هقولك اعمل مثلاً Python بس. كويس كده؟ طب لو أنا هشتغل على Linux Container أو",
+          "sourceSegmentRange": [
+            268,
+            274
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "أو هشتغل على Windows Container، Docker بيعرف منين الـ Operating System بتاعي؟ وبيعرف منين الـ Architecture بتاعي؟ أنا هنا ما حددتلوش الـ Image اللي هنزلها دي هي هتكون Windows ولا Linux. وما حددتلوش الـ Architecture بتاعي هيبقى إيه. نيجي هنا بقى لـ Concept مهم في الـ Image وهو موضوع الـ Manifest File.",
+          "sourceSegmentRange": [
+            275,
+            281
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "أنا شوف ده، أنا ملخبط الترتيب شوية بس مش مشكلة هنرجع تاني. ده بيبقى File موجود لإنك لو أخدت بالك من شوية إحنا قلنا إنك لما دخلت لإن كان فيه Image لويندوز، وكانت باينة أعتقد مثلاً، وكان فيه Image تانية للينكس، وكانت Image تانية مثلاً نزلها على IBM Z وهكذا. من ضمن الحاجات اللي ممكن تعملها وإنت بترفع الـ Image بتاعتك إنك تعمل أكتر من Image وتعمل Manifest File للـ Repo ده. والـ Manifest File ده تقول إن",
+          "sourceSegmentRange": [
+            282,
+            288
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "أنا عندي هنا في Images لويندوز وImages للينكس، والـ Images بتاعة بتاعت ويندوز خد منها الـ Layers الفلانية. والـ Images بتاعت لينكس خد منها الـ Layer الفلانية. وعندي Images للـ Architectures الفلانية. ده بيسموه الـ Manifest List. الـ Manifest List إن أنا أقول له إن الـ Repo بتاعي فيه ده",
+          "sourceSegmentRange": [
+            289,
+            295
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وفيه ده وفيه ده وفيه ده وفي شوية حاجات تانية. لما تيجي أنت كـ Docker Hub تكتشف إن اللي طالب منك الـ Image دي، ده واحد قاعد على Machine Ubuntu على x86 system. روح كده افتح الـ Manifest List وشوف كده الـ Image اللي هي",
+          "sourceSegmentRange": [
+            296,
+            302
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Linux مثلاً AMD64، شوف الـ Manifest بتاعها إيه. هيقول لك الـ Manifest بتاعها خد الـ Layer الفلانية والـ Layer الفلانية. والـ Layer الفلانية دي إحدى الميزات بتاعة إن الـ Layers نفسها تبقى منفصلة عن بعض، وبرضه في الـ Repo بتاعنا ده أنا ما عنديش من الـ Images، أنا عندي أساسية والفرق ما بين Image وImage تانية هو الـ Layer المختلفة بس. فبالتالي أقدر لو إنت مثلاً",
+          "sourceSegmentRange": [
+            303,
+            309
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "لو الـ Layer مثلاً هي هي، والاختلاف مثلاً من Architecture لـ Architecture تانية بتبقى Layers تانية فوقيها مثلاً. فلو ده الحاصل وده الموجود، تقدر عن طريق ده تمام؟ إنك تحدد بالظبط إيه اللي بينزل عليه الـ Repo بتاعك، وإيه الـ Architecture اللي بينزل عليها الـ Repo بتاعك. لو ده ما كانش موجود، لو ده مش موجود، وأنا عندي الـ Image Linux بس AMD64 بس، وإنت عايز تعمل Windows Container منها،",
+          "sourceSegmentRange": [
+            310,
+            316
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "اللي هيحصل هيفرقع في وشك، هيقول لك لا مش عارف أعمل Container. هينزل الـ Image ويقول لك هيفرقع في وشك، هيقول لك أنا مش عارف أعمل مش عارف أعمل الـ Container ده. فدي فكرة الـ Manifest File. نرجع تاني لـ Architecture الـ Image، الـ Architecture بتاع الـ Image زي ما قلنا قبل كده إنه عبارة عن Layers ومجموعة من الـ Read.",
+          "sourceSegmentRange": [
+            317,
+            319
+          ]
+        }
+      ]
+    },
+    {
+      "id": "image-layers-and-pull",
+      "heading": "Image Layers وتنزيلها",
+      "diagramId": "ImageLayersDiagram",
+      "blocks": [
+        {
+          "type": "definition",
+          "content": "Layer\nفرق أو إضافة فوق layer سابقة. Docker يعيد استخدام الـ layers الموجودة محلياً بدل تنزيلها مرة أخرى.",
+          "sourceSegmentRange": [
+            320,
+            321
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Layers فقط زي فكرة بالضبط الـ Base Disk بتاع الـ Virtual Machine، بعد كده تعمل Disk تاني Differencing Disk، وبعدين Disk تاني Differencing Disk لو عندك Snapshot وهكذا، وكل Disk هو عبارة عن الـ Disk اللي قبله والزيادة عليه، والزيادة دي ممكن تكون تعديل أو إضافة أو حذف أو أي حاجة. نفس الفكرة بالضبط، عندي هنا دي اللي هي أول واحدة خالص، غالباً بتبقى اللي فوق الـ Kernel على طول، اللي هي بتكمل الـ Kernel. تمام؟ بعد كده التانية الله أعلم بتعمل إيه، التالتة الله أعلم فيها إيه، يمكن أي حاجة، لغاية آخر واحدة محتاجها، وبعدين",
+          "sourceSegmentRange": [
+            320,
+            326
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بتقوم قافلها بالضبة والمفتاح لما تتعمل Image، مش إنت طبعاً ده بيتعمل Automatic لما تعمل Image. تمام؟ لما تيجي تعمل Pull للـ Image دي، اللي هيعمله إنه هيعمل Download طبعاً بعد ما يعرف إنت هتجيب الـ Image دي منين والكلام ده، هيعمل Download للـ Layers دي واحدة واحدة، والـ Layers دي طالما إنت بتعمل لها Download، فيقوم عامل لها Download. بعد كده لغاية ما تلاقي بيقولك مثلاً الـ Layer دي",
+          "sourceSegmentRange": [
+            327,
+            333
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "هيقعد هنا شوية لغاية ما يخلص كل الـ Layers دي، وبعدين يديك الـ Hash بتاع كل Layer لوحدها، وبعدين بتاع الصورة ككل. زي مثلاً لما نعمل Docker Image Pull Ubuntu:latest. تمام؟ فبتبقى كل Layer من دول ليها الـ ID بتاعها علشان لو جيت حبيت أستعمل Image تانية، أعمل Download لـ Image تانية وشاءت الأقدار إن الـ Image التانية دي فيها Layers متكررة، مش هحتاج إني أعمل Download للـ Layers دي تاني، أنا Already عندي الـ Layer دي هاخد نسخة عندي",
+          "sourceSegmentRange": [
+            334,
+            340
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وخلاص. تمام؟ فدي ميزة من مزايا موضوع الـ Layers ده. مثلاً لو جيت عملت ... لشوية ملفات نزلت مثلاً وهكذا. تمام؟ فدي تبقى مثلاً بتاعة الـ Path. الـ Layer هي عبارة عن شوية Files. تمام؟ الـ Layer الأولانية ممكن تبقى شوية Files مثلاً اللي بتـ Extend بيها الـ Kernel، وشوية Files تانية عبارة عن شوية Command lines تبقى",
+          "sourceSegmentRange": [
+            341,
+            347
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "موجودة في Linux عندك مثلاً. الـ Files والـ Layers دي ممكن زي ما قلنا كل Layer تضيف شوية Files، يعني مثلاً هنا الـ Layer الأولانية فيها File 1 و 2 و 3 مثلاً، الـ Layer التانية فيها File 4 و 5 و 6، ملهاش علاقة خالص بالأولانية، بتزود بس Files. لكن ممكن مثلاً تكون الـ Layer التالتة يكون فيها مثلاً File 7، وممكن يكون File 7 ده عبارة عن تعديل لـ File 5. تمام؟ فده برضه ممكن يبقى موجود.",
+          "sourceSegmentRange": [
+            348,
+            354
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "إيه اللي بيحصل؟ اللي بيحصل إن Docker لما بيـ Build الـ Image دي بيعملها طبقات، بيعمل الطبقة دي الأول، وبعد كده الطبقة اللي فوقيها. لو جت الطبقة اللي بعدها عدلت في File 5، هيعدل في File 5 بس مش في الـ Layer دي، هيعدل في النسخة اللي فوق، فيبقى المجموع النهائي بتاع الـ 3 Layers دول هو 1، 2، 3، 4، 5 متعدل 6. فده شكل الـ Layers بشكل عام. Squashed، يعني أنا عندي 1، 2، 3، 4، 7 وبعدين",
+          "sourceSegmentRange": [
+            355,
+            361
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "6، عشان 7 ده هو تعديل لـ 5. تعالوا نشوف مثال على Image، وخلينا المرة دي ننزل Image بتاعتنا اللي هي Hadoop مثلاً دي. خلينا نروح على Apollo، نرجع لـ Apollo مرة تانية ونعمل حاجة في الموضوع ده عشان شكلها مزعج جداً والعملية هتتلخبط قوي. لو جيت قلت له الأول Docker image ls عشان نشوف إذا كان عندي Images ولا معنديش خالص.",
+          "sourceSegmentRange": [
+            362,
+            368
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ومادام معنديش Images يبقى معنديش Containers. الـ Containers بتتعمل من الـ Images اللي موجودة. فهاجي أقول له مثلاً Docker image Docker image أو Container، نزل واعمل Container على طول. أو Docker container run، وخليني أفتكر كانت -it -it، كنت فاكر من عندنا من الـ Hub من الـ Repos اللي عندي. من الـ Repos اللي عندي، هاجي هنا مثلاً وأقول له أنا سايب",
+          "sourceSegmentRange": [
+            369,
+            375
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "لكم برضه هنا إزاي تعملوا Download للـ Repo ده. نرجع هنا كده. هاجي أقول له مثلاً Docker container run -it -it زي ما قلنا اللي هي -i و -t. والـ -i يعني interactive، يعني أنا عايز أتفاعل مع الـ Container، مش مجرد ترن الـ Container وتخرج، لا أنا عايز Interaction. والـ -t هي الـ Pseudo terminal، يعني طلع لي الـ Terminal.",
+          "sourceSegmentRange": [
+            376,
+            382
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "root at hostname وبعد كدة الـ Hash بتاعة الـ Prompt. والـ --name --name دي عشان أدي الـ Container ده اسم. إنتوا شوفتوا الـ Containers ليها أسامي ظريفة جداً، عبارة عن صفة واسم. زي Happy Sunosee اللي شفناها وحاجات زي كدة. بس لو مش عاجباني الأسماء دي، هدي للـ Container اسم هسميه مثلاً Hadoop. مش ضروري بس ممكن تسميه كده.",
+          "sourceSegmentRange": [
+            383,
+            389
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وعندنا -h عشان أعمل Hostname للـ Container. لو أخدت بالك الـ Container ID الـ default بتاعه بيبقى أول 12 Hexadecimal characters من الـ Digest. الـ ID الكبير ده، أول 12 حرف منه بيبقوا الـ Hostname. لو عايز أغير اسم الـ Operating system اللي جوه الـ Container بستخدم -h وأسميه بالاسم ده. عشان أسحب الـ Image زي ما شفنا هقول له A776 بعد كدة اسم الـ Repo",
+          "sourceSegmentRange": [
+            390,
+            396
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بعد كدة Colon والـ Tag دي كلها مع بعضها اسمها Image. كل ده مع بعضه كده هو الـ Image Name.",
+          "sourceSegmentRange": [
+            397,
+            399
+          ]
+        }
+      ]
+    },
+    {
+      "id": "running-a-heavy-hadoop-image",
+      "heading": "مثال عملي: تشغيل Hadoop Image",
+      "diagramId": "DockerRunFlowDiagram",
+      "blocks": [
+        {
+          "type": "command",
+          "content": "docker container run -it --name hadoop-c -h hadoop asami76/hadoop-sudo:1.0 bash\nتشغيل container تفاعلي باسم وhostname محددين من Image غير official.",
+          "sourceSegmentRange": [
+            400,
+            401
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Ok اللي هو ال-Repo Colon ال-Tag ال-Repo عندي هنا هو ده ال-Repo هو 76 Slash hadoop-sudo ده كده اسمه ال-Repo Colon ال-Tag",
+          "sourceSegmentRange": [
+            400,
+            406
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وبعدين بقوله Bash أنا هنا لما قلت له أنا عايز -it يعني أنا عايز Terminal لازم أقوله أنا هعمل Interact مع إيه؟ لازم يطلع لي Command أنهي؟ عايز Bash ولا عايز مثلاً Sh؟ ولا عايز أي Shell موجودة جوه ال-Container على حسب أنت بنيت ال-Image إزاي في ال-Build time أنهي Terminal كانت موجودة",
+          "sourceSegmentRange": [
+            407,
+            413
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وأنا كمان في الآخر قلت لك أنا عايز كمان Execute Command من جوه ال-Container ال-Command ده هو عبارة عن Shell Script دي Shell Script وأنا ببني ال-Image عملتها وحطيتها جوه ال-Container عشان لما أجي أقوم ال-Container مثلاً ال-Shell Script دي، وال-Shell Script دي من جوه ال-Container بتنفذ أي حاجة تانية من جوه، ده هتلاقيه",
+          "sourceSegmentRange": [
+            414,
+            420
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "كل الناس تقريباً عندهم ده، وتقريباً حتى فيه اسم مشهور ليها يعني فيه حاجة زي اسم ال-Shell Script اللي بتشتغل جوه ال-Container. تمام؟ فأنا حطيت دي جوه وعملت ده، هوريك أنا عملت إزاي ال-Container ده فما تقلقش. وأدوس Enter، هتشوف بقى لما بعمل Run لل-Container ده. أول حاجة إنه بيبدأ يعمل Download للـ Layers، هتلاقي عندي Layers كتيرة هنا لأن أنا عندي Hadoop فكل حاجة جاهزة، Ok؟ فبيعمل Download الأول",
+          "sourceSegmentRange": [
+            421,
+            427
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وبعد الـ Download بيقوم عامل Extract وبعد ما يخلص يبقى Done، وكل Layer من الـ Layers الكتير دي هتلاقي لها الـ Hash بتاعها، طبعاً أنت عندك في Layers كبيرة جداً 1 جيجا وشوية وده عادي ومنطقي جداً لأن أنا Already منزل Java و Already منزل Hadoop ومنزل ميت ألف حاجة جاية كمان مع Hadoop، ممكن ترجع للفيديو اللي إحنا اتكلمنا عنه بتاع Hadoop عشان تشوف الـ Setup تم إزاي في العموم، Ok؟ وهتشوف إزاي ده من أول الحاجات اللي هتبدأ تحسسك، طب أنا",
+          "sourceSegmentRange": [
+            428,
+            434
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "محتاج ال-Containers في إيه؟ كدا هتعرف أنت محتاج ال-Containers في إيه. إحنا أخدنا قد إيه وقت نعمل ال-Hadoop؟ كام ساعة عشان نعمل ال-Containers ونعمل Configuration والدنيا تبوظ فنعدل تاني والدنيا تضرب في وشنا فنعدل تاني. هتشوف إزاي بالطريقة السهلة دي قدرت إني أعمل Configure للـ Hadoop كله على Container وبقى عندي دي الـ Node اللي هي الـ Container ده، كل الـ Setup بتاع Hadoop من غير مجهود. بتاع Hadoop من غير أي مجهود ولا أي حاجة، كأنني بالظبط عملت Virtual Machine.",
+          "sourceSegmentRange": [
+            435,
+            441
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بس شوف بقى لو إنت هتعمل Download لـ Virtual Machine عليها Hadoop أو Linux Operating System ومش عارف إيه وبتاع. وتعمل Start من أول وجديد، تاخد وقت قد إيه؟ تمام، واحنا قاعدين بندردش مع بعض عشان نضيع وقت، خلص كل حاجة. ولو حد كان متابع السلسلة بتاعت Hadoop، هتلاقي إنه عمل Start أهو للـ Name Node. عمل Start للداتا Node، عمل Start للـ Resource Manager والـ Node Manager. لو قلت له jps طبعاً، هو دخلني كده جوه الـ Terminal بتاع الـ Container. وهتلاحظ إن اسم الـ Container هنا متغير، اسم الـ OS اللي جوه الـ Container متغير. كده لو حبيت إن أنا أشوف الـ Container نفسه اسمه إيه هقول له docker container ls. فهلاقي إن أنا عندي Container واحد بس Running. تمام؟",
+          "sourceSegmentRange": [
+            442,
+            448
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Container ده، ده الـ ID بتاعه، وده اسم الـ Image. خدت بالك بقى إن هو تحت اسم الـ Image هنا كل ده، كل وجع القلب ده اسمه الـ Image. ده اسم الـ Image، أوكي؟ والـ Command اللي Running جوه الـ Container باسم تمام؟ وهتلاقي إنه شغال من دقيقة والـ Status بتاعته Up بقاله حوالي دقيقة برضه، وهتلاقي إن فيه شوية Ports، طبعاً دي الـ Ports بتاعة Hadoop، تمام؟ وهتلاقي إن اسم الـ Container في الآخر، بدل الاسم الـ Funny العجيب ده اللي كان بيتعمل قبل",
+          "sourceSegmentRange": [
+            449,
+            455
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "كده، بقى اسمه hadoop-c. يبقى كده اسم الـ Container بقى hadoop-c. ده اللي هو الـ ID بتاعه، واسم اللي جوه الـ Container هو hadoop برضه، أوكي؟ فهرجع هنا تاني للـ Container. لو جيت في الـ Container قلت له jps، دي عشان أشوف كل الـ Processes على الـ Java Virtual Machine. أوكي؟ فهلاقي إن أنا عندي Node Manager قايم، الـ Name Node قايم، والـ Data Node قايمة، والـ Resource Manager، كله كله في التمام. كويس كده؟ وأنا عارف عشان عشان أنا عارف إن Hadoop بيبقى معاه الـ",
+          "sourceSegmentRange": [
+            456,
+            462
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Web UI اللي بتقدر تشوف منه الـ Resources و الكلام ده. فلو جيت قلت له ip addr show عشان أعرف إيه الـ IP Address اللي الـ Container خده؟ الـ Container لازم ياخد IP Address طبعاً. فهلاقي إن الـ IP Address هو 172.17.0.2. وإنت By default هتلاقي الـ Containers كلها بتاخد By default 172.x.x.x. أوكي؟ فده الـ IP Address، لو جيت هنا مثلاً، وقلت له http://",
+          "sourceSegmentRange": [
+            463,
+            469
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "9870 وده الـ Port اللي بيشتغل بيه الـ Hadoop، هتلاقي إن Hadoop شغال عندي هنا، أوكي؟ هتلاقي Hadoop شغال لو رحت عليه هتلاقي الـ Data Node شغالة. خليني أكبر دي شوية كده. هو الماوس بيجري ليه كده؟ زوم يا عم عادل زي الناس. ماشي؟ هتلاقي عندي Data Node أهي. لو رحت مثلاً على Utilities عشان أشوف الـ File System بتاعي، هلاقي الـ File System فاضي.",
+          "sourceSegmentRange": [
+            470,
+            476
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بس أقدر إن أنا أعمل Create لـ Directory مثلاً، أسميه test-dir مثلاً، أي حاجة، وأقول له Create. ممكن لو أنا رحت تاني رجعت بقى للـ Container. أنا",
+          "sourceSegmentRange": [
+            477,
+            479
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inspect-container-and-image",
+      "heading": "Inspect للـ Image والـ Container",
+      "blocks": [
+        {
+          "type": "command",
+          "content": "docker image inspect <image>\nيعرض metadata مثل tags وexposed ports وlayers والـ command الافتراضي.",
+          "sourceSegmentRange": [
+            480,
+            481
+          ]
+        },
+        {
+          "type": "command",
+          "content": "docker container inspect <container>\nيعرض state وnetworking وruntime configuration الخاصة بالـ container.",
+          "sourceSegmentRange": [
+            480,
+            481
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "رجعت تاني جوه ال-Container. أنا كده جوه ال-Container، تمام؟ وقلت له مثلاً HDFS DFS، مش فاكر اسم الـ Command إيه؟ أعتقد HDFS، كان باين؟ أتذكر بالظبط كان HDFS ls في حاجة أنا كاتبها غلط في ال-Command ثواني وهعرفها",
+          "sourceSegmentRange": [
+            480,
+            486
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "كانت كانت hdfs dfs أظن لازم أحط dash-ls أظن كده لو أنا فاكر صح أتمنى أكون فاكر صح أعتقد كان ال-Port 9000 لو أنا برضه فاكر صح تمام، يبقى أنا هنا عملت",
+          "sourceSegmentRange": [
+            487,
+            493
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "كده أنا كأني بعمل list لكل ال-Folders اللي موجودة في ال-HDFS System بتاعي فوراني إن عندي Directory اسمه مثلاً TestD فلو جيت قلت له برضه، أتمنى أكون فاكر صح، كانت ال-dash mkdir وهسميه مثلاً testuser تمام هنا تمام، كل ده أنا كده جوه ال-Container. في دقيقة بقى عندي Container فيه ال-Namenode وكل حاجة، تمام؟ لو جيت هنا",
+          "sourceSegmentRange": [
+            494,
+            500
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "من هنا، حبيت أشوف ال-Containers اللي موجودة ب-dash-a تمام؟ هلاقي إن ال-State بتاعته، لو رحت هنا عملت Refresh وهتلاقي بوم! ضربت في وشي وقال لي معرفكش، طبعاً هنا في نقطة مهمة، وهي فكرة إن ال-Directories اللي أنا عملتها دي إيه اللي حصل فيها جوه ال-Containers؟ فبما إن ال-Container ضرب في وشك، خلاص خلص الموضوع. ال-Container لو اتعمله Stop وتمسح، كل الحاجات اللي موجودة راحت. طبعاً لو ما",
+          "sourceSegmentRange": [
+            501,
+            507
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "اتمسحش ال-Container خلاص كل حاجة موجودة جواه من غير مشاكل. لكن لو اتمسح ال-Container كل الحاجات اللي موجودة جواه طبعاً اتمسحت، لأنها مش متسيفة في ال-Image، تمام؟ ال-Image زي ما اتفقنا، فدي نقطة مهمة ليها علاقة بال-Volumes أو ال-Storage بتاعة ال-Container ودي حاجة محتاجين نبص فيها كمان شوية، تمام؟ خلينا بقى نبص على حاجة، لو رجعت هنا تاني وقلت له docker images، هلاقي عندي ال-Image دي اللي أنا عملتها، تمام؟",
+          "sourceSegmentRange": [
+            508,
+            514
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ده ال-Repo وده ال-Tag، تمام؟ عشان كده تفتكروا إحنا قلنا ليه ده اسمه Repository مش Image، تمام؟ لأن ال-Image عبارة عن ده زائد ده، ال-Repo ده وال-Tag ده. وده ال-Image ID و Created من 11 يوم، أنا مكريته من 11 يوم تقريباً، وده ال-Size بتاعه، تمام؟ لما أنا لو عندي بالمنظر ده وحبيت إني أعرف الـ Image دي جواها إيه فيها إيه ومين اللي عملها؟ عايز أعرف بيانات عن الـ Image",
+          "sourceSegmentRange": [
+            515,
+            521
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "دي. فأقدر أستعمل أمر اسمه Docker Image Inspect أو Docker أو Docker عموماً، في كل الـ CLI بتاع Docker بيديك معلومات عن الشيء اللي إنت بتعمله Inspect. فهقول له إما أديله اسم الـ Image أو أديله الـ ID بتاعها أو أول شوية من الـ ID. الـ Inspection هيطلع في JSON file. الـ JSON file ده هو اللي هيبقى فيه المعلومات عن الـ Image دي. مش هنخوض فيه كله، زي ما إنت شايف بدأت العملية توسع مننا",
+          "sourceSegmentRange": [
+            522,
+            528
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "والـ Terminal مابقتش ملاحقة على كل حاجة. بس خلينا واحدة واحدة نبص على شوية حاجات مهمة. مثلاً ده الـ ID بتاع الـ Image. وده الـ Tag. وده الـ Image name. وده الـ Author بتاع الـ Image. وده الـ Comment الـ Comment بتاع الـ Commit بتاع الـ Image. فاكر الـ Commit اللي إنت كنت بتعمله زمان في Git و GitHub. ولما تيجي تعمل Commit لازم تحط message. فده الـ Comment. هل فيه Parent Image؟ مفيش؟ والـ Created في الوقت ده. وده الـ Container اللي شغال من",
+          "sourceSegmentRange": [
+            529,
+            535
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Image. هتلاقي مثلاً الـ Hostname. ودي الـ Exposed Ports. دي اللي وأنا ببني الـ Image قلت له خلي بالك الـ Image دي لما تشتغل وتعمل منها Container لازم تفتح فيها الـ Ports الفلانية، اللي هي الـ Port ده وده وده. لو تفتكر بتاع الـ 9000 ده بتاعه. ولو تفتكر الـ 8088 ده اللي هو بتاع الـ Hadoop. تمام وهكذا. هتلاقي شوية وهتلاقي كمان الـ Command اللي أنا عملته Run وأنا",
+          "sourceSegmentRange": [
+            536,
+            542
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بكريت الـ Container، اللي هو جوا الـ CMD. هتلاقي الـ Command اللي هو bash -c واسم الـ bootstrap shell اللي أنا استعملتها علشان أشغل. دي الـ Image طبعاً، هل فيه Volumes؟ لأ مفيش Volumes متعرفة. الـ Entrypoint لأ. شوية حاجات كدة ومن ضمنها كمان في الآخر خالص هتلاقي الـ Layers بتاعة الـ Image دي بتاعة الـ Image. وده الـ Digest بتاع الـ Image. بنفس الشكل برضو أقدر أقول له برضو Docker Container Inspect. علشان هو مستخبي أو",
+          "sourceSegmentRange": [
+            543,
+            549
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "مقفول. فبنفس الطريقة برضو هاجي أقول له Docker Container Inspect. فلما هعمل Inspect هقول له الـ ID بتاع الـ Container أو أول شوية منه. بنفس الطريقة برضو هيديني كل حاجة ليها علاقة بالـ Container ده. أنا وصلت فين كدة هنا؟ أهو. هتلاقي شوية معلومات مشابهة جداً هتلاقي شوية معلومات مشابهة جداً من الحاجات اللي كانت موجودة جوا الـ Image، وإمتى اتعمل ده",
+          "sourceSegmentRange": [
+            550,
+            556
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "والـ Status بتاعته مثلاً، هو مثلاً هل هو Running؟ لأ، هل هو Paused؟ لأ، هل هو Restarting؟ لأ. حاجات زي كدة. الـ Driver اللي مستخدمه، والـ Platform بتاعه Linux، والاسم الـ Operating System مثلاً، وهكذا بقى شوية البيانات والتفاصيل. دي ومن ضمنها مثلاً هتلاقي حاجة زي إيه؟ لو نزلنا تحت شوية. مثلاً هتلاقي إننا لو نزلنا شوية كده، حالياً مش موجود لأنه دلوقتي مقفول. لو كان شغال كنت هتلاقي الـ IP بتاعه اللي",
+          "sourceSegmentRange": [
+            557,
+            563
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "كان 172.17 مثلاً. تمام. كويس. لحسن الحظ.",
+          "sourceSegmentRange": [
+            564,
+            567
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "sourceSegmentCount": 568,
+    "blockCount": 95
+  }
+}

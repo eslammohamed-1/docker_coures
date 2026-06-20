@@ -1,0 +1,66 @@
+{
+  "chapterNumber": 1,
+  "title": "Intro",
+  "folderName": "01_Intro",
+  "formattedAt": "2026-06-18T22:44:45.405Z",
+  "model": "gemini-3.1-pro-preview",
+  "sections": [
+    {
+      "id": "introduction",
+      "heading": "مقدمة (Introduction)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "مساء الخير إن كان مساء، وصباح الخير إن كان صباح. في الفيديو ده هنتكلم عن الـ Containers بشكل عام.",
+          "sourceSegmentRange": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "course-roadmap",
+      "heading": "خريطة الكورس (Course Roadmap)",
+      "diagramId": "CourseRoadmapDiagram",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "هنبدأ بـ Introduction سريعة للـ Containers، وبعد كده هنمشي في الكورس على الخطوات دي:",
+          "sourceSegmentRange": [
+            2,
+            2
+          ]
+        },
+        {
+          "type": "list",
+          "content": "التعرف على Docker\nالشغل مع الـ Containers\nالشغل مع الـ Images\nإدارة الـ Network والـ Storage\nالتعرف على Docker Compose\nشرح Docker Swarm و Docker Stack\nمقدمة (Introduction) بسيطة عن Kubernetes",
+          "sourceSegmentRange": [
+            3,
+            10
+          ]
+        },
+        {
+          "type": "note",
+          "content": "في الآخر هنشوف إزاي نقدر نحط الثعبان في العلبة (وهو مصطلح مجازي لعمل Containerization لتطبيقات Python).",
+          "sourceSegmentRange": [
+            11,
+            11
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ابقوا معنا وأتمنى لكم متابعة مفيدة.",
+          "sourceSegmentRange": [
+            12,
+            12
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "sourceSegmentCount": 13,
+    "blockCount": 5
+  }
+}

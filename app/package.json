@@ -11,7 +11,7 @@
     "format-chapters": "tsx scripts/format-all-chapters.ts",
     "format-curated": "tsx scripts/curated-display.ts",
     "validate-chapters": "tsx scripts/validate-display.ts",
-    "deploy:pages": "GITHUB_PAGES=true npm run build && gh-pages -d dist -t true"
+    "deploy:pages": "GITHUB_PAGES=true npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "chart.js": "^4.5.1",

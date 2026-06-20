@@ -1,0 +1,59 @@
+.ch02-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.ch02-layer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  border: 2px solid;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-align: center;
+  line-height: 1.45;
+}
+
+.ch02-caption {
+  margin: 0.85rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.ch02-note {
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 6px;
+  background: rgba(210, 153, 34, 0.1);
+  border: 1px solid rgba(210, 153, 34, 0.35);
+  color: #e6edf3;
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.ch02-apps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 2px dashed rgba(13, 183, 237, 0.45);
+  background: rgba(13, 183, 237, 0.08);
+}
+
+.ch02-app {
+  padding: 0.55rem;
+  border-radius: 6px;
+  background: rgba(13, 183, 237, 0.85);
+  border: 1px solid #0ba5d6;
+  color: #fff;
+  font-size: 0.85rem;
+}

@@ -1,0 +1,1693 @@
+{
+  "systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | DOTPROD = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+  "model": {
+    "type": "large",
+    "multilingual": true,
+    "vocab": 51866,
+    "audio": {
+      "ctx": 1500,
+      "state": 1280,
+      "head": 20,
+      "layer": 32
+    },
+    "text": {
+      "ctx": 448,
+      "state": 1280,
+      "head": 20,
+      "layer": 32
+    },
+    "mels": 128,
+    "ftype": 1
+  },
+  "params": {
+    "model": "/Users/user/Documents/wespar/whisper.cpp/models/ggml-large-v3.bin",
+    "language": "ar",
+    "translate": false
+  },
+  "result": {
+    "language": "ar"
+  },
+  "transcription": [
+    {
+      "timestamps": {
+        "from": "00:00:00,000",
+        "to": "00:00:12,000"
+      },
+      "offsets": {
+        "from": 0,
+        "to": 12000
+      },
+      "text": "أول حاجة عايز أقولها بالتفصيل بس، هنرجع للأرقام الأخيرة، بس مش هطول في الحتة دي."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:12,000",
+        "to": "00:00:22,000"
+      },
+      "offsets": {
+        "from": 12000,
+        "to": 22000
+      },
+      "text": "أول حاجة عايز أقولها عن الـ Docker Engine نفسه، لما عملنا docker version، شفنا الـ Client والـ Server."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:22,000",
+        "to": "00:00:31,000"
+      },
+      "offsets": {
+        "from": 22000,
+        "to": 31000
+      },
+      "text": "الـ Docker كـ Engine، هو اللي بيعمل الـ Container وبيديره زي الـ Hyper-V مثلاً في الـ Virtual Machines أو الـ VMware."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:31,000",
+        "to": "00:00:39,000"
+      },
+      "offsets": {
+        "from": 31000,
+        "to": 39000
+      },
+      "text": "بيتكون من 3 حاجات رئيسية، أول حاجة الـ runc والـ containerd والـ Daemon، هناخدهم واحدة واحدة."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:39,000",
+        "to": "00:00:49,000"
+      },
+      "offsets": {
+        "from": 39000,
+        "to": 49000
+      },
+      "text": "دلوقتي يعني إيه Daemon؟ الـ Docker Daemon أو اسمه dockerd في Linux، ده الـ Engine، الـ Server-side بتاع Docker."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:49,000",
+        "to": "00:00:52,000"
+      },
+      "offsets": {
+        "from": 49000,
+        "to": 52000
+      },
+      "text": "ده وظيفته إنه يخلي الـ Docker يشتغل بشكل سليم."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:52,000",
+        "to": "00:00:57,000"
+      },
+      "offsets": {
+        "from": 52000,
+        "to": 57000
+      },
+      "text": "لأن لما بنتكلم عن الـ Containers، إحنا مقلناش إن الـ Container محتاج بس الـ Runtime عشان يتعامل مع نظام التشغيل."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:57,000",
+        "to": "00:01:06,000"
+      },
+      "offsets": {
+        "from": 57000,
+        "to": 66000
+      },
+      "text": "ويبدأ يكمل عليه، اللي بيوصل الـ Container لبعضها وبيتحكم فيها هو الـ Docker Daemon."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:06,000",
+        "to": "00:01:19,000"
+      },
+      "offsets": {
+        "from": 66000,
+        "to": 79000
+      },
+      "text": "الـ Daemon برضه هو اللي بيستقبل الـ Commands، زي ما شفنا لما عملنا docker image pull، و docker container run، و create، و start، و exec."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:19,000",
+        "to": "00:01:22,000"
+      },
+      "offsets": {
+        "from": 79000,
+        "to": 82000
+      },
+      "text": "كل الـ Commands دي بتيجي من الـ Docker Client."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:22,000",
+        "to": "00:01:24,000"
+      },
+      "offsets": {
+        "from": 82000,
+        "to": 84000
+      },
+      "text": "وبتروح للـ Daemon."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:24,000",
+        "to": "00:01:36,000"
+      },
+      "offsets": {
+        "from": 84000,
+        "to": 96000
+      },
+      "text": "وهو بيشوف إنت محتاج إيه، محتاج Image، ولا Network، ولا User، ولا تكريت Container."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:36,000",
+        "to": "00:01:38,000"
+      },
+      "offsets": {
+        "from": 96000,
+        "to": 98000
+      },
+      "text": "وبينفذ على الأساس ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:38,000",
+        "to": "00:01:46,000"
+      },
+      "offsets": {
+        "from": 98000,
+        "to": 106000
+      },
+      "text": "لو الطلب ليه علاقة بإنك تشغل Container، فاللي بيحصل إن الـ Daemon بيباصي الـ Request للـ containerd."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:46,000",
+        "to": "00:01:52,000"
+      },
+      "offsets": {
+        "from": 106000,
+        "to": 112000
+      },
+      "text": "الـ containerd هو عبارة عن Component، ووظيفته إدارة أي حاجة ليها علاقة بالـ Container."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:52,000",
+        "to": "00:02:00,000"
+      },
+      "offsets": {
+        "from": 112000,
+        "to": 120000
+      },
+      "text": "لو هتصنع Container من أول وجديد، فاللي بيحصل إن الـ containerd هو اللي بيبدأ العملية."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:00,000",
+        "to": "00:02:08,000"
+      },
+      "offsets": {
+        "from": 120000,
+        "to": 128000
+      },
+      "text": "الـ runc هو وقت الـ execution للـ container، كل container شغال بيبقى عبارة عن process runc."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:08,000",
+        "to": "00:02:15,000"
+      },
+      "offsets": {
+        "from": 128000,
+        "to": 135000
+      },
+      "text": "والـ containerd وظيفتها تعمل الـ lifecycle management زي الـ start والـ stop والـ pause وحاجات زي كده."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:15,000",
+        "to": "00:02:16,000"
+      },
+      "offsets": {
+        "from": 135000,
+        "to": 136000
+      },
+      "text": "ده بشكل عام."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:16,000",
+        "to": "00:02:19,000"
+      },
+      "offsets": {
+        "from": 136000,
+        "to": 139000
+      },
+      "text": "فإنت في الأول مثلاً بتكتب أي Command."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:19,000",
+        "to": "00:02:22,000"
+      },
+      "offsets": {
+        "from": 139000,
+        "to": 142000
+      },
+      "text": "docker container run"
+    },
+    {
+      "timestamps": {
+        "from": "00:02:22,000",
+        "to": "00:02:24,000"
+      },
+      "offsets": {
+        "from": 142000,
+        "to": 144000
+      },
+      "text": "وشوية switches."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:24,000",
+        "to": "00:02:27,000"
+      },
+      "offsets": {
+        "from": 144000,
+        "to": 147000
+      },
+      "text": "وتدوس Enter."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:27,000",
+        "to": "00:02:30,000"
+      },
+      "offsets": {
+        "from": 147000,
+        "to": 150000
+      },
+      "text": "اللي بيحصل إن الكلام ده بيروح للـ Docker Daemon."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:30,000",
+        "to": "00:02:37,000"
+      },
+      "offsets": {
+        "from": 150000,
+        "to": 157000
+      },
+      "text": "الـ Docker Daemon بياخد الـ request ويباصيه للـ containerd."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:37,000",
+        "to": "00:02:41,000"
+      },
+      "offsets": {
+        "from": 157000,
+        "to": 161000
+      },
+      "text": "الـ containerd ده هو اللي وظيفته إنه يجهز الـ container."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:41,000",
+        "to": "00:02:44,000"
+      },
+      "offsets": {
+        "from": 161000,
+        "to": 164000
+      },
+      "text": "وبعدين يبعت الـ container ده للـ runc."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:44,000",
+        "to": "00:02:48,000"
+      },
+      "offsets": {
+        "from": 164000,
+        "to": 168000
+      },
+      "text": "الـ runc بيشوف فين الـ Image اللي المفروض يشغل الـ container على أساسها."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:48,000",
+        "to": "00:02:51,000"
+      },
+      "offsets": {
+        "from": 168000,
+        "to": 171000
+      },
+      "text": "وبيعمل container تاني بـ runc تانية وهكذا."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:51,000",
+        "to": "00:02:52,000"
+      },
+      "offsets": {
+        "from": 171000,
+        "to": 172000
+      },
+      "text": "يبقى الـ container ده قايم."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:52,000",
+        "to": "00:02:54,000"
+      },
+      "offsets": {
+        "from": 172000,
+        "to": 174000
+      },
+      "text": "لأن بيبقى عندي containerd واحدة بس."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:54,000",
+        "to": "00:02:56,000"
+      },
+      "offsets": {
+        "from": 174000,
+        "to": 176000
+      },
+      "text": "جوه الـ Docker Host."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:56,000",
+        "to": "00:03:00,000"
+      },
+      "offsets": {
+        "from": 176000,
+        "to": 180000
+      },
+      "text": "أو الـ machine اللي نازل عليها الـ Docker Engine نفسه."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:00,000",
+        "to": "00:03:03,000"
+      },
+      "offsets": {
+        "from": 180000,
+        "to": 183000
+      },
+      "text": "وعندي Docker Daemon واحد بس اللي هو dockerd."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:03,000",
+        "to": "00:03:05,000"
+      },
+      "offsets": {
+        "from": 183000,
+        "to": 185000
+      },
+      "text": "ولكل container شغال."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:05,000",
+        "to": "00:03:07,000"
+      },
+      "offsets": {
+        "from": 185000,
+        "to": 187000
+      },
+      "text": "هتلاقي عندك الـ runc."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:07,000",
+        "to": "00:03:10,000"
+      },
+      "offsets": {
+        "from": 187000,
+        "to": 190000
+      },
+      "text": "اللي هي المسؤولة عن الـ container ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:10,000",
+        "to": "00:03:12,000"
+      },
+      "offsets": {
+        "from": 190000,
+        "to": 192000
+      },
+      "text": "وده بيتسمى Loosely."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:12,000",
+        "to": "00:03:14,000"
+      },
+      "offsets": {
+        "from": 192000,
+        "to": 194000
+      },
+      "text": "Coupled Architecture."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:14,000",
+        "to": "00:03:15,000"
+      },
+      "offsets": {
+        "from": 194000,
+        "to": 195000
+      },
+      "text": "إنه"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:15,000",
+        "to": "00:03:18,000"
+      },
+      "offsets": {
+        "from": 195000,
+        "to": 198000
+      },
+      "text": "مش الـ Daemon هو اللي بيعمل كل حاجة في كل حتة"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:18,000",
+        "to": "00:03:20,000"
+      },
+      "offsets": {
+        "from": 198000,
+        "to": 200000
+      },
+      "text": "ولا الـ containerd هي اللي بتعمل كل حاجة في كل حتة"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:20,000",
+        "to": "00:03:22,000"
+      },
+      "offsets": {
+        "from": 200000,
+        "to": 202000
+      },
+      "text": "ولا الـ runc هي اللي بتعمل كل حاجة في كل حتة"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:22,000",
+        "to": "00:03:26,000"
+      },
+      "offsets": {
+        "from": 202000,
+        "to": 206000
+      },
+      "text": "يبقى ده الـ Architecture بشكل عام"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:26,000",
+        "to": "00:03:28,000"
+      },
+      "offsets": {
+        "from": 206000,
+        "to": 208000
+      },
+      "text": "مع كل Container بيتكاريت"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:28,000",
+        "to": "00:03:30,000"
+      },
+      "offsets": {
+        "from": 208000,
+        "to": 210000
+      },
+      "text": "لما تكاريت الـ Container"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:30,000",
+        "to": "00:03:32,000"
+      },
+      "offsets": {
+        "from": 210000,
+        "to": 212000
+      },
+      "text": "بتشتغل الـ runc"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:32,000",
+        "to": "00:03:35,000"
+      },
+      "offsets": {
+        "from": 212000,
+        "to": 215000
+      },
+      "text": "الـ runc دي كـ Process دايماً Running"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:35,000",
+        "to": "00:03:37,000"
+      },
+      "offsets": {
+        "from": 215000,
+        "to": 217000
+      },
+      "text": "علشان ما تبقاش مرتبطة بالـ Container"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:37,000",
+        "to": "00:03:39,000"
+      },
+      "offsets": {
+        "from": 217000,
+        "to": 219000
+      },
+      "text": "وعشان الـ Container ما يبقاش مرتبط بالـ containerd"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:39,000",
+        "to": "00:03:41,000"
+      },
+      "offsets": {
+        "from": 219000,
+        "to": 221000
+      },
+      "text": "ولا يبقى مرتبط بالـ Docker Daemon نفسه"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:41,000",
+        "to": "00:03:43,000"
+      },
+      "offsets": {
+        "from": 221000,
+        "to": 223000
+      },
+      "text": "بحيث إنك ممكن تعمل Upgrade"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:43,000",
+        "to": "00:03:46,000"
+      },
+      "offsets": {
+        "from": 223000,
+        "to": 226000
+      },
+      "text": "للـ Daemon، تعمل Start أو Stop للـ Daemon نفسه"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:46,000",
+        "to": "00:03:49,000"
+      },
+      "offsets": {
+        "from": 226000,
+        "to": 229000
+      },
+      "text": "ويفضل الـ Container شغال و Up & Running"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:49,000",
+        "to": "00:03:52,000"
+      },
+      "offsets": {
+        "from": 229000,
+        "to": 232000
+      },
+      "text": "دايماً بيبقى فيه Process اسمها shim"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:52,000",
+        "to": "00:03:56,000"
+      },
+      "offsets": {
+        "from": 232000,
+        "to": 236000
+      },
+      "text": "دي عبارة عن Process فيها شوية من الـ containerd"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:56,000",
+        "to": "00:03:58,000"
+      },
+      "offsets": {
+        "from": 236000,
+        "to": 238000
+      },
+      "text": "وارثة شوية حاجات من الـ containerd"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:58,000",
+        "to": "00:04:00,000"
+      },
+      "offsets": {
+        "from": 238000,
+        "to": 240000
+      },
+      "text": "وشوية حاجات من الـ runc"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:00,000",
+        "to": "00:04:02,000"
+      },
+      "offsets": {
+        "from": 240000,
+        "to": 242000
+      },
+      "text": "بتفضل دايماً قايمة مع الـ Container"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:02,000",
+        "to": "00:04:05,000"
+      },
+      "offsets": {
+        "from": 242000,
+        "to": 245000
+      },
+      "text": "تخليك إنك أياً كان اللي حصل في الـ containerd"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:05,000",
+        "to": "00:04:07,000"
+      },
+      "offsets": {
+        "from": 245000,
+        "to": 247000
+      },
+      "text": "عملت Start عملت Stop عملت Upgrade"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:07,000",
+        "to": "00:04:09,000"
+      },
+      "offsets": {
+        "from": 247000,
+        "to": 249000
+      },
+      "text": "ده ما يأثرش على الـ Container اللي شغال"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:09,000",
+        "to": "00:04:11,000"
+      },
+      "offsets": {
+        "from": 249000,
+        "to": 251000
+      },
+      "text": "فتقلل اعتمادية الـ Container"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:11,000",
+        "to": "00:04:13,000"
+      },
+      "offsets": {
+        "from": 251000,
+        "to": 253000
+      },
+      "text": "على الـ runc وعلى الـ containerd"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:13,000",
+        "to": "00:04:14,000"
+      },
+      "offsets": {
+        "from": 253000,
+        "to": 254000
+      },
+      "text": "وعلى الـ Docker Daemon نفسه"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:14,000",
+        "to": "00:04:16,000"
+      },
+      "offsets": {
+        "from": 254000,
+        "to": 256000
+      },
+      "text": "لو إنت فورت الـ Docker Engine كله"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:16,000",
+        "to": "00:04:19,000"
+      },
+      "offsets": {
+        "from": 256000,
+        "to": 259000
+      },
+      "text": "ونزلت Docker من أول وجديد"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:19,000",
+        "to": "00:04:21,000"
+      },
+      "offsets": {
+        "from": 259000,
+        "to": 261000
+      },
+      "text": "هتلاقي الـ Container شغالة و Up and Running عادي جداً"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:21,000",
+        "to": "00:04:23,000"
+      },
+      "offsets": {
+        "from": 261000,
+        "to": 263000
+      },
+      "text": "وما اتأثرتش"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:23,000",
+        "to": "00:04:27,000"
+      },
+      "offsets": {
+        "from": 263000,
+        "to": 267000
+      },
+      "text": "فده الـ Engine نفسه"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:27,000",
+        "to": "00:04:30,000"
+      },
+      "offsets": {
+        "from": 267000,
+        "to": 270000
+      },
+      "text": "علشان تشوف الـ Engine دي عندك أكتر من طريقة"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:30,000",
+        "to": "00:04:32,000"
+      },
+      "offsets": {
+        "from": 270000,
+        "to": 272000
+      },
+      "text": "ممكن تشوف الـ Process الـ Running"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:32,000",
+        "to": "00:04:34,000"
+      },
+      "offsets": {
+        "from": 272000,
+        "to": 274000
+      },
+      "text": "وتشوف الـ containerd وتشوف الـ Docker"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:34,000",
+        "to": "00:04:37,000"
+      },
+      "offsets": {
+        "from": 274000,
+        "to": 277000
+      },
+      "text": "تعال أوريك مثال على ده"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:37,000",
+        "to": "00:04:40,000"
+      },
+      "offsets": {
+        "from": 277000,
+        "to": 280000
+      },
+      "text": "هنروح على الـ Machine اللي عليها الـ Docker"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:40,000",
+        "to": "00:04:42,000"
+      },
+      "offsets": {
+        "from": 280000,
+        "to": 282000
+      },
+      "text": "أو اللي اسمها Docker Host"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:42,000",
+        "to": "00:04:44,000"
+      },
+      "offsets": {
+        "from": 282000,
+        "to": 284000
+      },
+      "text": "وهاجي أقول له مثلاً"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:44,000",
+        "to": "00:04:46,000"
+      },
+      "offsets": {
+        "from": 284000,
+        "to": 286000
+      },
+      "text": "ps -lef"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:46,000",
+        "to": "00:04:49,000"
+      },
+      "offsets": {
+        "from": 286000,
+        "to": 289000
+      },
+      "text": "وأقول له هات لي أي حاجة عليها كلمة"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:49,000",
+        "to": "00:04:51,000"
+      },
+      "offsets": {
+        "from": 289000,
+        "to": 291000
+      },
+      "text": "فيها Docker"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:51,000",
+        "to": "00:04:53,000"
+      },
+      "offsets": {
+        "from": 291000,
+        "to": 293000
+      },
+      "text": "نشوف الـ processes الـ running"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:53,000",
+        "to": "00:04:55,000"
+      },
+      "offsets": {
+        "from": 293000,
+        "to": 295000
+      },
+      "text": "هنجرب كده"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:55,000",
+        "to": "00:05:00,000"
+      },
+      "offsets": {
+        "from": 295000,
+        "to": 300000
+      },
+      "text": "فهيوريني إن فيه process running اللي هي dockerd"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:00,000",
+        "to": "00:05:02,000"
+      },
+      "offsets": {
+        "from": 300000,
+        "to": 302000
+      },
+      "text": "تمام؟ ده الـ Docker Daemon"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:02,000",
+        "to": "00:05:05,000"
+      },
+      "offsets": {
+        "from": 302000,
+        "to": 305000
+      },
+      "text": "لو بالمثل برضه قلت له وريني مثلاً"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:05,000",
+        "to": "00:05:09,000"
+      },
+      "offsets": {
+        "from": 305000,
+        "to": 309000
+      },
+      "text": "الـ container"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:09,000",
+        "to": "00:05:13,000"
+      },
+      "offsets": {
+        "from": 309000,
+        "to": 313000
+      },
+      "text": "فهيوريني إن فيه container دي running"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:13,000",
+        "to": "00:05:15,000"
+      },
+      "offsets": {
+        "from": 313000,
+        "to": 315000
+      },
+      "text": "تمام؟ فده الـ Docker Daemon"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:15,000",
+        "to": "00:05:17,000"
+      },
+      "offsets": {
+        "from": 315000,
+        "to": 317000
+      },
+      "text": "ودي الـ container دي"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:17,000",
+        "to": "00:05:19,000"
+      },
+      "offsets": {
+        "from": 317000,
+        "to": 319000
+      },
+      "text": "بالمثل برضه لما نيجي نشغل container"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:19,000",
+        "to": "00:05:21,000"
+      },
+      "offsets": {
+        "from": 319000,
+        "to": 321000
+      },
+      "text": "برضه أو تشوف الـ process اللي هي running"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:21,000",
+        "to": "00:05:23,000"
+      },
+      "offsets": {
+        "from": 321000,
+        "to": 323000
+      },
+      "text": "أو الـ shim اللي running لكل container"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:23,000",
+        "to": "00:05:25,000"
+      },
+      "offsets": {
+        "from": 323000,
+        "to": 325000
+      },
+      "text": "من الـ containers اللي أنت شغال عليها"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:25,000",
+        "to": "00:05:30,000"
+      },
+      "offsets": {
+        "from": 325000,
+        "to": 330000
+      },
+      "text": "يبقى ده كان الـ structure بشكل عام"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:30,000",
+        "to": "00:05:32,000"
+      },
+      "offsets": {
+        "from": 330000,
+        "to": 332000
+      },
+      "text": "مثال على ذلك إنت مثلاً عملت"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:32,000",
+        "to": "00:05:34,000"
+      },
+      "offsets": {
+        "from": 332000,
+        "to": 334000
+      },
+      "text": "docker container run command"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:34,000",
+        "to": "00:05:36,000"
+      },
+      "offsets": {
+        "from": 334000,
+        "to": 336000
+      },
+      "text": "أو قلت له مثلاً docker container run"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:36,000",
+        "to": "00:05:39,000"
+      },
+      "offsets": {
+        "from": 336000,
+        "to": 339000
+      },
+      "text": "alpine أو python أو mongo، أي حاجة"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:39,000",
+        "to": "00:05:41,000"
+      },
+      "offsets": {
+        "from": 339000,
+        "to": 341000
+      },
+      "text": "اللي هيحصل إن الـ command ده"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:41,000",
+        "to": "00:05:43,000"
+      },
+      "offsets": {
+        "from": 341000,
+        "to": 343000
+      },
+      "text": "هيروح للـ API"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:43,000",
+        "to": "00:05:46,000"
+      },
+      "offsets": {
+        "from": 343000,
+        "to": 346000
+      },
+      "text": "بتاع الـ Docker اللي موجود في الـ Docker Daemon"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:46,000",
+        "to": "00:05:49,000"
+      },
+      "offsets": {
+        "from": 346000,
+        "to": 349000
+      },
+      "text": "الـ Docker Daemon هيشوف المفروض إيه اللي يتعمل اللي إنت طلبته"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:49,000",
+        "to": "00:05:51,000"
+      },
+      "offsets": {
+        "from": 349000,
+        "to": 351000
+      },
+      "text": "مثلاً كنت بتـ create container"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:51,000",
+        "to": "00:05:55,000"
+      },
+      "offsets": {
+        "from": 351000,
+        "to": 355000
+      },
+      "text": "والـ container ده هيرن مثلاً بـ switches معينة"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:55,000",
+        "to": "00:05:57,000"
+      },
+      "offsets": {
+        "from": 355000,
+        "to": 357000
+      },
+      "text": "بيشوف هل الـ image موجودة عندك locally"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:57,000",
+        "to": "00:05:58,000"
+      },
+      "offsets": {
+        "from": 357000,
+        "to": 358000
+      },
+      "text": "ولا مش عندك"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:58,000",
+        "to": "00:05:59,000"
+      },
+      "offsets": {
+        "from": 358000,
+        "to": 359000
+      },
+      "text": "لو الـ image موجودة locally عندك"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:59,000",
+        "to": "00:06:01,000"
+      },
+      "offsets": {
+        "from": 359000,
+        "to": 361000
+      },
+      "text": "هيبدأ إنه يباصي الكلام ده للـ containerd"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:01,000",
+        "to": "00:06:03,000"
+      },
+      "offsets": {
+        "from": 361000,
+        "to": 363000
+      },
+      "text": "اللي هيكاريت الـ container بناءً على الـ image"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:03,000",
+        "to": "00:06:04,000"
+      },
+      "offsets": {
+        "from": 363000,
+        "to": 364000
+      },
+      "text": "اللي موجودة locally"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:04,000",
+        "to": "00:06:06,000"
+      },
+      "offsets": {
+        "from": 364000,
+        "to": 366000
+      },
+      "text": "لو الـ image مش موجودة locally"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:06,000",
+        "to": "00:06:08,000"
+      },
+      "offsets": {
+        "from": 366000,
+        "to": 368000
+      },
+      "text": "هيضطر الـ dockerd قبل ما يعمل الكلام ده"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:08,000",
+        "to": "00:06:09,000"
+      },
+      "offsets": {
+        "from": 368000,
+        "to": 369000
+      },
+      "text": "يعمل download للـ image"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:09,000",
+        "to": "00:06:13,000"
+      },
+      "offsets": {
+        "from": 369000,
+        "to": 373000
+      },
+      "text": "يعمل pull للـ image من الـ Docker Hub مثلاً"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:13,000",
+        "to": "00:06:15,000"
+      },
+      "offsets": {
+        "from": 373000,
+        "to": 375000
+      },
+      "text": "تمام؟ بعد كده الـ containerd هيباصي"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:15,000",
+        "to": "00:06:17,000"
+      },
+      "offsets": {
+        "from": 375000,
+        "to": 377000
+      },
+      "text": "الـ request ده للـ runc"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:17,000",
+        "to": "00:06:19,000"
+      },
+      "offsets": {
+        "from": 377000,
+        "to": 379000
+      },
+      "text": "والـ runc هي اللي فعلاً هتبدأ تبني الـ container"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:19,000",
+        "to": "00:06:22,000"
+      },
+      "offsets": {
+        "from": 379000,
+        "to": 382000
+      },
+      "text": "من الـ image اللي موجودة أو اللي اتعمل لها pull"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:22,000",
+        "to": "00:06:23,000"
+      },
+      "offsets": {
+        "from": 382000,
+        "to": 383000
+      },
+      "text": "أوكي؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:23,000",
+        "to": "00:06:26,000"
+      },
+      "offsets": {
+        "from": 383000,
+        "to": 386000
+      },
+      "text": "فده بشكل عام وزي ما إحنا قلنا الـ benefit"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:26,000",
+        "to": "00:06:29,000"
+      },
+      "offsets": {
+        "from": 386000,
+        "to": 389000
+      },
+      "text": "إن الـ container runtime يبقى decoupled"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:29,000",
+        "to": "00:06:32,000"
+      },
+      "offsets": {
+        "from": 389000,
+        "to": 392000
+      },
+      "text": "decoupled من الـ Docker daemon نفسه"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:32,000",
+        "to": "00:06:35,000"
+      },
+      "offsets": {
+        "from": 392000,
+        "to": 395000
+      },
+      "text": "أوكي؟ ده حتى بيسموه daemon-less containers"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:35,000",
+        "to": "00:06:37,000"
+      },
+      "offsets": {
+        "from": 395000,
+        "to": 397000
+      },
+      "text": "يعني ممكن الـ container يشتغل"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:37,000",
+        "to": "00:06:39,000"
+      },
+      "offsets": {
+        "from": 397000,
+        "to": 399000
+      },
+      "text": "والـ daemon بتعمله upgrade أو أي حاجة ثانية"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:39,000",
+        "to": "00:06:40,000"
+      },
+      "offsets": {
+        "from": 399000,
+        "to": 400000
+      },
+      "text": "أوكي؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:40,000",
+        "to": "00:06:44,000"
+      },
+      "offsets": {
+        "from": 400000,
+        "to": 404000
+      },
+      "text": "الـ API أو الـ Docker daemon بيلسن على"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:44,000",
+        "to": "00:06:46,000"
+      },
+      "offsets": {
+        "from": 404000,
+        "to": 406000
+      },
+      "text": "/var/run/docker.sock"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:46,000",
+        "to": "00:06:47,000"
+      },
+      "offsets": {
+        "from": 406000,
+        "to": 407000
+      },
+      "text": "تمام؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:47,000",
+        "to": "00:06:49,000"
+      },
+      "offsets": {
+        "from": 407000,
+        "to": 409000
+      },
+      "text": "لما تلاقي ده Running عندك"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:49,000",
+        "to": "00:06:53,000"
+      },
+      "offsets": {
+        "from": 409000,
+        "to": 413000
+      },
+      "text": "لما الـ Docker ياخد Access لده"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:53,000",
+        "to": "00:06:54,000"
+      },
+      "offsets": {
+        "from": 413000,
+        "to": 414000
+      },
+      "text": "أو الـ container ياخد Access لده"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:54,000",
+        "to": "00:06:57,000"
+      },
+      "offsets": {
+        "from": 414000,
+        "to": 417000
+      },
+      "text": "علشان يقدر يباصي الـ client"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:57,000",
+        "to": "00:07:02,000"
+      },
+      "offsets": {
+        "from": 417000,
+        "to": 422000
+      },
+      "text": "الـ Docker client يباصي الـ commands للـ Docker"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:02,000",
+        "to": "00:07:03,000"
+      },
+      "offsets": {
+        "from": 422000,
+        "to": 423000
+      },
+      "text": "أوكي؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:03,000",
+        "to": "00:07:08,000"
+      },
+      "offsets": {
+        "from": 423000,
+        "to": 428000
+      },
+      "text": "By default الـ Docker daemon بيلسن على Port 2375"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:08,000",
+        "to": "00:07:13,000"
+      },
+      "offsets": {
+        "from": 428000,
+        "to": 433000
+      },
+      "text": "TCP Port وبيلسن على HTTP يعني مش Secure"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:13,000",
+        "to": "00:07:17,000"
+      },
+      "offsets": {
+        "from": 433000,
+        "to": 437000
+      },
+      "text": "دي Security issue موجودة في الـ Docker"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:17,000",
+        "to": "00:07:19,000"
+      },
+      "offsets": {
+        "from": 437000,
+        "to": 439000
+      },
+      "text": "عشان تتجاوز الـ Security issues دي"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:19,000",
+        "to": "00:07:21,000"
+      },
+      "offsets": {
+        "from": 439000,
+        "to": 441000
+      },
+      "text": "تقدر تشتغل بالـ TLS وتستخدم Certificate"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:21,000",
+        "to": "00:07:28,000"
+      },
+      "offsets": {
+        "from": 441000,
+        "to": 448000
+      },
+      "text": "سواء كانت Self-signed certificate أو CA certificate"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:28,000",
+        "to": "00:07:30,000"
+      },
+      "offsets": {
+        "from": 448000,
+        "to": 450000
+      },
+      "text": "هسيب لك الخطوات هنا"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:30,000",
+        "to": "00:07:34,000"
+      },
+      "offsets": {
+        "from": 450000,
+        "to": 454000
+      },
+      "text": "وهسيب لك Link ليها برضه عشان تشوف الخطوات بالترتيب"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:34,000",
+        "to": "00:07:38,000"
+      },
+      "offsets": {
+        "from": 454000,
+        "to": 458000
+      },
+      "text": "تقدر تعمل Configure للـ Docker إنه ميسلنش على HTTP"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:38,000",
+        "to": "00:07:39,000"
+      },
+      "offsets": {
+        "from": 458000,
+        "to": 459000
+      },
+      "text": "بيلسن على HTTPS مثلاً"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:39,000",
+        "to": "00:07:40,000"
+      },
+      "offsets": {
+        "from": 459000,
+        "to": 460000
+      },
+      "text": "أوكي؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:40,000",
+        "to": "00:07:44,000"
+      },
+      "offsets": {
+        "from": 460000,
+        "to": 464000
+      },
+      "text": "فأنا هسيب لك الخطوات دي هنا في الـ Note"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:44,000",
+        "to": "00:07:46,000"
+      },
+      "offsets": {
+        "from": 464000,
+        "to": 466000
+      },
+      "text": "الفرق ده هيفرق كتير مع الناس"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:46,000",
+        "to": "00:07:49,000"
+      },
+      "offsets": {
+        "from": 466000,
+        "to": 469000
+      },
+      "text": "اللي حياتها كلها الـ Containers في الـ Production"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:49,000",
+        "to": "00:07:51,000"
+      },
+      "offsets": {
+        "from": 469000,
+        "to": 471000
+      },
+      "text": "وإحنا محتاجينه لأسباب تانية"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:51,000",
+        "to": "00:07:55,000"
+      },
+      "offsets": {
+        "from": 471000,
+        "to": 475000
+      },
+      "text": "فده كان الـ Docker engine بشكل عام"
+    }
+  ]
+}

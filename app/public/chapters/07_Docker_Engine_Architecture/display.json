@@ -1,0 +1,271 @@
+{
+  "chapterNumber": 7,
+  "title": "Docker Engine Architecture",
+  "folderName": "07_Docker_Engine_Architecture",
+  "formattedAt": "2026-06-18T23:15:43.132Z",
+  "model": "gemini-3.1-pro-preview",
+  "sections": [
+    {
+      "id": "chunk-0-docker-engine-components",
+      "heading": "مكونات Docker Engine الأساسية",
+      "diagramId": "DockerEngineDiagram",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "أول حاجة عايز أقولها بالتفصيل، هنرجع للأرقام دي بعدين بس مش هنطول فيها، وهي عن الـ Docker Engine نفسه. لما عملنا docker version، شوفنا رابط من الـ Client ومن الـ Server. دوكر كـ Engine هي اللي بتعمل وتدير الـ Containers وتخليها تشتغل، زي الـ Hyper-V مثلاً في الـ Virtual Machines، أو زي VMware في الـ Virtual Machines. الـ Engine بتتكون من 3 حاجات رئيسية: أول حاجة هي runc، و containerd، والـ Daemon. هناخدهم واحدة واحدة.",
+          "sourceSegmentRange": [
+            0,
+            3
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "إيه هو الـ Daemon؟ دوكر دايمون (أو اللي اسمه dockerd في لينكس)، ده الـ Engine، يعني الـ Server side بتاع دوكر. دي الكومبوننت اللي وظيفتها إنها تخلي الدوكر يشتغل بشكل سليم، لأننا قولنا إن الـ Container بيحتاج يتعامل مع نظام التشغيل (الـ Kernel). فاللي بيوصل الـ Container للـ Kernel ويتعامل معاه هو الـ Docker Daemon. الـ Daemon كمان هو اللي بيستقبل الـ Commands، زي ما شوفنا لما عملنا docker image pull, docker container run, docker container create, start, exec وكل ده. كل الـ Commands دي بتيجي من الـ Docker Client وبتروح للـ Daemon. هو بيشوف هو عايز إيه: عايز يتعامل مع Image، عايز Network، عايز Volume، عايز Container، وينفذ على الأساس ده. لو الـ Command له علاقة بإنك تكريت Container، فاللي بيحصل إن الـ Daemon بيباصي الـ Request للـ containerd.",
+          "sourceSegmentRange": [
+            4,
+            13
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ containerd عبارة عن Component وظيفتها إنها تدير أي حاجة ليها علاقة بالـ Container. لو بتعمل Container من أول وجديد، فاللي بيحصل إن الـ containerd بتكلم الـ runc. الـ runc هي الـ runtime بتاع الـ Container؛ كل Container بيشتغل بيبقى ليه process اسمها runc. والـ containerd وظيفتها إنها تعمل الحاجات اللي ليها علاقة بالـ Container lifecycle، زي start, stop, pause، والحاجات اللي زي دي بشكل عام.",
+          "sourceSegmentRange": [
+            14,
+            18
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-0-docker-command-execution-flow",
+      "heading": "مسار تنفيذ الأوامر في Docker",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "فأنت في الأول مثلاً بتكتب أي Command زي:",
+          "sourceSegmentRange": [
+            19,
+            19
+          ]
+        },
+        {
+          "type": "code",
+          "content": "docker container run",
+          "sourceSegmentRange": [
+            20,
+            20
+          ]
+        },
+        {
+          "type": "list",
+          "content": "وشوية Switches معاها وتدوس Enter.\nاللي بيحصل إن الكلام ده بيروح يقابل الـ Docker Daemon.\nالـ Docker Daemon لو لقى إنك كاتب حاجة تخص الـ Container، بيباصي الـ request ده للـ containerd.\nالـ containerd وظيفتها إنها تبدأ تصنع الـ Container، وبعدين تسلم الـ Container ده للـ runc.\nالـ runc بتشوف فين الـ Image اللي المفروض تعمل الـ Container على أساسها.\nولو هتعمل Container تاني، بيشتغل بـ runc تانية، وهكذا.",
+          "sourceSegmentRange": [
+            21,
+            28
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-0-loosely-coupled-architecture",
+      "heading": "Loosely Coupled Architecture",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "يبقى الـ Architecture دي، لأن عندي دايماً containerd واحدة بس جوه الـ Docker Host أو الـ Machine اللي نازل عليها الـ Docker Engine نفسها، وعندي Docker Daemon واحدة بس اللي هي dockerd. لكن لكل Container شغال، هتلاقي عندك process اللي هي runc، اللي هي ليها علاقة بالـ Container ده بس. ده بيتسمى Loosely Coupled Architecture. بمعنى إنه:",
+          "sourceSegmentRange": [
+            29,
+            39
+          ]
+        },
+        {
+          "type": "list",
+          "content": "مش عندي الـ Daemon هو اللي بيعمل كل حاجة في كل حتة.\nولا الـ containerd هي اللي بتعمل كل حاجة في كل حتة.\nولا الـ runc هي اللي بتعمل كل حاجة في كل حتة.",
+          "sourceSegmentRange": [
+            40,
+            42
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "يبقى ده الـ Architecture بشكل عام. مع كل Container بيتكريت، بتشتغل الـ runc. الـ runc دي كـ process دايماً running علشان متبقاش مرتبطة بالـ containerd، وعشان الـ Container ميبقاش مرتبط بالـ containerd، ولا يبقى مرتبط بالـ Docker Daemon نفسه. ده بحيث إنك ممكن تعمل upgrade، أو تعمل start و stop للـ daemon نفسه، ويفضل الـ Container شغال و Up & Running.",
+          "sourceSegmentRange": [
+            43,
+            53
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "دايماً بيبقى فيه process اسمها containerd-shim. دي عبارة عن process واخدة شوية حاجات من الـ containerd، ووارثة شوية حاجات من الـ containerd، وشوية حاجات من الـ runc. بتفضل دايماً قايمة مع الـ Container. دي تخليك أياً كان اللي حصل في الـ containerd (عملت start، عملت stop، عملت upgrade أو حاجات زي كده)، ده ميأثرش على الـ Container اللي شغال. فبتقلل اعتمادية الـ Container على الـ runc وعلى الـ containerd وعلى الـ Docker Daemon نفسه. حتى لو أنت فورت الـ Docker Engine كله، ونزلت Docker من أول وجديد، هتلاقي الـ Container شغالة و Up and Running عادي جداً ومتأثرتش. فده نظام الـ Engine نفسها.",
+          "sourceSegmentRange": [
+            54,
+            69
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-0-verifying-engine-processes",
+      "heading": "فحص الـ Processes الخاصة بـ Docker",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "عشان تشوف الـ Engine دي عندك أكتر من طريقة. ممكن تشوف الـ processes اللي running، وتشوف الـ containerd وتشوف الـ dockerd. تعالى أوريك مثال على ده، هنروح على الـ Machine اللي عليها الـ Docker (أو اللي اسمها Docker Host بقى)، وهاجي أقول له مثلاً هات لي أي حاجة فيها كلمة docker:",
+          "sourceSegmentRange": [
+            70,
+            76
+          ]
+        },
+        {
+          "type": "code",
+          "content": "ps -ef | grep docker",
+          "sourceSegmentRange": [
+            77,
+            79
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-1-viewing_running_processes",
+      "heading": "استعراض العمليات (Processes) الخاصة بـ Docker",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "عشان تشوف الـ processes الـ running، هنجرب كده، فهيواريني إنه في process running اللي هي dockerd، تمام؟ ده docker daemon.",
+          "sourceSegmentRange": [
+            80,
+            83
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "لو بالمثل برضه قلت له وريني مثلاً الـ container، فهيواريني إن في container دي running، تمام؟ فده docker daemon ودي الـ container دي.",
+          "sourceSegmentRange": [
+            84,
+            88
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بالمثل برضه لما تيجي تشغل container برضه، أو تشوف الـ process اللي هي running أو الـ shim الـ running لكل container من الـ containers اللي إنت شغال عليها. يبقى ده كان الـ structure بشكل عام يعني.",
+          "sourceSegmentRange": [
+            89,
+            93
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-1-docker_run_execution_flow",
+      "heading": "دورة عمل أمر Docker Run",
+      "diagramId": "DockerEngineDiagram",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "مثال على ذلك، إنت مثلاً عملت docker container run command، أو قلت له مثلاً docker container run alpine أو python أو mongo أو أي حاجة.",
+          "sourceSegmentRange": [
+            94,
+            97
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "اللي هيحصل إن الـ command ده هيروح للـ API بتاع الـ docker اللي هي في الـ docker daemon. الـ docker daemon هيشوف المفروض اللي يتعمل بناءً على اللي إنت طلبته.",
+          "sourceSegmentRange": [
+            98,
+            101
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "مثلاً كنت بتكريت container، والـ container ده هيرن بـ switches معينة، هيبص هل الـ image موجودة عندك locally ولا مش عندك. لو الـ image موجودة locally عندك، هيبدأ إنه يباصي الكلام ده للـ containerd اللي هيكريت الـ container بناءً على الـ image اللي موجودة locally.",
+          "sourceSegmentRange": [
+            102,
+            109
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "لو الـ image مش موجودة locally، هيضطر الـ docker daemon من قبل ما يعمل الكلام ده، يعمل download للـ image، يعني يعمل لها pull من الـ Docker Hub مثلاً يعني.",
+          "sourceSegmentRange": [
+            110,
+            113
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "تمام؟ بعد كده الـ containerd هيباصي الـ request ده للـ runc، والـ runc هي اللي فعلاً هتبدأ تبلد الـ container من الـ image اللي موجودة أو اللي اتعمل لها pull. أوكي؟",
+          "sourceSegmentRange": [
+            114,
+            118
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-1-decoupled_architecture_benefits",
+      "heading": "فوائد فصل طبقات التشغيل (Decoupled Architecture)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "فده بشكل عام، وزي ما إحنا قولنا الـ benefit إن ده يبقى decoupled كده، الـ container runtime decoupled من الـ docker daemon نفسه. أوكي؟ ده حتى بيسموه daemon-less containers، يعني ممكن الـ container يرن، والـ daemon إنت بتعمله upgrade ولا أي حاجة. أوكي؟",
+          "sourceSegmentRange": [
+            119,
+            125
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-1-docker_daemon_socket_security",
+      "heading": "اتصال الـ Docker Daemon والحماية (Security)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "الـ API أو الـ docker daemon ده بيلسن على /var/run/docker.sock. تمام؟",
+          "sourceSegmentRange": [
+            126,
+            128
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "لما تلاقي ده running عندك، أو يعني لما الـ docker ياخد access لده، أو الـ container ياخد access لده، ده علشان هو يقدر إنه يباصي الـ commands من الـ docker client للـ docker daemon. أوكي؟",
+          "sourceSegmentRange": [
+            129,
+            134
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "by default، الـ docker daemon بيلسن على port 2375 كـ TCP port، وبيلسن على HTTP يعني مش secure. دي security issue موجودة في الـ docker.",
+          "sourceSegmentRange": [
+            135,
+            138
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "عشان تتجاوز الـ security issues دي، تقدر إنك إنت تشتغل بالـ TLS، تشغل بـ certificate سواء كانت self-signed certificate أو تشتغل بـ CA certificate. عن طريق خطوات كده أنا هسيب لك الخطوات هنا، وهسيب لك لينك ليها برضه إزاي تشوف الخطوات بالترتيب. تقدر إنك إنت تـ configure الـ docker إن هو مش يلسن على HTTP، يلسن على HTTPS مثلاً. أوكي؟",
+          "sourceSegmentRange": [
+            139,
+            145
+          ]
+        },
+        {
+          "type": "note",
+          "content": "فأنا هسيب لك الخطوات ديت هنا في الـ note، فده هيفرق كتير أكتر مع الناس اللي كل حياتها هي الـ containers في الـ production، وإحنا عايزينه لأسباب أخرى. فده كان بالنسبة لي الـ docker engine بشكل عام.",
+          "sourceSegmentRange": [
+            146,
+            150
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "sourceSegmentCount": 151,
+    "blockCount": 26
+  }
+}

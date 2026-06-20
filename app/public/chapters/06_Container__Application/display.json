@@ -1,0 +1,303 @@
+{
+  "chapterNumber": 6,
+  "title": "Container = Application",
+  "folderName": "06_Container__Application",
+  "formattedAt": "2026-06-18T23:14:17.646Z",
+  "model": "gemini-3.1-pro-preview",
+  "sections": [
+    {
+      "id": "chunk-0-docker-run-intro",
+      "heading": "اختصار الأوامر باستخدام Docker Run",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "إحنا بنجرب نكريت container ونعمل الكلام ده. في طريقة ظريفة أقدر أختصر بيها فكرة إني أعمل docker create وبعدين docker start. في طريقة سهلة إني آجي أقوله docker container run.",
+          "sourceSegmentRange": [
+            0,
+            3
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ docker run command ده هو هو بالظبط الـ docker create زائد الـ docker start، هعمل create و start في نفس الوقت.",
+          "sourceSegmentRange": [
+            4,
+            6
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "مش كده وبس كمان، ده كمان docker run لو الـ image مش موجودة عندك ومكنتش عاملها pull قبل كده، هو هيعملها pull كمان. فـ docker run ده ممكن يختصر:",
+          "sourceSegmentRange": [
+            7,
+            9
+          ]
+        },
+        {
+          "type": "list",
+          "content": "- docker image pull\n- docker container create\n- docker container start",
+          "sourceSegmentRange": [
+            10,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-0-interactive-python-container",
+      "heading": "تشغيل Python Container في الـ Interactive Mode",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "فآجي أقوله هنا:",
+          "sourceSegmentRange": [
+            13,
+            13
+          ]
+        },
+        {
+          "type": "code",
+          "content": "docker container run -it python",
+          "sourceSegmentRange": [
+            14,
+            16
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "حصل إيه بقى؟ بص كده الشكل اختلف، الشكل هنا اداني كده الـ interactive mode بتاع Python لو تفتكر لما جينا اتكلمنا على الفيديو بتاع الثعبان. فده بيقولي إن ده Python 3.10.2، واداني الـ interactive mode ده اللي هو الـ REPL mode بتاع Python.",
+          "sourceSegmentRange": [
+            17,
+            21
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "يعني لو أنا جيت كده قلتله print(\"hello containers\") ودست enter هيطبع. ولو قلتله 1 + 1 هيدينا النتيجة.",
+          "sourceSegmentRange": [
+            22,
+            26
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Python عادي جداً، أكأني كتبت python3 عندي في الـ operating system، ده لو كان Python already نازل عندي طبعاً أو كان الـ version اللي هو بتاع 3.10.2 ده كان نازل عندي. بقى عندي Python.",
+          "sourceSegmentRange": [
+            27,
+            33
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-0-exiting-container",
+      "heading": "الخروج من الـ Container",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "لاحظ بقى أنا لو جيت خرجت من هنا، قلتله exit (عارف إحنا بنخرج بـ Ctrl+D أو exit عشان نخرج من الـ REPL mode بتاع Python) ودست enter.",
+          "sourceSegmentRange": [
+            34,
+            38
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "خرجني من الـ container كله.",
+          "sourceSegmentRange": [
+            39,
+            39
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-0-container-single-process",
+      "heading": "المفهوم الأساسي: Container = Single Process",
+      "diagramId": "SingleProcessDiagram",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "وده الـ concept المهم اللي عايزين نأكد عليه دلوقتي. الـ container هو عبارة عن bundle من الـ application بكل الـ dependencies بتاعتها.",
+          "sourceSegmentRange": [
+            40,
+            44
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وظيفة الـ container إنه يعمل process واحدة بس. كل هدف الـ container إنه يرن process واحدة بس.",
+          "sourceSegmentRange": [
+            45,
+            50
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "لو الـ process دي حصلها terminated، الـ container كله ملوش لازمة.",
+          "sourceSegmentRange": [
+            51,
+            53
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-0-container-vs-vm-analogy",
+      "heading": "مقارنة الـ Container بالـ Virtual Machine",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "واحدة واحدة تاني كده بقى، ونشوف الحكاية دي من الأول خالص كده وبالراحة.",
+          "sourceSegmentRange": [
+            54,
+            57
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "دلوقتي لو إنت عندك Virtual Machine (إحنا دايماً قلنا عشان نفهم الـ container دايماً هنقارنه بالـ Virtual Machine).",
+          "sourceSegmentRange": [
+            58,
+            61
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "إحنا متفقين إن الـ Virtual Machine دي already فيها الـ operating system، وفيها شوية requirements و dependencies، وبعدين فيها الـ application بتاعتك.",
+          "sourceSegmentRange": [
+            62,
+            67
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وكمان ممكن يكون فيها applications تانية إنت ممكن تنزلها، سواء كنت محتاجها لنفس الحاجة دي أو مش محتاجها ومنزل applications تانية زيها.",
+          "sourceSegmentRange": [
+            68,
+            73
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "يعني تبقى هي مثلاً الـ web service وهي نفسها كمان database server. الـ Virtual Machine ديت كل اللي فيها إنت ممكن تستعمله.",
+          "sourceSegmentRange": [
+            74,
+            79
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-1-vm-vs-container-concept",
+      "heading": "الفرق الجوهري: Virtual Machine مقابل Container",
+      "diagramId": "ContainerVsVmDiagram",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "لما تفتح الـ Virtual Machine، إنت ممكن تستفيد من كل حاجة موجودة جواها. يعني already فيها Operating System كامل، والـ requirements نزلت عندك بالكامل، والـ applications كلها نزلت. فأنا ممكن أفتح الـ Virtual Machine ومستعملش حتى الـ application اللي أنا منزلها عشانه، وممكن أستعمل الـ Operating System مباشرة.",
+          "sourceSegmentRange": [
+            80,
+            88
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "دا لأن فيها Operating System كامل، فيها Kernel كامل وفيها User Mode كامل. لذلك لما تفتح الـ Virtual Machine، إنت بالنسبة لك بتتعامل مع Machine كاملة جداً.",
+          "sourceSegmentRange": [
+            89,
+            92
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Container مش كدا، فكرة الـ Container مش إن أنا أقعد أستعمل الحاجات دي كلها. فكرة الـ Container إن أنا أبندل (Bundle) الـ application بالـ requirements دي بس، بحيث إن الـ Container بتاعي يكون فيه الـ application بتاعتي وبس.",
+          "sourceSegmentRange": [
+            93,
+            99
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وبيكون معاه بس الحتة من الـ Operating System اللي يادوبك ترن (run) الـ application بتاعتي.",
+          "sourceSegmentRange": [
+            100,
+            103
+          ]
+        },
+        {
+          "type": "note",
+          "content": "القاعدة الذهبية: الـ Container بتاعي هو عبارة عن الـ application بتاعتي بس. باختصار، الـ Container = الـ Application.",
+          "sourceSegmentRange": [
+            104,
+            159
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-2-container-equals-application-concept",
+      "heading": "مفهوم الـ Container هو الـ Application",
+      "diagramId": "SingleProcessDiagram",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "فأنا الـ container بتاعي هو عبارة عن الـ application بتاعي.",
+          "sourceSegmentRange": [
+            160,
+            239
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-3-container-is-application",
+      "heading": "الـ Container هو الـ Application",
+      "diagramId": "SingleProcessDiagram",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "فأنا الـ container بتاعي هو عبارة عن الـ application بتاعي.",
+          "sourceSegmentRange": [
+            240,
+            319
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-4-container-is-application",
+      "heading": "الـ Container هو الـ Application",
+      "diagramId": "SingleProcessDiagram",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "فأنا الـ container بتاعي هو عبارة عن الـ application بتاعي.",
+          "sourceSegmentRange": [
+            320,
+            399
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-5-container-equals-application",
+      "heading": "الـ Container هو التطبيق",
+      "diagramId": "SingleProcessDiagram",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "فأنا الـ container بتاعي هو عبارة عن الـ application بتاعي.",
+          "sourceSegmentRange": [
+            400,
+            461
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "sourceSegmentCount": 462,
+    "blockCount": 28
+  }
+}

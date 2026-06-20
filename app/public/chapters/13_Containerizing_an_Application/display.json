@@ -1,0 +1,502 @@
+{
+  "chapterNumber": 13,
+  "title": "Containerizing an Application",
+  "folderName": "13_Containerizing_an_Application",
+  "formattedAt": "2026-06-20T11:15:49.164Z",
+  "model": "local-curated-display",
+  "sections": [
+    {
+      "id": "manual-commit-problem",
+      "heading": "لماذا Docker Commit ليس أفضل طريقة؟",
+      "blocks": [
+        {
+          "type": "comparison",
+          "content": "Manual Commit | تعديلات يدوية صعبة التكرار والمراجعة\nDockerfile | تعليمات واضحة قابلة للتعديل والتشارك وإعادة البناء",
+          "sourceSegmentRange": [
+            0,
+            1
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "لغاية كده الدنيا OK مفيش فيها مشكلة، لكن برضه الطريقة دي ماهياش أحسن طريقة. إيه السبب؟ بالطريقة دي افرض أي حد تاني دخل مثلاً حب إنه يعدل في الـ Website، حب يعدل في الـ Code. مثلاً شال صفحة، مش عايز مثلاً الصفحة دي، فهيعمل إيه؟ هتضطر إنه يقوم عامل Container تاني ويقوم داخل من الـ Container معدل في الـ Code اللي هو hello.py اللي معمول له Hard-coded جوه الـ Image. يعدل في الـ Code ده ويسيف الكلام ده، ويطلع بره الـ Container ويعمل Commit ويعمل Image جديدة. وكل مرة Image جديدة، كل ما يحتاج يعدل يقوم داخل وعامل التعديل وعامل Image جديدة. فالطريقة دي مش Optimum في الشغل بتاع الـ DevOps وبتاع الـ Containers.",
+          "sourceSegmentRange": [
+            0,
+            6
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ينفع تتعامل؟ آه ينفع تتعامل. لو إنت لوحدك وده الـ Container بتاعك إنت لوحدك وعمرك ما هتشيره مع حد، ومستعمله علشان الـ Dev والـ Test بس. آه مفيش مشاكل خالص. إنما في طريقة أشيك وأحسن وأكتر فاعلية، يعني Efficient أكتر. في إن أنا أبني وأوصل لنفس النتيجة دي بشكل أسهل بكتير. في التعديل والحذف وهكذا. اللي هي إيه بقى؟ فاكر إحنا",
+          "sourceSegmentRange": [
+            7,
+            13
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الخطوات اللي إحنا عملناها علشان نبني الـ Image الجديدة دي؟ إحنا دخلنا ملقيناش الـ Editor، فاضطرينا ننزل وعملنا Update الأول وبعدين روحنا منزلين الـ Editor وبعد كده روحنا عاملين Install للفلاسك مثلاً عن طريق... مثلاً عملنا Install للفلاسك وعملنا كذا خطوة، في خطوات إحنا عملناها، نفس الخطوات دي بدل ما أنا أدخل أعملها كل مرة علشان الـ Image دي أقدر إني أستعمل File عادي خالص يبقى جواه بتقول لـ Docker هو يعمل إيه، بتقول لـ Docker Engine يعمل إيه علشان يعمل Build لنفس الـ Image دي من غير ما أحتاج أعمل Container ولا أعمل Download لـ Image وأدخل جوه الـ Container وأعمل الـ Updates.",
+          "sourceSegmentRange": [
+            14,
+            20
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الكلام ده كله مش محتاجه. أعمل Instruction File، والـ Instruction File ده حتى أبسط من الـ Scripts. الفكرة في الـ Instruction File إن أنا أقول Docker يعمل إيه من غير ما أحتاج أقوله يعملهم إزاي.",
+          "sourceSegmentRange": [
+            21,
+            27
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بتعمل مجرد Instructions. يعني مثلاً: اسحب لي الـ Image بتاعة Python، Run الـ Command الفلاني، غير لي الـ Environment Variables، غير الـ Working Directory، لما تيجي تفتح Container افتحه بالـ Command الفلاني. بدل ما أدخل أعمل كل الحاجات اللي أنا عملتها دي بنفسي.",
+          "sourceSegmentRange": [
+            28,
+            34
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ده اللي إحنا عايزين نشوفه، وده اسمه الـ Dockerfile. تعالوا بقى نشوف إزاي عن طريق الـ Dockerfile ده نقدر نعمل نفس اللي عملناه من شوية بس بشكل أشيك وبشكل Professional وشغل عالي. نعمل الكلام ده عن طريق File اسمه Dockerfile. الـ File بيبقى اسمه كده: Dockerfile، من غير Extension ومن غير أي حاجة، حتى هتلاقي VS Code متعرف عليه ومديله أيكون السمكة. ماشي، مدي الأيكون بتاع السمكة. الفايل ده سهل جداً جداً.",
+          "sourceSegmentRange": [
+            35,
+            41
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ممكن تواجه صعوبات شوية في الأول. بس لما توسخ إيدك جامد فيها، هتلاقي إن الموضوع سهل وبيمشي معاك زي السكينة في الحلاوة. تاخد تجربة Test وتضيفها في الـ Code بتاعه، وتلاحظ تلاقي الدنيا شغالة معاك. فناخد صورة مبسطة جداً للي إحنا عملناه. افتكر الخطوات اللي إحنا عملناها. علشان نبني الـ Image اللي إحنا بنيناها من شوية دي. الخطوات كانت إيه؟ مبدئياً أنا بدأت بـ",
+          "sourceSegmentRange": [
+            42,
+            48
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بـ الـ FROM. فالـ FROM command ده أو الـ FROM instruction، دي بتعرف الـ Docker Engine لما تيجي تعمل الـ Build هبدأ بأي Image. الـ instructions زي ما أنت شايفها باللون ده، لا هو أحمر ولا هو Orange، البنات هيعرفوا أكتر في الألوان. بس الـ instructions دي زي ما أنت شايفها كده، كل instruction بتكتب على سطر لوحدها. ممكن أحط مسافات، وممكن أقول مثلاً قبل دي كده آجي. أقول له مثلاً سطر فاضي، فممكن أحط وممكن أسيب كده براحتك. ممكن أسيب سطر Empty براحتك، بس خلي بالك من نقطة، كل خطوة هتتنفذ.",
+          "sourceSegmentRange": [
+            49,
+            55
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ورا بعضهم بالترتيب، يعني الأول دي وبعد كده دي. بعد كده دي وبعد كده دي، فخلي بالك عشان الـ Order ده بيفرق. فممكن مثلاً تكتب Command وبعدين تكريت الملف اللي أنت عايز تعمل له Execute جواه، فالدنيا هتبوظ في وشك. فنمشي واحدة واحدة. بالترتيب كأنك بتعمل الكلام ده مانيوال، فأول حاجة إيه؟ هحدد الـ Image، اسمها إيه؟ اسمها Python. الخطوة اللي بعدها. بقول WORKDIR، الـ WORKDIR ده instruction بيقول لـ Docker اعمل.",
+          "sourceSegmentRange": [
+            56,
+            62
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Change Directory للـ Directory اللي اسمه app/. بس خلي بالك. الـ app/ ده مكنش أصلاً موجود في الـ Image، هتقولي أيوه بالظبط. برافو عليك أنت كده صاحي معايا. الـ WORKDIR دي لو. الـ Directory مش موجود هتكريته، يعني هتعمل mkdir. وبعدين تعمل cd. بعد ما تعمل الكلام ده يبقى أنت كده في الخطوة دي واقف في الـ Terminal جوه الـ Directory اللي هو app/. الخطوة دي بقى اللي هي الـ COPY، الـ COPY بتعمل Copy لأي Content من الـ Directory اللي أنت واقف عليه لجوه الـ Container. الـ Directory اللي أنا واقف عليه ده، اللي فيه ملفات الكود، ده بيسموه الـ Build Context، الـ Directory اللي نفذت من خلاله.",
+          "sourceSegmentRange": [
+            63,
+            69
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Build، لإنك كل ما هتيجي تعمل Build لحاجة وتيجي تقوله مثلاً. هيدور عليه فين؟ هيدور في الـ Context، فأنا هقوله الفايل. اللي اسمه requirements.txt هيجيبه منين؟ هيجيبه من نفس الـ Directory. لو موجود في Folder تاني لازم تشاور عليه، فلو كان موجود. جوه الـ Directory اللي اسمه code مثلاً، يبقى لازم أقوله كده. code/، فتخلي بالك من التريكات الصغيرة دي. هيكوبي ده. فين؟ على الـ ( . )، والـ Dot دي معناها الـ current directory.",
+          "sourceSegmentRange": [
+            70,
+            76
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بعد ما يعمل Copy جوه الـ Container أو الـ Image. الخطوة اللي بعدها إنه هيعمل RUN pip install -r. requirements.txt، الفايل ده اللي فيه الـ Modules.",
+          "sourceSegmentRange": [
+            77,
+            79
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dockerfile-instructions",
+      "heading": "Dockerfile كملف تعليمات",
+      "diagramId": "DockerfileBuildDiagram",
+      "blocks": [
+        {
+          "type": "flow",
+          "content": "FROM يحدد base image\nWORKDIR يحدد مكان العمل\nCOPY ينقل الملفات\nRUN يثبت dependencies\nEXPOSE وCMD يضيفان metadata/runtime behavior",
+          "sourceSegmentRange": [
+            80,
+            81
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Frameworks أو الـ packages اللي أنا عايز أعملها import. قلت له لا طب وليه أوجع دماغي؟ طب ما كنت أكتب هنا على طول pip install Flask زي ما عملت قبل كدة؟ تقدر طبعاً، تقدر. بس إنت إيه رأيك؟ كدة أحسن ولا مش أحسن؟ بدل ما أحتاج إن أنا أروح أعدل في الـ Dockerfile ولا أعدل جوه الـ Image أصلاً؟ الـ Container يعني أخلي كل الحاجات اللي أنا عايز أعملها برة خالص. دي طريقة بتنظم الـ setup بتاعك. ممكن في المستقبل تحتاج إنك",
+          "sourceSegmentRange": [
+            80,
+            86
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "تغير الـ Flask دي مثلاً من Version لـ Version تاني، تنزل في الـ Version أو تطلع في الـ Version لأن أنا جوه دي أقدر أقوله مثلاً إن Flask مثلاً تكون أكبر من Version معين، أقدر أعمل ده. Ok؟ فتقدر إنك تعدل فيها التعديلات دي، فاستحسن طبعاً إن الكلام ده يكون خارج الـ Image نفسها. يبقى الخطوة التانية إن أنا هعمل Copy، ما فيش دلوقتي غيره، Ok؟ الخطوة اللي بعدها هعمل Copy تاني، هعمل Copy لإيه؟",
+          "sourceSegmentRange": [
+            87,
+            93
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "للفايل، تمام؟ فين الفايل ده؟ أهو، في نفس الـ Directory اللي بعمل منه Build جوه، وخلي بالك أنا في النص هنا لو جيت غيرت كدة وقلت له أي حاجة، الـ code مثلاً هيتغير، اتخيل نفسك إن دي اللي هي بعد ما أعمل Copy للفايل ده، هعمل EXPOSE لـ Port 5000، ده instruction بيعمل Expose للـ Port. Port 5000 عشان ما تضطرش إنك تعمل الكلام ده ساعة الـ Runtime بتاع الـ Container. آخر حاجة خالص هقول له",
+          "sourceSegmentRange": [
+            94,
+            100
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "CMD، والـ CMD ده بيعمل Execute لـ Command. إيه الـ Command اللي أنا عايز أعمله Execution؟ اللي هو كان python hello.py، لو تفتكر الـ Execution بتاع hello.py ده هو اللي عمل Execution للـ Flask code اللي إحنا كاتبينه وشغل الـ Web Service بتاعة الـ Flask. نقطة هنا بس تخلي بالك منها، ودي هنتكلم عليها بالتفصيل كمان شوية، بس خليني أقولها لك دلوقتي، الـ Command ده بيتنفذ ساعة الـ Command ده بيتنفذ ساعة الـ Runtime بتاع الـ Container.",
+          "sourceSegmentRange": [
+            101,
+            107
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "يعني ده مالوش لازمة إنه يتنفذ جوه الـ Image. الـ Image دي أصلاً شوية Layers مقفولين. Read-only، فإيه لازمته إن يبقى فيه Command بيشتغل جوه الـ Image؟ ملهاش أي معنى أصلاً. أكنك مثلاً عندك Virtual Machine مقفولة، وبتقولي جوه الـ Virtual Machine المقفولة دي افتح لي الـ Notepad، ما هي مقفولة أصلاً. فيبقى فيه Command فيه Instructions جوه الـ Dockerfile مابتتنفذش",
+          "sourceSegmentRange": [
+            108,
+            114
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "إلا ساعة الـ Run بتاع الـ Container. ساعة لما أشغل Container من الـ Image دي. الحاجات دي بتشتغل في الـ Runtime بس، دي مجرد ملحوظة بس. ملحوظة وأنت بتعمل Build للـ Image، إنك لما تيجي تعمل منها Container، أول حاجة تتنفذ في الـ Container هو الـ Command ده. وغالبا هتبقى الحاجة الوحيدة اللي هتتنفذ في الـ Command لأن إحنا قلنا إن الـ Container بيبقى Process واحدة بس هي اللي شغالة. فلو عندك حاجات من ضمن الحاجات دي اللي ما بتتنفذش إلا ساعة ما بتعمل Create للـ Container ما بتبقاش محروقة جوة الـ Image نفسها.",
+          "sourceSegmentRange": [
+            115,
+            121
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بتبقى موجودة في الـ Metadata بتاعت الـ Image. فالـ Image هيبقى ليها الـ Layers بتاعتها وهيبقى ليها الـ Metadata. ولذلك الـ Instructions دي فيه Instructions بتعمل تعديلات. يعني مثلا أنا هنا عملت Create لـ Directory اسمه /app. فالـ Creation بتاع الـ Directory ده حاجة بتعدل في الـ Layers. ده تعديل في الـ Layers نفسها. ففي Commands عندي بتعدل في الـ Layers زي: مثلاً إني أعمل Create لـ Directory. الـ WORKDIR لوحدها ما بتعدلش في الـ",
+          "sourceSegmentRange": [
+            122,
+            128
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Layers. إنما الـ WORKDIR لو اضطرت تعمل Create للـ Directory يبقى عدلت في الـ Layers. وعندك مثلاً Commands زي COPY و ADD زي ما هنشوف كمان شوية. الحاجات دي بتعمل حاجة ما كانتش موجودة قبل كده في الـ File System. ففي تغيير حصل في الـ File System. أي أمر بيعمل تغيير في الـ File System بيعتبر زيادة. Docker بينفذ الكلام ده إزاي بقى؟ هنشوف كده وإحنا بنعمل Build للـ Image دي. هنشوف إزاي Docker بينفذ الكلام ده لأننا هنشوف الـ output بتاعه. خلاص يبقى أنا كده عندي الخطوات",
+          "sourceSegmentRange": [
+            129,
+            135
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "هي هي تقريباً نفس الخطوات اللي أنا عملتها، أو نفس نتائج الخطوات اللي أنا عملتها. بدأت بالـ Python base image، عملت Create لـ Directory وعملت Change directory ليه. عملت Install للـ Flask Framework. كنت كاتب الكود قبلها في مكان وقلت له يعمل Copy للفايل ده جوه الـ Image. ما احتجتش إني أدخل بقى جوه الـ Image وأفتح الـ VIM وأكتبه وأعمل Copy/Paste للكود. لا أنا مجهز الكود على جنب وعملت له Copy جوه الـ Image. وبعد كده قلت له لما",
+          "sourceSegmentRange": [
+            136,
+            142
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "أجي أعمل Create لـ Container بناءً على الـ Image اللي إنت بنتها لي دي، اعمل Expose لـ Port 5000 واعمل Run للـ Command ده. تعالوا بقى نشوف الكلام ده In Action. عشان أقول لـ Docker يبني لي Image بناءً على الـ Instructions اللي في الـ Dockerfile دي، هقول له Docker Build. بعد ما بقول له Docker Build لازم أقول له اسم الـ Image إيه؟ زي ما جينا عملنا Docker Commit، لما خلصنا الـ Container وخرجنا منه وقلت له Docker Commit. هنا هقول له Docker Build، وهقول له t- عشان أعرف",
+          "sourceSegmentRange": [
+            143,
+            149
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "له الـ Tag بتاع الـ Image دي. فهقول له زي ما عملنا من شوية، كانت الـ Image هي asami76 ودي كانت هاجي هنا كده أقول له asami76/نفس الاسم بالظبط بس المرة دي هحط Tag. وبعدين لازم أديله، لازم أقول له إنت هتعمل Build منين؟ حدد المكان اللي هتعمل منه Build. وهنا على فكرة الحاجة الجميلة إن إنت ممكن تشاور له بأكثر من طريقة. ممكن أقول له بص في نفس المكان اللي أنا واقف",
+          "sourceSegmentRange": [
+            150,
+            156
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "عليه ده، دور على الـ Dockerfile. والـ Dockerfile اسمه اللي هو Dockerfile اللي شفناه والـ D capital. تمام؟ وممكن أديله GitHub Location. أقول له روح على الـ GitHub Repo ده، ومن جوه الـ Repo دور.",
+          "sourceSegmentRange": [
+            157,
+            159
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docker-build-context",
+      "heading": "Build Context وأمر docker build",
+      "diagramId": "DockerfileBuildDiagram",
+      "blocks": [
+        {
+          "type": "command",
+          "content": "docker build -t account/app:1.0 .\nالنقطة في آخر الأمر هي build context الذي يبحث Docker داخله عن Dockerfile والملفات المطلوبة.",
+          "sourceSegmentRange": [
+            160,
+            161
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "على Dockerfile واعمل Build لـ Image. ودي بقى من الحاجات الجميلة جداً جداً. وممكن يكون Docker Hub ده موجود مثلاً في Tarball file. أوكي في Archive file، وأقول له Build لـ Docker Image دي من Dockerfile اللي جوه الـ Archive عندي كذا Option في الموضوع ده، فدي من الحاجات العظيمة جداً في Docker، وده برضه من الحاجات اللي بتخليك تعرف تشوف شكل التعاون ما بين Docker وما بين GitHub وهنعمله لما نيجي نعمله خلونا نبص واحدة واحدة على المستخدمين",
+          "sourceSegmentRange": [
+            160,
+            166
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "واحدة واحدة على الـ Output علشان نفهم ده تم إزاي. في الأول خالص فين الـ Scroll؟ أيوه. في الأول خالص قال لي كالعادة أنت عندك Dockerfile فابعته لـ Docker Daemon. أول خطوة قال لك Step 1 of 7. Step 1 of 7 يبقى أول حاجة راح عمل الـ Layer دي عبارة عن إيه؟ عبارة عن الـ Base image اللي هي Python. الخطوة اللي بعدها دي، علشان ماكانتش موجودة فراح عامل برضه Layer تانية. الشغل اللي بيعمله ده بيعمله",
+          "sourceSegmentRange": [
+            167,
+            173
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "فين؟ بيعملها في كل مرة يحتاج إنه يعدل تعديل. الـ Layers دي بتتعمل في زي Temp Container، يعني تقريباً بيعمل نفس اللي حضرتك عملته بالظبط. وإحنا عملنا Build لـ Image إزاي؟ عملنا Temp Container وجوه الـ Container عملنا التعديل بتاعنا وبعد ما عدلنا في الـ Container خرجنا منه وبنينا Image، عملنا Commit لـ Image based on الـ Container ده. ده تقريباً اللي بيعمله Docker في الـ Background. بس اللي بيعمله إن كل Step بتعملها وبتعدل بيعمل قصادها Layer. إنما اللي أنت عملته وعملت Commit بعدين إن كل اللي أنت عملته ده كان في Layer واحدة بس. Layer واحدة بس. فكل اللي أنت عملته كان Layer واحدة بس. هنا بيعمله على أكتر من Layer. يبقى الخطوة الأولانية عمل Layer. بعد كدة عمل Layer تانية. بعد كدة راح عمل للـ Container. وبعدين راح خد Layer",
+          "sourceSegmentRange": [
+            174,
+            180
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "تانية من الـ Two layers دول. بعد كدة في الخطوة التالتة عمل عليها Layer. الـ RUN بتاع pip install اللي عمل Install لـ Flask. تمام؟ عمل عليها تمام، وده الـ ID بتاع التعديل اللي أنت عملته. تمام؟ فراح عامل Pull للفلاسك وعمل له Install. أوكي؟ بعد ما خلص الكلام ده راح عمل للـ Container. فهتلاقي واحدة واحدة بيعمل كدة كل مرة، يعمل Container ويعدل تعديل ويقفل الـ Container. تعديل واحد ويقفل الـ Container وهكذا. خلص خالص الكلام",
+          "sourceSegmentRange": [
+            181,
+            187
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ده لغاية ما الخطوة دي خلصناها برضه. في الآخر خالص راح عامل بعد ما خلص الـ Copy للفايل اللي هو hello.py ده كان الخطوة الخامسة. الخطوة السادسة كانت الـ EXPOSE بتاع Port 5000. عمل لي Intermediate Container. آخر حاجة خالص اللي هي الـ CMD. وفي الآخر خالص خلص الـ Build. بص هنا كدة على الشمال هتلاقي إنه بقى في عندي Images. يعني عندي أوكي؟ واحدة Python والتانية Image تانية. أوكي؟ تعالوا",
+          "sourceSegmentRange": [
+            188,
+            194
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "هنعمل Inspect لـ Images دي. لو جيت عملت Inspect لـ Image دي كدة، هننزل ده شوية هتلاقي إن دي الـ Metadata بتاعة الـ Image دي اللي بتقولك الـ Image دي إيه، ده الـ Inspection بتاع الـ Image. هتلاقي إن ده اسم الـ Repository والـ Tag لاسم الـ Image، يعني ده الـ Parent بتاع الـ Image اللي هو الـ Python. وهتلاقي لو نزلنا تحت شوية كدة هتلاقي إنه من ضمن الـ Configurations اللي جوه الـ Metadata بتاعة الـ Image دي، عندي هنا CMD ومكتوب فيها /bin/sh عارف منين إني عايز أعمل Execute",
+          "sourceSegmentRange": [
+            195,
+            201
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "من الـ Shell command ده Default؟ ده Default بالذات لو إنت كتبت له الـ CMD من غير الأقواس اللي إحنا هنتكلم عليها كمان شوية بس هو By default عارف إنك عايز تعمل Run من الـ Shell command هيعمل Execute لـ python.py",
+          "sourceSegmentRange": [
+            202,
+            208
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وفي الآخر برضه هنا خد هنا بس عشان الوقت بالشكل ده Exposed ports اللي هو ده في حين إنه الـ Image اللي إحنا عملناها قبل كده، تعال نبص عليها. تعال نعمل Inspect",
+          "sourceSegmentRange": [
+            209,
+            215
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "للـ Image اللي إحنا عملناها قبل كده عن طريق الـ Container. هاجي أبص على الـ Ports دي هلاقي إنه مش عامل في الـ Metadata إن أنا إني عامل Expose للبورتس. مش قايل إنه عامل Expose للبورتس. هاجي أبص على الـ CMD، هنا هلاقي إن الـ CMD هو bash. الـ bash ده جاي منين؟ ده واخدها Inherited من الـ Python. فمفيش عندي اللي هو الـ Command line ده. وبالتالي أنا لما كنت بعمل Create لـ Container من الـ Image القديمة دي كنت مضطر إني في الآخر وأنا بعمل Create للـ Container أقول",
+          "sourceSegmentRange": [
+            216,
+            222
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بقول له عايز python hello.py. تعال بقى نعمل Create لـ Container من الـ Image الجديدة دي، اللي مبنية جديد دي. فهقول له docker container -d عايزه في الـ Background. وهقول له اسم الـ Image دي زي ما هي، خليني بس بدل ما نقعد نغلط في الـ Spelling. هسميه برضه py-flask. وفي الآخر هباصي له اسم الـ Image تمام؟ الـ Repo بالـ Tag. أوكي؟ ونعمل Execute. تمام؟ الـ Execution تم. الـ Container اشتغل وهو",
+          "sourceSegmentRange": [
+            223,
+            229
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "شغال تمام. وهتلاقي إنه 5000. خلينا نتأكد كده، كان لازم أعتقد إني كان لازم أعمل دي، كان لازم إننا نسيت إني أحط -p، مش تفكروني؟ خلينا نعيد ده تاني معلش، وهاجي هنا أقول له -p 5000:5000 أوكي. عملت الـ Container. شغال في الـ Background. هروح تاني على الـ Browser. نفس الكلام بتاع المرة اللي فاتت بالظبط. يعني برضه هنا أبو شيماء لسه موجود معانا. دلوقتي بقى لو أنا",
+          "sourceSegmentRange": [
+            230,
+            236
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "حبيت إني أعدل أي تعديل في الـ Image دي، مش محتاج أفتح Container وأعدل فيه وأغير في الكود وبعدين أعمل Exit وأروح أعمل Commit، مش هحتاج أي حاجة من دي خالص. كل ما هنالك إن أنا",
+          "sourceSegmentRange": [
+            237,
+            239
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rebuild-after-code-change",
+      "heading": "تعديل الكود وإعادة بناء الـ Image",
+      "blocks": [
+        {
+          "type": "steps",
+          "content": "عدّل الملفات خارج الـ container\nشغّل docker build مرة أخرى\nشغّل container من الـ image الجديدة\nراجع النتيجة بدون دخول يدوي داخل container",
+          "sourceSegmentRange": [
+            240,
+            241
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "هاجي هنا، قال لنا نوقف الـ Container ده خلاص مش عايزينه، قمت جاي كده هنا مثلاً على الـ hello.py وهاجي هنا كده. Again مثلاً، الـ simple data دي وبعدين قمت جاي هنا كده. قمت جاي عامل الـ Build مرة تانية، والمرة دي هقول له مثلاً.. تمام؟ خلص الـ Execution. خلص الـ Execution، بيـ Execute. هلاقي إنه عمل Image جديد وخلاص ما احتجتش بقى أفتح Container وأدخل",
+          "sourceSegmentRange": [
+            240,
+            246
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وأعدل وأعمل، مش محتاج كل الفيلم الهندي ده. كل حاجة بقت موجودة بره في الـ context، كل اللي عليا دلوقتي إني أعمله إن أنا أجي هنا نفس ده هو هو هعمله وأرفعه على الـ GitHub عندي. خلاص آدي الـ Image أهي. لا محتاجة Image وبتاع ولا أي حاجة خالص. أي حد هيقدر إنه يعمل Clone للـ Repo ده، ويـ Execute الـ Docker Build، ويدي لها الـ Tag اللي هو عايزه، ويشاور على المكان بتاع الـ Build Context، هيـ Build نفس الـ Image بتاعتي بالظبط. فالموضوع",
+          "sourceSegmentRange": [
+            247,
+            253
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "كده أعتقد إن هو بقى أسهل وأشيك بكثير جداً جداً جداً من الشغل البلدي اللي إحنا كنا شغالينه من شوية ده. Okay؟ فدي كده مقدمة عن إزاي تـ Build الـ Image بتاعتك.. ده الاسم بتاعها. Okay؟ خلينا نعمل Recap بسرعة وخلينا أوريكم من الكتاب اللي إحنا كنا شغالين منه، بس هو اشتغل بمثال مختلف وأنا هسيب لكم المثال المختلف ده وهسيب لكم الـ Repo بتاعه عشان تجربوه. يبقى فكرة إنك تبني الكود بتاعك، تحط كل الكود على جنب،",
+          "sourceSegmentRange": [
+            254,
+            260
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "والداتا بتاعتك على جنب، عدل فيها زي ما إنت عايز بره عايز بره الـ Image والكلام ده. وبعدين لما تشاور بقى على الـ main File زي اللي عندك، هتحتاج تعمل لها Build. الـ Context بتاعك ده اللي فيه كل الكود والداتا والحاجات دي كلها، ده كله زي ما هو كده جوه الـ Context بتاعك. ودي الخطوات بشكل عام. بتكتب الكود بتاعك، بتعمل Dockerfile زي ما إحنا بتعمل Image وترن عليها Container تتأكد إن كل حاجة تمام وبعد كده تقوم عامل لها Push للـ Registry اللي هي مثلاً Docker Hub. هنشوف الكلام ده برضه in action. الجزئية دي ربما تكون الجزئية اللي بتاخد أكتر وقت منك",
+          "sourceSegmentRange": [
+            261,
+            267
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "لأنك هتلاقي نفسك بتعك كتير وإنت شغال. الـ instructions شكلها تافه وبسيط بس فيه شوية تركات كده لازم تخلي بالك منها. معظم التركات اللي لازم تخلي بالك منها، ودي هنتك عليها كمان شوية، هي فكرة إنك تنقل تفكيرك، تـ Switch الـ Context بتاع التفكير بتاعك من إنك بتـ Build Image ولا بتـ Run Container. اللي هي فكرة الـ Build time والـ Container Runtime. السويتش ده هو اللي لازم تركز فيه. نقطة تانية كمان لازم تركز فيها إن Docker Build وهو شغال بيبني Containers ويمسحها.",
+          "sourceSegmentRange": [
+            268,
+            274
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "فكل مرة هيبني Container ويمسحه لازم تخلي بالك إنه لما يمسحه لو إنت محتاج حاجة من القديم تتنقل معاك للجديد. أنا عارف إن ده غامض شوية، بس هنركز عليه أكتر أو هنتكلم عليه أكتر وإحنا بنتكلم بالتفصيل عن الـ instructions بتاعت الـ Dockerfile. هنا مديك مثال مثلاً وده أنا سايب لكم الـ GitHub Repo بتاع الراجل نايجل بولتون اللي عامل الكتاب. هو عامل Dockerfile لـ JavaScript، يعني عامل كود JavaScript بسيط. بيشتغل بـ Node.js، بدأ بـ Alpine Image ومنزل Node.js ومنزل الـ JavaScript code بتاعه، وبيـ Execute الكود ده وفي الآخر بيـ Run Website. هي هي بالضبط، بدل ما كنت بعملها بـ JavaScript وNode.js، عملتها بـ Python وFlask. هي هي بالضبط مش فارقة أي حاجة خالص، بس عشان أربطها بالـ Context بتاعنا اللي شغالين بيه في القناة هنا، اللي هو الـ Engineering وPython.",
+          "sourceSegmentRange": [
+            275,
+            281
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "فهنا بيوريك مثلاً إن أول سطر خالص في الـ Image هو FROM Alpine. ده أول سطر خالص موجود في الـ Dockerfile بتاعه. ودي الـ Base Layer. بعد كده RUN apk add npm. apk ده اللي هو الـ Package Manager بتاع Alpine. زي الـ apt بتاع Ubuntu أو Debian. تمام، هنا بعد ما يـ Run الـ apk كده تمام، وبعد كده هيقوم عامل...",
+          "sourceSegmentRange": [
+            282,
+            288
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "لكل الحاجات اللي موجودة، بس خلي بالك إنه لازم يكون... ده موجود هنا، مش هيـ Create، فلازم تخلي بالك منها. لو مش موجود وعايز تتأكد إنه موجود، ممكن تعمله، وبعد كده... هيـ Run وهيـ Execute. دي الخطوات اللي بتبني بيها الـ Image. ده الشكل اللي لازم تخلي بالك منه وأنت بتعمل Build. إحنا اتكلمنا عنه قبل كده، وده هيسهل لك الموضوع. دي الطريقة... اللي بيـ Execute بيها أو بيـ Run بيها زي ما عملنا بالضبط.",
+          "sourceSegmentRange": [
+            289,
+            295
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "container run -d، وبعد كده بيعمل Expose، وممكن تديله اسم مثلاً. وفي الآخر بتقول له اسم الـ Image بتاعتك اللي عملت لها Create. اللي الـ docker build عمل لها Create. فده بشكل عام الـ Context. لو فيه أي حاجة محتاجين نضيفها، هنتكلم على موضوع الـ Multi-stage... في الـ Section الجاي، بس قبل ما نتنقل من الـ Section ده... عشان ماننساش، إحنا دلوقتي في الـ Dockerfile اللي عملناه. إللي عملناه إننا سحبنا الـ Python Image، وبعد كده...",
+          "sourceSegmentRange": [
+            296,
+            302
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "إدينا له شوية أوامر عشان ينفذها. أي تعديل قصاده بيتعمل Layer. تعالوا نشوف الكلام ده تم ولا لأ. إيه تاني؟ تعالوا نراجع الـ Instructions اللي هنا بتعمل Layers. طبعاً فيه الـ Python Image اللي اتسحبت دي أصلاً عبارة عن Layers. الـ WORKDIR /app ده مش موجود أصلاً في الـ Image. الـ Python اللي مبنية على Debian Image زي ما شفنا أول مرة. يبقى دي Layer.",
+          "sourceSegmentRange": [
+            303,
+            309
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "COPY requirements.txt، طبعاً الفايل ده مش موجود في الـ Image. تمام؟ فدي Layer جديدة. الـ RUN ده... الـ RUN ده بيعمل Install للـ Module أو الـ Framework بتاع Flask. بتاع Flask، يبقى دي Layer تانية، وبعدين دي كمان... Layer. كده بقى عندي 4 Layers زيادة. الـ EXPOSE والـ CMD بيعدلوا في الـ Metadata بتاعة الـ Image.",
+          "sourceSegmentRange": [
+            310,
+            316
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "مش بيضيفوا حاجة جوه الـ Image نفسها، هما بيعدلوا في الـ Metadata. بيفرقوا معانا وإحنا بنعمل Create للـ Container. مش بيأثروا في الـ Image Layers نفسها. تمام؟",
+          "sourceSegmentRange": [
+            317,
+            319
+          ]
+        }
+      ]
+    },
+    {
+      "id": "instruction-to-layer-map",
+      "heading": "أي Instructions تصنع Layers؟",
+      "diagramId": "DockerfileBuildDiagram",
+      "blocks": [
+        {
+          "type": "comparison",
+          "content": "FROM / COPY / RUN / WORKDIR عند إنشاء folder | تغييرات في filesystem وبالتالي layers\nEXPOSE / CMD | metadata تؤثر وقت تشغيل container",
+          "sourceSegmentRange": [
+            320,
+            321
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "هنا أربعة زيادة. ده اللي أنا متوقع إني هشوفه في الـ Image الجديدة اللي اتبنت دي. تعالى نشوف الكلام ده إذا كان صح ولا غلط. مبدئياً أنا عندي الـ Python Image دي. لو رحت عملت لها Inspect. هبص على الـ Image دي لو نزلت في الآخر تحت خالص كده هلاقي الـ Layers بتاعة الـ Image دي. تعالى ناخد الـ Layers دي كده. وتعالى نعمل إيه؟ تعالى نعمل File كده نسميه مثلاً Diff File مثلاً. Okay؟ فيه هنا الـ Layers دي. وهراجع",
+          "sourceSegmentRange": [
+            320,
+            326
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "تاني هنا على Docker وأشوف الـ Image اللي أنا كريتها دي. وأعمل لها Inspect وأشوف الـ Layers بتاعتها. ألاقي هنا شوية Layers برضه فيها أهي. وهاخد الـ Layers دي كلها تاني برضه زي ما عملت في الـ Python. وهاقوم رايح على الـ Diff ده. تمام؟ وأقوم أعمل كده. Okay؟ عشان طريقة بلدي شوية بس دي أصلاً حاجات في دماغي. دلوقتي أنا عندي شوية الـ Layers اللي فوق ديت. اللي فوق دي هنا هو. دي بتاعة الـ Base Image ودي بتاعة الـ Image الجديدة اللي إحنا عملناها. طريقة بلدي",
+          "sourceSegmentRange": [
+            327,
+            333
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "كده. بس هنا في إيه؟ هنا في تسعة Layers. يبقى في تسعة. Okay؟ في الـ Image الجديدة عندي من 11 لـ 23. 23 ناقص 11 زائد 1 يعني 13. Okay؟ لاحظ بقى حاجة هنا مهمة بقى. لو أنا جيت كده عملت Inspect على ده كده. بص هلاقي الـ Layer دي أول Layer موجودة في الـ Base Image هي أول Layer موجودة في الـ Image بتاعتي. وهياخد نفس الـ Layer اللي هي في الـ Python Image ويبدأ يبني عليها. وبناءً عليه، أنا متوقع إن أنا لو شفت الـ Layer الأولانية دي هلاقيها موجودة هنا. لو شفت الـ Layer",
+          "sourceSegmentRange": [
+            334,
+            340
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "التانية دي هلاقيها هنا. لغاية ما الـ Layer التاسعة هلاقيها موجودة هنا. وبعد الـ Layer التاسعة هلاقي فيه أربعة تانيين انضافوا ما كانوش موجودين قبل كده. إيه هم الأربعة اللي إحنا قلنا عليهم. عشان عملية الـ Copy والـ Run. Okay؟ فحبيت بس إني أوضح الحتة دي وأعتقد إن الحتة دي هتكون وضحت أكتر إزاي الـ Docker بيشتغل أو إزاي بيعمل Build للـ Image بناءً على الـ Dockerfiles.",
+          "sourceSegmentRange": [
+            341,
+            347
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "sourceSegmentCount": 348,
+    "blockCount": 57
+  }
+}

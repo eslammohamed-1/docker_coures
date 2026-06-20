@@ -1,0 +1,225 @@
+{
+  "chapterNumber": 9,
+  "title": "Docker in VSCode",
+  "folderName": "09_Docker_in_VSCode",
+  "formattedAt": "2026-06-20T11:15:49.158Z",
+  "model": "local-curated-display",
+  "sections": [
+    {
+      "id": "vscode-docker-extension",
+      "heading": "استخدام Docker Extension في VSCode",
+      "diagramId": "VscodeDockerWorkflowDiagram",
+      "blocks": [
+        {
+          "type": "definition",
+          "content": "Docker Extension\nواجهة مرئية داخل VSCode لإدارة containers وimages وregistries بدل الاعتماد الكامل على terminal.",
+          "sourceSegmentRange": [
+            0,
+            1
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الدنيا اتزحمت شوية في الـ commands الـ Terminal خلاص فاض بيها فلحسن الحظ مين هيسعفنا في الموضوع ده؟ مين أشهر Graphical Interface نتعامل معاه؟ Visual Studio Code هنعمل الكلام ده.. هاجي أقول له مثلاً خلينا نعمل Directory عشان نبدأ نحط فيه شوية الـ Files بتاعتنا اللي هنستعملها",
+          "sourceSegmentRange": [
+            0,
+            6
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "مثلاً mkdir docker بلاش لخبطة، أخليها docker-work وأقول له cd docker-work وأجي من هنا أقول له code . حقيقة Visual Studio Code في الموضوع ده Trust it",
+          "sourceSegmentRange": [
+            7,
+            13
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "طبعاً Visual Studio Code كان فيه فيديو عنه عشان لو ده جديد عليك تقدر ترجع للفيديو ده إيه بقى هينفعنا هنا؟ Extension ليه علاقة بـ Docker والـ Extension ده هيسهل علينا حاجات كتير جداً هيسهل حاجات كتير، بس كان مهم برضو في الأول أنا عارف كل مرة بتزعلوا مني: طالما في Graphical Interface واجعين قلبنا ليه؟",
+          "sourceSegmentRange": [
+            14,
+            20
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "المهم الـ Architecture المهم الـ Concept وبعد كده مش مهم نعمل الكلام ده بإيه، سواء بـ Graphical Interface ولا بالـ Command Line لحسن الحظ طبعاً الناس اللي بيشتغلوا بـ Docker Dashboard وبالـ Docker Desktop بتاع Windows و Mac الكلام ده مش محتاجينه يعني بس إحنا بقى غلابة، بنضطر أحياناً فنضطر إننا نستعمل حاجة زي كده",
+          "sourceSegmentRange": [
+            21,
+            27
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "فأنا هروح على الـ Extensions وهقول له عايز.. طبعاً الـ Recommended Extensions المفروض إنه بيديك Recommendation بناءً على الحاجات اللي أنت عامل لها Installation عندك في الـ Machine دي فالمفروض إن Docker يبقى من ضمن الحاجات اللي تطلع في الأول، لكن إيه يبدو إنه مش في أحسن حالاته بس هي موجودة هنا المفروض تطلع في أول 3 أو 4 مثلاً",
+          "sourceSegmentRange": [
+            28,
+            34
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "فالـ Docker Extension ده من Microsoft وفيه تقريباً كل الحاجات اللي إحنا محتاجينها، لأننا برضه مش بنحتاج أكتر من كده قوي فأنا هعمل Install للـ Docker Extension، هتلاقيه عامل زي الحوت الظريف ده الحوت ده هو الرمز بتاع Docker، وبالمناسبة كلمة Docker دي جاية من الـ Dock اللي هو رصيف السفن، مش عارف اسمه إيه بالظبط",
+          "sourceSegmentRange": [
+            35,
+            39
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vscode-run-and-manage",
+      "heading": "تشغيل وإدارة Containers من الواجهة",
+      "diagramId": "DockerRunFlowDiagram",
+      "blocks": [
+        {
+          "type": "steps",
+          "content": "اختيار image من Docker panel\nتشغيل container أو إيقافه\nفتح logs أو terminal\nمراجعة ports والـ status بصرياً",
+          "sourceSegmentRange": [
+            40,
+            41
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ودوكر ده كان هو الشخص العتال أو الشيال اللي بينقل العلب على المركب، وده كان اسمه Docker، ده الشخص اللي بيحط العلب في المركب. Okay، فأنا هحتاج Docker ده. بس وأعتقد كده خلاص، ده بالنسبة لي كفاية. هتلاحظ إني رحت هنا، خليني بس أظبطلك الـ Interface وأكبر شوية الـ Fonts والحاجات دي علشان العملية تبقى أوضح شوية. ثواني وجايلكم، أوعى تغير المحطة، هظبطلكم",
+          "sourceSegmentRange": [
+            40,
+            46
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Interface وبقى شكله جميل. Okay؟ هتلاقي إنه لما نزلنا Docker في VS Code، طبعاً هو عارف إنك بالفعل منزل Docker موجود، ولذلك قادر إنه يأكسس الـ Resources اللي موجودة. هتلاقي عندك هنا مثلاً الـ Section اللي فوق ده، الـ Section ده اللي هو الـ Images Section. وهنا Section مش مهم عندي دلوقتي، أنا حتى ممكن أخبيه أصلاً مش محتاجه دلوقتي. Okay؟ فانا عندي هنا الـ Images. هنا لو عملت ده هيقولك إن عندك الـ Image، الـ Image دي اسمها أو الـ ID بتاعها",
+          "sourceSegmentRange": [
+            47,
+            53
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "asamy670 مثلاً، والـ Tag بتاعها اللي هو 01. لو عملت كده هيبدأ يديك معلومات عنها، من ضمنها مثلاً الـ Ports وتفاصيل تانية تحت هنا الـ Ports وكلام من ده. لو جيت على نفس الوضع بالظبط هيعرفك الـ Image اللي هو مبني عليها. مثلاً هنا هيقولك إن الـ Container ده مبني على الـ Image دي، وبيديك شوية بيانات مثلاً إن ده Container 1 مثلاً وهتلاقي حتى عليه علامة الـ Stop دي.",
+          "sourceSegmentRange": [
+            54,
+            60
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Okay؟ فتعرف إن علامة الـ Stop دي معناها إنه مش شغال دلوقتي. فهنا بيوريك الـ Containers وهنا بيوريك مثلاً الـ Images. بنفس الوضع لو جيت قلت له: Docker مثلاً... Docker مثلاً... ... ...",
+          "sourceSegmentRange": [
+            61,
+            67
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Images يعني. هتلاقي إن عندي هنا 2 Images، واحدة اللي هي asamy670 وعندي بايثون. أقدر برضو من هنا، ودي بايثون، أقدر مثلاً أعمل لو تفتكر اللي إحنا عملناها من شوية دي، أقدر برضو أعمل كده، خليني بس أنزل الـ Terminal دي شوية. لو جيت كده أقدر أقول له Run. و Run دي معناها Create Container، يعني docker container run. Okay؟",
+          "sourceSegmentRange": [
+            68,
+            74
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وممكن أقول له اعملي Container واشتغل بالـ -it. Okay؟ وأقدر أقول له... أقدر أعدل في الـ Tag وهكذا، وأقدر أقول له تمام؟ اللي هي Docker image. Okay؟ فلو قلت له هيفتح لي الكلام ده هنا، وبدأ يتشيك شوية. ليه يتشيك؟",
+          "sourceSegmentRange": [
+            75,
+            79
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vscode-inspect-search",
+      "heading": "Inspect والبحث بدل زحمة الـ Terminal",
+      "blocks": [
+        {
+          "type": "note",
+          "content": "الميزة الأساسية هنا إن inspect output يصبح text file قابل للبحث والقراءة بدل JSON طويل داخل terminal.",
+          "sourceSegmentRange": [
+            80,
+            81
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "شوية؟ لأن ده خلاص بقى text file وأقدر أعمل فيه Control + F وسيرش وحاجات زي كده لو أنا عايز. ماشي؟ هيقول لي مثلاً ده Python:latest وكلام من ده. لو جيت مثلاً حبيت إني أعرف مين الـ CMD مثلاً أو الـ Command اللي شغال جوه الـ Image دي، هو Python. تمام؟ زي ما إحنا عارفين Python 3. زي ما شفنا قبل كده، يوريني مثلاً الـ Layers وخلافه.",
+          "sourceSegmentRange": [
+            80,
+            86
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "من ضمن الحاجات اللي أقدر أعملها برضه بسرعة هنا إني آجي كده. إني آجي هنا Right-click وأقوله Run Interactive. فـ Run Interactive دي معناها Create لي من الـ Image دي في الـ Interactive mode. فأقوله Run Interactive، هيفتح لي تابة تانية هنا. في Visual Studio Code، تمام؟ اسمها Python:latest. Task تمام، وبعد كده اسم اليوزر بتاعي. وهتلاقيه فاتح الـ Terminal بتاع الـ Container. عمل Create لـ Container هنا.",
+          "sourceSegmentRange": [
+            87,
+            93
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وعليها العلامة الخضراء دي. تمام، عمل Create لـ Container وحتى اسم الـ Container باين هنا كمان. بص كده هتلاقي اسم الـ Container اسمه quirky_feynman، ماشي؟ اسم عشوائي. لو جيت هنا وعملت Control + L، وكتبت docker ps، هشوف الـ Container الـ ID بتاعه، والـ Image، والـ Command بتاعه Python. تمام؟ والـ Status، واسمه quirky_feynman. فلو أنا",
+          "sourceSegmentRange": [
+            94,
+            100
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "رجعت تاني لده، دي Shell مفتوحة مؤقتاً لما قلت له Run Interactive. وكالعادة زي ما إنت عارف لو جينا هنا وكتبت import sys مثلاً. كده خلاص. print(sys.version) هيوريك الـ version اللي موجود. مثلاً أنا كده جوه الـ Container. والـ Container شغال وأنا جوه الـ Shell بتاعته. تمام؟ عايز تعمل Exit منه، فهنعمل Exit. هتلاقي إنه",
+          "sourceSegmentRange": [
+            101,
+            107
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "خرج من الـ Terminal. وشوية وهتلاقي الـ Container ده بقى Exited. بس أعتقد إنه لسه Running. تمام؟ هعمل Right-click هنا وأقوله Stop مثلاً. فالـ Container ده هتلاقيه بعد 10 ثواني بيحاول يقفل. لو الـ Container ماتقفلش بعد 10 ثواني، هياخد رصاصة الرحمة. تمام؟ فالـ Container كده اتمسح وما بقاش موجود عندي. بنفس الوضع برضه من هنا",
+          "sourceSegmentRange": [
+            108,
+            114
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "أقدر أقوله مثلاً Remove أو أي حاجة. وأقدر كمان من هنا من الـ Images لو عايز أعمل لـ Images، أتأكد إن الـ Images دي مفيش منها Containers. من الحاجات اللي أقدر أعملها برضه في الـ Images إني أقوله مثلاً docker rmi، أحياناً بتبقى عايز تعمل Remove لكل الـ Images. اللي عندك، فبدل ما تعمل واحدة واحدة وإنت في وقت من الأوقات اللي عندك بقى ألف Images، فبدل ما تقول له واحدة واحدة",
+          "sourceSegmentRange": [
+            115,
+            121
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "في طريقة ظريفة، لو أنا جيت قلت له Docker images فهيوريني الـ Images، لو قلت له Docker images -q هيوريني الـ IDs بتاعة الـ Images، فلو أنا جيت قلت له حط لي ده في Command وقلت له Docker rmi واستخدمت كل الـ Result من الـ Command ده، فكده هيـ Remove كل الـ Images، تمام؟ في حاجة هنا برضه خبر قد يبدو وحش للبعض، بس معلش ممكن يكون الخبر وحش بس تسمعه مني أحسن تسمعه من حد غريب، لو عايز تبقى متمكن في Docker وكده",
+          "sourceSegmentRange": [
+            122,
+            128
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "عشان تتحكم في Docker Container وفي موضوع الـ Images وكده زي ما هنشوف كمان شوية، إنت محتاج تكون عارف Basic Linux commands يعني Basic to Middle، مش Basic اللي هو حاجات بسيطة وخلاص، لا فيه شوية حاجات تانية برضه محتاج تعرفها، تعرف شوية الـ Commands الـ Related للـ Files والـ Drivers والـ Users والـ Groups والـ Permissions، ده مهم جداً. ومش بس علشان Docker، كمان علشان موضوع الـ Data Engineering، فلو إنت عايز تبقى Data Engineer كويس لازم تبقى عارف Linux، فربما لو ضغطتوا عليا ممكن أعمل فيديو أشرح فيه الـ Commands اللي محتاجها عشان تبقى Data Engineer. فده بالنسبة للـ Image، خلينا نرجع هنا تاني. يبقى إحنا شفنا الـ Image Pull. والـ Inspect. الـ Manifest ده إحنا اتكلمنا عنه. الـ Buildx لسه هنتكلم عنه.",
+          "sourceSegmentRange": [
+            129,
+            135
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "والـ Remove. فده كان فيما يخص الـ Docker Images بالتفصيل.",
+          "sourceSegmentRange": [
+            136,
+            138
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "sourceSegmentCount": 139,
+    "blockCount": 24
+  }
+}

@@ -1,0 +1,4036 @@
+{
+  "systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | DOTPROD = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+  "model": {
+    "type": "large",
+    "multilingual": true,
+    "vocab": 51866,
+    "audio": {
+      "ctx": 1500,
+      "state": 1280,
+      "head": 20,
+      "layer": 32
+    },
+    "text": {
+      "ctx": 448,
+      "state": 1280,
+      "head": 20,
+      "layer": 32
+    },
+    "mels": 128,
+    "ftype": 1
+  },
+  "params": {
+    "model": "/Users/user/Documents/wespar/whisper.cpp/models/ggml-large-v3.bin",
+    "language": "ar",
+    "translate": false
+  },
+  "result": {
+    "language": "ar"
+  },
+  "transcription": [
+    {
+      "timestamps": {
+        "from": "00:00:00,000",
+        "to": "00:00:08,000"
+      },
+      "offsets": {
+        "from": 0,
+        "to": 8000
+      },
+      "text": "ودلوقتي أنا إيه أكبر إشكالية عندي؟ أكبر إشكالية اللي عملالي الأزمة دي كلها هي حتة الـ Operating System اللي موجود في كل Virtual Machine دي."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:08,000",
+        "to": "00:00:14,000"
+      },
+      "offsets": {
+        "from": 8000,
+        "to": 14000
+      },
+      "text": "لو قدرت تتخلص من الفكرة دي، لو خليناها بالمنظر ده، الـ Virtual Machine شكلها هيبقى عامل إزاي؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:00:14,000",
+        "to": "00:00:20,000"
+      },
+      "offsets": {
+        "from": 14000,
+        "to": 20000
+      },
+      "text": "تاني Virtual Machine هناخد لون تاني كده عشان الناس ما تزعلش، هنخليه أحمر عشان ما نوجعش عين الناس."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:20,000",
+        "to": "00:00:28,000"
+      },
+      "offsets": {
+        "from": 20000,
+        "to": 28000
+      },
+      "text": "دي الـ Virtual Machine اللي عندي، جوه الـ Virtual Machine دي في عندي الـ Layer بتاعة الـ Virtual Hardware اللي مقدمها لي الـ Hypervisor."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:28,000",
+        "to": "00:00:35,000"
+      },
+      "offsets": {
+        "from": 28000,
+        "to": 35000
+      },
+      "text": "وعندي هنا الـ Operating System الكامل اللي فيه الإشكالية بكل الحاجات اللي جواه، وبعد كده عندي شوية Dependencies، تمام؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:00:35,000",
+        "to": "00:00:41,000"
+      },
+      "offsets": {
+        "from": 35000,
+        "to": 41000
+      },
+      "text": "وبعد كده عندي الـ Application بتاعتي اللي هي Running واللي أنا محتاجها أصلاً من الـ Virtual Machine واللي عشانها عملت الـ Virtual Machine."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:41,000",
+        "to": "00:00:48,000"
+      },
+      "offsets": {
+        "from": 41000,
+        "to": 48000
+      },
+      "text": "الإشكالية عندي فين هنا؟ الإشكالية في الـ Operating System ده، نعمل إيه في موضوع الـ Operating System ده؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:00:48,000",
+        "to": "00:00:56,000"
+      },
+      "offsets": {
+        "from": 48000,
+        "to": 56000
+      },
+      "text": "لو قدرت إني آخد بس الـ Application مع الـ Dependency وأخرجهم بره وأتعامل مع الحتة دي اللي هي الـ Application بتاعي."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:56,000",
+        "to": "00:01:07,000"
+      },
+      "offsets": {
+        "from": 56000,
+        "to": 67000
+      },
+      "text": "بس من غير الـ Operating System ده، يا سلام، كده يبقى أنا عملت كل اللي أنا محتاجه، وكده قدرت إني أحل المعضلة دي."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:07,000",
+        "to": "00:01:16,000"
+      },
+      "offsets": {
+        "from": 67000,
+        "to": 76000
+      },
+      "text": "طب أعمل ده إزاي؟ قالك طب بص خلينا نقسم المسافة نصين، يعني نمسك العصاية من النص."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:16,000",
+        "to": "00:01:24,000"
+      },
+      "offsets": {
+        "from": 76000,
+        "to": 84000
+      },
+      "text": "هو الـ Operating System نفسه ده عبارة عن إيه؟ لو خرجنا الـ Operating System ده بره، تمام؟ ده الـ Operating System."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:24,000",
+        "to": "00:01:53,980"
+      },
+      "offsets": {
+        "from": 84000,
+        "to": 113980
+      },
+      "text": "الـ Operating System نفسه عبارة عن حاجتين: عبارة عن Kernel وشوية OS specification أو سموها الـ Kernel Mode والـ User Mode. أنت لما بتعمل Start للـ Operating System بيبدأ في الأول خالص يتعرف على الـ Hardware اللي موجودة، بيشوف الـ Motherboard والـ RAMs والـ Disks والـ Network والكلام ده، دي الحتة اللي في الأول، ده اللي بيسموه Kernel Mode وده عبارة عن شوية الـ Components الرئيسية."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:53,980",
+        "to": "00:02:06,420"
+      },
+      "offsets": {
+        "from": 113980,
+        "to": 126420
+      },
+      "text": "الـ Fundamentals اللي موجودة في الـ Operating System اللي بتتعرف على الـ Hardware. تمام؟ بعد كده أول ما بتدخل على الحتة اللي بعد الـ Graphic Interface اللي بتكتب فيها الـ Username والـ Password وتدخل على الـ Operating System، في شوية Services أو Daemons تانية بتشتغل."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:06,420",
+        "to": "00:02:13,200"
+      },
+      "offsets": {
+        "from": 126420,
+        "to": 133200
+      },
+      "text": "اللي هي الحتة بتاعة الـ Graphic Interface أو الـ Command Line Interface وشوية الحاجات التانية اللي ليها علاقة بالـ User Mode جوه الـ Operating System."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:13,200",
+        "to": "00:02:16,000"
+      },
+      "offsets": {
+        "from": 133200,
+        "to": 136000
+      },
+      "text": "كويس كده؟ ده اللي هو الجزء بتاع الـ User Mode."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:16,000",
+        "to": "00:02:18,000"
+      },
+      "offsets": {
+        "from": 136000,
+        "to": 138000
+      },
+      "text": "يبقى أنا عندي الـ User Mode وعندي الـ Kernel Mode."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:18,000",
+        "to": "00:02:20,000"
+      },
+      "offsets": {
+        "from": 138000,
+        "to": 140000
+      },
+      "text": "الـ User Mode ده أنا مش محتاجه."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:20,000",
+        "to": "00:02:22,000"
+      },
+      "offsets": {
+        "from": 140000,
+        "to": 142000
+      },
+      "text": "أنا مش محتاج الـ User Mode ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:22,000",
+        "to": "00:02:25,800"
+      },
+      "offsets": {
+        "from": 142000,
+        "to": 145800
+      },
+      "text": "اللي موجود في كل Virtual Machine ده أنا مش محتاجه."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:25,800",
+        "to": "00:02:29,800"
+      },
+      "offsets": {
+        "from": 145800,
+        "to": 149800
+      },
+      "text": "ما أنا بالفعل محتاج إيه؟ أنا بالفعل محتاج الـ Kernel بس."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:29,800",
+        "to": "00:02:32,800"
+      },
+      "offsets": {
+        "from": 149800,
+        "to": 152800
+      },
+      "text": "لأن هو ده اللي هيخلينا نتعرف على الـ Hardware وده مفيش غنى عنه."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:32,800",
+        "to": "00:02:34,200"
+      },
+      "offsets": {
+        "from": 152800,
+        "to": 154200
+      },
+      "text": "ده ملوش غنى."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:34,200",
+        "to": "00:02:40,600"
+      },
+      "offsets": {
+        "from": 154200,
+        "to": 160600
+      },
+      "text": "لازم الـ Kernel ده. سواء كنت بالـ Virtual Machine بالمنظر ده هشوف الـ Virtual Hardware أو هشوف الـ Physical Hardware الأصلي."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:40,600",
+        "to": "00:02:41,900"
+      },
+      "offsets": {
+        "from": 160600,
+        "to": 161900
+      },
+      "text": "تمام؟ طب حلو."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:41,900",
+        "to": "00:02:44,700"
+      },
+      "offsets": {
+        "from": 161900,
+        "to": 164700
+      },
+      "text": "يبقى أنا محتاج في الأصل هو الـ Kernel Mode ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:44,700",
+        "to": "00:02:46,700"
+      },
+      "offsets": {
+        "from": 164700,
+        "to": 166700
+      },
+      "text": "ده اللي أنا محتاجه بالفعل."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:46,700",
+        "to": "00:02:53,700"
+      },
+      "offsets": {
+        "from": 166700,
+        "to": 173700
+      },
+      "text": "طب ما أنا عندي الـ Kernel ده موجود أصلاً في الـ Operating System الأصلي اللي موجود على الـ Physical Machine؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:02:53,700",
+        "to": "00:02:57,700"
+      },
+      "offsets": {
+        "from": 173700,
+        "to": 177700
+      },
+      "text": "يعني لو هنزل الـ Containers بتاعتي دي على الـ Physical Machine."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:57,700",
+        "to": "00:03:00,700"
+      },
+      "offsets": {
+        "from": 177700,
+        "to": 180700
+      },
+      "text": "مثلاً أنا Already عندي Operating System على الـ Physical Machine."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:00,700",
+        "to": "00:03:02,700"
+      },
+      "offsets": {
+        "from": 180700,
+        "to": 182700
+      },
+      "text": "لو أنت منزل ده Virtual Machine."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:02,700",
+        "to": "00:03:05,700"
+      },
+      "offsets": {
+        "from": 182700,
+        "to": 185700
+      },
+      "text": "مثلاً لو الـ Virtual Machine دي منزلها على الـ Physical Machine."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:05,700",
+        "to": "00:03:07,700"
+      },
+      "offsets": {
+        "from": 185700,
+        "to": 187700
+      },
+      "text": "الـ Physical Machine في الأصل فيها Operating System."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:07,700",
+        "to": "00:03:09,700"
+      },
+      "offsets": {
+        "from": 187700,
+        "to": 189700
+      },
+      "text": "اللي هو الـ Host Operating System."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:09,700",
+        "to": "00:03:14,700"
+      },
+      "offsets": {
+        "from": 189700,
+        "to": 194700
+      },
+      "text": "اللي من بعده بتبدأ تنزل الـ Management Software اللي بتعمل Create للـ Virtual Machine."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:14,700",
+        "to": "00:03:17,700"
+      },
+      "offsets": {
+        "from": 194700,
+        "to": 197700
+      },
+      "text": "تمام الـ Operating System ده فيه Kernel."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:17,700",
+        "to": "00:03:22,700"
+      },
+      "offsets": {
+        "from": 197700,
+        "to": 202700
+      },
+      "text": "هل أقدر إني أستعمل الـ Kernel بتاع الـ Operating System ده؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:03:22,700",
+        "to": "00:03:27,700"
+      },
+      "offsets": {
+        "from": 202700,
+        "to": 207700
+      },
+      "text": "لو قدرت بس إني أستعمل الـ Kernel بتاع الـ Operating System اللي نازل عليه الـ Container."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:27,700",
+        "to": "00:03:29,700"
+      },
+      "offsets": {
+        "from": 207700,
+        "to": 209700
+      },
+      "text": "سواء كانت الـ Virtual Machine أو الـ Physical Machine."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:29,700",
+        "to": "00:03:33,700"
+      },
+      "offsets": {
+        "from": 209700,
+        "to": 213700
+      },
+      "text": "وأستغنى عن الـ User Mode ده، يبقى قطعت نص السكة."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:33,700",
+        "to": "00:03:36,700"
+      },
+      "offsets": {
+        "from": 213700,
+        "to": 216700
+      },
+      "text": "قطعت كده نص الطريق."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:36,700",
+        "to": "00:03:38,700"
+      },
+      "offsets": {
+        "from": 216700,
+        "to": 218700
+      },
+      "text": "لو الـ Applications والحاجات دي."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:38,700",
+        "to": "00:03:42,700"
+      },
+      "offsets": {
+        "from": 218700,
+        "to": 222700
+      },
+      "text": "بدل ما استعمل الـ OS بتاع كل Virtual Machine على حدة."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:42,700",
+        "to": "00:03:46,700"
+      },
+      "offsets": {
+        "from": 222700,
+        "to": 226700
+      },
+      "text": "لو خدت بس الـ Kernel المشترك ما بين كل الـ Virtual Machines."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:46,700",
+        "to": "00:03:49,700"
+      },
+      "offsets": {
+        "from": 226700,
+        "to": 229700
+      },
+      "text": "اللي هو موجود على الـ Operating System الأصلي."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:49,700",
+        "to": "00:03:51,700"
+      },
+      "offsets": {
+        "from": 229700,
+        "to": 231700
+      },
+      "text": "اللي هو الـ Host Operating System."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:51,700",
+        "to": "00:03:52,700"
+      },
+      "offsets": {
+        "from": 231700,
+        "to": 232700
+      },
+      "text": "حليت المشكلة."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:52,700",
+        "to": "00:03:55,700"
+      },
+      "offsets": {
+        "from": 232700,
+        "to": 235700
+      },
+      "text": "يبقى الـ Kernel اللي على الـ Host Operating System ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:55,700",
+        "to": "00:03:59,700"
+      },
+      "offsets": {
+        "from": 235700,
+        "to": 239700
+      },
+      "text": "Shared ما بين كل الـ Applications بتاعتي."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:59,700",
+        "to": "00:04:04,700"
+      },
+      "offsets": {
+        "from": 239700,
+        "to": 244700
+      },
+      "text": "وهي دي أول وأهم فكرة في الـ Containers."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:04,700",
+        "to": "00:04:06,700"
+      },
+      "offsets": {
+        "from": 244700,
+        "to": 246700
+      },
+      "text": "والفكرة الرئيسية في الـ Containers."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:06,700",
+        "to": "00:04:07,700"
+      },
+      "offsets": {
+        "from": 246700,
+        "to": 247700
+      },
+      "text": "فكرة الـ Containers."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:07,700",
+        "to": "00:04:12,700"
+      },
+      "offsets": {
+        "from": 247700,
+        "to": 252700
+      },
+      "text": "إنها بتعتمد مباشرة على الـ Kernel بتاع الـ Operating System."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:12,700",
+        "to": "00:04:14,700"
+      },
+      "offsets": {
+        "from": 252700,
+        "to": 254700
+      },
+      "text": "اللي نازل عليه الـ Virtual Machine."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:14,700",
+        "to": "00:04:16,700"
+      },
+      "offsets": {
+        "from": 254700,
+        "to": 256700
+      },
+      "text": "أو حتى لو إنت هتنزل على الـ Physical Machine."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:16,700",
+        "to": "00:04:19,700"
+      },
+      "offsets": {
+        "from": 256700,
+        "to": 259700
+      },
+      "text": "اللي هو الـ Kernel بتاع الـ Operating System اللي نازل على الـ Physical Machine."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:19,700",
+        "to": "00:04:25,700"
+      },
+      "offsets": {
+        "from": 259700,
+        "to": 265700
+      },
+      "text": "ومحتاجش إن أنا أعمل Operating System لكل Application هحتاج إن أنا أعملها."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:25,700",
+        "to": "00:04:33,700"
+      },
+      "offsets": {
+        "from": 265700,
+        "to": 273700
+      },
+      "text": "دي أول حاجة عندنا أو أول نقطة مفصلية في الـ Containers."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:33,700",
+        "to": "00:04:36,700"
+      },
+      "offsets": {
+        "from": 273700,
+        "to": 276700
+      },
+      "text": "يبقى أنا بالطريقة دي استفدت إيه؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:36,700",
+        "to": "00:04:38,700"
+      },
+      "offsets": {
+        "from": 276700,
+        "to": 278700
+      },
+      "text": "لو أنا عندي الـ Container ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:38,700",
+        "to": "00:04:39,700"
+      },
+      "offsets": {
+        "from": 278700,
+        "to": 279700
+      },
+      "text": "عندي شوية Containers."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:39,700",
+        "to": "00:04:45,700"
+      },
+      "offsets": {
+        "from": 279700,
+        "to": 285700
+      },
+      "text": "والـ Containers دي كل اللي محتاجاه هو Kernel واحد بس."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:45,700",
+        "to": "00:04:48,700"
+      },
+      "offsets": {
+        "from": 285700,
+        "to": 288700
+      },
+      "text": "للـ Virtual Machine اللي الـ Container نازل عليه."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:48,700",
+        "to": "00:04:51,700"
+      },
+      "offsets": {
+        "from": 288700,
+        "to": 291700
+      },
+      "text": "أو للـ Physical Machine اللي الـ Containers نازلة عليه."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:51,700",
+        "to": "00:04:58,700"
+      },
+      "offsets": {
+        "from": 291700,
+        "to": 298700
+      },
+      "text": "بالطريقة دي استغنيت عن فكرة الـ Full Operating System اللي أنا محتاج إن أنا أعمله Installation في كل Virtual Machine."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:58,700",
+        "to": "00:05:00,700"
+      },
+      "offsets": {
+        "from": 298700,
+        "to": 300700
+      },
+      "text": "وبالطريقة دي مفيش Licensing."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:00,700",
+        "to": "00:05:02,700"
+      },
+      "offsets": {
+        "from": 300700,
+        "to": 302700
+      },
+      "text": "بالطريقة دي مفيش أكتر من Attack Surface."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:02,700",
+        "to": "00:05:04,700"
+      },
+      "offsets": {
+        "from": 302700,
+        "to": 304700
+      },
+      "text": "مع كل الـ VMs كان بيبقى فيها Kernel بتاعها."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:04,700",
+        "to": "00:05:05,700"
+      },
+      "offsets": {
+        "from": 304700,
+        "to": 305700
+      },
+      "text": "الـ VM بيبقى فيها Kernel بتاعها."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:05,700",
+        "to": "00:05:06,700"
+      },
+      "offsets": {
+        "from": 305700,
+        "to": 306700
+      },
+      "text": "والـ User Mode بتاعها."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:06,700",
+        "to": "00:05:07,700"
+      },
+      "offsets": {
+        "from": 306700,
+        "to": 307700
+      },
+      "text": "الـ Kernel بتاعها."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:07,700",
+        "to": "00:05:08,700"
+      },
+      "offsets": {
+        "from": 307700,
+        "to": 308700
+      },
+      "text": "والـ User Mode بتاعها."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:08,700",
+        "to": "00:05:09,700"
+      },
+      "offsets": {
+        "from": 308700,
+        "to": 309700
+      },
+      "text": "مبقاش ده موجود."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:09,700",
+        "to": "00:05:16,700"
+      },
+      "offsets": {
+        "from": 309700,
+        "to": 316700
+      },
+      "text": "بالطريقة دي مبقتش محتاج إن أنا أخلي بالي وأعمل الـ Operations والـ Security Measures بتاعتي على كل VM لوحدها."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:16,700",
+        "to": "00:05:17,700"
+      },
+      "offsets": {
+        "from": 316700,
+        "to": 317700
+      },
+      "text": "كل VM فيها OS لوحده."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:17,700",
+        "to": "00:05:18,700"
+      },
+      "offsets": {
+        "from": 317700,
+        "to": 318700
+      },
+      "text": "وكل OS ليه الـ Updates بتاعته."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:18,700",
+        "to": "00:05:19,700"
+      },
+      "offsets": {
+        "from": 318700,
+        "to": 319700
+      },
+      "text": "والـ Patches بتاعته."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:19,700",
+        "to": "00:05:20,700"
+      },
+      "offsets": {
+        "from": 319700,
+        "to": 320700
+      },
+      "text": "والـ Upgrade بتاعه."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:20,700",
+        "to": "00:05:21,700"
+      },
+      "offsets": {
+        "from": 320700,
+        "to": 321700
+      },
+      "text": "والكلام ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:21,700",
+        "to": "00:05:23,700"
+      },
+      "offsets": {
+        "from": 321700,
+        "to": 323700
+      },
+      "text": "مش محتاج إن أنا أعمل الكلام ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:23,700",
+        "to": "00:05:29,700"
+      },
+      "offsets": {
+        "from": 323700,
+        "to": 329700
+      },
+      "text": "بالطريقة دي محتجتش إن أنا أدفع Licensing لكل Virtual Machine بالـ Operating System اللي موجود عليها."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:29,700",
+        "to": "00:05:37,700"
+      },
+      "offsets": {
+        "from": 329700,
+        "to": 337700
+      },
+      "text": "حاجات كتير جداً اتحلت بمجرد ما فكرت أخلي الـ Container يعتمد بس على الـ Kernel."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:37,700",
+        "to": "00:05:38,700"
+      },
+      "offsets": {
+        "from": 337700,
+        "to": 338700
+      },
+      "text": "طب أعمل ده إزاي؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:38,700",
+        "to": "00:05:40,700"
+      },
+      "offsets": {
+        "from": 338700,
+        "to": 340700
+      },
+      "text": "أقولك تعمل ده إزاي."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:40,700",
+        "to": "00:05:44,700"
+      },
+      "offsets": {
+        "from": 340700,
+        "to": 344700
+      },
+      "text": "برضه بفكرة من الـ Virtual Machine."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:44,700",
+        "to": "00:05:50,700"
+      },
+      "offsets": {
+        "from": 344700,
+        "to": 350700
+      },
+      "text": "تعالوا برضه نرجع تاني لفكرة الـ Virtual Machine ونشوف نقطة أو Concept مهم جداً في موضوع الـ Virtual Machines ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:50,700",
+        "to": "00:05:54,700"
+      },
+      "offsets": {
+        "from": 350700,
+        "to": 354700
+      },
+      "text": "آجي مثلاً أعمل New Page After."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:54,700",
+        "to": "00:05:57,700"
+      },
+      "offsets": {
+        "from": 354700,
+        "to": 357700
+      },
+      "text": "الـ Virtual Machine لو تفتكروا إحنا اتكلمنا عن موضوع الـ Template."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:57,700",
+        "to": "00:05:58,700"
+      },
+      "offsets": {
+        "from": 357700,
+        "to": 358700
+      },
+      "text": "لو تفتكروا يعني."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:58,700",
+        "to": "00:06:05,700"
+      },
+      "offsets": {
+        "from": 358700,
+        "to": 365700
+      },
+      "text": "واللي اشتغل بالـ Virtual Machines كتير جداً هيكون عارف فكرة الـ Base Disks."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:05,700",
+        "to": "00:06:06,700"
+      },
+      "offsets": {
+        "from": 365700,
+        "to": 366700
+      },
+      "text": "أنا بكتب Disks."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:06,700",
+        "to": "00:06:07,700"
+      },
+      "offsets": {
+        "from": 366700,
+        "to": 367700
+      },
+      "text": "Base Disks."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:07,700",
+        "to": "00:06:08,700"
+      },
+      "offsets": {
+        "from": 367700,
+        "to": 368700
+      },
+      "text": "Okay."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:08,700",
+        "to": "00:06:10,700"
+      },
+      "offsets": {
+        "from": 368700,
+        "to": 370700
+      },
+      "text": "إيه فكرة الـ Base Disks دي؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:10,700",
+        "to": "00:06:11,700"
+      },
+      "offsets": {
+        "from": 370700,
+        "to": 371700
+      },
+      "text": "إن أنا كان عندي مثلاً VM A."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:11,700",
+        "to": "00:06:17,700"
+      },
+      "offsets": {
+        "from": 371700,
+        "to": 377700
+      },
+      "text": "الـ VM A دي مثلاً هتبقى الـ Template بتاعة الـ Web VMs اللي هتبقى موجودة عندي في الـ Solution."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:17,700",
+        "to": "00:06:18,700"
+      },
+      "offsets": {
+        "from": 377700,
+        "to": 378700
+      },
+      "text": "ماشي."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:18,700",
+        "to": "00:06:21,700"
+      },
+      "offsets": {
+        "from": 378700,
+        "to": 381700
+      },
+      "text": "دي هتبقى الـ Web Template."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:21,700",
+        "to": "00:06:22,700"
+      },
+      "offsets": {
+        "from": 381700,
+        "to": 382700
+      },
+      "text": "Okay."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:22,700",
+        "to": "00:06:23,700"
+      },
+      "offsets": {
+        "from": 382700,
+        "to": 383700
+      },
+      "text": "هعمل إيه بقى؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:23,700",
+        "to": "00:06:25,700"
+      },
+      "offsets": {
+        "from": 383700,
+        "to": 385700
+      },
+      "text": "هقوم جاي على الـ VM A دي."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:25,700",
+        "to": "00:06:26,700"
+      },
+      "offsets": {
+        "from": 385700,
+        "to": 386700
+      },
+      "text": "منزل الـ Operating System بتاعي."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:26,700",
+        "to": "00:06:27,700"
+      },
+      "offsets": {
+        "from": 386700,
+        "to": 387700
+      },
+      "text": "كله بقى Full."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:27,700",
+        "to": "00:06:28,700"
+      },
+      "offsets": {
+        "from": 387700,
+        "to": 388700
+      },
+      "text": "Full Operating System بتاعي."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:28,700",
+        "to": "00:06:29,700"
+      },
+      "offsets": {
+        "from": 388700,
+        "to": 389700
+      },
+      "text": "منزل الـ Dependencies."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:29,700",
+        "to": "00:06:31,700"
+      },
+      "offsets": {
+        "from": 389700,
+        "to": 391700
+      },
+      "text": "عامل شوية Settings و Configuration."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:31,700",
+        "to": "00:06:32,700"
+      },
+      "offsets": {
+        "from": 391700,
+        "to": 392700
+      },
+      "text": "منزل الـ Requirements."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:32,700",
+        "to": "00:06:37,700"
+      },
+      "offsets": {
+        "from": 392700,
+        "to": 397700
+      },
+      "text": "وبعد كده في الآخر منزل الـ Web Application بتاعتي."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:37,700",
+        "to": "00:06:38,700"
+      },
+      "offsets": {
+        "from": 397700,
+        "to": 398700
+      },
+      "text": "وبس كده."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:38,700",
+        "to": "00:06:40,700"
+      },
+      "offsets": {
+        "from": 398700,
+        "to": 400700
+      },
+      "text": "دي هتبقى الـ Template."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:40,700",
+        "to": "00:06:43,700"
+      },
+      "offsets": {
+        "from": 400700,
+        "to": 403700
+      },
+      "text": "الـ Virtual Machines دي ليها Virtual Hard Disk."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:43,700",
+        "to": "00:06:50,700"
+      },
+      "offsets": {
+        "from": 403700,
+        "to": 410700
+      },
+      "text": "الـ Virtual Hard Disk ده لو أنت مثلاً شغال على Hyper-V هيبقى VHD."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:50,700",
+        "to": "00:06:53,700"
+      },
+      "offsets": {
+        "from": 410700,
+        "to": 413700
+      },
+      "text": "الفايل بيبقى VHD. مثلاً."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:53,700",
+        "to": "00:06:54,700"
+      },
+      "offsets": {
+        "from": 413700,
+        "to": 414700
+      },
+      "text": "Okay."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:54,700",
+        "to": "00:06:56,700"
+      },
+      "offsets": {
+        "from": 414700,
+        "to": 416700
+      },
+      "text": "الـ VHD file ده بعد ما بتخلص الـ Virtual Machine."
+    },
+    {
+      "timestamps": {
+        "from": "00:06:56,700",
+        "to": "00:06:58,700"
+      },
+      "offsets": {
+        "from": 416700,
+        "to": 418700
+      },
+      "text": "وتبقى هي دي الـ Template، تمام؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:58,700",
+        "to": "00:07:05,700"
+      },
+      "offsets": {
+        "from": 418700,
+        "to": 425700
+      },
+      "text": "ده بيبقى الـ Virtual Disk اللي بيسموه الـ Base Disk."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:05,700",
+        "to": "00:07:09,700"
+      },
+      "offsets": {
+        "from": 425700,
+        "to": 429700
+      },
+      "text": "وفي مقولة أخرى بيسموه برضه الـ Base Image."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:09,700",
+        "to": "00:07:11,700"
+      },
+      "offsets": {
+        "from": 429700,
+        "to": 431700
+      },
+      "text": "دي نقطة مهمة برضه عشان الـ Concept ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:11,700",
+        "to": "00:07:12,700"
+      },
+      "offsets": {
+        "from": 431700,
+        "to": 432700
+      },
+      "text": "هتلاقيه متكرر معانا."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:12,700",
+        "to": "00:07:14,700"
+      },
+      "offsets": {
+        "from": 432700,
+        "to": 434700
+      },
+      "text": "Base Image."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:14,700",
+        "to": "00:07:19,700"
+      },
+      "offsets": {
+        "from": 434700,
+        "to": 439700
+      },
+      "text": "لما تحب تعمل مثلاً من الـ Template دي."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:19,700",
+        "to": "00:07:23,700"
+      },
+      "offsets": {
+        "from": 439700,
+        "to": 443700
+      },
+      "text": "تعمل منها مثلاً 30 أو 40 VMs علشان هيبقوا موجودين في الـ Cluster بتاعك."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:23,700",
+        "to": "00:07:25,700"
+      },
+      "offsets": {
+        "from": 443700,
+        "to": 445700
+      },
+      "text": "الـ Load Balancing Cluster بتاعك الخاص بالـ Web."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:25,700",
+        "to": "00:07:26,700"
+      },
+      "offsets": {
+        "from": 445700,
+        "to": 446700
+      },
+      "text": "مثلاً يعني."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:26,700",
+        "to": "00:07:29,700"
+      },
+      "offsets": {
+        "from": 446700,
+        "to": 449700
+      },
+      "text": "هتعمل من الـ VM دي عشرات الـ VMs التانية."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:29,700",
+        "to": "00:07:31,700"
+      },
+      "offsets": {
+        "from": 449700,
+        "to": 451700
+      },
+      "text": "اللي بيحصل إيه؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:31,700",
+        "to": "00:07:32,700"
+      },
+      "offsets": {
+        "from": 451700,
+        "to": 452700
+      },
+      "text": "عندك طريقين."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:32,700",
+        "to": "00:07:33,700"
+      },
+      "offsets": {
+        "from": 452700,
+        "to": 453700
+      },
+      "text": "عندك إنك تاخد Copy منها."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:33,700",
+        "to": "00:07:37,700"
+      },
+      "offsets": {
+        "from": 453700,
+        "to": 457700
+      },
+      "text": "تاخد Copy كامل مثلاً من الـ Virtual Disk ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:37,700",
+        "to": "00:07:40,700"
+      },
+      "offsets": {
+        "from": 457700,
+        "to": 460700
+      },
+      "text": "Copy كامل من الـ VHD ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:40,700",
+        "to": "00:07:42,700"
+      },
+      "offsets": {
+        "from": 460700,
+        "to": 462700
+      },
+      "text": "وتشغل الـ VMs دي."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:42,700",
+        "to": "00:07:43,700"
+      },
+      "offsets": {
+        "from": 462700,
+        "to": 463700
+      },
+      "text": "وتاخد Copy منه تاني."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:43,700",
+        "to": "00:07:46,700"
+      },
+      "offsets": {
+        "from": 463700,
+        "to": 466700
+      },
+      "text": "وثالث ورابع وخامس وعشرة وعشرين ومية وميتين وتلتمية."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:46,700",
+        "to": "00:07:48,700"
+      },
+      "offsets": {
+        "from": 466700,
+        "to": 468700
+      },
+      "text": "تقدر تعمل الكلام ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:48,700",
+        "to": "00:07:49,700"
+      },
+      "offsets": {
+        "from": 468700,
+        "to": 469700
+      },
+      "text": "تقدر تعمل ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:49,700",
+        "to": "00:07:50,700"
+      },
+      "offsets": {
+        "from": 469700,
+        "to": 470700
+      },
+      "text": "بس مش ده الصح."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:50,700",
+        "to": "00:07:51,700"
+      },
+      "offsets": {
+        "from": 470700,
+        "to": 471700
+      },
+      "text": "ليه بقى؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:51,700",
+        "to": "00:07:52,700"
+      },
+      "offsets": {
+        "from": 471700,
+        "to": 472700
+      },
+      "text": "لأسباب كتير."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:52,700",
+        "to": "00:07:54,700"
+      },
+      "offsets": {
+        "from": 472700,
+        "to": 474700
+      },
+      "text": "غير موضوع الـ Disk Space."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:54,700",
+        "to": "00:07:56,700"
+      },
+      "offsets": {
+        "from": 474700,
+        "to": 476700
+      },
+      "text": "مش دي الطريقة الـ Efficient."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:56,700",
+        "to": "00:07:58,700"
+      },
+      "offsets": {
+        "from": 476700,
+        "to": 478700
+      },
+      "text": "أما الطريقة الـ Efficient إيه؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:58,700",
+        "to": "00:08:02,700"
+      },
+      "offsets": {
+        "from": 478700,
+        "to": 482700
+      },
+      "text": "الطريقة الـ Efficient إنك تعتمد على الـ Virtual Disk ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:08:02,700",
+        "to": "00:08:04,700"
+      },
+      "offsets": {
+        "from": 482700,
+        "to": 484700
+      },
+      "text": "اللي هو الـ Base Image دي."
+    },
+    {
+      "timestamps": {
+        "from": "00:08:04,700",
+        "to": "00:08:05,700"
+      },
+      "offsets": {
+        "from": 484700,
+        "to": 485700
+      },
+      "text": "تعتمد عليه كـ Template."
+    },
+    {
+      "timestamps": {
+        "from": "00:08:05,700",
+        "to": "00:08:07,700"
+      },
+      "offsets": {
+        "from": 485700,
+        "to": 487700
+      },
+      "text": "وتيجي تعمل هنا Virtual Disk تاني."
+    },
+    {
+      "timestamps": {
+        "from": "00:08:07,700",
+        "to": "00:08:09,700"
+      },
+      "offsets": {
+        "from": 487700,
+        "to": 489700
+      },
+      "text": "نوع تاني من الـ Virtual Disk."
+    },
+    {
+      "timestamps": {
+        "from": "00:08:09,700",
+        "to": "00:08:11,700"
+      },
+      "offsets": {
+        "from": 489700,
+        "to": 491700
+      },
+      "text": "بيسموه الـ Differencing Virtual Disk."
+    },
+    {
+      "timestamps": {
+        "from": "00:08:11,700",
+        "to": "00:08:13,700"
+      },
+      "offsets": {
+        "from": 491700,
+        "to": 493700
+      },
+      "text": "أو الـ Differencing Virtual Disk."
+    },
+    {
+      "timestamps": {
+        "from": "00:08:13,700",
+        "to": "00:08:17,700"
+      },
+      "offsets": {
+        "from": 493700,
+        "to": 497700
+      },
+      "text": "اللي هو مثلاً الـ AVHD في الـ Hyper-V مثلاً."
+    },
+    {
+      "timestamps": {
+        "from": "00:08:17,700",
+        "to": "00:08:20,700"
+      },
+      "offsets": {
+        "from": 497700,
+        "to": 500700
+      },
+      "text": "الـ Differencing Virtual Disk ده زي ما هو باين من الاسم."
+    },
+    {
+      "timestamps": {
+        "from": "00:08:20,700",
+        "to": "00:08:50,100"
+      },
+      "offsets": {
+        "from": 500700,
+        "to": 530100
+      },
+      "text": "إيه اللي فيه؟ هو فيه بس شوية الحاجات اللي اختلفت عن هنا. أنت بعد ما عملت من الـ Template دي، غيرت فيها شوية حاجات وغيرت اسم الماشين وغيرت الـ configuration بتاعتها، شوية اختلافات عن الـ Base Image دي. الاختلافات دي بس هي اللي هتبقى موجودة. فلو كان السايز بتاعه مثلاً 100 جيجا، ده هتلاقي السايز بتاعه 1 جيجا مثلاً."
+    },
+    {
+      "timestamps": {
+        "from": "00:08:50,700",
+        "to": "00:09:18,400"
+      },
+      "offsets": {
+        "from": 530700,
+        "to": 558400
+      },
+      "text": "مش أكتر من كده، 1 جيجا أو 2 جيجا أو 3 جيجا، اللي هو الفروقات عن ده. ويبقى الـ Base Image ده بتاع الديسك ده، يبقى الديسك الأصلي بتاعها هو مجموع الديسكين. ونفس الكلام لو جيت بعد كده حبيت تعمل واحدة تانية مثلاً وأخدت Snapshot من دي."
+    },
+    {
+      "timestamps": {
+        "from": "00:09:18,400",
+        "to": "00:09:46,120"
+      },
+      "offsets": {
+        "from": 558400,
+        "to": 586120
+      },
+      "text": "أوكي، وكملت عليها. لما بتاخد Snapshot بتعمل Link تاني عن ده. ليه بتعمل الديسك ده؟ علشان لو جيت في المستقبل مثلاً وحبيت ترجع للـ State القديمة بعد ما لعبت في الـ configuration وخربت الدنيا، ترجع للـ State القديمة إزاي؟ تعمل Delete..."
+    },
+    {
+      "timestamps": {
+        "from": "00:09:48,400",
+        "to": "00:10:00,540"
+      },
+      "offsets": {
+        "from": 588400,
+        "to": 600540
+      },
+      "text": "للـ Virtual Disk ده. تمام؟ هترجع لك الـ VM زي ما كانت. يبقى تلاحظ هنا إن الـ Concept ده شغال إزاي؟ شغال إن أنا عندي هنا Base Image."
+    },
+    {
+      "timestamps": {
+        "from": "00:10:00,540",
+        "to": "00:10:11,660"
+      },
+      "offsets": {
+        "from": 600540,
+        "to": 611660
+      },
+      "text": "أوكي؟ وبعد كده في Differencing Disk، وبعد كده Differencing Disk تاني وتالت، وهكذا بقى على حسب عدد الـ Snapshots اللي أنت..."
+    },
+    {
+      "timestamps": {
+        "from": "00:10:11,660",
+        "to": "00:10:21,360"
+      },
+      "offsets": {
+        "from": 611660,
+        "to": 621360
+      },
+      "text": "واخدها. كل Differencing Disk بيعتمد على اللي قبله. ده الـ Parent بتاع ده، وده الـ Parent بتاع ده وهكذا. تمام؟ دي الطريقة..."
+    },
+    {
+      "timestamps": {
+        "from": "00:10:21,360",
+        "to": "00:10:31,240"
+      },
+      "offsets": {
+        "from": 621360,
+        "to": 631240
+      },
+      "text": "اللي بتشتغل بيها. في طريقة مشابهة ليها جداً في الـ Containers. أوريك بقى الفكرة إيه؟ مش أنت عاوز..."
+    },
+    {
+      "timestamps": {
+        "from": "00:10:31,240",
+        "to": "00:10:41,180"
+      },
+      "offsets": {
+        "from": 631240,
+        "to": 641180
+      },
+      "text": "تعمل الـ Container؟ لو افترضنا مثلاً دي الـ Machine بتاعتك، Virtual ولا Physical، تمام؟ وأنت قلت إن كل اللي محتاجه الـ Kernel بس بتاع الـ Operating System."
+    },
+    {
+      "timestamps": {
+        "from": "00:10:41,660",
+        "to": "00:10:48,840"
+      },
+      "offsets": {
+        "from": 641660,
+        "to": 648840
+      },
+      "text": "الـ Kernel بتاع الـ Windows دايماً واحد، والـ Kernel بتاع الـ Linux دايماً واحد. تمام؟ هنتكلم تاني على الحتة دي. عاوز تيجي..."
+    },
+    {
+      "timestamps": {
+        "from": "00:10:48,840",
+        "to": "00:10:54,840"
+      },
+      "offsets": {
+        "from": 648840,
+        "to": 654840
+      },
+      "text": "تعمل Container. طبعاً الـ Application دي في الأول وفي الآخر ما زالت هتحتاج Operating System، وممكن كمان تحتاج حاجات من..."
+    },
+    {
+      "timestamps": {
+        "from": "00:10:54,840",
+        "to": "00:11:01,960"
+      },
+      "offsets": {
+        "from": 654840,
+        "to": 661960
+      },
+      "text": "الـ Operating System الأصلي، يعني هتحتاج حاجات من الـ Operating System وممكن ما تحتاجش على حسب هي محتاجة إيه بس."
+    },
+    {
+      "timestamps": {
+        "from": "00:11:01,960",
+        "to": "00:11:12,540"
+      },
+      "offsets": {
+        "from": 661960,
+        "to": 672540
+      },
+      "text": "اللي بالتأكيد مش محتاجة كل حاجة في الـ Operating System، فتقدر تعمل إيه بقى؟ تقدر تيجي من الـ Kernel ده وتقوم عامل Container، تمام؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:12,540",
+        "to": "00:11:20,960"
+      },
+      "offsets": {
+        "from": 672540,
+        "to": 680960
+      },
+      "text": "اعتبرنا ده Container، الـ Container ده يكمل على الـ Kernel. يكمل إزاي؟ خلينا ناخد الـ Container ده من برة، اعتبرنا هو ده"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:20,960",
+        "to": "00:11:31,100"
+      },
+      "offsets": {
+        "from": 680960,
+        "to": 691100
+      },
+      "text": "الـ Container. Okay؟ ده الـ Container، يكمل على الـ Kernel. يبدأ بالـ Kernel اللي موجود أصلاً على الـ Physical Machine، أو"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:31,100",
+        "to": "00:11:42,260"
+      },
+      "offsets": {
+        "from": 691100,
+        "to": 702260
+      },
+      "text": "على الـ Physical Machine اللي إنت حاطط عليها الـ Container. يزود شوية على الـ Kernel يحط بقية الـ Libraries المطلوبة، شوية الحتة المطلوبة"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:42,260",
+        "to": "00:11:53,240"
+      },
+      "offsets": {
+        "from": 702260,
+        "to": 713240
+      },
+      "text": "مثلاً في حتة صغنونة كده، وشوية مثلاً إلى آخره. وبعدين بعد ما"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:53,240",
+        "to": "00:12:00,240"
+      },
+      "offsets": {
+        "from": 713240,
+        "to": 720240
+      },
+      "text": "يحتاج ينزل الحاجات المطلوبة بس، يقوم كمان عامل Layer تانية للـ Requirements"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:00,240",
+        "to": "00:12:07,800"
+      },
+      "offsets": {
+        "from": 720240,
+        "to": 727800
+      },
+      "text": "اللي إنت محتاجها فوق. عامل هنا Layer مثلاً للـ Requirements، و Layer تانية Requirements"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:07,800",
+        "to": "00:12:15,180"
+      },
+      "offsets": {
+        "from": 727800,
+        "to": 735180
+      },
+      "text": "مثلاً، Layer تالتة بقى هي الـ Application بتاعتك. فتلاقي لما تنزل الـ Container ده"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:15,180",
+        "to": "00:12:22,300"
+      },
+      "offsets": {
+        "from": 735180,
+        "to": 742300
+      },
+      "text": "كده، لما تيجي تنزله على الـ Machine دي، كأن الـ Container ده بدأ بالـ Kernel"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:22,300",
+        "to": "00:12:29,380"
+      },
+      "offsets": {
+        "from": 742300,
+        "to": 749380
+      },
+      "text": "وراح مكمل الحتة بس اللي هو محتاجها بعد الـ Kernel لغاية ما يوصل للـ Application. فبقى"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:29,380",
+        "to": "00:12:36,140"
+      },
+      "offsets": {
+        "from": 749380,
+        "to": 756140
+      },
+      "text": "كأنه زي اللي إحنا اتكلمنا عليها دي بس متشال منها كل"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:36,140",
+        "to": "00:12:41,800"
+      },
+      "offsets": {
+        "from": 756140,
+        "to": 761800
+      },
+      "text": "الحاجات اللي في الـ Application اللي إحنا مش محتاجينها. وده ما كنتش"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:41,800",
+        "to": "00:12:46,660"
+      },
+      "offsets": {
+        "from": 761800,
+        "to": 766660
+      },
+      "text": "تقدر تعمله بالـ Application العادي. نفس الوضع برضه هجيب مثلاً Container"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:46,660",
+        "to": "00:12:53,780"
+      },
+      "offsets": {
+        "from": 766660,
+        "to": 773780
+      },
+      "text": "تاني، هيكمل برضه على الـ Kernel ده بـ Layer تانية، بـ Requirements تانية"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:53,780",
+        "to": "00:12:59,380"
+      },
+      "offsets": {
+        "from": 773780,
+        "to": 779380
+      },
+      "text": "بـ Application تانية وهكذا. لاحظ نقطة بقى مهمة هنا، إحنا كنا"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:59,380",
+        "to": "00:13:05,560"
+      },
+      "offsets": {
+        "from": 779380,
+        "to": 785560
+      },
+      "text": "بدأنا الكلام فيها، اللي هي فكرة إنه لو أنا عندي مثلاً Linux"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:05,560",
+        "to": "00:13:12,220"
+      },
+      "offsets": {
+        "from": 785560,
+        "to": 792220
+      },
+      "text": "Linux Kernel مثلاً، الـ Linux Kernel في كل حاجة Linux في الدنيا"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:12,220",
+        "to": "00:13:16,720"
+      },
+      "offsets": {
+        "from": 792220,
+        "to": 796720
+      },
+      "text": "هو واحد. ممكن الـ Versions بتاعتها تختلف مفيش مشاكل يعني"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:16,720",
+        "to": "00:13:21,400"
+      },
+      "offsets": {
+        "from": 796720,
+        "to": 801400
+      },
+      "text": "بس هو واحد، هو الـ Kernel واحد. فالجزء اللي هو بتاع الـ Kernel ده"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:21,400",
+        "to": "00:13:28,520"
+      },
+      "offsets": {
+        "from": 801400,
+        "to": 808520
+      },
+      "text": "ده دايماً واحد. اللي بيخلي الـ Linux يبقى Fedora أو يبقى"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:28,520",
+        "to": "00:13:33,020"
+      },
+      "offsets": {
+        "from": 808520,
+        "to": 813020
+      },
+      "text": "Ubuntu أو SUSE مثلاً أو CentOS أو Linux Mint أو Kali Linux أو"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:33,020",
+        "to": "00:13:36,620"
+      },
+      "offsets": {
+        "from": 813020,
+        "to": 816620
+      },
+      "text": "آلاف الـ Distributions اللي إنت بتشوفها دي هي الحتة بتاعت الـ User"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:36,620",
+        "to": "00:13:42,380"
+      },
+      "offsets": {
+        "from": 816620,
+        "to": 822380
+      },
+      "text": "Mode. هي الحتة بتاعت الـ OS Specifications. هات Linux Kernel"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:42,380",
+        "to": "00:13:46,880"
+      },
+      "offsets": {
+        "from": 822380,
+        "to": 826880
+      },
+      "text": "زود عليه شوية Specifications بقى Red Hat. هات Linux Kernel زود"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:46,880",
+        "to": "00:13:54,500"
+      },
+      "offsets": {
+        "from": 826880,
+        "to": 834500
+      },
+      "text": "عليه شوية Specifications بقى Ubuntu. دي بقى الفكرة. ده اللي"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:54,500",
+        "to": "00:13:58,380"
+      },
+      "offsets": {
+        "from": 834500,
+        "to": 838380
+      },
+      "text": "إحنا عايزين نعمله بالـ Container، إن أنا يبدأ لي بالـ Kernel اللي هو"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:58,520",
+        "to": "00:14:02,540"
+      },
+      "offsets": {
+        "from": 838520,
+        "to": 842540
+      },
+      "text": "ثابت في كل الـ Operating System، في كل حاجة اسمها Linux هو ثابت."
+    },
+    {
+      "timestamps": {
+        "from": "00:14:02,540",
+        "to": "00:14:07,520"
+      },
+      "offsets": {
+        "from": 842540,
+        "to": 847520
+      },
+      "text": "الـ Kernel في كل الـ Windows هو ثابت، وزود عليه بس اللي إنت محتاجه."
+    },
+    {
+      "timestamps": {
+        "from": "00:14:07,520",
+        "to": "00:14:13,040"
+      },
+      "offsets": {
+        "from": 847520,
+        "to": 853040
+      },
+      "text": "في الـ User Mode أو في الـ OS Specifications. وبعد كده"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:13,040",
+        "to": "00:14:20,060"
+      },
+      "offsets": {
+        "from": 853040,
+        "to": 860060
+      },
+      "text": "اعمل الـ Application بتاعتك. دي الفكرة الرئيسية والمهمة والأهم على الإطلاق"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:20,060",
+        "to": "00:14:22,520"
+      },
+      "offsets": {
+        "from": 860060,
+        "to": 862520
+      },
+      "text": "بتاعت الـ Containers اللي حلت الإشكاليات اللي إحنا كنا"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:22,520",
+        "to": "00:14:27,200"
+      },
+      "offsets": {
+        "from": 862520,
+        "to": 867200
+      },
+      "text": "بنتكلم عليها دي. بقى أصبح عندك الـ Container ده فيه الـ Application بتاعتك وفيه"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:27,200",
+        "to": "00:14:28,280"
+      },
+      "offsets": {
+        "from": 867200,
+        "to": 868280
+      },
+      "text": "الجزء المطلوب بس."
+    },
+    {
+      "timestamps": {
+        "from": "00:14:28,280",
+        "to": "00:14:30,680"
+      },
+      "offsets": {
+        "from": 868280,
+        "to": 870680
+      },
+      "text": "من الـ Operating System من الـ User Mode بتاع الـ Operating System"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:30,680",
+        "to": "00:14:33,920"
+      },
+      "offsets": {
+        "from": 870680,
+        "to": 873920
+      },
+      "text": "علشان الـ Application تشتغل. مش محتاج تدفع License."
+    },
+    {
+      "timestamps": {
+        "from": "00:14:33,920",
+        "to": "00:14:38,180"
+      },
+      "offsets": {
+        "from": 873920,
+        "to": 878180
+      },
+      "text": "مش محتاج إنك تخلي بالك من الـ Backups وكل حاجة موجودة"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:38,180",
+        "to": "00:14:44,600"
+      },
+      "offsets": {
+        "from": 878180,
+        "to": 884600
+      },
+      "text": "في الـ Kernel الأصلي، كل حاجة في الـ Kernel الأصلي بتاع الـ Machine"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:44,600",
+        "to": "00:14:47,240"
+      },
+      "offsets": {
+        "from": 884600,
+        "to": 887240
+      },
+      "text": "الأصلية اللي نازل عليها الـ Container، سواء كانت VM أو سواء كانت"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:47,240",
+        "to": "00:14:49,740"
+      },
+      "offsets": {
+        "from": 887240,
+        "to": 889740
+      },
+      "text": "Physical Machine."
+    },
+    {
+      "timestamps": {
+        "from": "00:14:49,740",
+        "to": "00:14:58,040"
+      },
+      "offsets": {
+        "from": 889740,
+        "to": 898040
+      },
+      "text": "طيب الفكرة دي بقى زي الـ..."
+    },
+    {
+      "timestamps": {
+        "from": "00:14:58,040",
+        "to": "00:15:02,420"
+      },
+      "offsets": {
+        "from": 898040,
+        "to": 902420
+      },
+      "text": "في الـ Virtual Machine اللي هي الـ Base Disk والـ Differencing Disk ومش"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:02,420",
+        "to": "00:15:05,720"
+      },
+      "offsets": {
+        "from": 902420,
+        "to": 905720
+      },
+      "text": "عارفين إيه وبتاع. قصادها معمولة إزاي في الـ Containers؟ قصادها معمولة"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:05,720",
+        "to": "00:15:10,520"
+      },
+      "offsets": {
+        "from": 905720,
+        "to": 910520
+      },
+      "text": "في الـ Containers عن طريق الـ Layers. يعني إيه الـ Layers؟ يعني لو بدأت"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:10,520",
+        "to": "00:15:16,640"
+      },
+      "offsets": {
+        "from": 910520,
+        "to": 916640
+      },
+      "text": "مثلاً بـ Container فاضي خالص، بدأ من Linux Kernel مثلاً."
+    },
+    {
+      "timestamps": {
+        "from": "00:15:16,640",
+        "to": "00:15:23,720"
+      },
+      "offsets": {
+        "from": 916640,
+        "to": 923720
+      },
+      "text": "وجيت نزلت فيه شوية حاجات مثلاً Fedora. أوكي؟ بقى عندي"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:23,720",
+        "to": "00:15:34,700"
+      },
+      "offsets": {
+        "from": 923720,
+        "to": 934700
+      },
+      "text": "الـ Fedora. أوكي؟ نزلت دي، أول Layer دي نزلناها، حتى قلت"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:34,700",
+        "to": "00:15:39,920"
+      },
+      "offsets": {
+        "from": 934700,
+        "to": 939920
+      },
+      "text": "Layer كده بالغلط. أول حاجة نزلناها في الـ Container ده فوق"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:39,920",
+        "to": "00:15:46,760"
+      },
+      "offsets": {
+        "from": 939920,
+        "to": 946760
+      },
+      "text": "الـ Kernel دي اسمها Layer. ده كده اسمه Layer. ممكن توقف لغاية كده."
+    },
+    {
+      "timestamps": {
+        "from": "00:15:46,760",
+        "to": "00:15:53,480"
+      },
+      "offsets": {
+        "from": 946760,
+        "to": 953480
+      },
+      "text": "ويبقى الـ Container ده هو بس Container Fedora مثلاً بينزل على Kernel."
+    },
+    {
+      "timestamps": {
+        "from": "00:15:53,480",
+        "to": "00:15:56,840"
+      },
+      "offsets": {
+        "from": 953480,
+        "to": 956840
+      },
+      "text": "يبقى أنت عندك مثلاً Ubuntu Machine، عندك Red Hat Machine، عندك"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:56,840",
+        "to": "00:16:00,920"
+      },
+      "offsets": {
+        "from": 956840,
+        "to": 960920
+      },
+      "text": "CentOS Machine، عندك SUSE Machine، ومنزل عليها Container في"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:00,920",
+        "to": "00:16:05,180"
+      },
+      "offsets": {
+        "from": 960920,
+        "to": 965180
+      },
+      "text": "دورة. الـ Container ده خد الـ Kernel بتاعك، أهي أنت الماشين بتاعتك"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:05,180",
+        "to": "00:16:10,520"
+      },
+      "offsets": {
+        "from": 965180,
+        "to": 970520
+      },
+      "text": "إيه؟ خد الـ Kernel بتاعك وزود عليه، بقى عندي Container Fedora. أوكي؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:10,520",
+        "to": "00:16:16,280"
+      },
+      "offsets": {
+        "from": 970520,
+        "to": 976280
+      },
+      "text": "وممكن أزود عليها حاجات تانية، هنزل مثلاً Python، هنزل مثلاً شوية"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:16,280",
+        "to": "00:16:25,460"
+      },
+      "offsets": {
+        "from": 976280,
+        "to": 985460
+      },
+      "text": "Packages بتاعة Python مثلاً، هنزل جواها أي حاجة بقى. أوكي؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:25,460",
+        "to": "00:16:30,920"
+      },
+      "offsets": {
+        "from": 985460,
+        "to": 990920
+      },
+      "text": "أي حاجة تانية هتنزلها تاني هنا، بتعدل في الـ Container ده بتعمل"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:30,920",
+        "to": "00:16:38,540"
+      },
+      "offsets": {
+        "from": 990920,
+        "to": 998540
+      },
+      "text": "Layer تانية. ممكن بعد ما عملت التعديل ده رحت عملت تعديل تاني في الفايلات"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:38,540",
+        "to": "00:16:46,080"
+      },
+      "offsets": {
+        "from": 998540,
+        "to": 1006080
+      },
+      "text": "الأولانية، نزلت مثلاً دي خلاص بعد ما نزلتها."
+    },
+    {
+      "timestamps": {
+        "from": "00:16:46,080",
+        "to": "00:16:52,080"
+      },
+      "offsets": {
+        "from": 1006080,
+        "to": 1012080
+      },
+      "text": "جيت عملت تغيير في الـ Python files والـ Configuration files. ده"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:52,080",
+        "to": "00:17:01,620"
+      },
+      "offsets": {
+        "from": 1012080,
+        "to": 1021620
+      },
+      "text": "تعديل تاني، بقت Layer تانية. كل واحدة من دول ممكن تعتبرهم Layers."
+    },
+    {
+      "timestamps": {
+        "from": "00:17:01,620",
+        "to": "00:17:06,660"
+      },
+      "offsets": {
+        "from": 1021620,
+        "to": 1026660
+      },
+      "text": "هم في الحقيقة عبارة عن Changes في الـ Files، فايلات اتضافت، فايلات اتمسحت، فايلات"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:06,660",
+        "to": "00:17:14,820"
+      },
+      "offsets": {
+        "from": 1026660,
+        "to": 1034820
+      },
+      "text": "اتعدلت وهكذا. فممكن كل واحدة من دول تعتبرها Layer. اعتبر دي اللي هي"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:14,820",
+        "to": "00:17:15,880"
+      },
+      "offsets": {
+        "from": 1034820,
+        "to": 1035880
+      },
+      "text": "الـ Base."
+    },
+    {
+      "timestamps": {
+        "from": "00:17:15,880",
+        "to": "00:17:24,040"
+      },
+      "offsets": {
+        "from": 1035880,
+        "to": 1044040
+      },
+      "text": "اعتبره كده. وكل واحدة من دول هي الصورة النهائية. النتيجة"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:24,040",
+        "to": "00:17:28,900"
+      },
+      "offsets": {
+        "from": 1044040,
+        "to": 1048900
+      },
+      "text": "النهائية بتاعة الـ Container هي مجموع الـ Layers دي كلها لغاية ما"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:28,900",
+        "to": "00:17:34,720"
+      },
+      "offsets": {
+        "from": 1048900,
+        "to": 1054720
+      },
+      "text": "توصل للـ Layer اللي فيها الـ Application بتاعتك. تنزل بقى"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:34,720",
+        "to": "00:17:40,480"
+      },
+      "offsets": {
+        "from": 1054720,
+        "to": 1060480
+      },
+      "text": "كده الـ Container ده على Ubuntu Machine بقى عندك"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:40,480",
+        "to": "00:17:45,680"
+      },
+      "offsets": {
+        "from": 1060480,
+        "to": 1065680
+      },
+      "text": "Container كما لو كان عندي Fedora فيها Application."
+    },
+    {
+      "timestamps": {
+        "from": "00:17:45,680",
+        "to": "00:17:50,900"
+      },
+      "offsets": {
+        "from": 1065680,
+        "to": 1070900
+      },
+      "text": "بدأت بالـ Kernel بتاعك أنت، وزودت عليه شوية بقى Fedora، زودت شوية"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:50,900",
+        "to": "00:17:54,680"
+      },
+      "offsets": {
+        "from": 1070900,
+        "to": 1074680
+      },
+      "text": "بقى فيه Python، زودت شوية بقى فيه Packages، زودت شوية بقى عندي"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:54,680",
+        "to": "00:17:59,420"
+      },
+      "offsets": {
+        "from": 1074680,
+        "to": 1079420
+      },
+      "text": "Python و Web Application مثلاً، Web Application معمولة بـ"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:59,420",
+        "to": "00:18:05,060"
+      },
+      "offsets": {
+        "from": 1079420,
+        "to": 1085060
+      },
+      "text": "Python نازلة على Fedora. وتفضل الـ Layers دي موجودة بالمنظر"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:05,060",
+        "to": "00:18:09,560"
+      },
+      "offsets": {
+        "from": 1085060,
+        "to": 1089560
+      },
+      "text": "ده. طب هل أقدر إني أعمل Merge للـ Layers دي كلها في بعض؟ آه"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:09,560",
+        "to": "00:18:12,920"
+      },
+      "offsets": {
+        "from": 1089560,
+        "to": 1092920
+      },
+      "text": "تقدر. زي ما بتقدر تعمل Merge للـ Virtual Disks على فكرة كلها."
+    },
+    {
+      "timestamps": {
+        "from": "00:18:12,920",
+        "to": "00:18:15,860"
+      },
+      "offsets": {
+        "from": 1092920,
+        "to": 1095860
+      },
+      "text": "تقدر في وقت من الأوقات تعمل Merge لكل"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:15,860",
+        "to": "00:18:21,680"
+      },
+      "offsets": {
+        "from": 1095860,
+        "to": 1101680
+      },
+      "text": "الـ Virtual Disks، ده موجود في كل الـ Virtual Machine technologies."
+    },
+    {
+      "timestamps": {
+        "from": "00:18:21,680",
+        "to": "00:18:25,880"
+      },
+      "offsets": {
+        "from": 1101680,
+        "to": 1105880
+      },
+      "text": "أقدر إني أعمل ده، بس أحسن لي ما أعملوش. أحسن لي إن أنا"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:25,880",
+        "to": "00:18:28,640"
+      },
+      "offsets": {
+        "from": 1105880,
+        "to": 1108640
+      },
+      "text": "ما أعملوش، وهنشوف وإحنا شغالين بقى أحسن لنا ليه إننا ما"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:28,640",
+        "to": "00:18:33,200"
+      },
+      "offsets": {
+        "from": 1108640,
+        "to": 1113200
+      },
+      "text": "نعملوش. خلصت كده يا باشا الـ Container بتاعك، ده فيه كل حاجة."
+    },
+    {
+      "timestamps": {
+        "from": "00:18:33,200",
+        "to": "00:18:36,440"
+      },
+      "offsets": {
+        "from": 1113200,
+        "to": 1116440
+      },
+      "text": "اللي إنت محتاجها، زي بالظبط لما كنت بتحاول تجهز الـ Virtual"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:36,440",
+        "to": "00:18:40,040"
+      },
+      "offsets": {
+        "from": 1116440,
+        "to": 1120040
+      },
+      "text": "Machine بتاعتك اللي هي الـ Template دي. خلاص بقى الـ Container ده Template"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:40,040",
+        "to": "00:18:44,000"
+      },
+      "offsets": {
+        "from": 1120040,
+        "to": 1124000
+      },
+      "text": "بالنسبة لك، ينفع أعيد استخدامه بعد كده في أي Linux"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:44,000",
+        "to": "00:18:48,740"
+      },
+      "offsets": {
+        "from": 1124000,
+        "to": 1128740
+      },
+      "text": "Machine تانية. خلاص تمام، لما تبقى جاهز وراضي عن الـ Container ده،"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:48,740",
+        "to": "00:18:56,780"
+      },
+      "offsets": {
+        "from": 1128740,
+        "to": 1136780
+      },
+      "text": "بيتحول لحاجة اسمها Image، سواء Container Image أو Image بس. الـ Image ده في"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:56,780",
+        "to": "00:19:01,740"
+      },
+      "offsets": {
+        "from": 1136780,
+        "to": 1141740
+      },
+      "text": "الـ Container هو بالظبط الـ VM Template."
+    },
+    {
+      "timestamps": {
+        "from": "00:19:02,460",
+        "to": "00:19:07,980"
+      },
+      "offsets": {
+        "from": 1142460,
+        "to": 1147980
+      },
+      "text": "الـ Image دي عبارة عن Container مقفول، Container Read-only، فيها"
+    },
+    {
+      "timestamps": {
+        "from": "00:19:07,980",
+        "to": "00:19:12,720"
+      },
+      "offsets": {
+        "from": 1147980,
+        "to": 1152720
+      },
+      "text": "Layers وكل الـ Layers دي Read-only. وظيفتها إنك تاخد منها"
+    },
+    {
+      "timestamps": {
+        "from": "00:19:12,720",
+        "to": "00:19:23,060"
+      },
+      "offsets": {
+        "from": 1152720,
+        "to": 1163060
+      },
+      "text": "نسخة تعمل منها Container. فهنا الـ Container بالنسبة للـ Image"
+    },
+    {
+      "timestamps": {
+        "from": "00:19:23,060",
+        "to": "00:19:31,720"
+      },
+      "offsets": {
+        "from": 1163060,
+        "to": 1171720
+      },
+      "text": "بالظبط زي الـ VM بالنسبة للـ VM Template."
+    },
+    {
+      "timestamps": {
+        "from": "00:19:31,720",
+        "to": "00:19:39,120"
+      },
+      "offsets": {
+        "from": 1171720,
+        "to": 1179120
+      },
+      "text": "نفس الفكرة بالظبط، الـ Image دي في الأصل كانت Container قعدنا"
+    },
+    {
+      "timestamps": {
+        "from": "00:19:39,120",
+        "to": "00:19:47,060"
+      },
+      "offsets": {
+        "from": 1179120,
+        "to": 1187060
+      },
+      "text": "نبني فيه ونعمل Setup للـ Container ده، ونزلنا كذا وكذا. خلاص أنا كده"
+    },
+    {
+      "timestamps": {
+        "from": "00:19:47,060",
+        "to": "00:19:53,600"
+      },
+      "offsets": {
+        "from": 1187060,
+        "to": 1193600
+      },
+      "text": "بقيت تمام، هتقفله وتحوله لـ Image، زي ما بتعمل بالظبط في الـ VM."
+    },
+    {
+      "timestamps": {
+        "from": "00:19:53,600",
+        "to": "00:20:00,620"
+      },
+      "offsets": {
+        "from": 1193600,
+        "to": 1200620
+      },
+      "text": "تمام؟ هتعمل الـ Image دي، خلاص تمام؟ احتجت إني أستخدمها، احتجت"
+    },
+    {
+      "timestamps": {
+        "from": "00:20:00,620",
+        "to": "00:20:06,920"
+      },
+      "offsets": {
+        "from": 1200620,
+        "to": 1206920
+      },
+      "text": "إني أعمل منها نسخ كتير، هتعامل مع الـ Image دي زي"
+    },
+    {
+      "timestamps": {
+        "from": "00:20:06,920",
+        "to": "00:20:16,160"
+      },
+      "offsets": {
+        "from": 1206920,
+        "to": 1216160
+      },
+      "text": "الـ Template بتاع الـ VM. فهنا الجزء اللي بيطلع من الـ Image ليه مسميات، نمشي واحدة"
+    },
+    {
+      "timestamps": {
+        "from": "00:20:16,160",
+        "to": "00:20:19,280"
+      },
+      "offsets": {
+        "from": 1216160,
+        "to": 1219280
+      },
+      "text": "واحدة وهنمسح الجزء ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:20:23,600",
+        "to": "00:20:28,840"
+      },
+      "offsets": {
+        "from": 1223600,
+        "to": 1228840
+      },
+      "text": "ونمشي واحدة واحدة على حسب المصطلحات الموجودة."
+    },
+    {
+      "timestamps": {
+        "from": "00:20:28,840",
+        "to": "00:20:35,260"
+      },
+      "offsets": {
+        "from": 1228840,
+        "to": 1235260
+      },
+      "text": "فهنا الـ Container لما يتحول لـ Image ده اسمه Build، بتعمل Build"
+    },
+    {
+      "timestamps": {
+        "from": "00:20:35,260",
+        "to": "00:20:42,520"
+      },
+      "offsets": {
+        "from": 1235260,
+        "to": 1242520
+      },
+      "text": "للـ Image. الـ Running VM لما تتحول لـ VM Template اسمها"
+    },
+    {
+      "timestamps": {
+        "from": "00:20:42,520",
+        "to": "00:20:49,260"
+      },
+      "offsets": {
+        "from": 1242520,
+        "to": 1249260
+      },
+      "text": "Export. لما تاخد نسخة من الـ VM Template عشان تبقى"
+    },
+    {
+      "timestamps": {
+        "from": "00:20:49,260",
+        "to": "00:20:53,580"
+      },
+      "offsets": {
+        "from": 1249260,
+        "to": 1253580
+      },
+      "text": "Running VM دي اسمها Import. دي مصطلحات"
+    },
+    {
+      "timestamps": {
+        "from": "00:20:53,580",
+        "to": "00:20:58,180"
+      },
+      "offsets": {
+        "from": 1253580,
+        "to": 1258180
+      },
+      "text": "الـ VM. تمام؟ الـ Image عشان تتحول لـ Container ده اسمه"
+    },
+    {
+      "timestamps": {
+        "from": "00:20:58,180",
+        "to": "00:21:06,220"
+      },
+      "offsets": {
+        "from": 1258180,
+        "to": 1266220
+      },
+      "text": "Pull للـ Image مع Create. هنشوف الكلام ده، أوكي؟ بس المهم"
+    },
+    {
+      "timestamps": {
+        "from": "00:21:06,220",
+        "to": "00:21:09,920"
+      },
+      "offsets": {
+        "from": 1266220,
+        "to": 1269920
+      },
+      "text": "الـ Concept دلوقتي مش مشكلة المصطلحات دي، المهم الـ Concept."
+    },
+    {
+      "timestamps": {
+        "from": "00:21:09,920",
+        "to": "00:21:18,080"
+      },
+      "offsets": {
+        "from": 1269920,
+        "to": 1278080
+      },
+      "text": "الـ Template بتاعة الـ Container اسمها Image، جواها الـ File System."
+    },
+    {
+      "timestamps": {
+        "from": "00:21:18,080",
+        "to": "00:21:23,400"
+      },
+      "offsets": {
+        "from": 1278080,
+        "to": 1283400
+      },
+      "text": "مستقلة كـ File System،"
+    },
+    {
+      "timestamps": {
+        "from": "00:21:23,400",
+        "to": "00:21:27,060"
+      },
+      "offsets": {
+        "from": 1283400,
+        "to": 1287060
+      },
+      "text": "وكل Layer عبارة عن تعديل حصل، والـ Layer اللي بعدها تعديل على"
+    },
+    {
+      "timestamps": {
+        "from": "00:21:27,060",
+        "to": "00:21:31,500"
+      },
+      "offsets": {
+        "from": 1287060,
+        "to": 1291500
+      },
+      "text": "اللي تحتها، والتعديل ده يكون إضافة أو مسح أو حذف أو"
+    },
+    {
+      "timestamps": {
+        "from": "00:21:31,500",
+        "to": "00:21:35,700"
+      },
+      "offsets": {
+        "from": 1291500,
+        "to": 1295700
+      },
+      "text": "أي حاجة تانية. نفس الوضع بالظبط في الـ VM Template."
+    },
+    {
+      "timestamps": {
+        "from": "00:21:35,700",
+        "to": "00:21:42,120"
+      },
+      "offsets": {
+        "from": 1295700,
+        "to": 1302120
+      },
+      "text": "وفكرة التعديلات فيها هي نفس الفكرة بالظبط. يبقى الـ VM"
+    },
+    {
+      "timestamps": {
+        "from": "00:21:42,120",
+        "to": "00:21:47,340"
+      },
+      "offsets": {
+        "from": 1302120,
+        "to": 1307340
+      },
+      "text": "أحولها لـ VM Template وده Export. الـ Container أحوله لـ"
+    },
+    {
+      "timestamps": {
+        "from": "00:21:47,340",
+        "to": "00:21:50,340"
+      },
+      "offsets": {
+        "from": 1307340,
+        "to": 1310340
+      },
+      "text": "Image. وبعد كده أرجع آخد من الـ Image أحولها لـ Container تاني، آخد من"
+    },
+    {
+      "timestamps": {
+        "from": "00:21:50,340",
+        "to": "00:21:56,280"
+      },
+      "offsets": {
+        "from": 1310340,
+        "to": 1316280
+      },
+      "text": "الـ Template وأعمل منها نسخة تانية. أوكي؟ طيب هنا في نقطة مهمة،"
+    },
+    {
+      "timestamps": {
+        "from": "00:21:56,280",
+        "to": "00:21:59,700"
+      },
+      "offsets": {
+        "from": 1316280,
+        "to": 1319700
+      },
+      "text": "إني بدأت بالـ Kernel لأني قلت إن دي أهم فكرة."
+    },
+    {
+      "timestamps": {
+        "from": "00:21:59,700",
+        "to": "00:22:04,500"
+      },
+      "offsets": {
+        "from": 1319700,
+        "to": 1324500
+      },
+      "text": "الفكرة المحورية وعمود الخيمة في الـ Container إن ما يهمنيش أي"
+    },
+    {
+      "timestamps": {
+        "from": "00:22:04,500",
+        "to": "00:22:09,780"
+      },
+      "offsets": {
+        "from": 1324500,
+        "to": 1329780
+      },
+      "text": "حاجة في الـ Machine اللي شغال عليها غير الـ Kernel، تكون"
+    },
+    {
+      "timestamps": {
+        "from": "00:22:09,780",
+        "to": "00:22:14,880"
+      },
+      "offsets": {
+        "from": 1329780,
+        "to": 1334880
+      },
+      "text": "زي ما تكون. قولي دي Fedora، دي Linux، قولي ده Windows 10،"
+    },
+    {
+      "timestamps": {
+        "from": "00:22:14,880",
+        "to": "00:22:17,940"
+      },
+      "offsets": {
+        "from": 1334880,
+        "to": 1337940
+      },
+      "text": "ده Windows 11، ده Windows Server، ده كله اسمه Windows"
+    },
+    {
+      "timestamps": {
+        "from": "00:22:17,940",
+        "to": "00:22:22,800"
+      },
+      "offsets": {
+        "from": 1337940,
+        "to": 1342800
+      },
+      "text": "Kernel. ما يهمنيش أي حاجة تانية، بالطريقة دي."
+    },
+    {
+      "timestamps": {
+        "from": "00:22:22,800",
+        "to": "00:22:29,100"
+      },
+      "offsets": {
+        "from": 1342800,
+        "to": 1349100
+      },
+      "text": "كمان أنا لو خدت بالك قللت الاعتمادية لما يجي"
+    },
+    {
+      "timestamps": {
+        "from": "00:22:29,100",
+        "to": "00:22:33,420"
+      },
+      "offsets": {
+        "from": 1349100,
+        "to": 1353420
+      },
+      "text": "مثلاً عندك الـ Application دي، في من ضمن"
+    },
+    {
+      "timestamps": {
+        "from": "00:22:33,420",
+        "to": "00:22:37,860"
+      },
+      "offsets": {
+        "from": 1353420,
+        "to": 1357860
+      },
+      "text": "الحاجات حاجة اسمها مثلاً، فبقول لك إن الـ Application دي"
+    },
+    {
+      "timestamps": {
+        "from": "00:22:37,860",
+        "to": "00:22:41,580"
+      },
+      "offsets": {
+        "from": 1357860,
+        "to": 1361580
+      },
+      "text": "تنزل مثلاً على Windows 10، الـ Application دي محتاجة Windows"
+    },
+    {
+      "timestamps": {
+        "from": "00:22:41,580",
+        "to": "00:22:46,020"
+      },
+      "offsets": {
+        "from": 1361580,
+        "to": 1366020
+      },
+      "text": "8، الـ Application دي محتاجة مثلاً."
+    },
+    {
+      "timestamps": {
+        "from": "00:22:46,020",
+        "to": "00:22:47,340"
+      },
+      "offsets": {
+        "from": 1366020,
+        "to": 1367340
+      },
+      "text": "الـ Application دي محتاجة مثلاً Fedora."
+    },
+    {
+      "timestamps": {
+        "from": "00:22:47,940",
+        "to": "00:22:53,100"
+      },
+      "offsets": {
+        "from": 1367940,
+        "to": 1373100
+      },
+      "text": "أو محتاجة Ubuntu مثلاً، حتى دي أنا مابقتش محتاجها ولا"
+    },
+    {
+      "timestamps": {
+        "from": "00:22:53,100",
+        "to": "00:22:59,460"
+      },
+      "offsets": {
+        "from": 1373100,
+        "to": 1379460
+      },
+      "text": "بتفرق معايا، في الآخر دي إيه؟ Fedora مثلاً، ما"
+    },
+    {
+      "timestamps": {
+        "from": "00:22:59,460",
+        "to": "00:23:05,760"
+      },
+      "offsets": {
+        "from": 1379460,
+        "to": 1385760
+      },
+      "text": "يهمنيش بقى، ليه بقى؟ لأن في الآخر الـ Kernel بتاع ده واحد، في"
+    },
+    {
+      "timestamps": {
+        "from": "00:23:05,760",
+        "to": "00:23:10,680"
+      },
+      "offsets": {
+        "from": 1385760,
+        "to": 1390680
+      },
+      "text": "الآخر أنت محتاج يا Windows يا Linux، عايز Linux يعمل حاجة"
+    },
+    {
+      "timestamps": {
+        "from": "00:23:10,680",
+        "to": "00:23:16,020"
+      },
+      "offsets": {
+        "from": 1390680,
+        "to": 1396020
+      },
+      "text": "عشان أنا هنزل Linux، الحتة بتاعة إنه يكون Fedora أو إنه"
+    },
+    {
+      "timestamps": {
+        "from": "00:23:16,020",
+        "to": "00:23:17,760"
+      },
+      "offsets": {
+        "from": 1396020,
+        "to": 1397760
+      },
+      "text": "يكون Ubuntu أو مش عارف إيه هتبقى"
+    },
+    {
+      "timestamps": {
+        "from": "00:23:17,940",
+        "to": "00:23:22,140"
+      },
+      "offsets": {
+        "from": 1397940,
+        "to": 1402140
+      },
+      "text": "نفسه، فدي الطريقة عشان كده هنقول في التعريف الأول إن أنا بقى"
+    },
+    {
+      "timestamps": {
+        "from": "00:22:14,140",
+        "to": "00:23:25,920"
+      },
+      "offsets": {
+        "from": 1402140,
+        "to": 1405920
+      },
+      "text": "خالص، أنا كده عندي طريقة بعمل بيها Bundle للـ Application بالـ Requirements"
+    },
+    {
+      "timestamps": {
+        "from": "00:23:25,920",
+        "to": "00:23:31,260"
+      },
+      "offsets": {
+        "from": 1405920,
+        "to": 1411260
+      },
+      "text": "والـ Dependencies بتاعتها، أوكي؟ مابقتش محتاج إني أنزل Fedora"
+    },
+    {
+      "timestamps": {
+        "from": "00:23:31,260",
+        "to": "00:23:35,160"
+      },
+      "offsets": {
+        "from": 1411260,
+        "to": 1415160
+      },
+      "text": "في VM Linux وفي VM Fedora وفي VM مثلاً Windows 8"
+    },
+    {
+      "timestamps": {
+        "from": "00:23:35,160",
+        "to": "00:23:37,980"
+      },
+      "offsets": {
+        "from": 1415160,
+        "to": 1417980
+      },
+      "text": "وفي VM Windows 10 وفي VM Windows Server، مابقتش محتاج"
+    },
+    {
+      "timestamps": {
+        "from": "00:23:37,980",
+        "to": "00:23:42,780"
+      },
+      "offsets": {
+        "from": 1417980,
+        "to": 1422780
+      },
+      "text": "إني أعمل ده، في الآخر الـ Application دي بتنزل يا Linux"
+    },
+    {
+      "timestamps": {
+        "from": "00:23:42,780",
+        "to": "00:23:50,940"
+      },
+      "offsets": {
+        "from": 1422780,
+        "to": 1430940
+      },
+      "text": "يا Windows. تاني، أعمل ده بقى إزاي؟ يعني إزاي الـ Container اعتمد"
+    },
+    {
+      "timestamps": {
+        "from": "00:23:50,940",
+        "to": "00:23:57,360"
+      },
+      "offsets": {
+        "from": 1430940,
+        "to": 1437360
+      },
+      "text": "على الـ Kernel بس وكمل؟ هقول لك بقى إزاي، الحقيقة ده بيرجع لـ"
+    },
+    {
+      "timestamps": {
+        "from": "00:23:57,360",
+        "to": "00:24:05,520"
+      },
+      "offsets": {
+        "from": 1437360,
+        "to": 1445520
+      },
+      "text": "موجود برضو من السبعينات، وصدق أو لا تصدق، الـ Container ده ماهواش"
+    },
+    {
+      "timestamps": {
+        "from": "00:24:05,520",
+        "to": "00:24:12,240"
+      },
+      "offsets": {
+        "from": 1445520,
+        "to": 1452240
+      },
+      "text": "حاجة حديثة خالص، دي حاجة بقالها 50 سنة، أصلاً بتاع زمان"
+    },
+    {
+      "timestamps": {
+        "from": "00:24:12,240",
+        "to": "00:24:17,580"
+      },
+      "offsets": {
+        "from": 1452240,
+        "to": 1457580
+      },
+      "text": "والـ Linux systems كلها بتعتمد أصلاً على الـ Containers، بس بتعتمد على"
+    },
+    {
+      "timestamps": {
+        "from": "00:24:17,580",
+        "to": "00:24:25,320"
+      },
+      "offsets": {
+        "from": 1457580,
+        "to": 1465320
+      },
+      "text": "الـ Containers عندها جوه الـ Kernel، مفيش عندها Component كده اسمها"
+    },
+    {
+      "timestamps": {
+        "from": "00:24:25,320",
+        "to": "00:24:29,820"
+      },
+      "offsets": {
+        "from": 1465320,
+        "to": 1469820
+      },
+      "text": "Container، لأ دي بتعتمد على الـ Containers في الـ Kernel، إزاي؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:24:29,820",
+        "to": "00:24:35,400"
+      },
+      "offsets": {
+        "from": 1469820,
+        "to": 1475400
+      },
+      "text": "هقول لك أنا إزاي، الـ Unix systems والـ Linux systems بتعتمد جوه الـ Kernel"
+    },
+    {
+      "timestamps": {
+        "from": "00:24:35,400",
+        "to": "00:24:38,300"
+      },
+      "offsets": {
+        "from": 1475400,
+        "to": 1478300
+      },
+      "text": "على حاجة اسمها"
+    },
+    {
+      "timestamps": {
+        "from": "00:24:41,700",
+        "to": "00:24:46,860"
+      },
+      "offsets": {
+        "from": 1481700,
+        "to": 1486860
+      },
+      "text": "ده مش حوارنا دلوقتي، فانا هتكلم بس بسرعة فيها عشان أوريك إن"
+    },
+    {
+      "timestamps": {
+        "from": "00:24:46,860",
+        "to": "00:24:55,740"
+      },
+      "offsets": {
+        "from": 1486860,
+        "to": 1495740
+      },
+      "text": "الـ Concept أصلاً موجود، دي عبارة عن طريقة بيقدر بيها"
+    },
+    {
+      "timestamps": {
+        "from": "00:24:55,740",
+        "to": "00:25:00,960"
+      },
+      "offsets": {
+        "from": 1495740,
+        "to": 1500960
+      },
+      "text": "Linux أو Unix إنه يعمل Monitor لـ Process معينة استهلكت"
+    },
+    {
+      "timestamps": {
+        "from": "00:25:00,960",
+        "to": "00:25:09,620"
+      },
+      "offsets": {
+        "from": 1500960,
+        "to": 1509620
+      },
+      "text": "RAMs وهكذا، أنت بتبدأ مثلاً Process، أي Process ولكن مثلاً"
+    },
+    {
+      "timestamps": {
+        "from": "00:25:09,620",
+        "to": "00:25:16,160"
+      },
+      "offsets": {
+        "from": 1509620,
+        "to": 1516160
+      },
+      "text": "الـ Process دي أول ما اشتغلت خدت مثلاً 200GB RAM مثلاً"
+    },
+    {
+      "timestamps": {
+        "from": "00:25:16,160",
+        "to": "00:25:22,520"
+      },
+      "offsets": {
+        "from": 1516160,
+        "to": 1522520
+      },
+      "text": "وخدت مثلاً 1 Core وخدت قد كدة، دي وظيفتها إن هي"
+    },
+    {
+      "timestamps": {
+        "from": "00:22:22,520",
+        "to": "00:25:25,700"
+      },
+      "offsets": {
+        "from": 1522520,
+        "to": 1525700
+      },
+      "text": "تعمل Monitor للكلام ده، تفضل طول الوقت متابعة زي ما أنت بتعمل كدة"
+    },
+    {
+      "timestamps": {
+        "from": "00:25:25,700",
+        "to": "00:25:33,020"
+      },
+      "offsets": {
+        "from": 1525700,
+        "to": 1533020
+      },
+      "text": "بتبص على أو بتكتب مثلاً top في Linux وتشوف كل Process عندك واخدة"
+    },
+    {
+      "timestamps": {
+        "from": "00:25:33,020",
+        "to": "00:25:36,320"
+      },
+      "offsets": {
+        "from": 1533020,
+        "to": 1536320
+      },
+      "text": "قد إيه، ده موجود طبعاً في الـ cgroups، وظيفتها موجودة في كل"
+    },
+    {
+      "timestamps": {
+        "from": "00:25:36,320",
+        "to": "00:25:42,680"
+      },
+      "offsets": {
+        "from": 1536320,
+        "to": 1542680
+      },
+      "text": "الـ cgroups، وظيفتها إنها تعمل Monitor، ومش بس Monitor، إنها كمان تقدر"
+    },
+    {
+      "timestamps": {
+        "from": "00:25:42,680",
+        "to": "00:25:46,460"
+      },
+      "offsets": {
+        "from": 1542680,
+        "to": 1546460
+      },
+      "text": "تعمل Assign للـ Resources دي، لأن كدة لما تبقى لنا مثلاً Process معينة"
+    },
+    {
+      "timestamps": {
+        "from": "00:25:46,460",
+        "to": "00:25:49,880"
+      },
+      "offsets": {
+        "from": 1546460,
+        "to": 1549880
+      },
+      "text": "الـ Process دي ما تاخدش أكتر مثلاً من 100MB RAM أو إيه كدة؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:25:49,880",
+        "to": "00:25:53,480"
+      },
+      "offsets": {
+        "from": 1549880,
+        "to": 1553480
+      },
+      "text": "عامل 100MB RAM تمام؟ ما تاخدش أكتر مثلاً من 3 Cores مثلاً."
+    },
+    {
+      "timestamps": {
+        "from": "00:25:53,480",
+        "to": "00:26:00,020"
+      },
+      "offsets": {
+        "from": 1553480,
+        "to": 1560020
+      },
+      "text": "ما تاخدش مثلاً أكتر من كذا. فالـ cgroups دي عبارة عن تكنولوجي"
+    },
+    {
+      "timestamps": {
+        "from": "00:26:00,020",
+        "to": "00:26:06,740"
+      },
+      "offsets": {
+        "from": 1560020,
+        "to": 1566740
+      },
+      "text": "موجودة من زمان جداً جداً. وظيفتها إنها تعمل monitor و set"
+    },
+    {
+      "timestamps": {
+        "from": "00:26:06,740",
+        "to": "00:26:14,300"
+      },
+      "offsets": {
+        "from": 1566740,
+        "to": 1574300
+      },
+      "text": "بتاع الـ process بكل عيالها. ما أنت الـ process دي ممكن تفتح process تانية تعمل لها execute"
+    },
+    {
+      "timestamps": {
+        "from": "00:26:14,300",
+        "to": "00:26:19,700"
+      },
+      "offsets": {
+        "from": 1574300,
+        "to": 1579700
+      },
+      "text": "لـ process تانية اللي هي الـ child processes. تمام؟ فكل الـ processes دي كلها على"
+    },
+    {
+      "timestamps": {
+        "from": "00:26:19,700",
+        "to": "00:26:24,440"
+      },
+      "offsets": {
+        "from": 1579700,
+        "to": 1584440
+      },
+      "text": "بعضها كده بتشوف هي مستعملة قد إيه. الـ process دي من"
+    },
+    {
+      "timestamps": {
+        "from": "00:26:24,440",
+        "to": "00:26:29,240"
+      },
+      "offsets": {
+        "from": 1584440,
+        "to": 1589240
+      },
+      "text": "أول ما اشتغلت بكل عيالها اللي هي خلفتهم كـ process تانية"
+    },
+    {
+      "timestamps": {
+        "from": "00:26:29,240",
+        "to": "00:26:35,720"
+      },
+      "offsets": {
+        "from": 1589240,
+        "to": 1595720
+      },
+      "text": "خدوا قد إيه؟ فده الـ cgroups. والـ namespaces حاجة شبه كده شوية بس وظيفتها إنها"
+    },
+    {
+      "timestamps": {
+        "from": "00:26:35,720",
+        "to": "00:26:47,520"
+      },
+      "offsets": {
+        "from": 1595720,
+        "to": 1607520
+      },
+      "text": "تعمل isolation. يعني عندي مثلاً الـ process هي هي نفسها عملت process تانية اسمها"
+    },
+    {
+      "timestamps": {
+        "from": "00:26:47,520",
+        "to": "00:26:55,980"
+      },
+      "offsets": {
+        "from": 1607520,
+        "to": 1615980
+      },
+      "text": "مثلاً process 2 وعملت process تالتة اسمها process 3. و process 2 راحت فتحت"
+    },
+    {
+      "timestamps": {
+        "from": "00:26:55,980",
+        "to": "00:26:58,980"
+      },
+      "offsets": {
+        "from": 1615980,
+        "to": 1618980
+      },
+      "text": "كمان process 4."
+    },
+    {
+      "timestamps": {
+        "from": "00:26:59,240",
+        "to": "00:27:06,620"
+      },
+      "offsets": {
+        "from": 1619240,
+        "to": 1626620
+      },
+      "text": "و process 3 راحت فتحت مثلاً process 5 و process 6. وظيفة"
+    },
+    {
+      "timestamps": {
+        "from": "00:26:06,620",
+        "to": "00:27:11,420"
+      },
+      "offsets": {
+        "from": 1626620,
+        "to": 1631420
+      },
+      "text": "الـ namespaces دي إنها تتأكد إن الـ resources بتاعة الـ processes دي"
+    },
+    {
+      "timestamps": {
+        "from": "00:27:11,420",
+        "to": "00:27:18,380"
+      },
+      "offsets": {
+        "from": 1631420,
+        "to": 1638380
+      },
+      "text": "كلها جوه بعضها، إن الـ processes دي كلها شايفين بعض وشايفين الـ context بتاعهم"
+    },
+    {
+      "timestamps": {
+        "from": "00:27:18,380",
+        "to": "00:27:26,240"
+      },
+      "offsets": {
+        "from": 1638380,
+        "to": 1646240
+      },
+      "text": "وتقدر لو فيه حاجة هنا تتشاف من هنا وهكذا. الاتنين دول مع بعض"
+    },
+    {
+      "timestamps": {
+        "from": "00:27:26,240",
+        "to": "00:27:31,040"
+      },
+      "offsets": {
+        "from": 1646240,
+        "to": 1651040
+      },
+      "text": "والـ namespaces لو فكرت فيها هي تقريباً الـ Container. تقريباً هي"
+    },
+    {
+      "timestamps": {
+        "from": "00:27:31,040",
+        "to": "00:27:36,380"
+      },
+      "offsets": {
+        "from": 1651040,
+        "to": 1656380
+      },
+      "text": "الـ Container. يعني لو أنت تخيلت مثلاً إن الـ Container نفسه كـ technology"
+    },
+    {
+      "timestamps": {
+        "from": "00:27:36,380",
+        "to": "00:27:42,740"
+      },
+      "offsets": {
+        "from": 1656380,
+        "to": 1662740
+      },
+      "text": "كـ process يعني بدأ مثلاً بـ process واحدة. تمام؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:27:42,740",
+        "to": "00:27:53,860"
+      },
+      "offsets": {
+        "from": 1662740,
+        "to": 1673860
+      },
+      "text": "اسمها مثلاً runc. والـ runc دي راحت عاملة الـ isolation اللي إحنا"
+    },
+    {
+      "timestamps": {
+        "from": "00:27:53,860",
+        "to": "00:27:59,320"
+      },
+      "offsets": {
+        "from": 1673860,
+        "to": 1679320
+      },
+      "text": "اتكلمنا عليه. والـ process الأولانية راحت تعمل processes تانية."
+    },
+    {
+      "timestamps": {
+        "from": "00:27:59,320",
+        "to": "00:28:09,700"
+      },
+      "offsets": {
+        "from": 1679320,
+        "to": 1689700
+      },
+      "text": "مثلاً دي فتحت تانية، وده عمل مثلاً كذا process"
+    },
+    {
+      "timestamps": {
+        "from": "00:28:09,700",
+        "to": "00:28:19,960"
+      },
+      "offsets": {
+        "from": 1689700,
+        "to": 1699960
+      },
+      "text": "وعمل كل ده. بالنسبة لـ Linux هي في الأصل process واحدة بس بدأت"
+    },
+    {
+      "timestamps": {
+        "from": "00:28:19,960",
+        "to": "00:28:23,840"
+      },
+      "offsets": {
+        "from": 1699960,
+        "to": 1703840
+      },
+      "text": "اللي هي runc دي بكل الـ child processes اللي نشأت منها."
+    },
+    {
+      "timestamps": {
+        "from": "00:28:23,860",
+        "to": "00:28:31,000"
+      },
+      "offsets": {
+        "from": 1703860,
+        "to": 1711000
+      },
+      "text": "ويقدر Linux يتعامل معاهم كوحدة واحدة. كلهم مع بعض كوحدة"
+    },
+    {
+      "timestamps": {
+        "from": "00:28:31,000",
+        "to": "00:28:38,800"
+      },
+      "offsets": {
+        "from": 1711000,
+        "to": 1718800
+      },
+      "text": "واحدة. وعن طريق الـ namespaces هيـ isolate كل الـ processes دي بكل اللي خرج منها عن أي حاجة"
+    },
+    {
+      "timestamps": {
+        "from": "00:28:38,800",
+        "to": "00:28:49,300"
+      },
+      "offsets": {
+        "from": 1718800,
+        "to": 1729300
+      },
+      "text": "تانية موجودة في الـ OS، لا هما يشوفوها ولا هي تشوفهم. ده وده أصلاً حتى"
+    },
+    {
+      "timestamps": {
+        "from": "00:28:49,300",
+        "to": "00:28:56,260"
+      },
+      "offsets": {
+        "from": 1729300,
+        "to": 1736260
+      },
+      "text": "مجازاً كان بيطلق عليها process group في Linux. ويقدر الـ kernel يتعامل"
+    },
+    {
+      "timestamps": {
+        "from": "00:28:56,260",
+        "to": "00:29:00,940"
+      },
+      "offsets": {
+        "from": 1736260,
+        "to": 1740940
+      },
+      "text": "معاهم مش بس كوحدة واحدة، يقدر كمان إنه يبعت لهم signals. ودي برضو"
+    },
+    {
+      "timestamps": {
+        "from": "00:29:00,940",
+        "to": "00:29:03,820"
+      },
+      "offsets": {
+        "from": 1740940,
+        "to": 1743820
+      },
+      "text": "هتشوفها، مش هنتكلم عليها كتير بس ممكن تقابلها. زي"
+    },
+    {
+      "timestamps": {
+        "from": "00:29:03,820",
+        "to": "00:29:10,060"
+      },
+      "offsets": {
+        "from": 1743820,
+        "to": 1750060
+      },
+      "text": "إيه؟ زي الـ SIGINT مثلاً أو الـ signals بشكل عام وهكذا"
+    },
+    {
+      "timestamps": {
+        "from": "00:29:10,060",
+        "to": "00:29:14,440"
+      },
+      "offsets": {
+        "from": 1750060,
+        "to": 1754440
+      },
+      "text": "يعني. فلما أبعت signal للـ process دي، ولما أبعت signal"
+    },
+    {
+      "timestamps": {
+        "from": "00:29:14,440",
+        "to": "00:29:17,140"
+      },
+      "offsets": {
+        "from": 1754440,
+        "to": 1757140
+      },
+      "text": "للـ process الأولى اللي هي الـ parent process،"
+    },
+    {
+      "timestamps": {
+        "from": "00:29:17,140",
+        "to": "00:29:26,260"
+      },
+      "offsets": {
+        "from": 1757140,
+        "to": 1766260
+      },
+      "text": "فيقوم موقف كل حاجة، اللي هو يعمل stop للـ container كله. دي الفكرة"
+    },
+    {
+      "timestamps": {
+        "from": "00:29:26,260",
+        "to": "00:29:35,140"
+      },
+      "offsets": {
+        "from": 1766260,
+        "to": 1775140
+      },
+      "text": "الأصلية. وعشان فكرة الـ isolation دي موجودة في الـ Linux Kernel، فأنا مش"
+    },
+    {
+      "timestamps": {
+        "from": "00:29:35,140",
+        "to": "00:29:40,720"
+      },
+      "offsets": {
+        "from": 1775140,
+        "to": 1780720
+      },
+      "text": "محتاج غير الـ Kernel بس بتاع Linux. وده دايماً موجود سواء كان"
+    },
+    {
+      "timestamps": {
+        "from": "00:29:40,720",
+        "to": "00:29:46,600"
+      },
+      "offsets": {
+        "from": 1780720,
+        "to": 1786600
+      },
+      "text": "في Fedora أو Debian أو CentOS أو حتى"
+    },
+    {
+      "timestamps": {
+        "from": "00:29:46,600",
+        "to": "00:29:51,100"
+      },
+      "offsets": {
+        "from": 1786600,
+        "to": 1791100
+      },
+      "text": "Suse Linux في كل الـ Linux distributions. ليه؟ عشان موجود في"
+    },
+    {
+      "timestamps": {
+        "from": "00:29:51,100",
+        "to": "00:29:56,860"
+      },
+      "offsets": {
+        "from": 1791100,
+        "to": 1796860
+      },
+      "text": "الـ Kernel. فبما إن أنا كواحد هعمل implement للـ container، مش"
+    },
+    {
+      "timestamps": {
+        "from": "00:29:56,860",
+        "to": "00:30:00,580"
+      },
+      "offsets": {
+        "from": 1796860,
+        "to": 1800580
+      },
+      "text": "محتاج أكتر من ده، يبقى أنا مش محتاج أكتر من الـ Kernel عشان"
+    },
+    {
+      "timestamps": {
+        "from": "00:30:00,580",
+        "to": "00:30:06,040"
+      },
+      "offsets": {
+        "from": 1800580,
+        "to": 1806040
+      },
+      "text": "أعمل الـ container بتاعي. دي الفكرة الرئيسية. مش هخوض كتير في"
+    },
+    {
+      "timestamps": {
+        "from": "00:30:06,040",
+        "to": "00:30:10,180"
+      },
+      "offsets": {
+        "from": 1806040,
+        "to": 1810180
+      },
+      "text": "الموضوع بالتفصيل، بس أنت عرفت إزاي قدرت أخلي الـ container"
+    },
+    {
+      "timestamps": {
+        "from": "00:30:10,720",
+        "to": "00:30:14,620"
+      },
+      "offsets": {
+        "from": 1810720,
+        "to": 1814620
+      },
+      "text": "أحقق الفكرة بتاعة إن أنا أعتمد بس على الـ Kernel وأستغنى عن"
+    },
+    {
+      "timestamps": {
+        "from": "00:30:14,620",
+        "to": "00:30:18,700"
+      },
+      "offsets": {
+        "from": 1814620,
+        "to": 1818700
+      },
+      "text": "وكل المشاكل اللي جاية معاه. عملت ده إزاي؟ عملت ده عن طريق إن أنا"
+    },
+    {
+      "timestamps": {
+        "from": "00:30:18,700",
+        "to": "00:30:22,660"
+      },
+      "offsets": {
+        "from": 1818700,
+        "to": 1822660
+      },
+      "text": "غصت جوه الـ Kernel، وتلاقي تكنولوجيا في الـ Kernel تساعدني"
+    },
+    {
+      "timestamps": {
+        "from": "00:30:22,660",
+        "to": "00:30:24,960"
+      },
+      "offsets": {
+        "from": 1822660,
+        "to": 1824960
+      },
+      "text": "إن أنا أعمل ده اللي هي:"
+    }
+  ]
+}

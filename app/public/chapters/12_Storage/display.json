@@ -1,0 +1,526 @@
+{
+  "chapterNumber": 12,
+  "title": "Storage",
+  "folderName": "12_Storage",
+  "formattedAt": "2026-06-20T11:15:49.162Z",
+  "model": "local-curated-display",
+  "sections": [
+    {
+      "id": "container-storage-problem",
+      "heading": "مشكلة التخزين داخل Containers",
+      "diagramId": "DockerStorageDiagram",
+      "blocks": [
+        {
+          "type": "definition",
+          "content": "Immutable Container Pattern\nالـ image ثابتة والـ container layer مؤقتة، لذلك البيانات المهمة لازم تخرج إلى volume أو bind mount.",
+          "sourceSegmentRange": [
+            0,
+            1
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "تعالوا نتكلم أكتر شوية عن الـ Container Volumes والـ Storage، نقطة مهمة كررناها كتير قبل كده بس خلينا نعيد عليها مرة تانية. الـ Containers متصممة إن هي تبقى Isolated و Immutable، و Immutable يعني مش Read/Write. الهدف من الـ Container إنه بيـ Simulate الـ Application، زي مثلاً الـ Python Container هو Python Application. الـ Nginx Container هو Nginx Application، المفروض إنه بيؤدي غرضه وبيخرج، حتى كمان بيتقال على الـ Containers إنها Stateless. الـ Concept بتاع Stateless و Stateful ده هنتكلم عنه أكتر لما نتكلم على الـ Services في الـ Docker Compose. بس فكرة الـ Container إنه بيبقى Isolated وبيؤدي وظيفة واحدة وبيخرج. علاقته بالـ Storage المفروض متبقاش علاقة دائمة.",
+          "sourceSegmentRange": [
+            0,
+            6
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "أي حاجة بتتكريت جوه الـ Container بيبقى عمرها من عمر الـ Container نفسه. بتعيش طول ما هو عايش وبتموت مع الـ Container لما الـ Container بيتشال. لكن في أوقات كتيرة بتحتاج إن تحتاج إنها تكتب حاجة والـ Storage دي تبقى منفصلة، الـ Lifecycle بتاعتها منفصلة عن الـ Lifecycle بتاعة الـ Container، مش لما الـ Container يموت الـ Lifecycle هي كمان تموت. وعشان كده Docker بيقدم حلول بتخلي الـ Container يقدر",
+          "sourceSegmentRange": [
+            7,
+            13
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "إنه يكتب بره الـ Container، تمام؟ لكن قبل ما نيجي للحتة دي خلينا نتكلم على نوعين داتا في الـ Container. في عندي نوع اللي هو الـ Ephemeral Data، هو اللي إحنا قلنا عليه، الداتا اللي عمرها من عمر الـ Container نفسه. أمثلة عليها كنا شفناها لما عملنا Copy لفايل من الـ Docker Host لجوه الـ Docker Container. هو دخل جوه الـ Docker Container، بس لو عملت Remove للـ Container ده خلاص الفايل هيتشال معاه. ليه بقى بيحصل الكلام ده؟ ليه الداتا",
+          "sourceSegmentRange": [
+            14,
+            20
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "اللي بيكريتها الـ Container جواه بتموت مع الـ Container نفسه؟ اللي بيحصل إننا لو رجعنا للـ Architecture الأصلي بتاع الـ Image، إنت لو سحبت مثلاً Image Python زي ما إحنا عملنا، الـ Image بتاعت Python دي بتبقى عبارة عن Layers، وقلنا إن الـ Image كلها بتبقى عبارة عن الـ File System اللي فيه الـ Layers دي والـ Layers دي عبارة عن الـ File System. الـ Image دي كلها لما بتكريت Container من الـ Image اللي هي Python دي، اللي بيحصل إنه بيكريت",
+          "sourceSegmentRange": [
+            21,
+            27
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Layer زيادة، الـ Layer دي بتبقى إضافة فوق الـ Image، وهو ده بالفعل اللي بيبقى الـ Container. الـ Container بيبقى مجرد Layer إضافية على الـ Layers اللي مسحوب منها الـ Image بتاعت الـ Container ده. في الـ Layer دي بقى هي اللي إنت بتدخل وتكتب فيها وتعمل Copy فيها وتطلع فيها الـ Outputs بتاعتك. الـ Layer دي هي اللي بيبقى عمرها من عمر الـ Container، وبتتكريت الـ Layer دي كـ Folder جوه، وطول ما الـ Container موجود سواء كان Running أو غيره",
+          "sourceSegmentRange": [
+            28,
+            34
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الفولدر ده موجود. لما بتعمل Delete للـ Container ده الفولدر ده كله بيروح، فبالتالي عمر الداتا دي مربوط بعمر الـ Container. تعالوا نشوف ده. أنا عندي هنا الجهاز فاضي خالص، نضفنا كل حاجة مطرح ما كنا بنجرب قبل كده. خليني أدخل على المكان اللي الـ Docker فيه بيعمل Maintain للـ Images والـ Layers بتاعتها والـ Storage الخاصة بيها. في الـ Container، المكان ده هيكون فيه cd /var/lib Docker. وعشان ده، فمش هعرف أدخل عليه باليوزر",
+          "sourceSegmentRange": [
+            35,
+            41
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "العادي، فاضطريت إني أدخل عليه بالـ super user. لو بصيت جوة هنا هلاقي حاجات مهمة بالنسبة لنا، من ضمنها مثلاً الـ Drivers. في Docker بتنزل Drivers معينة زي ما كان فيه Network drivers مختلفة زي ما شفنا من شوية، بس عشان Docker يقدر إنه يعمل represent للـ Container للـ storage اللي برة زي ما في الـ Network كده، عشان الـ Container يشوف الـ Network لازم يكون فيه Driver. فـ الـ Driver المستخدم هو الـ Overlay2.",
+          "sourceSegmentRange": [
+            42,
+            48
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ماتتلخبطش ما بينه وما بين بتاع الـ Network، هما الاتنين اسمهم Drivers بس بتاع الـ Storage اسمه Overlay2. جوه هنا هنشوف الفكرة اللي اتكلمنا عليها بخصوص الـ non-persistent data اللي شفناها في الـ Container. فلو جيت كده قلت له cd overlay2 و ls هلاقيه فاضي دلوقتي، فيه folder واحد بس system folder اسمه L مالناش دعوة بيه. Folder اسمه L مالناش دعوة بيه. دلوقتي خليني أروح أعمل مثلاً هاجي أقول له Docker image",
+          "sourceSegmentRange": [
+            49,
+            55
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "عفواً CentOS. هعمل CentOS، هلاقي إن CentOS دي فيها Layer واحدة، الـ Image دي فيها Layer واحدة بس. لو رجعت تاني هنا وعملت ls مرة تانية، هلاقي إنه غير الـ Folder اللي كان موجود قبل كده اللي مالناش دعوة بيه، بقى فيه Folder تاني هنا اسمه كبير زي ما إنت شايف، الـ ID بتاعه. لو دخلت جوه الـ Folder ده وعملت ls هلاقي إن بقى فيه Folder اسمه diff، لو دخلت على",
+          "sourceSegmentRange": [
+            56,
+            62
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ directory اللي اسمه diff ده، هلاقي فيه الـ root file system. دي اللي لما بتعمل pull للـ Image بتبقى هي الـ layers. خلينا نشوف الكلام ده، هنطلع بره هنا مش محتاج ده خلاص. لو جيت هنا، نطلع بره كده، لو جيت هنا وقلت له docker run -it. مش لازم أكتب container بس ماشي، docker run -it --name، خلينا نديله اسم مثلاً centos-c، وأقوله من الـ Image اللي هي centos",
+          "sourceSegmentRange": [
+            63,
+            69
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وأقوله bash. دلوقتي أنا عملت run من الـ Image اللي اسمها centos. تمام؟ خلينا نرجع تاني للـ directory ونشوف جواه إيه. هاجي هنا هقوله ls مرة تانية، هلاقي المرة دي كريت لي 2 Folders بأسماء طويلة بالمنظر ده. خلينا نشوف الـ Directory التاني اللي هو عمله اللي أوله db 7 ده. لو عملت cd db7 مثلاً وبعدين cd diff، هلاقي جوة الـ diff folder ده، يعني جوة الـ Directory ده اللي أنا",
+          "sourceSegmentRange": [
+            70,
+            76
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "جواه شوية directories تانية زي dev و link وكلام من ده. جوه مش هلاقي حاجة. تمام؟ تعال نرجع للـ Container. هاجي للـ Container اللي أنا فيه ده.",
+          "sourceSegmentRange": [
+            77,
+            79
+          ]
+        }
+      ]
+    },
+    {
+      "id": "writable-layer-demo",
+      "heading": "Writable Layer عملياً",
+      "blocks": [
+        {
+          "type": "warning",
+          "content": "أي ملفات تكتبها داخل container فقط ستظل مرتبطة بالـ container نفسه، ولو اتمسح ستضيع معها.",
+          "sourceSegmentRange": [
+            80,
+            81
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "هاجي أقول له مثلاً أو خلينا نشوف اللي موجودة. هلاقي فيه شوية كده اللي هي بتاعة، هقول له دخلنا كده في، هلاقي إن جوه مثلاً فيه شوية كده. عشان ما نتلخبطش بس. تمام؟ هرجع تاني هنا كده للـ Docker هعمل مرة تانية هلاقي جوه، تمام؟ خد بالك إحنا فين؟ إحنا جوه ده. هلاقي بقى فيه Folder اسمه. لو دخلت جوه. هلاقي بقى فيه File اسمه. هعمل وأعتقد زي ما أنتم",
+          "sourceSegmentRange": [
+            80,
+            86
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "متوقعين يعني هتلاقوا اللي إحنا كتبناه من شوية. يبقى الحاجات اللي أنا عمال بعملها جوه ده، التغييرات اللي أنا بغيرها جوه ده في الأصل هي عبارة عن موجود في الـ Container بيأكسس ده وبيعمل جوه تغييرات. كل ما هاجي أعدل في حاجة، التعديلات هتروح في الحتة دي. ودي هي الحتة بتاعة الـ Layer اللي هي. طول ما أنت جوه الـ Container والـ Container مفيش أي مشكلة خالص. Okay؟ اطلع بره كده.",
+          "sourceSegmentRange": [
+            87,
+            93
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Okay؟ طول ما أنا جوه الـ Container الـ Folder ده موجود وشغال، عايز توقف الـ Container مفيش مشكلة، تيجي تفتحه تاني هيفضل الـ Layer موجودة وزي الـ Folder عادي ومفيش أي مشكلة خالص. المشكلة بتحصل إمتى بقى؟ بتحصل لما آجي أقول له exit مثلاً من الـ Container ده وبعدين آجي أقوم ماسح الـ Container كله كده على بعضه يعني. Okay؟ هاجي أو أمسح الـ Container كله كده على بعضه يعني. Okay؟ أو Docker Container، Okay؟ وأرجع هنا تاني وأقول له هتروح كلها مع",
+          "sourceSegmentRange": [
+            94,
+            100
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Container وعشان كده كنا بنقول إن اللي بتتكريت دي عمرها من عمر الـ Container نفسه. فده كده شكل من أشكال، دي الفكرة بتاعته وده السبب اللي بيخلي أي حاجة أنت بتعملها جوه الـ Container بتفضل عايشة طول ما الـ Container موجود. طب بنبدأ نحل المشكلة دي إزاي؟ أنت أكيد في وقت من الأوقات هتحتاج إن يكون عندك الـ Container مثلاً ليه علاقة بـ Data سواء هو اللي بيكريت الـ Data أو هو اللي بيشتغل على الـ Data دي. والـ Data دي ثابتة ملهاش علاقة بالـ Container. أو",
+          "sourceSegmentRange": [
+            101,
+            107
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "إن يكون كذا Container عايزين يشوفوا نفس الـ Data مع بعض يعني تخيل أنت عندك مثلاً Web Server وعندك Database Server مثلاً يعني وهكذا يعني. فأول حل وأسرع حل لحاجة زي كده إنك تعمل حاجة اسمها Bind Mount. الـ Bind Mount إنك تعمل جوه الـ Container، تعمل Folder من الـ Docker Host يتشاف جوه الـ Container. ويتشاف بشكل دائم وبصورة دائمة. Okay؟ وكل ما تغير حاجة في الـ Docker Host جوه الـ Container. ده Mounting عادي زي الـ Mounting اللي بيتعمل في",
+          "sourceSegmentRange": [
+            108,
+            114
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "عادي جداً. Okay؟ فنعمل ده إزاي؟ تعالى ناخد مثال وأعتقد إننا كنا خدناه قبل كده، خليني أعمل exit من الـ Mode ده مش محتاجه دلوقتي، خليني أدخله بعدين. لو أنا جيت عملت تمام؟ خليني مثلاً أو خليني أعمل حاجة الأول، أنا كان عندي الـ File ده اللي هو file.py ده. لو تفتكروا إحنا عملنا له وعملنا له وبعدين قلنا إن أنا كل مرة هاجي أغير في الفايل هحتاج إن أنا يا إما أفرمت الـ Container وأعمله من أول وجديد فيشوف التغييرات وده",
+          "sourceSegmentRange": [
+            115,
+            121
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "طبعاً مش منطقي، فخلينا نعمل حاجة هنا، خلينا مثلاً نـ Create مثلاً هنا هسميه مثلاً code، أوكي؟ خلينا ننقل الفايل ده نحطه جوه code، هـ Move الفايل ده جوه اللي اسمه code، إنك إنت لما تيجي تـ Create الـ Container تقولي الـ Container ده خد الـ Directory ده Copy عندك في الـ Container بس مش Copy هو بيبقى Mounting هو بيبقى كأن",
+          "sourceSegmentRange": [
+            122,
+            128
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Container ده جواه Shortcut للـ Directory اللي موجود في الـ Host فمش Copy هو Mount أوكي فخليني خليني نشوف مثال على كده لو جيت قلت له Docker",
+          "sourceSegmentRange": [
+            129,
+            135
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "container run -it هقول له بقى -v أو --volume، والـ v دي يعني for volume، وهقول له أنا عايز إنك إنت تحط لي الـ code Directory ده تعمل له Shortcut جوه الـ Container، المهم هنا إنك إنت لازم تحط",
+          "sourceSegmentRange": [
+            136,
+            142
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Path الكامل من الـ Host للـ Container، عشان نعمل ده خلينا نشوف ونتأكد بس الـ Path بتاعي إيه لو أنا قلت له كدة مثلاً code. أحسن طريقة وأسهل طريقة إنك تعمل كده، فآجي آخد أنا ده كده Copy، وأروح هنا كده وأقوله من الـ Host من الـ /home /sami/code وديه على /app مثلاً جوه الـ Container، حتى لو كان الـ Directory ده مش موجود هو هيـ Create جوه الـ Container، أوكي؟ وهقوله Run مثلاً Python Container وأنا",
+          "sourceSegmentRange": [
+            143,
+            149
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "عايز أفتح الـ Python Container مش عايز أفتح أولاً خليها Python عادي مش فارق يعني، هيـ Execute طبعاً Python Image لسه مش موجودة، هيـ Download الـ Image وبعدين هيفتح لي الـ REPL mode بتاع Python عادي لأن هو ده الـ Default command أو الـ Default اللي بتشتغل جواه، بعد ما يخلص هيفتح، هدخل هنا أعمل لها Expand فوق شوية كده، هدخل على الـ REPL mode، لو جيت قلت له import os وقلت له os.listdir ونروح على الـ Path على طول اللي هو كان",
+          "sourceSegmentRange": [
+            150,
+            156
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "/app فهلاقي إنه فعلاً عمل لي الفولدر وفعلاً جواه الفايل، لو تفتكر إحنا كنا قلنا مثلاً لو قولت له open('/app/code/file.py')",
+          "sourceSegmentRange": [
+            157,
+            159
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bind-mount-demo",
+      "heading": "Bind Mount بين Host وContainer",
+      "diagramId": "DockerStorageDiagram",
+      "blocks": [
+        {
+          "type": "flow",
+          "content": "اختيار folder من الـ host\nربطه بمسار داخل الـ container\nأي تعديل في host يظهر داخل container\nأي تعديل داخل container يظهر في host",
+          "sourceSegmentRange": [
+            160,
+            161
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "file ده .read صح؟ على إنه عمل execution للفايل ده. صح؟ على إنه عمل execution للفايل ده. دلوقتي بقى ودي الحاجة اللي إحنا مكناش عارفين نعملها المرة اللي فاتت إن أنا هقول له كده مثلاً أعرف أي حاجة، OK؟ وأقوم لما أعمل execute تاني هنا من نفس الـ Container هلاقي حصل، لأن هو مباشرة شايف الـ data بتاعته. ده ده مش copy ده Mount، OK. فدي طريقة والـ type ده اسمه",
+          "sourceSegmentRange": [
+            160,
+            166
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Mount. دلوقتي لو الـ Container ده اتمسح وفتحت واحد تاني مكانه برضه هيشتغل عادي مفيش مشكلة، لأن الـ content ده أو الـ storage دي عندي هنا على الـ Host ملهاش علاقة بالـ Container. فدي برضه طريقة من الطرق اللي بقدر أعمل بيها، بس برضه فيه طريقة تانية أحسن من كده وهي إنك تعمل Docker Volume. الـ Volume وده هيرجعنا تاني للـ Docker اللي إحنا كنا شفناه من شوية، sorry.",
+          "sourceSegmentRange": [
+            167,
+            173
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Docker Volume هو عبارة عن directory برضه بيكريته Docker بس بيكريته في مكان معين، اللي هو المكان اللي إحنا كنا فيه، خليني أدخل كده على نفس المكان التاني اللي هو cd /var/lib/docker وقلنا هنا إن كان فيه directory اسمه volumes لو بصيت على volumes دلوقتي هلاقي فيه بس شوية metadata database وحاجات زي كده",
+          "sourceSegmentRange": [
+            174,
+            180
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "مفهوش volumes متكريتة علشان أكريت Volume أقدر أجيب هنا كده وأقول له docker volume create الـ commands متشابهة جداً، Docker سميه مثلاً myvol. لما هكريت الـ Volume ده هتلاقي حتى عندك على الشمال كده بقى فيه هنا Volume وتقدر تدوس كليك عليه وتعمل Inspect، ولما تعمل هيقولك الـ myvol اللي إنت كريته ده",
+          "sourceSegmentRange": [
+            181,
+            187
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "متكريت فين فعلا عندك أصلاً في الـ Host، يعني ده الـ Mount point أهو اللي /var/lib/docker/volumes/myvol/_data/ OK؟ فأقدر إني أرجع هنا تاني وأقول له ls مرة تانية فهلاقي myvol، هقول له cd myvol وبعدين ls فهلاقي الـ _data. دلوقتي بقى وأنا بكريت الـ Container أقدر إن أنا بنفس الـ switch اللي استعملته اللي هو -v أقول له مكانه يبقى فين في",
+          "sourceSegmentRange": [
+            188,
+            194
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Container. بنفس الطريقة اللي كريت بيها الـ Container من شوية: Docker container -it -v المرة دي هقول له من غير من غير أي path ولا أي حاجة لأنه خلاص هو عارف ده رايح وجاي منين، عارف مكانه فين، وهقول له خلي ده برضه في /app/code. وأقول له python. OK؟ والمرة دي خلينا مش مهم إن أنا أفتح Python نفسه. على طول. لو جيت قلت له cd / فهلاقي code. OK?",
+          "sourceSegmentRange": [
+            195,
+            201
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "cd code. مفيش أي حاجة عشان مفيش عندي حاجة في اللي إحنا كريتناه على الـ Host. لو رجعت للـ Host هنا وقلت له cd underscore وقلت له مثلاً مثلاً volume، وخلينا نبقى مميزين شوية عشان ملخبطش نفسنا. دي زي ما هي، وده زي ما هو. في مثلاً file 1 مثلاً. بقى عندي الفايل ده موجود هنا. هرجع تاني للـ Container وهقول له ls هلاقي الفايل موجود. دلوقتي قادر إن أنا أقول له file",
+          "sourceSegmentRange": [
+            202,
+            208
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "1. هي نفس الفكرة، فكرة مشابهة للي إحنا عملناها بس ده شكل احترافي أكتر. وكمان علشان لما تبدأ تنقل Data من Docker تاني فمش محتاج إنك تعمل Keep track ده فين، فخلاص إحنا عارفين إن كله هيتكاريت في نفس المكان ده في أي Docker Host. OK؟ فلما تيجي تنقل الـ Configuration دي في أي Docker Host. OK، فلما تيجي الـ Configuration دي على أي حتة تانية خلاص إحنا عارفين فين المكان ده بيبقى ثابت في كل",
+          "sourceSegmentRange": [
+            209,
+            215
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Linux Host. OK؟ فده شكل الـ Mount اللي إحنا شفناه والـ Volumes بتاع Docker Host. Docker create volume. أنا رحت كده، خلينا نخرج من هنا خلاص مش محتاجه، وآجي هنا أقول له docker volume ls فده هيوريني اللي موجود عندي وقادر إن أنا أتعامل معاه زي أي Object تاني في Docker. من الحاجات التانية اللي تقدر تعملها برضه إن حتى ده اللي موجود في الـ Docker تقدر إنك كمان تعمله على أي Driver تاني مش لازم يكون Local، ممكن كمان يكون بيشاور على Cloud",
+          "sourceSegmentRange": [
+            216,
+            222
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "أو بيشاور على NFS، فبالطريقة دي هتخلي الـ Container بتاعك إنه يشوف Data سواء كانت موجودة عندك على الـ Host أو لا. دي مراجعة سريعة. إحنا قلنا إن الفكرة الأساسية إن الـ Container المفروض إنه ما بيتغيرش، والفرق ما بين الـ Container وما بين الـ Image إن الـ Container بيبقى فيه زيادة Writable Layer، واللي بيحصل إن الـ Layer دي عمرها من عمر الـ Container، وعشان يبقى عندك Persistence فإنت عندك حاجة من اتنين:",
+          "sourceSegmentRange": [
+            223,
+            229
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "إما إنك تعمل Bind Mount ويكون عندك Directory موجود على الـ Host، والـ Directory ده بتعمله Mapping وإنت بتكاريت الـ Container تقدر إنك تعمله Mount جوه الـ Container وبالتالي هتفصل الـ Lifecycle بتاعة الـ Storage عن الـ Lifecycle بتاعة الـ Container. وطريقة تانية هي إنك تعمل Docker Volume، وده بيبقى عبارة عن Directory بيتكاريت جوه",
+          "sourceSegmentRange": [
+            230,
+            236
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Docker Root وتقدر إنك تعمل Attach لأي Third-party Drivers للكلام ده، فبالتالي أياً كان إيه اللي هيبقى جوه الـ Directory ده بيشاور على فين، سواء كان Mount point أو Shortcut لحاجة على الـ Network.",
+          "sourceSegmentRange": [
+            237,
+            239
+          ]
+        }
+      ]
+    },
+    {
+      "id": "named-volumes-and-sharing",
+      "heading": "Named Volumes ومشاركة البيانات",
+      "diagramId": "DockerStorageDiagram",
+      "blocks": [
+        {
+          "type": "definition",
+          "content": "Named Volume\nStorage يديره Docker ويمكن ربطه بأكثر من container بحيث يقرأوا ويكتبوا نفس البيانات.",
+          "sourceSegmentRange": [
+            240,
+            241
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Cloud أو Shared Storage مثلاً في SAN أو أي شيء من هذا القبيل. الـ Container هيبقى ليه Access. ليه؟ عملنا Inspect عشان نشوف فين الـ Path بتاع الـ Volume اللي إحنا بنـ Createـه. تقدر إن أنت كمان نفس الـ Volume ده تعمله على أكتر من Container. فكذا Container يشوفوا نفس الـ Data هي هي. شفنا وكلمتا برضه على الموضوع ده، إن أنا لو أنا عملت Volume واحد بس أقدر أخليه أكتر من Container يقدروا يقروا ويكتبوا في نفس الـ Path هو هو. OK؟ فده كان بس حتة زيادة كده",
+          "sourceSegmentRange": [
+            240,
+            246
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "على موضوع الـ Container Volumes. طيب تعالوا نتنقل بقى لموضوع تاني. دلوقتي اللي أنا عايز أعمله إن أنا أـ Build Image من Container، أبدأ بـ Container يبدأ بـ Image معينة وعايز أـ Build الـ Application بتاعتي. وبعد ما أـ Build الـ Application بتاعتي، أنا عايز أقدر إن أنا أعيد استخدام الـ Application دي في أكتر من Environment. طبيعي إنك أنت مثلاً لو أنت Developer أو أي حاجة أو Data Engineer أو DevOps، هتبقى عندك الـ Environment بتاعتك، هتعمل فيها مثلاً Container مسحوب من",
+          "sourceSegmentRange": [
+            247,
+            253
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Image معينة، تبدأ تعدل في الـ Container ده وتحط مثلاً الـ Files بتاعتك، هتحط مثلاً الـ Code بتاعك، هتـ Create الـ Database بتاعتك إلى آخره، لغاية ما الـ Application تبقى جاهزة. بعد ما الـ Application تبقى Ready والـ Container خلاص بيعمل اللي أنت عايز تعمله، أنت عايز بقى تعيد استخدام الـ Container ده. فواحدة من الطرق اللي تخليك تعمل حاجة زي كده إنك أنت تحول الـ Container ده بعد ما تعدل وتلعب فيه وتعمل الـ Setup بتاعك كله ويبقى جاهز، تحول الـ Container لـ Image، والـ Image دي ينفع إنك أنت تسحبها في أكتر من حتة، في أكتر من Environment أو أي",
+          "sourceSegmentRange": [
+            254,
+            260
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Machine تانية، وتعيد استخدامها مرة تانية من غير ما تعيد كل الشغل من أول وجديد في Environments مختلفة. واحدة من الطرق دي هي إننا نـ Build Container Image، يعني أبدأ أعدل فيها زي ما أنا عايز وبعدين أحول الـ Container ده بعد كل التعديلات دي لـ Image جديدة. هعمل ده إزاي؟ هتعامل مع الـ Container معاملة Virtual Machine. فعلاً نبدأ كده بـ Python Project صغير. والـ Python Project ده هيبقى Simple Flask Application. الـ Flask ده بيعمل Web Pages. وغير إن هو بيعمل Web Pages",
+          "sourceSegmentRange": [
+            261,
+            267
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بشكل عام هو كمان جواه الـ Server اللي هو بيـ Run، يعني يخلي الماشين بشكل عام هو كمان جواه الـ Server اللي هو بيـ Run، يعني يخلي الـ Machine بتاعتك تشغل اللي أنت كاتبه جواه. أنا شخصياً ما أعرفش أي حاجة خالص عن الـ Flask ولذلك استعملت الـ Example بتاع الـ Documentation. أنا جايبه من هناك، هتلاقوه كله عندكم بس هو بسيط خالص يعني حاجة بسيطة خالص. وبعد كده هنشوف حاجات أعقد شوية من كده في الشغل بتاعنا. فخلينا نعمل إيه؟ خلينا",
+          "sourceSegmentRange": [
+            268,
+            274
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "آجي كده وأقول له أنا عايز Docker Container Run. وهسمي الـ Container ده وهقول له بدأني من Ubuntu مثلاً، والمرة دي أنا عايز أتعامل مع الـ Shell مش مع الـ Background، لأن أنا هكتب Code وهعمل Update وحاجات زي كده. فأنا عملت فعلاً الـ Container أهو. وأنا كده دخلت جوه الـ Container. أول حاجة عايز أعملها طبعاً أتأكد إن دي الحاجة الوحيدة اللي أنا مش محتاج أحملها، هي موجودة عندي. عارف إنها بتنزل باللي موجود حتى الآن. الخطوة اللي جاية",
+          "sourceSegmentRange": [
+            275,
+            281
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "اللي أنا عايز أعملها إن أنا أكتب الكود بتاعي. الكود بتاع Flask، اللي هو الـ Flask app بتاعي. فهقول له مثلاً وأعمل مثلاً هسميه وده اللي أنا هشتغل جواه. أنا معنديش طبعاً في محترمة يعني في الغالب مش هتلاقي عندك، بالذات في حاجة زي مش هتلاقي حاجة زي كده. فلو أنا جيت قلت له مثلاً هلاقي إن معنديش install. فأنا محتاج تفتكر إنها بتيجي بأقل حاجات ممكنة نازلة جوه. فمضطر إن أنا، فلو جيت قلت له هيديني error لإن الـ Image اللي نازلة",
+          "sourceSegmentRange": [
+            282,
+            288
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "اللي نازل عليها، يعني للأسف الـ packages مش موجودة فلازم تعمل الأول apt-get update عشان تعرف تعمل install، فمضطر إن أنا أقول له. بعد ما أقول له يستحسن برضه إن أنا أقول له upgrade. ممكن أقول له ده شوية مثلاً عشان كمان يعمل upgrade لكل الـ packages الموجودة قبل ما أبدأ. لاحظ دلوقتي إن اللي أنا بعمله دلوقتي ده كما لو كنت بتعامل مع Virtual Machine. كما لو كان عندي Virtual Machine مثلاً نازل عليها وأنا واحدة واحدة ببدأ إن أنا أنزل وأعمل update للـ packages بتاعتي قبل ما",
+          "sourceSegmentRange": [
+            289,
+            295
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "أعمل الكود بتاعي. هخلي ده يخلص ونكمل. كده خلاص، دلوقتي قادر إني أقول له apt-get install vim. فدلوقتي قادر يشوف الـ package ويروح يعمل لها install. عملت الـ installation بتاعتي، فدلوقتي بقى عندي vim. فأقدر دلوقتي إني أقول له vim وأقول له فايل اسمه hello.py. هيفتح لي الـ interface بتاع الكود. هنا هبدأ أكتب بقى الكود بتاعي. أنا واخد الكود ده من الـ website مع إضافات بسيطة من عندي.",
+          "sourceSegmentRange": [
+            296,
+            302
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "فأنا هاخد الكود من هنا، وهاجي هنا أعمل paste. فده الكود اللي موجود على الـ website. خلاص أنا كده بالنسبة لي هقفل. أتأكد بس إن الدنيا تمام. كده خلاص أنا عندي الكود بتاع الـ app بتاعي موجود. أنا لو جيت دلوقتي وقلت له execute لـ hello.py هيديني error، لإنه مش موجود في الـ environment، فمضطر إن أنا أعمل install لـ Flask. فعشان كده لازم أقول له pip install flask. هيروح يعمل الـ installation، وبعد ما يخلص هقدر أقول له",
+          "sourceSegmentRange": [
+            303,
+            309
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "execute لـ hello.py ده. فدلوقتي لقيت إن عندي خلاص الـ Container دلوقتي شغال. الـ Web Server شغال أهو Serving Flask app hello. Environment production وبيقول لي خلي بالك متعملش ده في Production. This is a development server. وده running دلوقتي و listening على الـ Port ده. كده خلاص هو ده اللي أنا عايزه. أنا خلصت خلاص الـ setup بتاعي. طبعاً إنت عندك في الـ environment بتاعك الموضوع أعقد من كده. وإحنا هنشوف",
+          "sourceSegmentRange": [
+            310,
+            316
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "مثال أعقد من كده كمان. بس تخيل إننا كده خلاص عملنا الـ Image بتاعتنا، عملنا الكود بتاعنا، نزلنا الـ packages وعملنا run للـ command. عشان نتأكد إن الدنيا تمام. طيب، عايز بقى الـ Container المعقد",
+          "sourceSegmentRange": [
+            317,
+            319
+          ]
+        }
+      ]
+    },
+    {
+      "id": "commit-container-to-image",
+      "heading": "تحويل Container إلى Image",
+      "blocks": [
+        {
+          "type": "command",
+          "content": "docker commit <container> <repo>:<tag>\nطريقة تحفظ تعديلات container داخل image جديدة، لكنها أقل تنظيماً من Dockerfile.",
+          "sourceSegmentRange": [
+            320,
+            321
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بتاعي ده بعد ما خلصته، عايز بقى أحول الـ Container ده لـ Image عشان أقدر إني أشحن الـ Image دي في أكتر من حتة، أعمل لها مثلاً Push وأرجع مثلاً أسترجعها أو أعمل لها Pull في حتة تانية وهكذا. فاللي أنا هعمله إن أنا هعمل Exit من هنا خلاص، خرجت بره. ده وهقول له Exit كده. الـ Container طبعاً كده لسه موجود بس هو Stopped. أوكي؟ فاللي هقدر أعمله إن أنا آجي أقول له Docker Commit. تلاقي دي حتى شبه Git جداً. فأقول له Docker Commit",
+          "sourceSegmentRange": [
+            320,
+            326
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "و Docker Commit ده بياخد أولاً الـ Container طبعاً. الـ Argument التاني هو الـ Image اللي إنت هتعمل لها Export، اسم الـ Image إيه؟ فأنا هقول له هاخد الـ Container اللي أنا عملته ده وهعمل Image، وخلي بالي إن أنا هسمي الـ Image بالاسم اللي أنا عامل له Account على Docker Hub، فأكتب الـ Account بتاعي الأول وبعد كده هسميه هسميها، أوكي؟ وأديها Tag مثلاً 1.0. مش مهم التسمية، مش مهم الـ Version، مش مهم الـ Tag، بس إنت يستحسن إنك",
+          "sourceSegmentRange": [
+            327,
+            333
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "يكون عندك Convention للتسمية بتاعة الـ Image بتاعتك عشان تسهل عليك إنك بعد كده لما نيجي نعمل Push لـ Docker Hub. أوكي؟ هعمل كده ولما يخلص هيعمل حاجتين، هيوريني الـ ID بتاع الـ Image دي وهتلاقي عندك على الشمال كمان بقى فيه عندك Image جديدة مكنتش موجودة قبل كده، اسم الـ Image أو اسم الـ Repo بتاعها باسمي 76 / py-flask والـ Tag بتاعها 1.0. أوكي؟ دلوقتي بقى لو أنا حتى عملت Delete لده خالص، دلوقتي أقدر أعمل Run من الـ Image",
+          "sourceSegmentRange": [
+            334,
+            340
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الجديدة دي. فلو قلت له Docker Run -it أسميه Container بس كفاية. هكتب له بقى اسم الـ Image الجديدة اللي أنا عاملها دي، فممكن بقى للسهولة كده، وعشان ما تغلطش في الكتابة وكلام من ده، ممكن من الـ UI بتاعها تاخد الـ Name من هنا، وافتكر إن أنا محتاج أو قادر إن أنا بما إني هعمل Run على طول، قادر إني آجي كده مثلاً وبدل -it، أنا حتى مش محتاج -it، هقول له",
+          "sourceSegmentRange": [
+            341,
+            347
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بس الـ Command اللي هيتعمل له Run، آخر Command عملته في الـ الـ الـ Container. أتأكد بس إن الـ Port mapping والحاجات دي مظبوطة عشان ما يضربش معانا. كده الـ Container قام وهتلاقي إنه الـ Command عمل Mapping للـ Port صح 5000:5000 وادي",
+          "sourceSegmentRange": [
+            348,
+            354
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الـ Container. هنشوف كده لو أنا فتحت الـ Browser عندي على Port 5000. localhost:5000، هلاقي رده من Flask (Hello World). أوكي؟ يبقى كده الـ Build بتاع الـ Image اتعمل صح. الـ Runtime أو الـ Run بتاع الـ Container اتعمل صح. Alpine لو أنا فاكر صح يعني. لا يبقى أعتقد الاسم أنا مش فاكره صح خليني أتأكد كده. ده كان الـ Image بتاعي اللي أنا",
+          "sourceSegmentRange": [
+            355,
+            361
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "عملته. اسمه إيه؟ Blue. هات ده كده Copy. وآجي هنا كده. تمام أحلى ميزة بقى في Alpine. Okay؟ طيب",
+          "sourceSegmentRange": [
+            362,
+            363
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "sourceSegmentCount": 364,
+    "blockCount": 60
+  }
+}

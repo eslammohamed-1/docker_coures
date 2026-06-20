@@ -1,0 +1,2243 @@
+{
+  "systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | DOTPROD = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+  "model": {
+    "type": "large",
+    "multilingual": true,
+    "vocab": 51866,
+    "audio": {
+      "ctx": 1500,
+      "state": 1280,
+      "head": 20,
+      "layer": 32
+    },
+    "text": {
+      "ctx": 448,
+      "state": 1280,
+      "head": 20,
+      "layer": 32
+    },
+    "mels": 128,
+    "ftype": 1
+  },
+  "params": {
+    "model": "/Users/user/Documents/wespar/whisper.cpp/models/ggml-large-v3.bin",
+    "language": "ar",
+    "translate": false
+  },
+  "result": {
+    "language": "ar"
+  },
+  "transcription": [
+    {
+      "timestamps": {
+        "from": "00:00:00,000",
+        "to": "00:00:08,180"
+      },
+      "offsets": {
+        "from": 0,
+        "to": 8180
+      },
+      "text": "طيب تعالوا بقى نشوف نعمل Installation إزاي locally لـ Docker علشان نبدأ نشتغل مع الـ Containers."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:08,180",
+        "to": "00:00:15,280"
+      },
+      "offsets": {
+        "from": 8180,
+        "to": 15280
+      },
+      "text": "دلوقتي إحنا زي ما قولنا قبل كده Docker فيه منه 3 حاجات ممكن تعمل Installation بيها."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:15,280",
+        "to": "00:00:19,920"
+      },
+      "offsets": {
+        "from": 15280,
+        "to": 19920
+      },
+      "text": "عندك Docker Desktop for Mac وعندك for Windows وعندك Docker for Linux."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:19,920",
+        "to": "00:00:21,760"
+      },
+      "offsets": {
+        "from": 19920,
+        "to": 21760
+      },
+      "text": "ما فيش Linux Docker Desktop."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:21,760",
+        "to": "00:00:27,320"
+      },
+      "offsets": {
+        "from": 21760,
+        "to": 27320
+      },
+      "text": "الطريقة اللي كنت بعمل بيها Installation هي إنك تروح على الـ Website بتاع Docker."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:27,320",
+        "to": "00:00:32,380"
+      },
+      "offsets": {
+        "from": 27320,
+        "to": 32380
+      },
+      "text": "أو اكتب حتى في الـ Search في Google بتاعك، اكتب Get Docker."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:32,380",
+        "to": "00:00:37,580"
+      },
+      "offsets": {
+        "from": 32380,
+        "to": 37580
+      },
+      "text": "فهيدخلك على الـ Page دي، هنروح على Docker for Linux."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:37,580",
+        "to": "00:00:42,160"
+      },
+      "offsets": {
+        "from": 37580,
+        "to": 42160
+      },
+      "text": "هتختار الـ Distro بتاعتك اللي هتعمل عليها Installation، أنا هختار Ubuntu."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:42,160",
+        "to": "00:00:49,840"
+      },
+      "offsets": {
+        "from": 42160,
+        "to": 49840
+      },
+      "text": "تأكد إن الـ Installation بتاعك أو الـ Version بتاعك أو الـ Distro بتاعتك بتاعت Linux موجودة هنا."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:49,840",
+        "to": "00:00:55,780"
+      },
+      "offsets": {
+        "from": 49840,
+        "to": 55780
+      },
+      "text": "أنا عندي ده الـ Version اللي موجود عندي للـ Distro بتاعت Ubuntu."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:55,780",
+        "to": "00:00:57,160"
+      },
+      "offsets": {
+        "from": 55780,
+        "to": 57160
+      },
+      "text": "وهتلاقي كالعادة،"
+    },
+    {
+      "timestamps": {
+        "from": "00:00:57,320",
+        "to": "00:01:03,080"
+      },
+      "offsets": {
+        "from": 57320,
+        "to": 63080
+      },
+      "text": "كالعادة في Linux أكتر من طريقة تعمل بيها الـ Installation، ممكن تعمل Installation من Debian package نفسها، تعمل لها Download و Install."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:03,080",
+        "to": "00:01:10,140"
+      },
+      "offsets": {
+        "from": 63080,
+        "to": 70140
+      },
+      "text": "ممكن تعمل Installation واحدة واحدة كده، وهتلاقي أول خطوة إنك تشيل أي Version قديم من Docker موجود."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:10,140",
+        "to": "00:01:17,940"
+      },
+      "offsets": {
+        "from": 70140,
+        "to": 77940
+      },
+      "text": "كان فيه Version قديم اسمه docker.io بينزل مع الـ Distro بتاعت Linux، تأكد إنك شايله لأن الـ Version الجديد بقى اسمه Docker CE أو Community Edition."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:17,940",
+        "to": "00:01:26,720"
+      },
+      "offsets": {
+        "from": 77940,
+        "to": 86720
+      },
+      "text": "وبعد كده هتمشي خطوة خطوة في الـ Installation، تنزل الـ Requirements الأول، الـ Required packages الأول، وبعد كده تنزل الـ GPG وكلام من ده."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:26,720",
+        "to": "00:01:34,220"
+      },
+      "offsets": {
+        "from": 86720,
+        "to": 94220
+      },
+      "text": "والخطوات دي هتلاقيها موجودة عندك في الـ Notebook، وفيه كمان طريقة سهلة أنا بشوفها أظرف لو حابب."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:34,220",
+        "to": "00:01:44,140"
+      },
+      "offsets": {
+        "from": 94220,
+        "to": 104140
+      },
+      "text": "اللي هي إنك تستعمل Shell script هما عاملينها، الـ Shell script دي اسمها get-docker، وهي اللي هتعمل الـ Installation وهتعمل Check على"
+    },
+    {
+      "timestamps": {
+        "from": "00:01:44,140",
+        "to": "00:01:51,500"
+      },
+      "offsets": {
+        "from": 104140,
+        "to": 111500
+      },
+      "text": "الـ Requirements، لو مش موجودة هتعمل لها Installation، لو موجودة خلاص، وتتأكد من الـ Version بتاعك بتاع Linux."
+    },
+    {
+      "timestamps": {
+        "from": "00:01:51,500",
+        "to": "00:02:02,980"
+      },
+      "offsets": {
+        "from": 111500,
+        "to": 122980
+      },
+      "text": "بتاع Ubuntu، وتعمل لك الـ Proper Installation، وتعمل Download للـ Binaries والـ Installation بتاعها. فهاجي هنا هختار Copy للـ Docker script."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:02,980",
+        "to": "00:02:16,740"
+      },
+      "offsets": {
+        "from": 122980,
+        "to": 136740
+      },
+      "text": "ممكن تشوف الـ Docker script تعمل لها Download وتشوفها لو حبيت تبص عليها، وبعدين هنروح نفتح الـ Terminal."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:16,740",
+        "to": "00:02:30,940"
+      },
+      "offsets": {
+        "from": 136740,
+        "to": 150940
+      },
+      "text": "نكبر الـ Terminal دي شوية كده ونعمل الـ Installation عادي، Download الأول للـ Script وبعد كده نكتب.."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:31,740",
+        "to": "00:02:37,860"
+      },
+      "offsets": {
+        "from": 151740,
+        "to": 157860
+      },
+      "text": "مش هتاخد أكتر من دقيقة، والميزة كمان في الـ Script دي إنها مابتسألكش على أي حاجة خالص، هي"
+    },
+    {
+      "timestamps": {
+        "from": "00:02:37,860",
+        "to": "00:02:49,980"
+      },
+      "offsets": {
+        "from": 157860,
+        "to": 169980
+      },
+      "text": "Silent تماماً، هتعمل Check على كل حاجة، تتأكد من الـ Version، وتعمل الحاجات اللي ناقصة لـ Docker."
+    },
+    {
+      "timestamps": {
+        "from": "00:02:49,980",
+        "to": "00:03:00,100"
+      },
+      "offsets": {
+        "from": 169980,
+        "to": 180100
+      },
+      "text": "الـ Script دي لما تخلص، هنحتاج نتأكد إن الـ Installation تم صح، وبعدين نمشي واحدة واحدة في الشغل مع الـ Images والـ Containers."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:00,100",
+        "to": "00:03:07,860"
+      },
+      "offsets": {
+        "from": 180100,
+        "to": 187860
+      },
+      "text": "وهنرجع تاني نتكلم في حتة أخيرة عن الـ Architecture قبل ما نبدأ نكمل شغل على طول في الـ Commands."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:07,860",
+        "to": "00:03:20,900"
+      },
+      "offsets": {
+        "from": 187860,
+        "to": 200900
+      },
+      "text": "بعد ما الـ Installation يخلص، بيبعتلك رسالة تقول لك إن الـ Installation خلص، وفيه كمان رسالة مهمة ليها علاقة بموضوع الـ Privileged user."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:20,900",
+        "to": "00:03:27,360"
+      },
+      "offsets": {
+        "from": 200900,
+        "to": 207360
+      },
+      "text": "هنا بيقول لك: To run Docker as a non-privileged user, consider setting up Docker daemon in rootless mode for your user."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:27,360",
+        "to": "00:03:37,360"
+      },
+      "offsets": {
+        "from": 207360,
+        "to": 217360
+      },
+      "text": "فيه هنا نقطة، لو تفتكر إحنا اتكلمنا إن Docker أو الـ Containers بشكل عام بتشتغل مع الـ Kernel بتاع الـ Operating System بتاعك."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:37,360",
+        "to": "00:03:47,360"
+      },
+      "offsets": {
+        "from": 217360,
+        "to": 227360
+      },
+      "text": "أنا عندي هنا Virtual Machine اللي هي Apollo، والـ Virtual Machine دي الـ Docker Containers اللي هتشتغل عليها هتشتغل من الـ Kernel بتاع الـ Linux بتاع الـ Apollo VM دي."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:47,360",
+        "to": "00:03:58,360"
+      },
+      "offsets": {
+        "from": 227360,
+        "to": 238360
+      },
+      "text": "علشان تشتغل بالـ Kernel هتحتاج طول الوقت تقريباً إنك تشتغل بـ Privileged account، يعني هتشتغل بـ Sudo privileges."
+    },
+    {
+      "timestamps": {
+        "from": "00:03:58,360",
+        "to": "00:04:06,860"
+      },
+      "offsets": {
+        "from": 238360,
+        "to": 246860
+      },
+      "text": "علشان نتخلص من ده فيه حل، بس خليني أوريك الأول شكل المشكلة بعد ما خلصت الـ Installation."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:06,860",
+        "to": "00:04:16,460"
+      },
+      "offsets": {
+        "from": 246860,
+        "to": 256460
+      },
+      "text": "لو روحت كتبت docker info مثلاً، هيقولي الـ Client وهيديني رد من الـ Client بيوريني"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:16,460",
+        "to": "00:04:22,360"
+      },
+      "offsets": {
+        "from": 256460,
+        "to": 262360
+      },
+      "text": "الـ Version بتاع الـ Client، ودايماً Docker ليه 2 Components، عندي Client component وعندي Server component."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:22,360",
+        "to": "00:04:30,160"
+      },
+      "offsets": {
+        "from": 262360,
+        "to": 270160
+      },
+      "text": "الـ Server component أو الـ Daemon component ده اللي هو Docker Daemon، وده المسؤول عن الـ General configuration وهو اللي بيكريت"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:30,160",
+        "to": "00:04:36,360"
+      },
+      "offsets": {
+        "from": 270160,
+        "to": 276360
+      },
+      "text": "الـ Containers وغيرها. الـ Client component دي اللي هي الـ Command lines اللي بنشتغل بيها علشان"
+    },
+    {
+      "timestamps": {
+        "from": "00:04:36,360",
+        "to": "00:04:42,660"
+      },
+      "offsets": {
+        "from": 276360,
+        "to": 282660
+      },
+      "text": "نعمل Build لـ Image، Run لـ Container، Stop لـ Container.. الـ Command lines دي هي الـ Client."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:42,660",
+        "to": "00:04:48,960"
+      },
+      "offsets": {
+        "from": 282660,
+        "to": 288960
+      },
+      "text": "هتلاحظ هنا إن في الجزء بتاع السيرفر بيقولي: Error got permission denied."
+    },
+    {
+      "timestamps": {
+        "from": "00:04:48,960",
+        "to": "00:05:00,860"
+      },
+      "offsets": {
+        "from": 288960,
+        "to": 300860
+      },
+      "text": "وهو بيحاول يأكسس docker.sock، وده الـ Daemon component أو الـ API بتاعت Docker اللي بتستقبل"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:00,860",
+        "to": "00:05:05,860"
+      },
+      "offsets": {
+        "from": 300860,
+        "to": 305860
+      },
+      "text": "الـ Commands بتاعتك، زي Docker container أو Docker image، أياً كانت الـ Commands اللي بتستقبلها."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:05,860",
+        "to": "00:05:16,360"
+      },
+      "offsets": {
+        "from": 305860,
+        "to": 316360
+      },
+      "text": "وعلشان ده يتنفذ ويشتغل، محتاج أقوله في الأول sudo docker info، ساعتها هتلاقيه قادر يشتغل."
+    },
+    {
+      "timestamps": {
+        "from": "00:05:16,360",
+        "to": "00:05:23,260"
+      },
+      "offsets": {
+        "from": 316360,
+        "to": 323260
+      },
+      "text": "وهيوريك رد الـ Server component، وهيوريك عدد الـ containers اللي موجودين، مين فيهم up and running ومين فيهم مش running، وعدد"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:23,260",
+        "to": "00:05:31,060"
+      },
+      "offsets": {
+        "from": 323260,
+        "to": 331060
+      },
+      "text": "الـ images اللي موجودة وإلى آخره. طالما الـ client بيرد عليّ والـ Server بيرد عليّ، يبقى كده Docker شغال عندك"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:31,060",
+        "to": "00:05:35,360"
+      },
+      "offsets": {
+        "from": 331060,
+        "to": 335360
+      },
+      "text": "صح والدنيا okay بالنسبة لي. لو عايز أتخلص من فكرة إن أنا كل ما"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:35,360",
+        "to": "00:05:45,360"
+      },
+      "offsets": {
+        "from": 335360,
+        "to": 345360
+      },
+      "text": "أجي أكتب command أقول له sudo docker كذا sudo docker كذا، فحل من الحلول غير إن أنا أشتغل بالـ root user، يعني حل"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:45,360",
+        "to": "00:05:51,360"
+      },
+      "offsets": {
+        "from": 345360,
+        "to": 351360
+      },
+      "text": "من الحلول إن أنا أحط الـ user account بتاعي في group اسمها docker. الـ Docker بعد ما بيعمل الـ installation بيعمل group اسمها"
+    },
+    {
+      "timestamps": {
+        "from": "00:05:51,360",
+        "to": "00:06:00,160"
+      },
+      "offsets": {
+        "from": 351360,
+        "to": 360160
+      },
+      "text": "docker، خليني أوريك الـ group دي، لو قلت له sudo getent group، هتلاقي إن فيه group اسمها"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:00,160",
+        "to": "00:06:04,860"
+      },
+      "offsets": {
+        "from": 360160,
+        "to": 364860
+      },
+      "text": "docker هنا. اللي أنا محتاج أعمله إن الـ user account بتاعي ده محتاج أحطه"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:04,860",
+        "to": "00:06:09,660"
+      },
+      "offsets": {
+        "from": 364860,
+        "to": 369660
+      },
+      "text": "في الـ group دي. عشان تتأكد برضه من الـ groups اللي موجودة عندك، لو قلت له"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:09,660",
+        "to": "00:06:14,360"
+      },
+      "offsets": {
+        "from": 369660,
+        "to": 374360
+      },
+      "text": "groups، هيوريك كل الـ groups اللي الـ user account بتاعك member فيها، فهتلاقي عندنا"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:14,360",
+        "to": "00:06:22,860"
+      },
+      "offsets": {
+        "from": 374360,
+        "to": 382860
+      },
+      "text": "معنديش docker هنا. عشان أضيف الـ account بتاعي للـ docker group هقول له sudo usermod -"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:22,860",
+        "to": "00:06:29,860"
+      },
+      "offsets": {
+        "from": 382860,
+        "to": 389860
+      },
+      "text": "aG وادي له اسم الـ group وبعدين اسم الـ user account. لو عملت groups مرة"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:29,860",
+        "to": "00:06:34,860"
+      },
+      "offsets": {
+        "from": 389860,
+        "to": 394860
+      },
+      "text": "تانية مش هلاقي حاجة، لأني محتاج أعمل restart للـ machine أو أعمل log off"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:34,860",
+        "to": "00:06:44,560"
+      },
+      "offsets": {
+        "from": 394860,
+        "to": 404560
+      },
+      "text": "مرة تانية علشان ياخد الـ token بتاع الـ group دي، لكن لو قلت تاني sudo getent group"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:44,560",
+        "to": "00:06:47,860"
+      },
+      "offsets": {
+        "from": 404560,
+        "to": 407860
+      },
+      "text": "هتلاقي دلوقتي إن الـ group اللي اسمها docker بقى فيها الـ account اللي اسمه سامي"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:47,860",
+        "to": "00:06:52,060"
+      },
+      "offsets": {
+        "from": 407860,
+        "to": 412060
+      },
+      "text": "فالمفروض دلوقتي اللي هنعمله إني هعمل log off أو restart علشان"
+    },
+    {
+      "timestamps": {
+        "from": "00:06:52,060",
+        "to": "00:07:00,860"
+      },
+      "offsets": {
+        "from": 412060,
+        "to": 420860
+      },
+      "text": "أتأكد إن الـ account واخد الـ permissions بتاعة الـ group. عملت restart للـ VM، خلينا نتأكد"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:00,860",
+        "to": "00:07:04,660"
+      },
+      "offsets": {
+        "from": 420860,
+        "to": 424660
+      },
+      "text": "تاني دلوقتي، هاجي أقول له groups، فكده بقى موجود في الـ group. دلوقتي لو قلت له"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:04,660",
+        "to": "00:07:11,660"
+      },
+      "offsets": {
+        "from": 424660,
+        "to": 431660
+      },
+      "text": "docker info هيرد عليّ من غير ما أحتاج أعمل sudo. طيب تعالى بقى"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:11,660",
+        "to": "00:07:16,660"
+      },
+      "offsets": {
+        "from": 431660,
+        "to": 436660
+      },
+      "text": "واحدة واحدة نمشي خطوة خطوة في موضوع التعامل مع الـ images والـ containers."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:16,660",
+        "to": "00:07:21,660"
+      },
+      "offsets": {
+        "from": 436660,
+        "to": 441660
+      },
+      "text": "طبيعي أول حاجة هتعملها إنك هتعمل pull للـ image زي ما اتفقنا، هتاخد"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:21,660",
+        "to": "00:07:27,660"
+      },
+      "offsets": {
+        "from": 441660,
+        "to": 447660
+      },
+      "text": "تسحب نسخة من الـ image دي تخليها عندك في الـ local registry بتاع Docker."
+    },
+    {
+      "timestamps": {
+        "from": "00:07:27,660",
+        "to": "00:07:34,460"
+      },
+      "offsets": {
+        "from": 447660,
+        "to": 454460
+      },
+      "text": "الـ registry ده storage فيها الـ images، اعتبرها الـ storage account اللي إنت حاطط فيه كل الـ"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:34,460",
+        "to": "00:07:41,460"
+      },
+      "offsets": {
+        "from": 454460,
+        "to": 461460
+      },
+      "text": "machine templates، زي الـ drive اللي فيه templates. فعشان أعمل الموضوع ده خطوة خطوة،"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:41,460",
+        "to": "00:07:47,460"
+      },
+      "offsets": {
+        "from": 461460,
+        "to": 467460
+      },
+      "text": "أول حاجة خلينا نعمل pull مثلاً لـ image زي Fedora. طبعاً أنا عندي الـ machine دي"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:47,460",
+        "to": "00:07:57,460"
+      },
+      "offsets": {
+        "from": 467460,
+        "to": 477460
+      },
+      "text": "Ubuntu، فهاجي أقول له docker image pull. هقول ملحوظة هنا، إن أنا عندي شوية حاجات بعملها في الـ images"
+    },
+    {
+      "timestamps": {
+        "from": "00:07:57,460",
+        "to": "00:08:04,260"
+      },
+      "offsets": {
+        "from": 477460,
+        "to": 484260
+      },
+      "text": "زي مثلاً إني أعمل pull أو push أو delete لـ image، أو أشوف الـ images اللي موجودة، فأي حاجة ليها علاقة"
+    },
+    {
+      "timestamps": {
+        "from": "00:08:04,260",
+        "to": "00:08:11,260"
+      },
+      "offsets": {
+        "from": 484260,
+        "to": 491260
+      },
+      "text": "بالـ images، أي حاجة هعملها عليها هيبقى الـ command بتاعها docker image. وعندي حاجات تانية هعملها على الـ level بتاع"
+    },
+    {
+      "timestamps": {
+        "from": "00:08:11,260",
+        "to": "00:08:17,260"
+      },
+      "offsets": {
+        "from": 491260,
+        "to": 497260
+      },
+      "text": "الـ containers، فأي حاجة ليها علاقة باللي هيتعمل على الـ level بتاع الـ containers الـ command هيبدأ بـ docker container."
+    },
+    {
+      "timestamps": {
+        "from": "00:08:17,260",
+        "to": "00:08:24,260"
+      },
+      "offsets": {
+        "from": 497260,
+        "to": 504260
+      },
+      "text": "يبقى أي حاجة على الـ image بـ docker image، وأي حاجة في الـ containers بـ docker container. أنا دلوقتي عايز أعمل"
+    },
+    {
+      "timestamps": {
+        "from": "00:08:24,260",
+        "to": "00:08:34,060"
+      },
+      "offsets": {
+        "from": 504260,
+        "to": 514060
+      },
+      "text": "pull لـ image من الـ images، يبقى هستعمل docker image pull وبعد كده أقول له اسم الـ image، ولتكن Fedora."
+    },
+    {
+      "timestamps": {
+        "from": "00:08:34,060",
+        "to": "00:08:41,060"
+      },
+      "offsets": {
+        "from": 514060,
+        "to": 521060
+      },
+      "text": "عرفت اسم الـ image منين؟ وإيه هي الـ images الموجودة؟ ده اللي هنشوفه كمان شوية لما نعمل explore للـ Docker Hub."
+    },
+    {
+      "timestamps": {
+        "from": "00:08:41,060",
+        "to": "00:08:52,060"
+      },
+      "offsets": {
+        "from": 521060,
+        "to": 532060
+      },
+      "text": "فهقول له docker image pull fedora وأدوس enter، هيقول لي latest ويبدأ يعمل pull للـ layers بتاعة الـ image الأول."
+    },
+    {
+      "timestamps": {
+        "from": "00:08:52,060",
+        "to": "00:08:57,060"
+      },
+      "offsets": {
+        "from": 532060,
+        "to": 537060
+      },
+      "text": "هيعمل download للـ layers دي، والـ layers بتنزل compressed عشان الـ network، وبعد كده"
+    },
+    {
+      "timestamps": {
+        "from": "00:08:57,060",
+        "to": "00:09:03,860"
+      },
+      "offsets": {
+        "from": 537060,
+        "to": 543860
+      },
+      "text": "هيعمل لها uncompress وتكون موجودة عندنا. خلصت كده هيقول لي إن"
+    },
+    {
+      "timestamps": {
+        "from": "00:09:03,860",
+        "to": "00:09:13,660"
+      },
+      "offsets": {
+        "from": 543860,
+        "to": 553660
+      },
+      "text": "فيه layer واحدة بس اللي هي دي، ودي الـ SHA بتاعة الـ image زي Git بالضبط، وده هنشوف فيه شبه كبير"
+    },
+    {
+      "timestamps": {
+        "from": "00:09:13,660",
+        "to": "00:09:21,660"
+      },
+      "offsets": {
+        "from": 553660,
+        "to": 561660
+      },
+      "text": "ما بين الـ containers وبين Git، أو ما بين Docker وبين GitHub. زي ما كانت الـ objects بتاعة"
+    },
+    {
+      "timestamps": {
+        "from": "00:09:21,660",
+        "to": "00:09:33,660"
+      },
+      "offsets": {
+        "from": 561660,
+        "to": 573660
+      },
+      "text": "Git ليها SHA-1 hash، الـ SHA-1 هو 40 hexadecimal character. نفس الوضع بالضبط موجود في Docker بس بدل ما"
+    },
+    {
+      "timestamps": {
+        "from": "00:09:33,660",
+        "to": "00:09:50,660"
+      },
+      "offsets": {
+        "from": 573660,
+        "to": 590660
+      },
+      "text": "Git كان بيستعمل SHA-1، الـ Docker هيستعمل SHA-256، اللي هو برضه hexadecimal characters بس 64 حرف مش 40 زي Git. وبرضه كل حاجة في Docker ليها"
+    },
+    {
+      "timestamps": {
+        "from": "00:09:50,660",
+        "to": "00:10:03,460"
+      },
+      "offsets": {
+        "from": 590660,
+        "to": 603460
+      },
+      "text": "الـ SHA-256 بتاعها. فهاجي هنا بعد ما خلص الـ download، خلينا نبص الـ images اللي موجودة عندنا، وعشان أشوفها هقول له docker image ls."
+    },
+    {
+      "timestamps": {
+        "from": "00:10:03,460",
+        "to": "00:10:09,760"
+      },
+      "offsets": {
+        "from": 603460,
+        "to": 609760
+      },
+      "text": "وبرضه زي ما هنشوف كمان شوية، هقول له docker container. أوكي؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:10:09,760",
+        "to": "00:10:15,100"
+      },
+      "offsets": {
+        "from": 609760,
+        "to": 615100
+      },
+      "text": "قريب شوية من Linux مثلاً أو"
+    },
+    {
+      "timestamps": {
+        "from": "00:10:15,100",
+        "to": "00:10:21,700"
+      },
+      "offsets": {
+        "from": 615100,
+        "to": 621700
+      },
+      "text": "Windows. هيقول لي هنا إنت عندك واحدة بس والـ Tag بتاعها"
+    },
+    {
+      "timestamps": {
+        "from": "00:10:21,700",
+        "to": "00:10:28,600"
+      },
+      "offsets": {
+        "from": 621700,
+        "to": 628600
+      },
+      "text": "هنتعرف على الموضوع ده كمان شوية، والـ Image"
+    },
+    {
+      "timestamps": {
+        "from": "00:10:28,600",
+        "to": "00:10:31,960"
+      },
+      "offsets": {
+        "from": 628600,
+        "to": 631960
+      },
+      "text": "دي من 7 أسابيع، الشخص اللي عاملها"
+    },
+    {
+      "timestamps": {
+        "from": "00:10:31,960",
+        "to": "00:10:35,080"
+      },
+      "offsets": {
+        "from": 631960,
+        "to": 635080
+      },
+      "text": "ورفعها عملها من 7 أسابيع والـ Size بتاعها 100"
+    },
+    {
+      "timestamps": {
+        "from": "00:10:35,080",
+        "to": "00:10:39,640"
+      },
+      "offsets": {
+        "from": 635080,
+        "to": 639640
+      },
+      "text": "53 ميجا بايت. الـ Image كلها الـ Size بتاعها 153"
+    },
+    {
+      "timestamps": {
+        "from": "00:10:39,640",
+        "to": "00:10:46,660"
+      },
+      "offsets": {
+        "from": 639640,
+        "to": 646660
+      },
+      "text": "ميجا بايت. هتشوف الـ Layers بتاعتها أقل من 1 ميجا. Okay؟ طب عايز أبدأ"
+    },
+    {
+      "timestamps": {
+        "from": "00:10:46,660",
+        "to": "00:10:51,100"
+      },
+      "offsets": {
+        "from": 646660,
+        "to": 651100
+      },
+      "text": "أعمل Container لـ Fedora ده وأفتح الـ Container ده. الخطوة اللي"
+    },
+    {
+      "timestamps": {
+        "from": "00:10:51,100",
+        "to": "00:10:56,020"
+      },
+      "offsets": {
+        "from": 651100,
+        "to": 656020
+      },
+      "text": "بعد كده بعد ما بعمل Pull للـ Image هعمل Create للـ Container. هاجي أقول"
+    },
+    {
+      "timestamps": {
+        "from": "00:10:56,020",
+        "to": "00:11:00,460"
+      },
+      "offsets": {
+        "from": 656020,
+        "to": 660460
+      },
+      "text": "له Docker Container. بما إن أنا هعمل للـ Container حاجة ليها علاقة بالـ Container."
+    },
+    {
+      "timestamps": {
+        "from": "00:11:00,460",
+        "to": "00:11:05,680"
+      },
+      "offsets": {
+        "from": 660460,
+        "to": 665680
+      },
+      "text": "هقول له Docker Container. هقول له docker container create. وبعدين هقول"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:05,680",
+        "to": "00:11:09,040"
+      },
+      "offsets": {
+        "from": 665680,
+        "to": 669040
+      },
+      "text": "له -it. هتعرف دلوقتي إيه -it ده، وبسرعة"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:09,040",
+        "to": "00:11:12,820"
+      },
+      "offsets": {
+        "from": 669040,
+        "to": 672820
+      },
+      "text": "الـ i معناها Interactive، والـ t دي اللي هي Terminal أو"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:12,820",
+        "to": "00:11:15,940"
+      },
+      "offsets": {
+        "from": 672820,
+        "to": 675940
+      },
+      "text": "Pseudo terminal. لأن أنا عايز أشتغل Inter-"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:15,940",
+        "to": "00:11:19,180"
+      },
+      "offsets": {
+        "from": 675940,
+        "to": 679180
+      },
+      "text": "active مع الـ Container وأفتح الـ Terminal جوه الـ Container. كما لو"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:19,180",
+        "to": "00:11:23,260"
+      },
+      "offsets": {
+        "from": 679180,
+        "to": 683260
+      },
+      "text": "كان الـ Container ده مثلاً جواه Terminal، فأنا عايز أشتغل"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:23,260",
+        "to": "00:11:26,260"
+      },
+      "offsets": {
+        "from": 683260,
+        "to": 686260
+      },
+      "text": "جوه الـ Terminal دي. ماشي؟ والـ -i"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:26,260",
+        "to": "00:11:29,620"
+      },
+      "offsets": {
+        "from": 686260,
+        "to": 689620
+      },
+      "text": "دي اللي هي Interactive، يعني إيه؟ أخلي الـ Input والـ Output أنا"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:29,620",
+        "to": "00:11:33,160"
+      },
+      "offsets": {
+        "from": 689620,
+        "to": 693160
+      },
+      "text": "قادر أشوفه وقادر أباصي Standard Input"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:33,160",
+        "to": "00:11:37,540"
+      },
+      "offsets": {
+        "from": 693160,
+        "to": 697540
+      },
+      "text": "للـ Container وآخد الـ Standard Output. Okay؟ وبعد كده بعد ما"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:37,540",
+        "to": "00:11:40,780"
+      },
+      "offsets": {
+        "from": 697540,
+        "to": 700780
+      },
+      "text": "أقول له -it هقول له أنا عايز الـ Container ده يتعمل من"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:40,780",
+        "to": "00:11:46,120"
+      },
+      "offsets": {
+        "from": 700780,
+        "to": 706120
+      },
+      "text": "الـ Image اللي اسمها Fedora، فهقول له fedora. والـ Image أهي. تمام؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:46,120",
+        "to": "00:11:49,600"
+      },
+      "offsets": {
+        "from": 706120,
+        "to": 709600
+      },
+      "text": "أو أديله الـ ID بتاع الـ Image. هقول له من الـ Image اللي اسمها fedora."
+    },
+    {
+      "timestamps": {
+        "from": "00:11:49,600",
+        "to": "00:11:54,220"
+      },
+      "offsets": {
+        "from": 709600,
+        "to": 714220
+      },
+      "text": "يعني create container. وكريت لي الـ Container ده بالـ Interactive mode."
+    },
+    {
+      "timestamps": {
+        "from": "00:11:54,220",
+        "to": "00:11:57,400"
+      },
+      "offsets": {
+        "from": 714220,
+        "to": 717400
+      },
+      "text": "أقدر أتعامل مع الـ Terminal بتاعته. ليه؟ أنا عارف"
+    },
+    {
+      "timestamps": {
+        "from": "00:11:57,400",
+        "to": "00:12:01,660"
+      },
+      "offsets": {
+        "from": 717400,
+        "to": 721660
+      },
+      "text": "إنه Terminal لأنه Linux Container، وفيه جواه Fedora."
+    },
+    {
+      "timestamps": {
+        "from": "00:12:01,660",
+        "to": "00:12:05,680"
+      },
+      "offsets": {
+        "from": 721660,
+        "to": 725680
+      },
+      "text": "Image. الـ Fedora ده Linux distribution. تمام؟ من الـ Image"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:05,680",
+        "to": "00:12:08,620"
+      },
+      "offsets": {
+        "from": 725680,
+        "to": 728620
+      },
+      "text": "اللي اسمها Fedora، والـ Terminal اللي أنا"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:08,620",
+        "to": "00:12:13,660"
+      },
+      "offsets": {
+        "from": 728620,
+        "to": 733660
+      },
+      "text": "هتعامل معاها الـ Command اللي هتعامل معاه اللي هو bash."
+    },
+    {
+      "timestamps": {
+        "from": "00:12:13,660",
+        "to": "00:12:19,720"
+      },
+      "offsets": {
+        "from": 733660,
+        "to": 739720
+      },
+      "text": "اللي هو Bash shell. ماشي؟ وأدوس Enter. كالعادة برضه دي هتشوفها"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:19,720",
+        "to": "00:12:25,180"
+      },
+      "offsets": {
+        "from": 739720,
+        "to": 745180
+      },
+      "text": "على طول بقى، هيديني الـ ID بتاع الـ Container ده. هتلاقي إنه بيبدأ"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:25,180",
+        "to": "00:12:28,480"
+      },
+      "offsets": {
+        "from": 745180,
+        "to": 748480
+      },
+      "text": "بـ 90b... و64"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:28,480",
+        "to": "00:12:31,840"
+      },
+      "offsets": {
+        "from": 748480,
+        "to": 751840
+      },
+      "text": "Hexadecimal characters. عشان أشوف الـ Containers اللي موجودة عندي"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:31,840",
+        "to": "00:12:38,020"
+      },
+      "offsets": {
+        "from": 751840,
+        "to": 758020
+      },
+      "text": "هقول له docker container برضه، ولكن docker container لوحدها كده"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:38,020",
+        "to": "00:12:42,880"
+      },
+      "offsets": {
+        "from": 758020,
+        "to": 762880
+      },
+      "text": "بتجيب كل الـ Containers اللي شغالة عندي. الـ Containers ليها"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:42,880",
+        "to": "00:12:52,240"
+      },
+      "offsets": {
+        "from": 762880,
+        "to": 772240
+      },
+      "text": "أكتر من State، ممكن تكون Running أو Exited مثلاً. فعشان"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:52,240",
+        "to": "00:12:57,700"
+      },
+      "offsets": {
+        "from": 772240,
+        "to": 777700
+      },
+      "text": "أشوف كل الـ Containers اللي شغالة واللي مش شغالة هقول له -a، ممكن أقول"
+    },
+    {
+      "timestamps": {
+        "from": "00:12:57,700",
+        "to": "00:13:05,020"
+      },
+      "offsets": {
+        "from": 777700,
+        "to": 785020
+      },
+      "text": "له --all أو -a، عشان أشوف كل حاجة. لو قلت له من غير"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:05,020",
+        "to": "00:13:07,420"
+      },
+      "offsets": {
+        "from": 785020,
+        "to": 787420
+      },
+      "text": "الـ -a مش هيديني أي حاجة. خلاص أنا"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:07,420",
+        "to": "00:13:11,620"
+      },
+      "offsets": {
+        "from": 787420,
+        "to": 791620
+      },
+      "text": "من غير الـ -a بيوريني الـ Running بس. Okay؟ الـ Container اللي هي"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:11,620",
+        "to": "00:13:16,540"
+      },
+      "offsets": {
+        "from": 791620,
+        "to": 796540
+      },
+      "text": "بتاعتها. فهنا هقول له الـ Container ده الـ ID بتاعه أو"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:16,540",
+        "to": "00:13:20,260"
+      },
+      "offsets": {
+        "from": 796540,
+        "to": 800260
+      },
+      "text": "مش ده الـ ID، ده أول 12 Hex characters، ده الـ characters من"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:20,260",
+        "to": "00:13:25,840"
+      },
+      "offsets": {
+        "from": 800260,
+        "to": 805840
+      },
+      "text": "الـ ID أو الـ Hash بتاع الـ Container. الـ Image اللي مبني عليها"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:25,840",
+        "to": "00:13:30,340"
+      },
+      "offsets": {
+        "from": 805840,
+        "to": 810340
+      },
+      "text": "الـ Container ده اسمها Fedora. الـ Command اللي الـ Container متكاريت"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:30,340",
+        "to": "00:13:35,140"
+      },
+      "offsets": {
+        "from": 810340,
+        "to": 815140
+      },
+      "text": "بيه اللي أنت هتتعامل معاه، وهو من 45 ثانية لأنها لسه"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:35,140",
+        "to": "00:13:39,640"
+      },
+      "offsets": {
+        "from": 815140,
+        "to": 819640
+      },
+      "text": "مكاريت الـ Container ده. OK؟ والـ Status بتاعته. وفي اسم كده"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:39,640",
+        "to": "00:13:44,980"
+      },
+      "offsets": {
+        "from": 819640,
+        "to": 824980
+      },
+      "text": "غريب كده. OK؟ هنشوف برضه هنتعامل إزاي مع موضوع الأسامي"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:44,980",
+        "to": "00:13:47,620"
+      },
+      "offsets": {
+        "from": 824980,
+        "to": 827620
+      },
+      "text": "دي. بس ده اسم سهل لتعرف تتعامل بيه مع الـ Container بدل ما تتعامل"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:47,620",
+        "to": "00:13:53,740"
+      },
+      "offsets": {
+        "from": 827620,
+        "to": 833740
+      },
+      "text": "مع الـ ID. بعد ما كريت الـ Container كده أنا كنت عملت للـ Template اللي"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:53,740",
+        "to": "00:14:00,220"
+      },
+      "offsets": {
+        "from": 833740,
+        "to": 840220
+      },
+      "text": "هي OK؟ اللي هي بالنسبة لي، عملت لها Create Container عليها"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:00,220",
+        "to": "00:14:04,360"
+      },
+      "offsets": {
+        "from": 840220,
+        "to": 844360
+      },
+      "text": "يعني أخدت Copy منها. OK؟ وبعد كده الخطوة اللي"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:04,360",
+        "to": "00:14:07,840"
+      },
+      "offsets": {
+        "from": 844360,
+        "to": 847840
+      },
+      "text": "بعدها أنا أبدأ أعمل Start للـ Container ده. فعشان أعمل Start للـ Container ده"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:07,840",
+        "to": "00:14:13,080"
+      },
+      "offsets": {
+        "from": 847840,
+        "to": 853080
+      },
+      "text": "وأبدأ أتعامل معاه. هقول له docker container برضه."
+    },
+    {
+      "timestamps": {
+        "from": "00:14:13,080",
+        "to": "00:14:24,640"
+      },
+      "offsets": {
+        "from": 853080,
+        "to": 864640
+      },
+      "text": "وأقول له start -i. تمام؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:24,640",
+        "to": "00:14:27,280"
+      },
+      "offsets": {
+        "from": 864640,
+        "to": 867280
+      },
+      "text": "الـ Container ده أنا لسه عامله من شوية. أقدر إن أنا أكتب له اسم"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:27,280",
+        "to": "00:14:30,820"
+      },
+      "offsets": {
+        "from": 867280,
+        "to": 870820
+      },
+      "text": "الـ Container. أقدر إن أنا أكتب له الـ ID بتاع الـ Container"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:30,820",
+        "to": "00:14:33,580"
+      },
+      "offsets": {
+        "from": 870820,
+        "to": 873580
+      },
+      "text": "أو أول كام حرف منهم برضه زي ما كنا بنتعامل مع Git لو تفتكر."
+    },
+    {
+      "timestamps": {
+        "from": "00:14:33,580",
+        "to": "00:14:37,240"
+      },
+      "offsets": {
+        "from": 873580,
+        "to": 877240
+      },
+      "text": "فأقدر أقول له مثلاً start الـ Container interactive اللي هو"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:37,240",
+        "to": "00:14:41,680"
+      },
+      "offsets": {
+        "from": 877240,
+        "to": 881680
+      },
+      "text": "اسمه 90b مثلاً، أهو أول كام character منهم 90b."
+    },
+    {
+      "timestamps": {
+        "from": "00:14:41,680",
+        "to": "00:14:49,960"
+      },
+      "offsets": {
+        "from": 881680,
+        "to": 889960
+      },
+      "text": "OK؟ ودوس Enter. لما هعمل كده هتلاقيه راح مدخلني في"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:49,960",
+        "to": "00:14:54,340"
+      },
+      "offsets": {
+        "from": 889960,
+        "to": 894340
+      },
+      "text": "Terminal تانية خالص شكلها غريب وشكلها root وأنا أقول لك"
+    },
+    {
+      "timestamps": {
+        "from": "00:14:54,340",
+        "to": "00:15:00,040"
+      },
+      "offsets": {
+        "from": 894340,
+        "to": 900040
+      },
+      "text": "الـ Username هو root واسم الـ Machine. الماشين اسمها كده."
+    },
+    {
+      "timestamps": {
+        "from": "00:15:00,040",
+        "to": "00:15:03,560"
+      },
+      "offsets": {
+        "from": 900040,
+        "to": 903560
+      },
+      "text": "لو عملت كده هتلاقي الـ Machine أصلاً مش موجودة فيها."
+    },
+    {
+      "timestamps": {
+        "from": "00:15:03,580",
+        "to": "00:15:08,800"
+      },
+      "offsets": {
+        "from": 903580,
+        "to": 908800
+      },
+      "text": "خلينا نعمل /etc دي حتة برضه هنتكلم عليها. cat /etc/"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:08,800",
+        "to": "00:15:17,120"
+      },
+      "offsets": {
+        "from": 908800,
+        "to": 917120
+      },
+      "text": "أعتقد كان اسمه hostname، الفايل لو أنا فاكر صح. فهتلاقي ده اسم"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:17,120",
+        "to": "00:15:23,180"
+      },
+      "offsets": {
+        "from": 917120,
+        "to": 923180
+      },
+      "text": "الـ Machine اللي جوه الـ Container. وهتلاقي إن دي هي هي برضه نفسها"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:23,180",
+        "to": "00:15:26,880"
+      },
+      "offsets": {
+        "from": 923180,
+        "to": 926880
+      },
+      "text": "الـ ID بتاع الـ Container. الـ ID بتاع الـ Container هو هو نفس"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:26,880",
+        "to": "00:15:30,920"
+      },
+      "offsets": {
+        "from": 926880,
+        "to": 930920
+      },
+      "text": "الاسم. هنشوف برضه إزاي نقدر إننا نتعامل ونغير ده. ومدخلني"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:30,920",
+        "to": "00:15:33,560"
+      },
+      "offsets": {
+        "from": 930920,
+        "to": 933560
+      },
+      "text": "في الـ Terminal دي. وتلاحظ حتى إن أنا لما قلت له hostname"
+    },
+    {
+      "timestamps": {
+        "from": "00:13:33,580",
+        "to": "00:15:37,720"
+      },
+      "offsets": {
+        "from": 933580,
+        "to": 937720
+      },
+      "text": "عشان أجيب اسم الـ Container أو اسم الـ Machine اللي شايفها"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:37,720",
+        "to": "00:15:41,500"
+      },
+      "offsets": {
+        "from": 937720,
+        "to": 941500
+      },
+      "text": "الـ Container، مدانيش أي حاجة خالص أو أداني إن الـ Command ده مش"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:41,500",
+        "to": "00:15:45,400"
+      },
+      "offsets": {
+        "from": 941500,
+        "to": 945400
+      },
+      "text": "موجود. وده علشان ده من الـ Fedora. زي ما إحنا قلنا إيه؟"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:45,400",
+        "to": "00:15:50,140"
+      },
+      "offsets": {
+        "from": 945400,
+        "to": 950140
+      },
+      "text": "كل الهيلمان بتاع الـ OS إحنا مش محتاجينه. إحنا محتاجين بس"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:50,140",
+        "to": "00:15:54,040"
+      },
+      "offsets": {
+        "from": 950140,
+        "to": 954040
+      },
+      "text": "الـ Minimal. اللي حصل إنه الـ Container ده ولو أنا حبيت إن"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:54,040",
+        "to": "00:15:58,000"
+      },
+      "offsets": {
+        "from": 954040,
+        "to": 958000
+      },
+      "text": "أنا أفتح Window تانية كده عشان أشوف الـ Containers اللي موجودة"
+    },
+    {
+      "timestamps": {
+        "from": "00:15:58,000",
+        "to": "00:16:01,820"
+      },
+      "offsets": {
+        "from": 958000,
+        "to": 961820
+      },
+      "text": "عندي. لو قلت له docker container"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:01,820",
+        "to": "00:16:03,180"
+      },
+      "offsets": {
+        "from": 961820,
+        "to": 963180
+      },
+      "text": "ls."
+    },
+    {
+      "timestamps": {
+        "from": "00:16:03,580",
+        "to": "00:16:06,040"
+      },
+      "offsets": {
+        "from": 963580,
+        "to": 966040
+      },
+      "text": "دلوقتي أقدر إن أنا أعمل ls لأن هو خلاص أنا عارف إن أنا"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:06,040",
+        "to": "00:16:09,280"
+      },
+      "offsets": {
+        "from": 966040,
+        "to": 969280
+      },
+      "text": "شغال على الـ Status بتاعته. فيقول لي إن الـ Container ID ده اللي هو مبني"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:09,280",
+        "to": "00:16:12,520"
+      },
+      "offsets": {
+        "from": 969280,
+        "to": 972520
+      },
+      "text": "على الـ Image اللي اسمها Fedora، اللي الـ Command اللي Running"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:12,520",
+        "to": "00:16:18,940"
+      },
+      "offsets": {
+        "from": 972520,
+        "to": 978940
+      },
+      "text": "جوه bash. من تلات دقايق وهو بقاله حوالي دقيقة."
+    },
+    {
+      "timestamps": {
+        "from": "00:16:18,940",
+        "to": "00:16:23,920"
+      },
+      "offsets": {
+        "from": 978940,
+        "to": 983920
+      },
+      "text": "دقيقة. فهاجي هنا تاني، هرجع هنا تاني وأضطر إني، خليني"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:23,920",
+        "to": "00:16:26,140"
+      },
+      "offsets": {
+        "from": 983920,
+        "to": 986140
+      },
+      "text": "أجيب أشغل بس الحاجات اللي موجودة، عمال Container للآلة عشان"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:26,140",
+        "to": "00:16:30,440"
+      },
+      "offsets": {
+        "from": 986140,
+        "to": 990440
+      },
+      "text": "أنضف كل حاجة. أقدر إني هنا آجي أقول له مثلاً ls، فيوري"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:30,440",
+        "to": "00:16:35,100"
+      },
+      "offsets": {
+        "from": 990440,
+        "to": 995100
+      },
+      "text": "الحاجات اللي موجودة هنا. أقدر إني أقول له مثلاً، مثلاً"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:35,100",
+        "to": "00:16:41,120"
+      },
+      "offsets": {
+        "from": 995100,
+        "to": 1001120
+      },
+      "text": "وريني الـ OS بتاع الـ Machine دي. هقول له /etc"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:41,120",
+        "to": "00:16:47,420"
+      },
+      "offsets": {
+        "from": 1001120,
+        "to": 1007420
+      },
+      "text": "/os-release. فيقول لي دي عبارة عن Fedora. الـ ID"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:47,420",
+        "to": "00:16:51,860"
+      },
+      "offsets": {
+        "from": 1007420,
+        "to": 1011860
+      },
+      "text": "Fedora. وده الـ Codename، مفيش Codename. وده عبارة عن Fedora"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:51,860",
+        "to": "00:16:56,120"
+      },
+      "offsets": {
+        "from": 1011860,
+        "to": 1016120
+      },
+      "text": "Linux 35 Container Image. تمام؟ وهكذا بقى"
+    },
+    {
+      "timestamps": {
+        "from": "00:16:56,140",
+        "to": "00:17:01,780"
+      },
+      "offsets": {
+        "from": 1016140,
+        "to": 1021780
+      },
+      "text": "شوية حاجات ليها علاقة بالـ Container نفسه. كده كأني"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:01,780",
+        "to": "00:17:10,000"
+      },
+      "offsets": {
+        "from": 1021780,
+        "to": 1030000
+      },
+      "text": "عملت Machine صغيرة جوه الـ Machine بتاعتي اللي هي Apollo. فدي فكرة"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:10,000",
+        "to": "00:17:14,900"
+      },
+      "offsets": {
+        "from": 1030000,
+        "to": 1034900
+      },
+      "text": "الـ Container. بس هنا في نقطة مهمة. لو أنا جيت كده قلت له"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:14,900",
+        "to": "00:17:17,120"
+      },
+      "offsets": {
+        "from": 1034900,
+        "to": 1037120
+      },
+      "text": "مش عارف الـ command موجود ولا لأ. الـ command حتى مش موجود"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:17,120",
+        "to": "00:17:20,140"
+      },
+      "offsets": {
+        "from": 1037120,
+        "to": 1040140
+      },
+      "text": "عشان أشوف الحاجات اللي جوه. بس هنشوفها في Container تاني. عشان"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:20,140",
+        "to": "00:17:26,060"
+      },
+      "offsets": {
+        "from": 1040140,
+        "to": 1046060
+      },
+      "text": "نشوف الـ process. أنا كتبت exit من هنا. ده المفروض إنه"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:26,060",
+        "to": "00:17:31,880"
+      },
+      "offsets": {
+        "from": 1046060,
+        "to": 1051880
+      },
+      "text": "لو إنت مشغل أي Terminal ولا أي حاجة وقلت له exit هيقوم قافل"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:31,880",
+        "to": "00:17:38,600"
+      },
+      "offsets": {
+        "from": 1051880,
+        "to": 1058600
+      },
+      "text": "الـ Terminal. تمام؟ هيـ terminate الـ session نفسها. لو جيت قلت له exit ودوست"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:38,600",
+        "to": "00:17:44,600"
+      },
+      "offsets": {
+        "from": 1058600,
+        "to": 1064600
+      },
+      "text": "Enter. هلاقيه راح مخرجني من الـ Container كله، وراح مرجعني تاني"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:44,600",
+        "to": "00:17:49,740"
+      },
+      "offsets": {
+        "from": 1064600,
+        "to": 1069740
+      },
+      "text": "على الـ Prompt الأصلي. ولو رحت هنا كده قلت له وريني الـ processes هيقول"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:49,740",
+        "to": "00:17:55,980"
+      },
+      "offsets": {
+        "from": 1069740,
+        "to": 1075980
+      },
+      "text": "لي مفيش. لو جيت قلت له docker ps -a في الآخر."
+    },
+    {
+      "timestamps": {
+        "from": "00:17:55,980",
+        "to": "00:17:58,720"
+      },
+      "offsets": {
+        "from": 1075980,
+        "to": 1078720
+      },
+      "text": "فيقول لي إن إنت عندك الـ Container اللي هو كذا ده"
+    },
+    {
+      "timestamps": {
+        "from": "00:17:58,720",
+        "to": "00:18:03,820"
+      },
+      "offsets": {
+        "from": 1078720,
+        "to": 1083820
+      },
+      "text": "مش عارف إيه بتاعه. والـ Container ده حالته Exited."
+    },
+    {
+      "timestamps": {
+        "from": "00:18:03,820",
+        "to": "00:18:09,280"
+      },
+      "offsets": {
+        "from": 1083820,
+        "to": 1089280
+      },
+      "text": "والـ Exit code بتاعه كان 127 اللي هو إنه"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:09,280",
+        "to": "00:18:15,940"
+      },
+      "offsets": {
+        "from": 1089280,
+        "to": 1095940
+      },
+      "text": "Terminated يعني. ليه بقى كده؟ ليه عمل Container بمجرد ما أنا"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:15,940",
+        "to": "00:18:20,080"
+      },
+      "offsets": {
+        "from": 1095940,
+        "to": 1100080
+      },
+      "text": "عملت exit من الـ Shell أو الـ Terminal بتاعة"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:20,080",
+        "to": "00:18:25,860"
+      },
+      "offsets": {
+        "from": 1100080,
+        "to": 1105860
+      },
+      "text": "الـ Container. ده Concept تاني مهم عايزين نبدأ نركز فيه بقى."
+    },
+    {
+      "timestamps": {
+        "from": "00:18:25,980",
+        "to": "00:18:31,440"
+      },
+      "offsets": {
+        "from": 1105980,
+        "to": 1111440
+      },
+      "text": "بس قبل ما نعمل الكلام ده خليني أجرب Container تاني. هجيب"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:31,440",
+        "to": "00:18:36,180"
+      },
+      "offsets": {
+        "from": 1111440,
+        "to": 1116180
+      },
+      "text": "Container تاني. عايز الـ Container التاني ده Python Container."
+    },
+    {
+      "timestamps": {
+        "from": "00:18:36,180",
+        "to": "00:18:41,520"
+      },
+      "offsets": {
+        "from": 1116180,
+        "to": 1121520
+      },
+      "text": "فيه Python Image. تمام؟ فهيجي أقول له برضه docker image pull"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:41,520",
+        "to": "00:18:47,520"
+      },
+      "offsets": {
+        "from": 1121520,
+        "to": 1127520
+      },
+      "text": "وأقول له python. ودوس Enter. نسيت بس أكتب docker في الأول. docker"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:47,520",
+        "to": "00:18:53,340"
+      },
+      "offsets": {
+        "from": 1127520,
+        "to": 1133340
+      },
+      "text": "image pull python. هيقوم عامل Download لكل الـ layers بتاعة الـ Image دي."
+    },
+    {
+      "timestamps": {
+        "from": "00:18:53,340",
+        "to": "00:18:56,700"
+      },
+      "offsets": {
+        "from": 1133340,
+        "to": 1136700
+      },
+      "text": "خد بالك إن هنا عندي أكتر، وده طبيعي ومنطقي. قبل كده"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:56,700",
+        "to": "00:18:59,220"
+      },
+      "offsets": {
+        "from": 1136700,
+        "to": 1139220
+      },
+      "text": "الـ Container اللي أنا عامله كان Container صغير بتاع Fedora بس، يدوبك"
+    },
+    {
+      "timestamps": {
+        "from": "00:18:59,220",
+        "to": "00:19:06,960"
+      },
+      "offsets": {
+        "from": 1139220,
+        "to": 1146960
+      },
+      "text": "كامل. ده كانت ناقصة فيه commands كمان يعني. إنما هنا ده عبارة"
+    },
+    {
+      "timestamps": {
+        "from": "00:19:06,960",
+        "to": "00:19:12,860"
+      },
+      "offsets": {
+        "from": 1146960,
+        "to": 1152860
+      },
+      "text": "عن Container وفيه Python نازل ومية فل"
+    },
+    {
+      "timestamps": {
+        "from": "00:19:12,860",
+        "to": "00:19:17,640"
+      },
+      "offsets": {
+        "from": 1152860,
+        "to": 1157640
+      },
+      "text": "وعشرة. خلص خلاص عمل Download لكل الـ Images. عمل الـ pull بتاعها وكل"
+    },
+    {
+      "timestamps": {
+        "from": "00:19:17,640",
+        "to": "00:19:23,280"
+      },
+      "offsets": {
+        "from": 1157640,
+        "to": 1163280
+      },
+      "text": "حاجة تمام. لو رحت قلت له docker image ls. فهيقول لي دلوقتي"
+    },
+    {
+      "timestamps": {
+        "from": "00:19:23,280",
+        "to": "00:19:27,120"
+      },
+      "offsets": {
+        "from": 1163280,
+        "to": 1167120
+      },
+      "text": "إنت عندك اتنين Images؛ عندك الـ Fedora دي اللي إحنا كنا نزلناها"
+    },
+    {
+      "timestamps": {
+        "from": "00:19:27,120",
+        "to": "00:19:31,620"
+      },
+      "offsets": {
+        "from": 1167120,
+        "to": 1171620
+      },
+      "text": "وعندك Python والـ Tag بتاعها والـ Image ID أهو. تمام؟ ومتكريتة"
+    },
+    {
+      "timestamps": {
+        "from": "00:19:31,620",
+        "to": "00:19:36,960"
+      },
+      "offsets": {
+        "from": 1171620,
+        "to": 1176960
+      },
+      "text": "من تلات أيام. والـ Size بتاعها 917. 917"
+    },
+    {
+      "timestamps": {
+        "from": "00:19:36,960",
+        "to": "00:19:39,000"
+      },
+      "offsets": {
+        "from": 1176960,
+        "to": 1179000
+      },
+      "text": "ميجا. OK؟ تعالى بقى نجرب"
+    }
+  ]
+}

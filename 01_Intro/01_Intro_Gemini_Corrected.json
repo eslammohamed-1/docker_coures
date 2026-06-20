@@ -1,0 +1,175 @@
+{
+  "systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | DOTPROD = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+  "model": {
+    "type": "large",
+    "multilingual": true,
+    "vocab": 51866,
+    "audio": {
+      "ctx": 1500,
+      "state": 1280,
+      "head": 20,
+      "layer": 32
+    },
+    "text": {
+      "ctx": 448,
+      "state": 1280,
+      "head": 20,
+      "layer": 32
+    },
+    "mels": 128,
+    "ftype": 1
+  },
+  "params": {
+    "model": "/Users/user/Documents/wespar/whisper.cpp/models/ggml-large-v3.bin",
+    "language": "ar",
+    "translate": false
+  },
+  "result": {
+    "language": "ar"
+  },
+  "transcription": [
+    {
+      "timestamps": {
+        "from": "00:00:00,000",
+        "to": "00:00:02,640"
+      },
+      "offsets": {
+        "from": 0,
+        "to": 2640
+      },
+      "text": "مساء الخير إن كان مساءً، وصباح الخير إن كان صباحاً."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:02,640",
+        "to": "00:00:05,920"
+      },
+      "offsets": {
+        "from": 2640,
+        "to": 5920
+      },
+      "text": "في الفيديو ده هنتكلم عن الـ Containers بشكل عام."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:05,920",
+        "to": "00:00:07,660"
+      },
+      "offsets": {
+        "from": 5920,
+        "to": 7660
+      },
+      "text": "هنتكلم عن Introduction للـ Containers."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:07,660",
+        "to": "00:00:09,020"
+      },
+      "offsets": {
+        "from": 7660,
+        "to": 9020
+      },
+      "text": "بعد كده هنتكلم عن Docker."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:09,020",
+        "to": "00:00:11,020"
+      },
+      "offsets": {
+        "from": 9020,
+        "to": 11020
+      },
+      "text": "هنتكلم عن الشغل مع الـ Containers."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:11,020",
+        "to": "00:00:12,040"
+      },
+      "offsets": {
+        "from": 11020,
+        "to": 12040
+      },
+      "text": "والشغل مع الـ Images."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:12,040",
+        "to": "00:00:13,960"
+      },
+      "offsets": {
+        "from": 12040,
+        "to": 13960
+      },
+      "text": "بعد كده هنتكلم عن الـ Network والـ Storage."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:13,960",
+        "to": "00:00:15,240"
+      },
+      "offsets": {
+        "from": 13960,
+        "to": 15240
+      },
+      "text": "هنتكلم عن Docker Compose."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:15,240",
+        "to": "00:00:17,520"
+      },
+      "offsets": {
+        "from": 15240,
+        "to": 17520
+      },
+      "text": "هنتكلم عن Docker Swarm و Docker Stack."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:17,520",
+        "to": "00:00:19,480"
+      },
+      "offsets": {
+        "from": 17520,
+        "to": 19480
+      },
+      "text": "وبعد كده هنتكلم شوية..."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:19,480",
+        "to": "00:00:21,460"
+      },
+      "offsets": {
+        "from": 19480,
+        "to": 21460
+      },
+      "text": "Introduction عن Kubernetes."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:21,460",
+        "to": "00:00:26,360"
+      },
+      "offsets": {
+        "from": 21460,
+        "to": 26360
+      },
+      "text": "وبعد كده في الآخر هنشوف إزاي نقدر نحط الثعبان في العلبة."
+    },
+    {
+      "timestamps": {
+        "from": "00:00:26,360",
+        "to": "00:00:28,200"
+      },
+      "offsets": {
+        "from": 26360,
+        "to": 28200
+      },
+      "text": "ابقوا معنا وأتمنى لكم مشاهدة مفيدة."
+    }
+  ]
+}

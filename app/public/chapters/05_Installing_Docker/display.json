@@ -1,0 +1,477 @@
+{
+  "chapterNumber": 5,
+  "title": "Installing Docker",
+  "folderName": "05_Installing_Docker",
+  "formattedAt": "2026-06-18T23:11:57.906Z",
+  "model": "gemini-3.1-pro-preview",
+  "sections": [
+    {
+      "id": "chunk-0-installation-methods",
+      "heading": "طرق تنزيل Docker واستخدام سكريبت التثبيت",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "طيب تعالوا بقى نشوف نعمل إنستليشن إزاي لوكالي لدوكر علشان نبدأ إن إحنا نشتغل مع الكونتينرز. دلوقتي إحنا زي ما قولنا قبل كده دوكر فيه منه تلات حاجات ممكن تعمل إنستليشن بيها: عندك دوكر ديسكتوب فور ماك، وعندك فور ويندوز، وعندك دوكر فور لينكس. مفيش لينكس دوكر ديسكتوب (في الوقت ده).",
+          "sourceSegmentRange": [
+            0,
+            3
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الطريقة اللي ممكن تعمل بيها إنستليشن هي إنك تروح على الويب سايت بتاع دوكر، أو اكتب حتى في السيرش في جوجل `get docker`. فهيدخلك على البيدج دي، هنروح على دوكر فور لينكس. هتختار الديسترو بتاعتك اللي هتعمل عليها إنستليشن، أنا هختار أوبونتو. اتأكد إن الفيرجن بتاعك أو الديسترو بتاعتك بتاعت لينكس موجودة هنا. أنا عندي ده الفيرجن اللي موجود عندي للديسترو بتاعت أوبونتو.",
+          "sourceSegmentRange": [
+            4,
+            10
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وهتلاقي كالعادة في لينكس أكتر من طريقة تعمل بيها الإنستليشن، ممكن تعمل إنستليشن من ديبيان باكيدج نفسها هتعملها داونلود وإنستول، وممكن تعمل إنستليشن واحدة واحدة كده. هتلاقي فيه أول خطوة إنك تشيل أي فيرجن قديم من دوكر موجود. كان في فيرجن قديم اسمه `docker.io` بينزل مع الديسترو بتاعت لينكس، اتأكد إنك شايله لأن الفيرجن الجديد بقى اسمه Docker CE أو Community Edition. وبعد كده هتمشي خطوة خطوة في الإنستليشن، تنزل الـ requirements والباكيدجز المطلوبة الأول، وبعد كده تنزل الـ GPG وكلام من ده.",
+          "sourceSegmentRange": [
+            11,
+            14
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "والخطوات دي هتلاقيها موجودة عندك في النوت بوك. وفيه كمان طريقة برضه سهلة أنا بشوفها أظرف لو حابب، اللي هي إنك تستعمل شيل سكريبت هم عاملينها، الشيل سكريبت دي اسمها `get.docker`، وهي اللي هتعمل الإنستليشن وهتتشيك على الريكوايرمنتس، لو مش موجودة هتعملها إنستليشن ولو موجودة خلاص. وبتتأكد من الفيرجن بتاعك بتاع لينكس وتعمل لك البروبر إنستليشن، بتعمل داونلود للباينريز والإنستليشن بتاعها. فهاجي هنا هختار كوبي للينك بتاع السكريبت، ممكن تعملها داونلود وتشوفها لو حبيت تبص عليها. وبعدين نفتح التيرمينال ونعمل إنستليشن عادي، داونلود الأول للسكريبت وبعد كده نكتب أوامر التشغيل. هي مش هتاخد أكتر من دقيقة، والميزة كمان في السكريبت دي إن هي مابتسألكش على أي حاجة خالص، هي سايلنت، هتتشيك على كل حاجة وتتأكد من الفيرجن وتعمل الحاجات اللي ناقصة لدوكر. بعد ما السكريبت تخلص هنحتاج بس إن إحنا نتأكد إن الإنستليشن تم صح، وهنرجع تاني نتكلم في حتة كده أخرانية على موضوع الأركيتكتشر قبل ما نبدأ نكمل شغل في الكوماندز.",
+          "sourceSegmentRange": [
+            15,
+            24
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-0-docker-architecture-permissions",
+      "heading": "مكونات Docker وصلاحيات التشغيل",
+      "diagramId": "ClientServerDiagram",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "بعد ما الإنستليشن يخلص بيبعت لك رسالة تقول لك إن الإنستليشن كده خلص، بس فيه كمان رسالة هنا مهمة ليها علاقة بموضوع الـ privileged user. هنا بيقول لك: `to run docker as a non-privileged user, consider setting up docker daemon in rootless mode for your user`. فيه هنا نقطة، لو تفتكر إحنا اتكلمنا عن إن دوكر أو الكونتينرز بشكل عام بتشتغل مع الكيرنل بتاع نظام التشغيل بتاعك. أنا عندي هنا virtual machine اسمها apollo، والـ docker containers اللي هتشتغل عليها هتشتغل من الكيرنل بتاع اللينكس بتاع الـ virtual machine دي. عشان تشتغل بالكيرنل هتحتاج طول الوقت تقريباً إنك تشتغل بـ privileged account، يعني بـ sudo privileges. علشان نتخلص من ده فيه حل، بس خليني أوريك الأول الإشكالية شكلها عامل إزاي بعد ما خلصت الإنستليشن.",
+          "sourceSegmentRange": [
+            25,
+            30
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "لو جيت أقول له `docker info` في الأول، هيقول لي الرد من الـ client ده بيوريني الفيرجن. ودايماً دوكر ليه 2 components: عندي client component وعندي server component. الـ server component أو الـ daemon component (اللي هو docker daemon) ده اللي مسؤول عن الـ general configuration وهو اللي بيكريت الـ containers وإلى آخره. الـ client component دي اللي هي الـ command lines اللي إحنا بنشتغل بيها علشان نبلد إيمدج، نرن كونتينر، نستوب كونتينر، خلاص الـ command lines بس ده اللي هو الـ client.",
+          "sourceSegmentRange": [
+            31,
+            35
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "هتلاحظ هنا إن في الجزء بتاع السيرفر بيقول لي `error: got permission denied`، وهو بيحاول يأكسس `docker.sock`. الـ `docker.sock` ده اللي هو الـ daemon component أو الـ API بتاعت دوكر اللي بتستقبل الـ commands بتاعتك، سواء `docker container` أو `docker image`، أيًا كانت الـ commands اللي بتستقبلها وبتنفذها. فعلشان ده يشتغل محتاج إن أنا أقوله في الأول `sudo docker info`. ساعتها هتلاقي إن هو قادر يشتغل وهيوريك الرد من السيرفر component، يوريك عدد الـ containers اللي موجودين، مين فيهم running ومين لأ، وعدد الإيمدجز وإلى آخره. طالما الـ client بيرد عليا والسيرفر بيرد عليا، يبقى كده دوكر شغال عندك صح والدنيا تمام.",
+          "sourceSegmentRange": [
+            36,
+            41
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-0-add-user-docker-group",
+      "heading": "تشغيل Docker بدون Sudo",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "لو عايز أتخلص من فكرة إن أنا كل ما أجي أكتب كوماند أقول له `sudo docker` كذا، فحل من الحلول غير إن أنا أشتغل بالـ root user، إن أنا أحط الـ user account بتاعي ده في group اسمها `docker`. دوكر بعد ما بيعمل installation بيكريت group اسمها `docker`. خليني أوريك الجروب دي، لو أنا قولت له `sudo getent group` هتلاقي إن فيه group اسمها `docker`. اللي أنا محتاج أعمله إن أنا أضيف الـ user account بتاعي للجروب دي. عشان تتأكد برضه من الـ groups اللي موجودة عندك، لو قولت له `groups` هيوريك كل الجروبس اللي الـ user account بتاعك ممبر فيها، فهتلاقي إني معنديش `docker` هنا. عشان أضيف الأكونت بتاعي للـ docker group هقول له:",
+          "sourceSegmentRange": [
+            42,
+            49
+          ]
+        },
+        {
+          "type": "code",
+          "content": "sudo usermod -aG docker <username>",
+          "sourceSegmentRange": [
+            49,
+            50
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "هتدي له اسم الجروب وبعدين اسم الـ user account. لو عملت `groups` مرة تانية مش هلاقي حاجة، لإن أنا محتاج أعمل restart للماشين بتاعتي أو أعمل log off و log on مرة تانية علشان ياخد التوكن بتاع الجروب دي. لكن لو أنت قولت له تاني `sudo getent group` هتلاقي دلوقتي إن الجروب اللي اسمها `docker` بقى فيها الأكونت بتاعي. فالمفروض دلوقتي اللي هنعمله إن أنا هعمل log off أو هعمل restart علشان أتأكد إن الأكونت واخد الـ permissions بتاعة الجروب. عملت restart للـ VM، خلينا نتأكد تاني دلوقتي، هاجي أقول له `groups` فكده بقى موجود في الجروب. دلوقتي لو قولت له `docker info` هيرد عليا من غير ما أحتاج إن أنا أعمل `sudo` للكوماند ده.",
+          "sourceSegmentRange": [
+            50,
+            57
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-0-pulling-docker-images",
+      "heading": "سحب الصور (Pulling Images) من Docker Registry",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "طيب تعالى بقى واحدة واحدة نمشي خطوة خطوة في موضوع التعامل مع الـ images والـ containers. طبيعي أول حاجة أنت هتعملها هي إنك هتعمل pull للـ image، زي ما إحنا اتفقنا هتاخد وتسحب نسخة كده من الـ image دي تخليها عندك في الـ local registry بتاعتك بتاعة دوكر. الـ registry ده عبارة عن storage فيها الـ images، اعتبرها زي الـ storage account اللي أنت حاطط فيه الـ machine templates أو الدرايف اللي فيه templates. فعشان أعمل الموضوع ده خطوة خطوة، أول حاجة خلينا نـ pull إيمدج مثلاً fedora (طبعاً أنا عندي الماشين دي Ubuntu).",
+          "sourceSegmentRange": [
+            58,
+            63
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "أقول ملحوظة هنا، إن أنا فيه عندي شوية حاجات بعملها في الـ images زي إن أنا أعمل pull، push، أدليت image، أو أشوف الـ images اللي موجودة. فأي حاجة ليها علاقة بالـ images هيبقى الكوماند بتاعها بيبدأ بـ `docker image`. وعندي حاجات تانية هعملها على ليفل الـ containers، فأي حاجة هعملها على الـ containers هيبدأ الكوماند بـ `docker container`. أنا دلوقتي عايز أعمل pull لإيمدج، يبقى هستعمل `docker image pull` وبعد كده أقول له اسم الإيمدج إيه هي، ولتكن fedora. عرفت اسم الإيمدج منين وايه هي الإيمدجز الموجودة؟ ده اللي هنشوفه كمان شوية لما نعمل explore للـ docker hub.",
+          "sourceSegmentRange": [
+            64,
+            70
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "فهقول له:",
+          "sourceSegmentRange": [
+            71,
+            71
+          ]
+        },
+        {
+          "type": "code",
+          "content": "docker image pull fedora",
+          "sourceSegmentRange": [
+            71,
+            71
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وبدوس enter، هيقول لي latest. هيبدأ يعمل pull للـ layers بتاعة الإيمدج الأول، هيداونلود الـ layers دي اللي بتنزل compressed عشان الـ network. بعد كده هيعملها uncompress ويعملها pull وتبقى موجودة عندنا. خلصت كده، هيقول لي إن فيه لاير واحدة بس، ودي الـ SHA بتاعة الإيمدج زي Git بالظبط. وده هنشوف فيه وجه تشابه كبير ما بين دوكر وما بين Git Hub. زي ما كان الـ objects كلها بتاعة Git ليها SHA-1 hash اللي هما 40 hexadecimal characters، نفس الوضع بالظبط موجود في دوكر. بس بدل ما Git Hub كان بيستعمل SHA-1، دوكر هيستعمل SHA-256 اللي هو هيبقى برضه hexadecimal characters بس 64 مش 40. فكل حاجة في دوكر هيبقى ليها الـ SHA-256 بتاعها.",
+          "sourceSegmentRange": [
+            71,
+            77
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "فهاجي هنا علشان بعد ما خلاص الـ download، خلينا نبص إيه الـ images اللي موجودة عندنا. عشان أشوف الـ images هقول له:",
+          "sourceSegmentRange": [
+            78,
+            78
+          ]
+        },
+        {
+          "type": "code",
+          "content": "docker image ls",
+          "sourceSegmentRange": [
+            78,
+            78
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وبرضه عشان أشوف الكونتينرز، زي ما هنشوف كمان شوية هقول له `docker container ls`.",
+          "sourceSegmentRange": [
+            79,
+            79
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-1-create-docker-container",
+      "heading": "إنشاء كونتينر جديد من Image (Create & Interactive Mode)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "وقريب شوية اللي هو بتاع لينكس مثلا أو ويندوز. هيقول لي هنا إنت عندك واحدة بس اسمها fedora والتاج بتاعها هنتعرف على الموضوع ده كمان شوية. والـ Image دي من 7 أسابيع، يعني اللي عاملها ورافعها عاملها من 7 أسابيع، والسايز بتاعها 153 ميجا بايت. الـ Image كلها السايز بتاعها 153 ميجا بايت. هتشوف بتاعت الـ Alpine هتلاقيها أقل من 1 ميجا. أوكي؟",
+          "sourceSegmentRange": [
+            80,
+            86
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "طب عايز أبدأ أعمل كونتينر للفيدورا ده وأفتح الكونتينر ده. الخطوة اللي بعد كده بعد ما بعمل Pull للـ Image هعمل Create للكونتينر. هاجي أقول له بما إن أنا هعمل حاجة ليها علاقة بالكونتينر فهقول له docker container.",
+          "sourceSegmentRange": [
+            87,
+            89
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "فهقول له docker container create وبعدين هقول له -it. هتعرف دلوقتي إيه -it ده بالتفصيل، بس بسرعة كده i دي معناها Interactive، و t دي اللي هي الـ Terminal أو الـ Pseudo Terminal. لأن أنا عايز أشتغل Interactive مع الكونتينر وأفتح الـ Terminal جوه الكونتينر، كما لو كان الكونتينر ده جواه Terminal فأنا عايز أشتغل جوه الـ Terminal دي. والـ -i (Interactive) يعني أخلي الـ Input والـ Output أنا قادر أشوفه، وأقدر أباصي Standard Input للكونتينر وآخد الـ Standard Output.",
+          "sourceSegmentRange": [
+            90,
+            100
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وبعد كده هقول له أنا عايز الكونتينر ده يتعمل من الـ Image اللي اسمها fedora. وأديله الـ ID بتاع الـ Image أو الاسم. يعني كريت كونتينر، وكريته لي بالـ Interactive mode عشان أقدر أتعامل مع الـ Terminal بتاعته. ليه؟ أنا عارف إن ده لينكس كونتينر وفي جواه فيدورا (الفيدورا ده لينكس ديستريبيوشن). والكوماند اللي أنا هتعامل معاه هو bash (اللي هو الـ Bash Shell).",
+          "sourceSegmentRange": [
+            101,
+            108
+          ]
+        },
+        {
+          "type": "code",
+          "content": "docker container create -it fedora bash",
+          "sourceSegmentRange": [
+            89,
+            109
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-1-listing-containers",
+      "heading": "استعراض الكونتينرز وحالاتها (List & Status)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "وأدوس Enter. كالعادة برضه دي هتشوفها على طول بقى، هيديني الـ ID بتاع الكونتينر ده. هتلاقي إن هو بيبدأ بـ 90b مش عارف إيه بلا بلا... 64 Hexadecimal Character.",
+          "sourceSegmentRange": [
+            109,
+            111
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "عشان أشوف الـ Containers اللي موجودة عندي، هقول له docker container ls برضه. ولكن الكوماند ده لوحده كده بيجيب الـ Containers اللي شغالة (Running) عندي بس. الـ Containers ممكن تكون حالتها Running أو Exited مثلا. فعشان أشوف كل الـ Containers اللي شغالة واللي مش شغالة هقول له -a أو --all عشان أشوف كل حاجة. لو قلت له من غير الـ -a مش هيديني أي حاجة لأنه بيوريني بس الـ Containers اللي الـ Status بتاعتها Running.",
+          "sourceSegmentRange": [
+            112,
+            119
+          ]
+        },
+        {
+          "type": "code",
+          "content": "docker container ls -a",
+          "sourceSegmentRange": [
+            112,
+            119
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "فهنا هيقولي الكونتينر ده الـ ID بتاعه (أول 12 Hexadecimal Character من الـ ID أو الـ Hash بتاع الكونتينر). الـ Image اللي مبني عليها الكونتينر ده اسمها fedora. الكوماند اللي الكونتينر متكريت بيه واللي إنت هتتعامل معاه هو bash. وهو متكريت من 45 ثانية لأن أنا لسه مكاريت الكونتينر ده، والـ Status بتاعته Created. وفي اسم غريب كده جينيريتد، هنشوف برضه هنتعامل إزاي مع موضوع الأسماء ده، بس ده اسم سهل لتعرف تتعامل بيه مع الكونتينر بدل ما هتتعامل مع الـ ID. بعد ما كريت الكونتينر كده، أنا كنت عملت Instance من الـ Template (اللي هي الـ Image)، كريت كونتينر عليها، يعني أخدت Copy منها.",
+          "sourceSegmentRange": [
+            120,
+            130
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-1-start-and-execute-container",
+      "heading": "تشغيل الكونتينر والتفاعل معه (Start & Execute)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "الخطوة اللي بعدها أنا أبدأ أـ Start الكونتينر ده. فعشان أـ Start الكونتينر ده وأبدأ أتعامل معاه، هقول له docker container برضه، وأقول له start -ai. تمام؟ الكونتينر ده أنا لسه عامله من شوية، أقدر إن أنا أكتب له اسم الكونتينر، أقدر إن أنا أكتب له الـ ID بتاع الكونتينر أو أول كام حرف منهم برضه (زي ما كنا بنتعامل مع Git لو تفتكر). فأقدر أقول له مثلا Start الكونتينر Interactive اللي هو اسمه 90b، أول كام Character منهم.",
+          "sourceSegmentRange": [
+            130,
+            138
+          ]
+        },
+        {
+          "type": "code",
+          "content": "docker container start -ai 90b",
+          "sourceSegmentRange": [
+            132,
+            138
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وأدوس Enter. لما هعمل كده هتلاقيه راح مدخلني في Terminal تانية خالص شكلها غريب وشكلها root. اليوزر نيم هو root واسم الماشين. تمام؟ يعني الماشين اسمها كده. لو عملت cat /etc/hostname (الفايل لو أنا فاكر صح)، فهتلاقي ده اسم الماشين اللي جوه الكونتينر. وهتلاقي إن دي هي هي برضه نفسها الـ ID بتاع الكونتينر. الـ ID بتاع الكونتينر هو هو نفس الاسم. هنشوف برضه إزاي نقدر إن إحنا نتعامل ونغير ده.",
+          "sourceSegmentRange": [
+            139,
+            147
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وتلاحظ حتى إن أنا لما قلت له كوماند hostname عشان أجيب اسم الكونتينر أو اسم الماشين اللي شايفها الكونتينر، مدانيش أي حاجة خالص أو اداني إن الكوماند ده مش موجود. وده علشان ده Minimal Version من الفيدورا. زي ما إحنا قلنا إيه؟ كل الهيلمان بتاع الـ OS إحنا مش محتاجينه، إحنا محتاجين بس الـ Minimal.",
+          "sourceSegmentRange": [
+            148,
+            152
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "اللي حصل إن الكونتينر ده بقى Started. لو حبيت أفتح Window تانية عشان أشوف الـ Containers الموجودة عندي، لو قلت له docker container ls، دلوقتي أقدر أعمل ls لأن هو خلاص أنا عارف إنه شغال والـ Status بتاعته Up. فيقول لي إن الكونتينر ID ده اللي هو مبني على الـ Image اللي اسمها fedora، والكوماند اللي رانينج هو bash.",
+          "sourceSegmentRange": [
+            153,
+            159
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-2-exploring-container-and-exiting",
+      "heading": "استكشاف الكونتينر وإيقافه",
+      "diagramId": "SingleProcessDiagram",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "جوه باش، من تلات دقايق وهو بقاله حوالي دقيقة. فهاجي هنا تاني وهرجع هنا تاني وأقدر إن أنا، خليني أجيب أشغل بس الحاجات اللي موجودة أعمل clear للـ terminal عشان أنضف كل حاجة.",
+          "sourceSegmentRange": [
+            160,
+            162
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "أقدر إن أنا هنا أجي أقول له مثلاً:",
+          "sourceSegmentRange": [
+            163,
+            163
+          ]
+        },
+        {
+          "type": "code",
+          "content": "ls",
+          "sourceSegmentRange": [
+            163,
+            164
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "فيوريني الحاجات اللي موجودة هنا. أقدر إن أنا أقول له مثلاً وريني الـ OS بتاعة الماشين دي، فأقول له:",
+          "sourceSegmentRange": [
+            164,
+            165
+          ]
+        },
+        {
+          "type": "code",
+          "content": "cat /etc/os-release",
+          "sourceSegmentRange": [
+            165,
+            166
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "فيقول لي دي عبارة عن Fedora، الـ ID Fedora ومفيش Code name، وده عبارة عن Fedora Linux 35 Container Image. وهكذا بقى شوية حاجات ليها علاقة بالكونتينر نفسه. كده كأني عملت ماشين صغنونة جوه الماشين بتاعتي اللي هي Ubuntu، دي فكرة الكونتينر.",
+          "sourceSegmentRange": [
+            166,
+            170
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بس هنا فيه نقطة مهمة، لو أنا جيت كده قلت له أنا مش عارف command الـ `ps` موجود ولا لأ، الكوماند حتى مش موجود عشان أشوف الحاجات اللي جوه، بس هنشوفها في كونتينر تاني عشان نشوف.",
+          "sourceSegmentRange": [
+            171,
+            173
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "أنا كتبت `exit` من هنا، ده المفروض إن هو لو إنت عندك مشغل أي terminal ولا أي حاجة وقلت له `exit` هيقوم قافل الـ terminal، فهيعمل terminate للـ process نفسها. لو جيت قلت له `exit` ودوست Enter، هلاقيه راح مخرجني من الكونتينر كله، وراح مرجعني تاني على الـ prompt الأصلاني.",
+          "sourceSegmentRange": [
+            174,
+            177
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ولو رحت هنا كده قلت له وريني الـ containers اللي شغالة هيقول لي مفيش:",
+          "sourceSegmentRange": [
+            178,
+            178
+          ]
+        },
+        {
+          "type": "code",
+          "content": "docker ps",
+          "sourceSegmentRange": [
+            178,
+            179
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "لو جيت قلت له `-a` في الآخر:",
+          "sourceSegmentRange": [
+            179,
+            179
+          ]
+        },
+        {
+          "type": "code",
+          "content": "docker ps -a",
+          "sourceSegmentRange": [
+            179,
+            180
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "فيقول لي إن إنت عندك الكونتينر اللي هو كذا كذا كذا ده الـ ID بتاعه، والكونتينر ده Exited يعني وقف. والـ Exit code بتاعه كان 127 اللي هو إنه Terminated يعني. ليه بقى كده؟ ليه عمل terminate للكونتينر بمجرد ما أنا عملت exit من الـ shell أو الـ terminal بتاعة الكونتينر؟ ده concept تاني مهم عايزين نبدأ نركز فيه بقى.",
+          "sourceSegmentRange": [
+            180,
+            185
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chunk-2-pulling-python-image",
+      "heading": "سحب إيميج Python",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "بس قبل ما نعمل الكلام ده خليني نجرب كونتينر تاني. هجيب كونتينر تاني، عايز الكونتينر التاني ده Python Container، كونتينر فيه Python Image. فهيجي أقول له (نسيت بس أكتب docker في الأول):",
+          "sourceSegmentRange": [
+            186,
+            188
+          ]
+        },
+        {
+          "type": "code",
+          "content": "docker image pull python",
+          "sourceSegmentRange": [
+            188,
+            190
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "فهيقوم عامل download لكل الـ layers بتاعة الإيميج دي. تاخد بالك إن هنا عندي layers أكتر، وده طبيعي ومنطقي. قبل كده الكونتينر اللي أنا عامله كان كونتينر صغنون بتاع Fedora بس، يادوبك OS كامل ده حتى كانت ناقصة فيه commands كمان يعني. إنما هنا ده عبارة عن كونتينر فيه OS وفيه Python نازل ومتظبط 100 فل و14. خلص خلاص عمل download لكل الإيميجز وعمل الـ pull بتاعها وكل حاجة تمام.",
+          "sourceSegmentRange": [
+            190,
+            195
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "لو رحت قلت له:",
+          "sourceSegmentRange": [
+            196,
+            196
+          ]
+        },
+        {
+          "type": "code",
+          "content": "docker image ls",
+          "sourceSegmentRange": [
+            196,
+            196
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "فهيقول لي دلوقتي إنت عندك 2 images، عندك الـ Fedora دي اللي إحنا كنا نزلناها، وعندك Python والـ Tag بتاعها والـ Image ID أهو، ومتكريتة من 3 أيام، والـ Size بتاعها 917 ميجا. تعالى بقى نجرب.",
+          "sourceSegmentRange": [
+            196,
+            200
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "sourceSegmentCount": 201,
+    "blockCount": 51
+  }
+}

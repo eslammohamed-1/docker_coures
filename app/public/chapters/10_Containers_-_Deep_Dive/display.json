@@ -1,0 +1,309 @@
+{
+  "chapterNumber": 10,
+  "title": "Containers - Deep Dive",
+  "folderName": "10_Containers_-_Deep_Dive",
+  "formattedAt": "2026-06-20T11:15:49.160Z",
+  "model": "local-curated-display",
+  "sections": [
+    {
+      "id": "container-is-image-instance",
+      "heading": "Container كـ Instance من Image",
+      "diagramId": "ContainerVsVmDiagram",
+      "blocks": [
+        {
+          "type": "comparison",
+          "content": "Image | Template أو Class مقفولة\nContainer | Instance أو Object شغال من الـ Image",
+          "sourceSegmentRange": [
+            0,
+            1
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "هنتكلم بالتفصيل أكتر عن الـ Container بقى. إحنا اتكلمنا كتير عن الـ Container وفي حاجات كتيرة هنعملها. إيه الـ Container؟ الـ Container هو الـ instance بتاع الـ Image. الـ Image عبارة عن زي Image مقفولة. الـ Container بالنسبة للـ Image زي الـ Object للـ Class. يبقى فكرة الـ Container إن أنا بدل ما أشغل VM كاملة بالـ OS الكلام اللي إحنا قلناه كتير قبل كده ده. إحنا بنشغل Container جاي من Build للأول وبعد كده منها بعمل الـ Container. إزاي بعمل",
+          "sourceSegmentRange": [
+            0,
+            6
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الكلام ده؟ شفنا أكتر من طريقة. الطريقة الأصلية هي إن أنا بعمل Build الأول وبعد كده Run. في طريقة أسرع بكتير هي إن أنا أعمل Docker Run. الـ Docker Run ده بيعمل كل حاجة، بيعمل Pull لو هي مش موجودة، وبعد كده بيعمل Create للـ Container، وبعد كده بيعمل Start للـ Container. من ضمن الـ Commands الكتيرة اللي إحنا استعملناها أو الـ Switches اللي إحنا استعملناها هو الـ -it. الـ Dash it ده اللي هو بيدخلك في الـ Interactive Mode بتاع الـ Container على حسب",
+          "sourceSegmentRange": [
+            7,
+            13
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "إيه الـ Application اللي إنت هتعمل لها Run. الـ Default command شكله عامل كده: docker container run، وبعد كده شوية Switches على حسب إنت عايز تعمل إيه أو عايز تعمل Run للـ Container ده إزاي. وبعد كده الـ Image name اللي هي هتبقى الـ Repo والـ Tag سواء الـ Repo دي كانت Official ولا مش Official زي ما شفنا. وبعد كده بتديله الـ Application. الـ Application دي هتبقى الـ Main process بتاعة الـ Container. اللي هي بتبقى الـ Application اللي شغال في PID 1، اللي هي",
+          "sourceSegmentRange": [
+            14,
+            20
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بيبقى على أساسها الـ Container running. اللي هي لو لأي سبب من الأسباب الـ Container بيقف. فده مهم جداً، الـ Application دي ممكن تبقى مثلاً الـ Shell، ممكن تبقى Database لما نزلنا، ممكن تكون كذا حاجة بقى على حسب إنت الـ Container ده فيه أي Applications أصلاً، أو تكون إنت اللي مكريه الـ Container ده وعارف إيه الـ Application اللي إنت عايز تعمل لها Run جوه الـ Container ده. بيبقى عندي Docker container stop لو أنا عايز أوقف الـ Container، و Docker container",
+          "sourceSegmentRange": [
+            21,
+            27
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "start لو عايز أشغل الـ Container وفي الآخر لو عايز أمسحه عندي الـ rm. ده كده مقارنة سريعة باللي إحنا كنا اتكلمنا عليه، إن بيبقى الـ Host بتاعك أياً كانت التكنولوجيا اللي إنت بتستخدمها هي إيه، وبعد كده الـ Docker Engine وجواه بيبقى فيه الـ Application. الـ Container بيبقى عبارة عن الـ Image وعليها الـ Container layers. ده شرحناه قبل كده واتكلمنا على الموضوع ده قبل كده. وشوفنا وجربنا قبل كده إننا ندخل",
+          "sourceSegmentRange": [
+            28,
+            34
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "مثلاً جوه الـ Terminal لما بقوله دخلني جوه الـ Shell بتاعة الـ Image. لاحظ إن في أوقات بقوله أنا عايز الـ -it وبعد كده بعد اسم الـ Image بكتب له sh أو bash وفي أوقات مابكتبهاش. ليه أحياناً لازم أكتب وليه أحياناً مابكتبش؟ ده برضو هنتعرف عليه أكتر لما نيجي نتكلم",
+          "sourceSegmentRange": [
+            35,
+            39
+          ]
+        }
+      ]
+    },
+    {
+      "id": "container-lifecycle",
+      "heading": "Lifecycle: Create وStart وStop",
+      "diagramId": "ContainerLifecycleDiagram",
+      "blocks": [
+        {
+          "type": "flow",
+          "content": "docker create يعمل container بدون تشغيل\ndocker start يشغل الـ process\ndocker run يختصر create + start\nexit أو انتهاء process يوقف الـ container",
+          "sourceSegmentRange": [
+            40,
+            41
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "على الجزء الجاي والسكشن الجاي بتاع الـ Containerizing يبقى مهم جداً تعرف هنا إن الـ Application اللي هتبقى في الـ Container سواء إنت كتبتها أو هي مكتوبة في مكان ما قبل كده، هي دي اللي هتبقى على أساسها الـ Container ده، لو هي مقفولة الـ Container هيتقفل. بتاعة الـ Container خلينا مثلاً نعمل Run للـ Command ده كده. هاخد ده مثلاً نرجع تاني للـ Terminal بتاعتنا. واجي أقوله Docker Run --name sousan هسمي الـ Container بتاعي sousan لأن هو",
+          "sourceSegmentRange": [
+            40,
+            46
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "بيديله أسماء ظريفة، أنا مثلاً كنت مسميه بسيوني قبل كده، المرة دي هسميه sousan. -it ubuntu:latest وهقوله الـ Application اللي عايزها تعمل Run أو الـ Terminal اللي عايزها تفتح اللي هي الـ bash. تمام؟ وهدوس Enter. لاحظ إن أنا بعد ما أعمل كده هو هيسحب الـ Image دي لو هي مش موجودة، هلاقي الـ Image دي موجودة هنا، وهلاقي Container Running أهو. تمام؟ كده بقيت أسرع، خلاص إنت عايز تتأكد هو Running",
+          "sourceSegmentRange": [
+            47,
+            53
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ولا لأ، أقوله docker container ls. تمام؟ هلاقي Container Running أهو حتى اسمه sousan، هو ده الـ ID بتاع الـ Container اللي هو أول 12 Hexadecimal characters من الـ ID بتاع الـ Container، هيدخلني على الـ Terminal بتاعة الـ Container، قادر إن أنا آجي هنا أقوله كده زي ما كنت بكتب في الـ Example مثلاً Jan مثلاً 25th، أوكي ممكن أعمل echo لده كده مثلاً لـ file. أقوله مثلاً اكتب الكلام ده في file وأقوله",
+          "sourceSegmentRange": [
+            54,
+            60
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "مثلاً file. أنا كده شغال جوه الـ Container، يعني لو عملت ls هتلاقي الـ file موجود. بس لو مسحت الـ Container ده الـ file ده هيروح. ودي من النقاط اللي إحنا عايزين نحلها. يعني دي من الإشكالات اللي إحنا عايزين نحلها، زي إن إحنا نشوف عندنا للـ Container. لأن كده مش ده اللي إنت عايزه. يبقى دي للـ Container. لأن كده مش ده اللي إنت عايزه. يبقى دي فكرة الـ Container. إحنا شفنا كل الكلام ده قبل كده. من",
+          "sourceSegmentRange": [
+            61,
+            67
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ضمن الحاجات برضه اللي تعرفها هي موضوع إنك تعمل stop للـ Container. إنك تعمل stop للـ Container. افتكر إحنا كنا اتكلمنا لما اتكلمنا على موضوع الـ Namespaces. قلنا إنه بتبقى فيه Signal زي ما الـ Kernel بيبعتها لـ Group معينة لـ Process معينة عشان توقف الـ Process دي. من ضمن الحاجات دي حاجة زي الـ SIGTERM. الـ SIGTERM دي الـ Kernel بيستخدمها عشان يعمل terminate للـ Process. الـ SIGTERM دي بتبقى بيسموها Graceful Stop. اللي هو إنك",
+          "sourceSegmentRange": [
+            68,
+            74
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "إنت تلم الحاجات بتاعتك وتظبط حالك علشان أنا عايز أقفل الـ Container ده، أو علشان عايز أعمل terminate للـ Process اللي هي PID 1. تمام؟ اللي هي بالنسبة لي مين PID 1؟ لو رجعت تاني هنا كده لو رجعت هنا تاني ده Container Running، لو قولت له ps هلاقي إنه الـ Process اللي الـ PID بتاعها 1 هي bash اللي أنا كتبتها له.",
+          "sourceSegmentRange": [
+            75,
+            79
+          ]
+        }
+      ]
+    },
+    {
+      "id": "signals-and-termination",
+      "heading": "إيقاف Container والـ Signals",
+      "blocks": [
+        {
+          "type": "warning",
+          "content": "docker stop يرسل SIGTERM أولاً وينتظر، ثم SIGKILL لو الـ process لم يتوقف. لذلك لازم التطبيق يعرف يقفل نفسه cleanly.",
+          "sourceSegmentRange": [
+            80,
+            81
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وأنا بعمل Run للـ Container، فمعنى إني أعمل Terminate للـ Container ده معناها إن إني أبعت SIGTERM للـ Process اللي هي bash دي. أول ما الـ Process دي يحصل لها Terminate، الـ Container كله هيحصله Terminate. هيستنى عشر ثواني، لو الـ Container مقدرش إنه يعمل Wrap up أو يقفل ويحصل له Terminate والـ Process دي طولت وبقى فيها حاجات كتيرة بتلم وراها ومش عارفين إيه حاجات زي كده، هيبعت Signal تانية اسمها SIGKILL. والـ SIGKILL دي اللي هي زي رصاصة الرحمة كده، إنك هتيجي من ورا الـ Container",
+          "sourceSegmentRange": [
+            80,
+            86
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وتقوم ضربه طلقة في دماغه. تمام؟ فدي الطريقة اللي أنا بعمل بيها Terminate من الـ Graphical Interface لو عايز، أقدر إني آجي من هنا كده وأقول له Stop. هياخد العشر ثواني بتاعته وممكن قبل العشر ثواني، لو قعد أكتر من عشر ثواني الـ Container هياخد الطلقة في رأسه. تمام؟ فكده الـ Container بقى Stopped عندي. أقدر إني Right-click عليه وأقول له Start. تمام؟ الحاجات دي إحنا شفنا الكلام ده برضه قبل",
+          "sourceSegmentRange": [
+            87,
+            93
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "كده. فيه من ضمن الحاجات اللي ممكن تعملها، إنك تعمل حاجة اسمها Restart Policy. يحصل إيه لو الـ Container عندك، فيه تلاتة Option اللي هما (no, always, on-failure). دي من ضمن الحاجات اللي بتديك شوية مرونة للـ Container، إنه لو لقى لسبب من الأسباب الـ Container ده وقف بطريقة غير إنك إنت اللي عايز توقفه لكن لو لقى لسبب من الأسباب وإنت مش قاصد، إن حصل Crash فممكن الـ Container يعمل Restart لنفسه. هسيب لك دي برضه",
+          "sourceSegmentRange": [
+            94,
+            100
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "عشان تعمل assign للـ Restart بيبقى من الـ Command نفسه اللي بتعمل بيه Run للـ Container. إنك بتقول له docker container run وتديله اسم الـ Container لو عايز مثلاً، وبتستخدم الـ flag اللي هو --restart. فتقول له always أو on-failure، وهسيب لك الـ text بتاعها والـ Description بتاعها عشان تعرف الفرق ما بين التلات أنواع. شفنا برضه في المثال الأولاني موضوع الـ Web Service example ده اللي هو Nginx. وقلنا إنه من",
+          "sourceSegmentRange": [
+            101,
+            107
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "ضمن الحاجات اللي ممكن تعملها برضه إنك تعمل Port Mapping. الـ Port Mapping ده هو إنك تعمل mapping للبورت من الـ Host للـ Container. الـ Container ممكن يكون Web Service مثلاً زي Nginx وشغال بيعمل Expose لبورت 80 مثلاً. علشان تخلي الـ Container ده متاح من بره من الـ Host نفسه، ممكن تعمل كده بس دي مش أحسن طريقة إني أعمل ده، ولما نيجي نتكلم عن الـ Networking هنشوف طرق تانية أحسن من كده بكتير. بس كتجربة زي ما عملنا قبل",
+          "sourceSegmentRange": [
+            108,
+            114
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "كده لو جيت قلت له مثلاً اعمل Run لـ container Nginx وشغله بـ -d يعني الـ Container يشتغل في الـ Background أنا مش محتاج أشوف منه أي output، ودي اللي هي عكس الـ -it. لو جيت قلت له برضه نفس الوضع، اعمل Paste وهات الـ Container ده. هيروح",
+          "sourceSegmentRange": [
+            115,
+            119
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ports-env-and-runtime-config",
+      "heading": "Ports وEnvironment Variables",
+      "blocks": [
+        {
+          "type": "steps",
+          "content": "اختيار image مناسبة\nتمرير environment variables وقت التشغيل\nعمل port mapping بين host وcontainer\nمراجعة logs عند الفشل",
+          "sourceSegmentRange": [
+            120,
+            121
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "هيعمل Pull للـ Image اللي هي Nginx دي، ويقوم مكاريت Container. Based على الـ Nginx هيسميه web server، وحيعمل Expose للـ Port 80. 80. لو تفتكروا وإحنا بنعمل الكلام ده في اللاب، استعملنا Curl علشان أنا مكنتش عارف أو معنديش Access للـ Graphical Interface بتاع الـ Docker Host. أنا هنا عندي Access للـ Graphical Interface بتاع الـ Docker Host، فاضل إن أنا أروح على الـ Browser وأكتب localhost، الـ Port 80 أو هو الـ Default Port 80.",
+          "sourceSegmentRange": [
+            120,
+            126
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "وأدوس Enter فيقول لي Welcome to Nginx. الـ Page دي جاية من جوه الـ Container، ليه؟ علشان أنا عملت Mapping للـ Port. فلو أنا على لما هدخل على الـ Port 80، الـ Host هيقوم بعمل Forward للـ Request ده جوه الـ Container وبعدين يرجع لي الـ Response بتاعه. فلو أنا جيت هنا وعملت Stop للـ Container اللي هو Nginx ده. هنا وعملت Stop للـ Container اللي هو Nginx ده، وعملت Refresh هنا هيديني Error. نفس بالضبط اللي إحنا عملناه في",
+          "sourceSegmentRange": [
+            127,
+            133
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "موضوع الـ Hello Container. فدي حاجة تانية برضه من ضمن الحاجات اللي أقدر أدير بيها الـ Container. في مثال هنا برضه نعمله، إن ده مثلاً Container لـ SQL Server موجود هتلاقي إنه على حسب الـ Configuration... وعايز الـ Image تبقى جاية من Microsoft Container Registry mcr.microsoft.com /mssql ده اسم الـ Repo",
+          "sourceSegmentRange": [
+            134,
+            140
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "تمام وبعد كده /server وعايزه 2019-latest ده اللي هو الـ Version بتاع الـ SQL. فلو رحت تاني على الـ Command Line وجيت هنا",
+          "sourceSegmentRange": [
+            141,
+            147
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "عملت Paste لده إنه هيروح يعمل Download للـ Container بتاع الـ SQL Server ده، وياخد الـ Data اللي على أساسها بياخد الـ Username والـ Password والكلام ده. الـ Username هو sa. وده Microsoft SQL للي مش عارفه. وبعد كده يقوم عامل Mapping لـ Port 1433 علشان أقدر إن أنا أستعمل الـ SQL Server اللي جوه الـ Container ده من بره من الـ Host",
+          "sourceSegmentRange": [
+            148,
+            154
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "نفسه أو من أي حتة تانية. تمام؟ فلو أنا جيت على الـ SQL هنا، الـ Password كانت password. لو جيت هنا وقلت له ضيف لي مثلاً Connection لـ SQL Server، فبقول له مثلاً الـ Server Name هو '.' (dot) اللي هو الـ Localhost، الماشين اللي اسمها Apollo دي، والـ Database name مثلاً هي الـ Master.",
+          "sourceSegmentRange": [
+            155,
+            159
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sql-server-container-example",
+      "heading": "مثال SQL Server Container",
+      "blocks": [
+        {
+          "type": "note",
+          "content": "المثال يوضح إن container runtime configuration مثل login وpassword والـ database connection أهم من مجرد image name.",
+          "sourceSegmentRange": [
+            160,
+            161
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Database، SQL Login SA، ومش محتاج. مش محتاج، خليني أتأكد تاني منها، تقريبًا أنا دوست اخترت String غلط أو حاجة، فأنا هعمل تاني وهقوله برضه اسم السيرفر ده، ركز بقى المرة دي، دي الـ Master Database بتاعة SQL Server. دوس Enter، في الـ SQL Login هختار SQL Login، أنت لما ما اخترتهاش المرة اللي فاتت، فالـ Username هيبقى SA. والـ Password هتبقى Password، عايز تسيف الـ Password مش فارق معايا.",
+          "sourceSegmentRange": [
+            160,
+            166
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "يعني الـ Profile Name مش فارق معايا، فبعد ما هخلص كده هلاقي إنه بقى على SQL Server، وهلاقي عندي هنا السيستم. بتاعة SQL Server والـ Logins بقى والكلام ده. قادر إن أنا أعمل هنا مثلاً Create Database. هنا وأقوله Execute فالمفروض إنه هنا يكاريت. لو جيت عملت كده هلاقي فيه Database اسمها Test DB أو DB. وطبعاً الـ Database دي فاضية مفيش أي حاجة خالص، وقادر إن",
+          "sourceSegmentRange": [
+            167,
+            173
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "أنا أتعامل عادي مع SQL Server خالص. إنما لو أنا جيت في Docker هنا ورحت عملت مثلاً Stop للـ Container ده. ورجعت تاني على SQL Server عندي وعملت Refresh هلاقي إيه اللي حصل؟ مش هيرجع. فدي برضه بحاول أوريكوا أكتر من Example على إزاي ممكن أستعمل الـ Containers عشان أنت يبقى عندك فكرة كويسة إزاي فكرة الـ Containers دي ممكن تكون مفيدة. بص أنا عملت الـ SQL في ثواني، مسافة الـ Download بس، وبقى",
+          "sourceSegmentRange": [
+            174,
+            180
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "عندي SQL Server شغال، فتخيل. يعني في آخر الفيديو ده نبدأ نشوف تطبيقات أكتر لـ Python، وكالعادة برضه قادر إن أنا أعمل الـ Inspect ده، وشفنا الـ Inspect إزاي. وقدرت أعمل الـ Inspection ده، وشفنا الـ Inspect إزاي. لو هو أو f- عشان تعمل Force حتى لو كان فيه Container الـ Status بتاعته Attached. تمام فده كان فيما يخص الـ Containers.",
+          "sourceSegmentRange": [
+            181,
+            186
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "sourceSegmentCount": 187,
+    "blockCount": 33
+  }
+}

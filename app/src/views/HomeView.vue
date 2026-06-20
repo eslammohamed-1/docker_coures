@@ -15,7 +15,7 @@ onMounted(async () => {
   await Promise.all(
     available.map(async (c) => {
       try {
-        const res = await fetch(`/chapters/${c.folderName}/display.json`, { method: 'HEAD' })
+        const res = await fetch(`${import.meta.env.BASE_URL}chapters/${c.folderName}/display.json`, { method: 'HEAD' })
         displayReady.value[c.number] = res.ok
       } catch {
         displayReady.value[c.number] = false

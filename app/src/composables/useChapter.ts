@@ -16,7 +16,7 @@ export function useChapter() {
     formattedContent.value = null
 
     try {
-      const displayRes = await fetch(`/chapters/${folderName}/display.json`)
+      const displayRes = await fetch(`${import.meta.env.BASE_URL}chapters/${folderName}/display.json`)
 
       if (displayRes.ok) {
         formattedContent.value = (await displayRes.json()) as ChapterDisplay

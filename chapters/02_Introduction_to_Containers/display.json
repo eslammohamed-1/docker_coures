@@ -2,12 +2,12 @@
   "chapterNumber": 2,
   "title": "Introduction to Containers",
   "folderName": "02_Introduction_to_Containers",
-  "formattedAt": "2026-06-20T12:19:20.374Z",
+  "formattedAt": "2026-06-21T19:20:24.840Z",
   "model": "local-handbook-display",
   "sections": [
     {
       "id": "chapter-goals",
-      "heading": "الهدف من الشابتر",
+      "heading": "أهداف الشابتر",
       "diagramId": "EvolutionTimelineDiagram",
       "diagramIds": [
         "EvolutionTimelineDiagram"
@@ -15,7 +15,15 @@
       "blocks": [
         {
           "type": "summary",
-          "content": "في هذا الشابتر نفهم لماذا ظهرت الـ Containers، وكيف ترتبط بالـ Virtual Machines، وكيف تساعدنا على تشغيل التطبيقات بشكل أخف وأسهل في الـ Deployment.",
+          "content": "في هذا الشابتر نمشي القصة من Physical Servers إلى Virtualization ثم VM Tax ثم Containers — لفهم لماذا ظهرت الـ Containers، وليس فقط تعريفها.",
+          "sourceSegmentRange": [
+            0,
+            1
+          ]
+        },
+        {
+          "type": "flow",
+          "content": "Physical Servers\n→ Waste of Resources\n→ Virtualization\n→ Virtual Machines\n→ Hypervisor\n→ VM Tax\n→ Deployment Complexity\n→ Containers",
           "sourceSegmentRange": [
             0,
             1
@@ -23,10 +31,10 @@
         },
         {
           "type": "list",
-          "content": "تعريف Container بشكل واضح\nفهم مشكلة الـ Physical Servers\nمعرفة كيف حسّنت الـ Virtualization استغلال الموارد\nفهم دور الـ Hypervisor\nمعرفة معنى VM Tax\nفهم لماذا الـ Containers حل عملي للـ Deployment",
+          "content": "تعريف Container ولماذا التعريف وحده غير كافٍ\nمقارنة Containers و VMs\nمشكلة Physical Servers وإهدار الموارد\nدور Hypervisor و VM Tax\nProvisioning مقابل Administration\nVM Templates ومحدوديتها\nدور DevOps و docker run\nلماذا Containers و VMs يعملان معًا",
           "sourceSegmentRange": [
             0,
-            10
+            14
           ]
         }
       ]
@@ -41,15 +49,7 @@
       "blocks": [
         {
           "type": "definition",
-          "content": "Container\nطريقة خفيفة وسريعة لتغليف التطبيق مع كل ما يحتاجه لكي يعمل: dependencies وconfiguration وruntime basics داخل package واحدة قابلة للتشغيل.",
-          "sourceSegmentRange": [
-            0,
-            1
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "بدل أن تكرر في كل بيئة خطوات التثبيت والإعداد، تضع التطبيق وكل احتياجاته داخل Container وتشغله بنفس الطريقة على جهازك أو على سيرفر أو داخل Cloud.",
+          "content": "Container\nطريقة خفيفة وسريعة لتغليف Application مع كل ما تحتاجه: التطبيق وDependencies وRequirements وملفات التشغيل وLibraries وRuntime وConfiguration وStart command.",
           "sourceSegmentRange": [
             0,
             1
@@ -57,7 +57,7 @@
         },
         {
           "type": "note",
-          "content": "تخيل Container كعلبة فيها التطبيق وكل ما يلزمه للعمل: Web app مع Node.js وملفات المشروع وenvironment variables والـ port المطلوب.",
+          "content": "Container = علبة خفيفة فيها التطبيق ومعاه احتياجاته، تُشغَّل بنفس الطريقة تقريبًا في بيئات مختلفة.",
           "sourceSegmentRange": [
             0,
             1
@@ -65,17 +65,17 @@
         },
         {
           "type": "takeaway",
-          "content": "الفكرة الأساسية: Container = تطبيق + dependencies + إعدادات التشغيل في package واحدة.",
+          "content": "لفهم Container صح، لازم نقارنه بالـ VM — لأن الـ VM أيضًا تقدم بيئة لتشغيل التطبيق.",
           "sourceSegmentRange": [
             0,
-            10
+            14
           ]
         }
       ]
     },
     {
       "id": "container-vs-vm-purpose",
-      "heading": "هل الـ Container بديل للـ Virtual Machine؟",
+      "heading": "لماذا نقارن Containers مع Virtual Machines؟",
       "diagramId": "VmContainersNestedDiagram",
       "diagramIds": [
         "VmContainersNestedDiagram"
@@ -83,7 +83,15 @@
       "blocks": [
         {
           "type": "note",
-          "content": "المقارنة بين Containers وVirtual Machines هدفها الفهم، وليس إثبات أن أحدهما أفضل دائمًا. في الواقع غالبًا يعملان معًا.",
+          "content": "المقارنة هدفها الفهم، وليس إعلان فائز. كل تقنية لها دور، والـ Containers غالبًا تعمل داخل VMs في Cloud.",
+          "sourceSegmentRange": [
+            0,
+            1
+          ]
+        },
+        {
+          "type": "comparison",
+          "content": "Virtual Machine | Application + Dependencies + Guest OS كامل\nContainer | Application + Dependencies مع الاعتماد على Kernel مشترك",
           "sourceSegmentRange": [
             0,
             1
@@ -91,17 +99,17 @@
         },
         {
           "type": "takeaway",
-          "content": "الـ Containers ليست بديلًا مطلقًا للـ VMs؛ يمكن تشغيلها داخل VM عند الحاجة.",
+          "content": "الـ VM توفر عزلًا قويًا، والـ Container يوفر تشغيلًا أخف وأسرع للتطبيقات.",
           "sourceSegmentRange": [
             0,
-            10
+            14
           ]
         }
       ]
     },
     {
-      "id": "physical-servers-problem",
-      "heading": "المشكلة الأصلية: Physical Servers",
+      "id": "physical-servers",
+      "heading": "القصة من البداية: Physical Servers",
       "diagramId": "PhysicalServerDiagram",
       "diagramIds": [
         "PhysicalServerDiagram",
@@ -110,32 +118,24 @@
       "blocks": [
         {
           "type": "paragraph",
-          "content": "في البداية كان التصميم بسيطًا: سيرفر فعلي فيه CPU وRAM وDisk وNetwork، ثم Operating System، ثم التطبيق.",
+          "content": "الطريقة التقليدية: شراء Server فعلي، تنزيل OS، ثم التطبيقات والإعدادات. مع تضخم موارد السيرفرات (64 Core، Terabytes RAM)، تشغيل تطبيق واحد يصبح إهدارًا للموارد.",
           "sourceSegmentRange": [
-            11,
-            12
+            15,
+            16
           ]
         },
         {
           "type": "warning",
-          "content": "عندما يصبح السيرفر قويًا جدًا (مثل 32 Core و256 GB RAM) وتشغّل عليه تطبيقًا واحدًا فقط، تحصل على Waste of Resources — إهدار في الموارد.",
+          "content": "مثال: Server بـ 64 Core و512 GB RAM يشغّل Web App تحتاج 4 Core و16 GB — أغلب الموارد غير مستغلة (Waste of Resources).",
           "sourceSegmentRange": [
-            11,
-            12
-          ]
-        },
-        {
-          "type": "takeaway",
-          "content": "المشكلة ليست في ضعف السيرفرات، بل في صعوبة استغلالها بكفاءة لتطبيق واحد.",
-          "sourceSegmentRange": [
-            11,
-            33
+            15,
+            30
           ]
         }
       ]
     },
     {
-      "id": "why-not-one-server-for-all",
+      "id": "why-not-one-server",
       "heading": "لماذا لا نضع كل التطبيقات على نفس السيرفر؟",
       "diagramId": "PhysicalScalingProblemDiagram",
       "diagramIds": [
@@ -144,44 +144,60 @@
       "blocks": [
         {
           "type": "list",
-          "content": "صعوبة الإدارة والعزل بين الخدمات\nمشاكل أمنية وتعارض بين التطبيقات\nصعوبة التحديث بدون التأثير على باقي النظام\nفشل تطبيق واحد قد يؤثر على الباقي",
+          "content": "صعوبة الإدارة والعزل\nتعارض Dependencies وPorts وVersions\nمشاكل أمنية وUpdates\nتطبيق واحد قد يؤثر على الكل\nبعض التطبيقات تحتاج OS مختلف",
           "sourceSegmentRange": [
-            25,
-            26
+            31,
+            32
           ]
         },
         {
-          "type": "paragraph",
-          "content": "الأفضل أن يكون لكل خدمة بيئة مستقلة، لكن شراء Physical Server لكل Application مكلف جدًا. من هنا ظهرت أهمية الـ Virtualization.",
+          "type": "note",
+          "content": "Dedicated Server Design: Web Server وDatabase Server وApp Server كل واحد على سيرفر منفصل — عزل أفضل لكن تكلفة Hardware وكهرباء وصيانة أعلى.",
           "sourceSegmentRange": [
-            25,
-            33
+            31,
+            32
+          ]
+        },
+        {
+          "type": "takeaway",
+          "content": "قبل Virtualization، التوسع كان يعني شراء Physical Servers أكثر.",
+          "sourceSegmentRange": [
+            31,
+            45
           ]
         }
       ]
     },
     {
-      "id": "virtualization-solution",
-      "heading": "الحل الأول: Virtualization",
+      "id": "virtualization",
+      "heading": "ظهور فكرة Virtualization",
       "diagramId": "VirtualizationArchitectureDiagram",
       "diagramIds": [
         "VirtualizationArchitectureDiagram"
       ],
       "blocks": [
         {
-          "type": "paragraph",
-          "content": "الـ Virtualization سمحت بتقسيم نفس الـ Physical Server إلى عدة Virtual Machines معزولة. كل VM تتصرف كسيرفر مستقل يمكن أن يشغّل Linux أو Windows أو Database أو Web Server.",
+          "type": "definition",
+          "content": "Virtual Machine\nبيئة افتراضية تعمل فوق Physical Server وتتصرف كسيرفر مستقل: Virtual Hardware وGuest OS وApplications وDependencies.",
           "sourceSegmentRange": [
-            34,
-            35
+            46,
+            47
           ]
         },
         {
-          "type": "takeaway",
-          "content": "الـ Virtualization حلّت مشكلة إهدار الموارد عبر مشاركة نفس الـ hardware بين عدة بيئات معزولة.",
+          "type": "paragraph",
+          "content": "على نفس السيرفر: VM 1 → Linux + Web · VM 2 → Windows + .NET · VM 3 → Linux + Database. الهدف: استغلال نفس الـ Hardware لبيئات مستقلة.",
           "sourceSegmentRange": [
-            34,
-            79
+            46,
+            47
+          ]
+        },
+        {
+          "type": "list",
+          "content": "استغلال أفضل للـ Hardware\nعزل بين التطبيقات\nSnapshots وBackup وMigration\nتشغيل أكثر من OS على نفس السيرفر",
+          "sourceSegmentRange": [
+            46,
+            62
           ]
         }
       ]
@@ -196,87 +212,318 @@
       "blocks": [
         {
           "type": "definition",
-          "content": "Hypervisor\nالطبقة المسؤولة عن إنشاء وإدارة Virtual Machines وتوزيع موارد الـ hardware الافتراضية على كل VM.",
+          "content": "Hypervisor\nالطبقة المسؤولة عن إنشاء VMs وتخصيص CPU/RAM/Disk وجعل كل VM ترى Virtual Hardware كأنه حقيقي.",
           "sourceSegmentRange": [
-            80,
-            81
+            63,
+            64
           ]
         },
         {
-          "type": "steps",
-          "content": "إنشاء VM وتشغيلها وإيقافها\nتوزيع CPU وRAM وDisk\nMigrate وSnapshot وBackup\nإدارة عدة VMs على نفس السيرفر",
+          "type": "comparison",
+          "content": "Hypervisor | تشغيل VMs وتقديم Virtual Hardware\nManagement Software | إنشاء وإيقاف وMigration وSnapshots وBackup وMonitoring وTemplates",
           "sourceSegmentRange": [
-            80,
-            81
+            63,
+            64
           ]
         },
         {
-          "type": "list",
-          "content": "أمثلة: VMware · Hyper-V · KVM · VirtualBox",
+          "type": "takeaway",
+          "content": "الـ VM تتعامل مع Virtual Hardware يوفره Hypervisor، وليس Hardware مباشرًا.",
           "sourceSegmentRange": [
-            80,
-            119
+            63,
+            78
+          ]
+        }
+      ]
+    },
+    {
+      "id": "provisioning-vs-admin",
+      "heading": "Provisioning مقابل Administration",
+      "diagramId": "VmLifecycleDiagram",
+      "diagramIds": [
+        "VmLifecycleDiagram"
+      ],
+      "blocks": [
+        {
+          "type": "definition",
+          "content": "Provisioning\nبناء وتجهيز VM: إنشاء، تخصيص موارد، تثبيت Guest OS وDependencies وConfiguration.",
+          "sourceSegmentRange": [
+            63,
+            64
+          ]
+        },
+        {
+          "type": "definition",
+          "content": "Administration\nإدارة VM بعد إنشائها: Start/Stop، Snapshot، Backup، Restore، Migration، Monitoring، Scaling.",
+          "sourceSegmentRange": [
+            63,
+            78
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hypervisor-types-and-web-app",
+      "heading": "أنواع Hypervisor ومثال Web Application",
+      "diagramId": "WebAppOnVmsDiagram",
+      "diagramIds": [
+        "WebAppOnVmsDiagram"
+      ],
+      "blocks": [
+        {
+          "type": "comparison",
+          "content": "Type 1 Hypervisor | يعمل مباشرة فوق Hardware — شائع في Data Centers\nType 2 Hypervisor | يعمل فوق Host OS — مثل VirtualBox وVMware Workstation",
+          "sourceSegmentRange": [
+            79,
+            80
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "مثال Web App: Web Tier (VM Web 1, 2) → Application Tier (VM App 1, 2) → Database Tier (VM DB 1, 2) — VMs موزعة على Physical Servers.",
+          "sourceSegmentRange": [
+            79,
+            94
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vm-internal-layers",
+      "heading": "كل VM تحتاج Guest OS كامل",
+      "diagramId": "VmInternalStackDiagram",
+      "diagramIds": [
+        "VmInternalStackDiagram",
+        "VmStackDiagram"
+      ],
+      "blocks": [
+        {
+          "type": "flow",
+          "content": "Application\nDependencies\nGuest Operating System\nVirtual Hardware\nHypervisor\nPhysical Hardware",
+          "sourceSegmentRange": [
+            95,
+            96
+          ]
+        },
+        {
+          "type": "warning",
+          "content": "الهدف تشغيل Application، لكن داخل VM تحتاج Stack كامل. مع DevOps وInternet-scale applications ظهرت مشكلة جديدة: Guest OS كامل لكل workload.",
+          "sourceSegmentRange": [
+            95,
+            110
           ]
         }
       ]
     },
     {
       "id": "vm-tax",
-      "heading": "أين ظهرت المشكلة؟ VM Tax",
-      "diagramId": "VmStackDiagram",
+      "heading": "ما المقصود بـ VM Tax؟",
+      "diagramId": "VmTaxOverheadDiagram",
       "diagramIds": [
-        "VmStackDiagram",
         "VmTaxOverheadDiagram",
         "MultipleVmsOverheadDiagram"
       ],
       "blocks": [
         {
           "type": "definition",
-          "content": "VM Tax\nالتكلفة الإضافية لاستهلاك Guest OS كامل لكل workload: RAM وCPU وDisk ووقت تشغيل وتحديثات وlicensing وإدارة.",
+          "content": "VM Tax\nالتكلفة الإضافية لتشغيل Guest OS كامل: RAM وCPU وDisk وUpdates وPatches وMonitoring وBackup وLicensing وAttack Surface ووقت التشغيل.",
           "sourceSegmentRange": [
-            120,
-            121
+            95,
+            96
           ]
         },
         {
-          "type": "warning",
-          "content": "التطبيق هو الهدف النهائي، لكن تشغيله داخل VM يعني تشغيل Operating System كامل بجانبه — وهذا overhead لا يخدم التطبيق مباشرة.",
+          "type": "note",
+          "content": "مثال: App تحتاج 1 GB RAM و0.5 Core، لكن VM قد تحتاج 8 GB و4 Cores — الفرق يذهب لـ Guest OS وBackground Services وليس للتطبيق مباشرة.",
           "sourceSegmentRange": [
-            120,
-            121
+            95,
+            96
           ]
         },
         {
           "type": "takeaway",
-          "content": "كل VM تحتاج OS كامل، وهذا يضيف استهلاكًا في الموارد والإدارة لا يخدم التطبيق مباشرة.",
+          "content": "VM Tax ليست مالية فقط — تشمل موارد وإدارة وتحديثات وأمان.",
           "sourceSegmentRange": [
-            120,
-            159
+            95,
+            110
           ]
         }
       ]
     },
     {
-      "id": "containers-as-lighter-solution",
-      "heading": "الحل التالي: Containers",
-      "diagramId": "ContainerArchitectureDiagram",
+      "id": "licensing-and-maintenance",
+      "heading": "Licensing وصيانة كل VM",
+      "blocks": [
+        {
+          "type": "warning",
+          "content": "مع 100 أو 1000 VM: تكرار Guest OS وUpdates وPatches وMonitoring وBackup وSecurity لكل VM — العبء الإداري يكبر جدًا.",
+          "sourceSegmentRange": [
+            111,
+            112
+          ]
+        },
+        {
+          "type": "list",
+          "content": "Windows Server Licensing لكل VM\nحتى Linux المجاني يحتاج إدارة وتحديثات ومراقبة\nمتابعة Disk وRAM وCPU وLogs لكل VM",
+          "sourceSegmentRange": [
+            111,
+            126
+          ]
+        }
+      ]
+    },
+    {
+      "id": "manual-deployment",
+      "heading": "مشكلة الـ Deployment اليدوي",
+      "diagramId": "ManualDeploymentFlowDiagram",
       "diagramIds": [
-        "ContainerArchitectureDiagram"
+        "ManualDeploymentFlowDiagram"
       ],
       "blocks": [
         {
           "type": "paragraph",
-          "content": "بدل أن يحمل كل Application Guest OS كاملًا، تشارك الـ Containers نفس Kernel الخاص بالـ Host. لذلك تكون أخف وأسرع في التشغيل.",
+          "content": "DevOps يحتاج تشغيل التطبيقات في Dev وTest وStaging وProduction بنفس الطريقة — بدون Create VM وInstall OS وConfigure يدويًا في كل مرة.",
           "sourceSegmentRange": [
-            120,
-            159
+            127,
+            128
+          ]
+        },
+        {
+          "type": "warning",
+          "content": "Manual Installation طويل ومعرض للأخطاء: نسيان package، اختلاف dependency version، اختلاف configuration — مشكلة \"It works on my machine\".",
+          "sourceSegmentRange": [
+            127,
+            142
           ]
         }
       ]
     },
     {
-      "id": "vm-vs-container-table",
-      "heading": "مقارنة مختصرة: VM vs Container",
+      "id": "vm-templates",
+      "heading": "VM Templates — حل جزئي",
+      "diagramId": "VmTemplateCloningDiagram",
+      "diagramIds": [
+        "VmTemplateCloningDiagram"
+      ],
+      "blocks": [
+        {
+          "type": "definition",
+          "content": "VM Template\nقالب VM جاهز (OS + Dependencies + Configuration + App) يُستخدم لعمل Clones بدل التثبيت من الصفر.",
+          "sourceSegmentRange": [
+            127,
+            128
+          ]
+        },
+        {
+          "type": "note",
+          "content": "Templates تقلّل وقت التجهيز (مثل إعداد Hadoop من ساعة)، لكن كل Clone ما زالت VM كاملة مع Guest OS وUpdates وMonitoring وBackup.",
+          "sourceSegmentRange": [
+            127,
+            128
+          ]
+        },
+        {
+          "type": "takeaway",
+          "content": "الـ Template يقلّل وقت Provisioning، لكنه لا يلغي ثقل الـ VM ولا تكرار Guest OS.",
+          "sourceSegmentRange": [
+            127,
+            142
+          ]
+        }
+      ]
+    },
+    {
+      "id": "containers-as-deployment",
+      "heading": "الـ Container كطريقة Deploy قابلة للتكرار",
+      "diagramId": "DeploymentComparisonDiagram",
+      "diagramIds": [
+        "DeploymentComparisonDiagram",
+        "ContainerPackageDiagram"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "بدل تجهيز VM كاملة لكل Application، تغلّف التطبيق في Container Image وتشغّل منها Containers: Build once · Run many times · Run consistently.",
+          "sourceSegmentRange": [
+            143,
+            144
+          ]
+        },
+        {
+          "type": "list",
+          "content": "Package جاهزة وقابلة للتكرار\nأقل اعتمادًا على حالة السيرفر\nمناسبة لـ CI/CD وMicroservices وScaling\nتقليل الأخطاء البشرية",
+          "sourceSegmentRange": [
+            143,
+            158
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docker-run-flow",
+      "heading": "مثال: docker run ubuntu",
+      "diagramId": "DockerRunFlowDiagram",
+      "diagramIds": [
+        "DockerRunFlowDiagram",
+        "ImageToContainerDiagram"
+      ],
+      "blocks": [
+        {
+          "type": "command",
+          "content": "docker run ubuntu",
+          "sourceSegmentRange": [
+            159,
+            160
+          ]
+        },
+        {
+          "type": "steps",
+          "content": "التحقق: هل Image موجودة محليًا؟\nإن لم تكن: Pull من Registry\nCreate Container من Image\nStart Container وتشغيل Process",
+          "sourceSegmentRange": [
+            159,
+            160
+          ]
+        },
+        {
+          "type": "definition",
+          "content": "Deployment Abstraction\nبدل السؤال عن Java/Python/libraries على السيرفر، تفكر: لدي Image جاهزة — أشغّل منها Container.",
+          "sourceSegmentRange": [
+            159,
+            174
+          ]
+        }
+      ]
+    },
+    {
+      "id": "when-vm-vs-container",
+      "heading": "متى VM؟ ومتى Container؟",
+      "diagramId": "ContainerVsVmDiagram",
+      "diagramIds": [
+        "ContainerVsVmDiagram",
+        "VmContainersNestedDiagram"
+      ],
+      "blocks": [
+        {
+          "type": "comparison",
+          "content": "VM مناسبة عندما | تحتاج OS كامل، عزل قوي، Windows+Linux معًا، Legacy، Compliance\nContainer مناسب عندما | تشغيل سريع، نسخ كثيرة، Deployment متكرر، Microservices، CI/CD",
+          "sourceSegmentRange": [
+            175,
+            176
+          ]
+        },
+        {
+          "type": "note",
+          "content": "الـ Containers لا تلغي VMs — غالبًا: Cloud VM → Docker → Containers.",
+          "sourceSegmentRange": [
+            175,
+            190
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detailed-comparison",
+      "heading": "مقارنة تفصيلية: VM vs Container",
       "diagramId": "ContainerVsVmDiagram",
       "diagramIds": [
         "ContainerVsVmDiagram"
@@ -284,72 +531,10 @@
       "blocks": [
         {
           "type": "table",
-          "content": "العنصر | Virtual Machine | Container\nيحتوي على OS كامل؟ | نعم | لا\nالحجم | كبير نسبيًا | صغير نسبيًا\nسرعة التشغيل | أبطأ | أسرع\nاستهلاك الموارد | أعلى | أقل\nالعزل | قوي جدًا | جيد لكن مختلف\nالاستخدام | تشغيل أنظمة كاملة | تشغيل تطبيقات وخدمات\nالإدارة | أثقل | أخف وأسهل في الـ Deployment",
+          "content": "العنصر | Virtual Machine | Container\nالهدف | Machine كاملة افتراضية | Application مع احتياجاته\nنظام التشغيل | Guest OS كامل | Host Kernel مشترك\nالحجم | أكبر | أصغر\nسرعة التشغيل | أبطأ غالبًا | أسرع غالبًا\nالعزل | قوي على مستوى VM | عزل Processes وKernel features\nالتحديثات | OS updates لكل VM | تحديث Image ثم إعادة نشر\nالاستخدام | أنظمة كاملة | تطبيقات قابلة للتكرار\nالعلاقة | يمكن أن تستضيف Containers | يمكن أن تعمل داخل VMs",
           "sourceSegmentRange": [
-            120,
-            159
-          ]
-        }
-      ]
-    },
-    {
-      "id": "container-deployment",
-      "heading": "الـ Container كطريقة Deployment",
-      "diagramId": "DockerRunFlowDiagram",
-      "diagramIds": [
-        "DockerRunFlowDiagram",
-        "ImageToContainerDiagram",
-        "DeploymentComparisonDiagram"
-      ],
-      "blocks": [
-        {
-          "type": "paragraph",
-          "content": "من أهم فوائد الـ Containers أنها تجعل الـ Deployment قابلًا للتكرار. تبني Image مرة واحدة، ثم تشغّل منها Containers في أي مكان.",
-          "sourceSegmentRange": [
-            160,
-            161
-          ]
-        },
-        {
-          "type": "command",
-          "content": "docker run ubuntu\nيعادل تقريبًا: Pull Image ثم Create Container ثم Start Container.",
-          "sourceSegmentRange": [
-            160,
-            161
-          ]
-        },
-        {
-          "type": "list",
-          "content": "تسهيل الـ Deployment\nتقليل الأخطاء اليدوية\nتوحيد بيئة التشغيل\nتشغيل نفس التطبيق في Dev وTest وProduction\nتسهيل الـ Scaling وCI/CD",
-          "sourceSegmentRange": [
-            160,
-            199
-          ]
-        }
-      ]
-    },
-    {
-      "id": "vm-and-containers-together",
-      "heading": "هل الـ Containers تلغي الـ VMs؟",
-      "diagramId": "VmContainersNestedDiagram",
-      "diagramIds": [
-        "VmContainersNestedDiagram"
-      ],
-      "blocks": [
-        {
-          "type": "note",
-          "content": "لا. الـ Containers لا تلغي Virtual Machines. في كثير من الحالات يُستخدم الاثنان معًا.",
-          "sourceSegmentRange": [
-            200,
-            201
-          ]
-        },
-        {
-          "type": "takeaway",
-          "content": "الـ VM يعطيك عزلًا وبنية تحتية مستقرة، والـ Container يعطيك سرعة وسهولة في تشغيل التطبيقات.",
-          "sourceSegmentRange": [
-            200,
-            213
+            191,
+            205
           ]
         }
       ]
@@ -360,9 +545,23 @@
       "blocks": [
         {
           "type": "list",
-          "content": "الـ Physical Servers سببت إهدارًا في الموارد\nالـ Virtualization حسّنت استغلال نفس الـ hardware\nكل VM تحتاج Guest OS كامل\nتكرار Guest OS ينتج عنه VM Tax\nالـ Containers تشغّل التطبيقات بطريقة أخف\nالهدف من Containers هو تسهيل وتوحيد الـ Deployment\nالـ Containers والـ VMs يمكن أن يعملا معًا",
+          "content": "Physical Servers → إهدار موارد مع سيرفرات قوية\nVirtualization → VMs معزولة على نفس Hardware\nHypervisor → إدارة VMs وVirtual Hardware\nكل VM → Guest OS كامل → VM Tax\nVM Templates → حل جزئي لا يلغي الثقل\nContainers → Deploy قابل للتكرار وأخف\nContainers + VMs → تكامل وليس استبدال",
           "sourceSegmentRange": [
-            200,
+            206,
+            213
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bridge-to-chapter-3",
+      "heading": "تمهيد للشابتر القادم",
+      "blocks": [
+        {
+          "type": "takeaway",
+          "content": "المشكلة الكبيرة في VM هي Guest OS كامل. السؤال: هل التطبيق يحتاج OS كامل؟ في الشابتر القادم: Kernel Mode وUser Mode وShared Kernel.",
+          "sourceSegmentRange": [
+            206,
             213
           ]
         }
@@ -374,9 +573,9 @@
       "blocks": [
         {
           "type": "glossary",
-          "content": "Container | بيئة خفيفة لتشغيل تطبيق مع dependencies الخاصة به\nImage | القالب الذي يُنشأ منه Container\nVirtual Machine | بيئة افتراضية تحتوي على Operating System كامل\nHypervisor | الطبقة التي تدير Virtual Machines\nGuest OS | نظام التشغيل داخل الـ VM\nHost OS | نظام التشغيل الأساسي على السيرفر\nVM Tax | التكلفة الإضافية لتشغيل Guest OS كامل لكل VM",
+          "content": "Container | تغليف Application مع Dependencies وتشغيله بشكل متكرر\nVirtual Machine | بيئة افتراضية مع Guest OS كامل\nHypervisor | يدير VMs فوق Hardware\nGuest OS | نظام التشغيل داخل VM\nVM Tax | تكلفة Guest OS المتكرر لكل VM\nProvisioning | إنشاء وتجهيز VM جديدة\nAdministration | إدارة VM بعد إنشائها\nVM Template | قالب لإنشاء VMs بسرعة عبر Clone\ndocker run | تشغيل Container من Image (Pull + Create + Start)",
           "sourceSegmentRange": [
-            200,
+            206,
             213
           ]
         }
@@ -388,9 +587,9 @@
       "blocks": [
         {
           "type": "questions",
-          "content": "ما الفرق الأساسي بين Container وVirtual Machine؟\nلماذا ظهرت فكرة الـ Virtualization؟\nما وظيفة الـ Hypervisor؟\nما المقصود بـ VM Tax؟\nلماذا تعتبر Containers مناسبة للـ Deployment المتكرر؟\nهل يمكن تشغيل Containers داخل Virtual Machines؟",
+          "content": "لماذا تعريف Container وحده قد يكون غامضًا؟\nما المشكلة في Physical Servers فقط؟\nما وظيفة Hypervisor؟\nما الفرق بين Provisioning وAdministration؟\nما المقصود بـ VM Tax؟\nكيف تساعد VM Templates؟ ولماذا ليست حلًا نهائيًا؟\nماذا يحدث عند docker run ubuntu؟\nهل Containers تلغي VMs؟\nمتى تكون VM مناسبة أكثر من Container؟\nما الفكرة التي يمهد لها الشابتر القادم؟",
           "sourceSegmentRange": [
-            200,
+            206,
             213
           ]
         }
@@ -399,6 +598,6 @@
   ],
   "metadata": {
     "sourceSegmentCount": 214,
-    "blockCount": 31
+    "blockCount": 48
   }
 }

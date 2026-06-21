@@ -2,16 +2,16 @@
   "chapterNumber": 3,
   "title": "Container Architecture",
   "folderName": "03_Container_Architecture",
-  "formattedAt": "2026-06-20T12:28:12.016Z",
+  "formattedAt": "2026-06-21T19:31:30.700Z",
   "model": "local-handbook-display",
   "sections": [
     {
       "id": "chapter-goals",
-      "heading": "الهدف من الشابتر",
+      "heading": "أهداف الشابتر",
       "blocks": [
         {
           "type": "summary",
-          "content": "في هذا الشابتر نفهم البنية الداخلية للـ Container: أين المشكلة في الـ VM، معنى Shared Kernel، فكرة Layers والـ Image، ودور Namespaces و cgroups في العزل والتحكم في الموارد.",
+          "content": "في هذا الشابتر نفهم البنية الداخلية للـ Container: أين المشكلة في الـ VM، Kernel Mode وUser Mode، Shared Kernel، Layers والـ Image، ودور Namespaces و cgroups.",
           "sourceSegmentRange": [
             0,
             1
@@ -19,10 +19,10 @@
         },
         {
           "type": "list",
-          "content": "أين توجد المشكلة داخل الـ Virtual Machine\nالفرق بين Kernel Mode و User Mode\nمعنى Shared Kernel\nلماذا الـ Container لا يحتوي Kernel مستقل\nتشبيه Base Disk و Differencing Disk\nمعنى Image و Container\nحدود الاعتماد على Kernel مشترك\nدور Namespaces و cgroups",
+          "content": "أين توجد المشكلة داخل الـ Virtual Machine\nالفرق بين Kernel Mode و User Mode\nمعنى Shared Kernel وماذا وفر\nلماذا Container ليس VM صغيرة\nتشبيه Base Disk و Differencing Disk\nContainer Layers وImage وWritable Layer\nBuild و Pull و Run\nRegistry و Manifest List\nحدود Kernel المشترك\nNamespaces و cgroups و runc",
           "sourceSegmentRange": [
             0,
-            10
+            14
           ]
         }
       ]
@@ -36,19 +36,27 @@
       ],
       "blocks": [
         {
-          "type": "paragraph",
-          "content": "في الـ VM التقليدية الهدف غالبًا تشغيل Application، لكن علشان يشتغل لازم يكون عندك Virtual Hardware وGuest OS كامل وKernel وUser Mode components وServices وLibraries — قبل ما توصل للتطبيق نفسه.",
+          "type": "flow",
+          "content": "Application\nDependencies\nGuest Operating System\nVirtual Hardware\nHypervisor\nPhysical Hardware",
           "sourceSegmentRange": [
-            11,
-            12
+            15,
+            16
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "الهدف غالبًا تشغيل Application، لكن داخل VM تحتاج Virtual Hardware وOS كامل وKernel وUser Mode وServices وLibraries — قبل الوصول للتطبيق.",
+          "sourceSegmentRange": [
+            15,
+            16
           ]
         },
         {
           "type": "takeaway",
-          "content": "جزء كبير من الـ VM مش موجود لخدمة التطبيق مباشرة، بل لتجهيز بيئة تشغيل كاملة.",
+          "content": "التطبيق في أعلى الـ Stack، لكن تحته طبقات كثيرة — أهمها Guest OS الكامل.",
           "sourceSegmentRange": [
-            11,
-            25
+            15,
+            30
           ]
         }
       ]
@@ -63,26 +71,26 @@
       "blocks": [
         {
           "type": "warning",
-          "content": "لو عندك 100 VM، غالبًا عندك 100 Guest OS — يعني 100 مجموعة Updates وPatches وConfiguration وMonitoring وBackup وLicensing ومساحة Disk وRAM وCPU overhead.",
+          "content": "100 VM ≈ 100 Guest OS — يعني 100 مجموعة Updates وPatches وMonitoring وBackup وLicensing وRAM وCPU overhead وAttack surface.",
           "sourceSegmentRange": [
-            26,
-            27
+            31,
+            32
           ]
         },
         {
-          "type": "note",
-          "content": "التطبيق غالبًا لا يحتاج OS كامل. يحتاج Kernel وملفات ومكتبات وRuntime وConfiguration — لكن لا يحتاج Desktop Environment وGUI وServices غير مرتبطة.",
+          "type": "comparison",
+          "content": "التطبيق يحتاج | Kernel وملفات ومكتبات وRuntime وConfiguration\nالتطبيق لا يحتاج عادةً | Desktop Environment وGUI وServices غير مرتبطة وكل User Mode في OS كامل",
           "sourceSegmentRange": [
-            26,
-            27
+            31,
+            32
           ]
         },
         {
           "type": "takeaway",
           "content": "المشكلة ليست في الـ VM نفسها، بل في تكرار نظام تشغيل كامل لكل workload.",
           "sourceSegmentRange": [
-            26,
-            45
+            31,
+            46
           ]
         }
       ]
@@ -97,26 +105,48 @@
       "blocks": [
         {
           "type": "definition",
-          "content": "Kernel Mode\nالجزء الأساسي من نظام التشغيل المسؤول عن CPU وRAM وDisk وNetwork وProcesses وFilesystems وHardware — لا يمكن الاستغناء عنه.",
+          "content": "Kernel Mode\nالجزء الأساسي من OS: CPU وRAM وDisk وNetwork وProcesses وFilesystems وHardware وSystem calls — لا يمكن الاستغناء عنه.",
           "sourceSegmentRange": [
-            46,
-            47
+            47,
+            48
           ]
         },
         {
           "type": "definition",
-          "content": "User Mode\nالجزء الأعلى من OS: GUI وCLI وShell وServices وDaemons وDesktop environment — مهم في أنظمة كاملة لكن ليس كلها مطلوبة لكل Application.",
+          "content": "User Mode\nCLI وGUI وShell وServices وDaemons وDesktop environment وPackage tools — مهم في OS كامل لكن ليس كلها مطلوبة لكل Application.",
           "sourceSegmentRange": [
-            46,
-            47
+            47,
+            48
           ]
         },
         {
           "type": "takeaway",
-          "content": "الـ Kernel ضروري دائمًا؛ كثير من أجزاء User Mode زائدة لتشغيل تطبيق واحد داخل Container.",
+          "content": "Web Application بسيط لا يحتاج Desktop Environment كامل ولا كل خدمات OS.",
           "sourceSegmentRange": [
-            46,
-            79
+            47,
+            62
+          ]
+        }
+      ]
+    },
+    {
+      "id": "what-app-needs",
+      "heading": "ما الذي نحتاجه فعلًا لتشغيل التطبيق؟",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "في VM غالبًا نشغّل OS كامل فقط للوصول للتطبيق. لو أخذنا Application + Dependencies وشغّلناهم فوق Kernel موجود، نوفر جزءًا ضخمًا من التكلفة.",
+          "sourceSegmentRange": [
+            63,
+            64
+          ]
+        },
+        {
+          "type": "takeaway",
+          "content": "الفكرة المحورية: التطبيقات تشارك نفس Kernel على الـ Host بدل Guest OS كامل لكل Application.",
+          "sourceSegmentRange": [
+            63,
+            78
           ]
         }
       ]
@@ -126,31 +156,46 @@
       "heading": "الفكرة المحورية: Shared Kernel",
       "diagramId": "SharedKernelDiagram",
       "diagramIds": [
-        "SharedKernelDiagram"
+        "SharedKernelDiagram",
+        "ContainerArchitectureDiagram"
       ],
       "blocks": [
         {
           "type": "definition",
-          "content": "Shared Kernel\nبدل أن يكون لكل Application Guest OS كامل، تشارك الـ Containers نفس Kernel الخاص بالـ Host Operating System.",
+          "content": "Shared Kernel\nالـ Container لا يحتوي Kernel مستقل — يعتمد على Kernel الـ Host. كل Containers على نفس Machine تشارك نفس Kernel معزولة عن بعضها.",
           "sourceSegmentRange": [
-            46,
-            47
+            63,
+            64
           ]
         },
         {
-          "type": "paragraph",
-          "content": "الـ Container لا يحتوي على Kernel مستقل. على Linux Host، كل Containers تستخدم Linux Kernel الموجود على الجهاز — معزولة عن بعضها لكنها تشترك في نفس الـ Kernel.",
+          "type": "flow",
+          "content": "Host OS Kernel\n├── Container 1: App + Dependencies\n├── Container 2: App + Dependencies\n└── Container 3: App + Dependencies",
           "sourceSegmentRange": [
-            46,
-            47
+            63,
+            78
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shared-kernel-benefits",
+      "heading": "ماذا وفر لنا Shared Kernel؟",
+      "blocks": [
+        {
+          "type": "list",
+          "content": "تقليل تكرار Operating System\nأقل RAM وDisk ووقت تشغيل\nتقليل attack surface وUpdates وPatches\nإدارة أخف وتقليل Licensing لكل OS",
+          "sourceSegmentRange": [
+            79,
+            80
           ]
         },
         {
           "type": "table",
-          "content": "العنصر | Virtual Machine | Container\nKernel | Kernel داخل كل Guest OS | يستخدم Host Kernel\nUser Mode كامل | موجود غالبًا | الأجزاء المطلوبة فقط\nالحجم | أكبر | أصغر\nالتشغيل | أبطأ نسبيًا | أسرع\nالعزل | قوي على مستوى VM | عزل عبر Kernel features",
+          "content": "العنصر | Virtual Machine | Container\nKernel | داخل كل Guest OS | Host Kernel مشترك\nUser Mode | كامل غالبًا | الأجزاء المطلوبة فقط\nالحجم | أكبر | أصغر\nالتشغيل | أبطأ نسبيًا | أسرع\nالعزل | قوي على مستوى VM | عزل Kernel features\nالاستخدام | OS كامل | App + dependencies",
           "sourceSegmentRange": [
-            46,
-            79
+            79,
+            94
           ]
         }
       ]
@@ -161,52 +206,44 @@
       "blocks": [
         {
           "type": "warning",
-          "content": "لا. الـ Container ليس Virtual Machine صغيرة. الـ VM لها Guest OS وKernel خاص بها؛ الـ Container Process أو مجموعة Processes معزولة تستخدم Kernel الـ Host.",
+          "content": "لا. الـ Container Process أو مجموعة Processes معزولة تستخدم Kernel الـ Host — ليست VM صغيرة وليس لها Guest OS وKernel خاص.",
           "sourceSegmentRange": [
-            46,
-            47
+            79,
+            80
           ]
         },
         {
           "type": "list",
-          "content": "Isolation عبر Kernel features\nResource limits\nFilesystem view خاص\nNetwork view خاص\nProcess tree خاص",
+          "content": "Isolation وResource limits\nFilesystem view وNetwork view خاصة\nProcess tree خاص\nUser/group mapping — عبر Kernel features",
           "sourceSegmentRange": [
-            46,
-            79
+            79,
+            94
           ]
         }
       ]
     },
     {
       "id": "base-disk-analogy",
-      "heading": "تشبيه مهم: Base Disk و Differencing Disk",
+      "heading": "تشبيه: Base Disk و Differencing Disk",
       "diagramId": "BaseDiskDifferencingDiagram",
       "diagramIds": [
         "BaseDiskDifferencingDiagram"
       ],
       "blocks": [
         {
-          "type": "paragraph",
-          "content": "لو عندك VM Template بحجم 100GB وتريد 30 VM: Full Copy يستهلك ~3000GB. بدل كده، كل VM تعتمد على Base Disk وتخزن الفروقات فقط في Differencing Disk — غالبًا 1–3GB حسب التغييرات.",
+          "type": "comparison",
+          "content": "Full Copy | 100GB × 30 VM ≈ 3000GB\nDifferencing Disk | Base Disk + فروقات فقط (1–3GB لكل VM غالبًا)",
           "sourceSegmentRange": [
-            80,
-            81
+            95,
+            96
           ]
         },
         {
           "type": "note",
-          "content": "الـ Snapshots تعمل بنفس الفكرة: طبقات جديدة فوق Base Disk، ويمكن الرجوع لحالة سابقة بحذف آخر Differencing Disk.",
+          "content": "Snapshots تعمل بنفس الفكرة: طبقات Differencing Disk فوق بعض — حذف آخر layer يرجع لحالة سابقة. نفس المبدأ وراء Container Layers.",
           "sourceSegmentRange": [
-            80,
-            81
-          ]
-        },
-        {
-          "type": "takeaway",
-          "content": "نفس المبدأ يفسر Container Layers: أساس مشترك + تغييرات فقط.",
-          "sourceSegmentRange": [
-            80,
-            119
+            95,
+            110
           ]
         }
       ]
@@ -221,26 +258,48 @@
       "blocks": [
         {
           "type": "definition",
-          "content": "Container Layer\nتغيير في filesystem: إضافة أو حذف أو تعديل ملفات، تثبيت package، إضافة runtime أو application code أو configuration.",
+          "content": "Container Layer\nتغيير في filesystem: إضافة أو حذف أو تعديل ملفات، تثبيت package، runtime، application code، أو configuration.",
           "sourceSegmentRange": [
-            120,
-            121
+            111,
+            112
           ]
         },
         {
           "type": "warning",
-          "content": "الـ Kernel ليس داخل الـ Image. الـ Image تحتوي user-space files فقط فوق Kernel موجود بالفعل على الـ Host.",
+          "content": "الـ Kernel ليس داخل الـ Image — Image تحتوي user-space files فقط فوق Kernel موجود على الـ Host.",
           "sourceSegmentRange": [
-            120,
-            121
+            111,
+            112
           ]
         },
+        {
+          "type": "flow",
+          "content": "Application Code\nDependencies / Packages\nRuntime / Tools\nBase Image Files\nHost Kernel (ليس داخل Image)",
+          "sourceSegmentRange": [
+            111,
+            126
+          ]
+        }
+      ]
+    },
+    {
+      "id": "layers-example",
+      "heading": "مثال عملي لفكرة Layers",
+      "blocks": [
         {
           "type": "steps",
           "content": "Layer 1: Fedora base files\nLayer 2: Install Python\nLayer 3: Install Python packages\nLayer 4: Add application code\nLayer 5: Add configuration",
           "sourceSegmentRange": [
-            120,
-            159
+            127,
+            128
+          ]
+        },
+        {
+          "type": "note",
+          "content": "النتيجة: Application + Python packages + Fedora user-space — تستخدم Host Linux Kernel بدون Fedora Kernel جديد.",
+          "sourceSegmentRange": [
+            127,
+            142
           ]
         }
       ]
@@ -250,27 +309,41 @@
       "heading": "لماذا Ubuntu و Fedora و Alpine Images؟",
       "blocks": [
         {
-          "type": "note",
-          "content": "كل Linux distributions تشترك في Linux Kernel. الفرق في User-space: package manager وlibraries وfile layout وdefault tools.",
-          "sourceSegmentRange": [
-            160,
-            161
-          ]
-        },
-        {
           "type": "flow",
           "content": "Linux Kernel + Ubuntu user-space = Ubuntu\nLinux Kernel + Fedora user-space = Fedora\nLinux Kernel + Alpine user-space = Alpine",
           "sourceSegmentRange": [
-            160,
-            161
+            127,
+            128
           ]
         },
         {
-          "type": "takeaway",
-          "content": "وجود Layers يتيح إعادة استخدام base مشترك، تحسين caching، وتقليل المساحة والتحميل من Registry.",
+          "type": "note",
+          "content": "الفرق في package manager وlibraries وfile layout — ليس Kernel مختلفًا لكل distribution.",
           "sourceSegmentRange": [
-            160,
-            199
+            127,
+            142
+          ]
+        }
+      ]
+    },
+    {
+      "id": "flatten-layers",
+      "heading": "هل يمكن دمج كل Layers؟",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "نظريًا يمكن Flatten/Merge للـ Layers — مثل merge للـ Differencing Disks في VMs. لكن غالبًا ليس الأفضل دائمًا.",
+          "sourceSegmentRange": [
+            143,
+            144
+          ]
+        },
+        {
+          "type": "list",
+          "content": "إعادة استخدام Layers مشتركة بين Images\nتقليل التحميل من Registry\nتحسين caching أثناء build\nتقليل المساحة وتسريع build\nمشاركة Ubuntu base layer بين 10 Images",
+          "sourceSegmentRange": [
+            143,
+            158
           ]
         }
       ]
@@ -284,27 +357,33 @@
       ],
       "blocks": [
         {
-          "type": "definition",
-          "content": "Container Image\nTemplate read-only: مجموعة Layers وfilesystem وmetadata وdefault command — تُستخدم لإنشاء Containers.",
+          "type": "comparison",
+          "content": "VM Template | قالب → Clone VM كاملة مع Guest OS\nContainer Image | قالب read-only → Container instance شغالة",
           "sourceSegmentRange": [
-            200,
-            201
+            159,
+            160
           ]
         },
         {
-          "type": "comparison",
-          "content": "Image | Static read-only template\nContainer | Running أو stopped instance مع writable layer فوق الـ image",
+          "type": "definition",
+          "content": "Container Image\nمجموعة Layers read-only + filesystem + metadata + default command + env vars — عند التشغيل تُضاف Writable Layer فوقها.",
           "sourceSegmentRange": [
-            200,
-            201
+            159,
+            174
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "image-vs-container",
+      "heading": "Image vs Container",
+      "blocks": [
         {
           "type": "table",
-          "content": "العنصر | Image | Container\nالحالة | Static template | Running / Stopped instance\nالكتابة | Read-only layers | Writable layer فوق image\nالتشبيه | VM Template | VM running instance\nالتكرار | أكثر من Container منها | نسخة مستقلة وقت التشغيل",
+          "content": "العنصر | Image | Container\nالحالة | Static template | Running أو Stopped instance\nالكتابة | Read-only layers | Writable layer فوق image\nالاستخدام | لإنشاء Containers | لتشغيل التطبيق\nالتخزين | Registry أو local cache | على Docker Host\nالتكرار | أكثر من Container منها | نسخة مستقلة",
           "sourceSegmentRange": [
-            200,
-            239
+            159,
+            174
           ]
         }
       ]
@@ -319,18 +398,18 @@
       "blocks": [
         {
           "type": "steps",
-          "content": "Build: Dockerfile → docker build → Image\nPull: تنزيل Image من Registry\nCreate: إنشاء Container من Image\nStart: تشغيل Container\nRun: docker run = Pull (إن لزم) + Create + Start",
+          "content": "Build: Dockerfile → docker build → Image\nPull: تنزيل Image من Registry\nCreate: إنشاء Container من Image\nStart: تشغيل Container\nRun: docker run = Pull (إن لزم) + Create + Start + Writable Layer",
           "sourceSegmentRange": [
-            240,
-            241
+            175,
+            176
           ]
         },
         {
           "type": "command",
-          "content": "docker run ubuntu\nيضيف Writable Layer فوق read-only layers ثم يشغّل main process.",
+          "content": "docker run ubuntu\nيتحقق من Image محليًا، قد يعمل Pull، ثم Create وStart ويشغّل main process.",
           "sourceSegmentRange": [
-            240,
-            279
+            175,
+            190
           ]
         }
       ]
@@ -345,18 +424,18 @@
       "blocks": [
         {
           "type": "paragraph",
-          "content": "الـ Images تُخزّن في Registry مثل Docker Hub. مثال: docker.io/library/ubuntu:22.04 — Registry: docker.io · Repository: library/ubuntu · Tag: 22.04",
+          "content": "docker.io/library/ubuntu:22.04 → Registry: docker.io · Repository: library/ubuntu · Tag: 22.04. python:3.11 يعني Repository python وTag 3.11.",
           "sourceSegmentRange": [
-            240,
-            241
+            191,
+            192
           ]
         },
         {
-          "type": "command",
-          "content": "python:3.11\nRepository: python · Tag: 3.11",
+          "type": "note",
+          "content": "Docker Hub أشهر Registry — يمكن Private Registry داخل الشركة.",
           "sourceSegmentRange": [
-            240,
-            279
+            191,
+            206
           ]
         }
       ]
@@ -364,40 +443,54 @@
     {
       "id": "kernel-compatibility",
       "heading": "حدود الاعتماد على Kernel مشترك",
+      "blocks": [
+        {
+          "type": "warning",
+          "content": "Linux Container يحتاج Linux Kernel · Windows Container يحتاج Windows Kernel. لا Linux Container مباشرة فوق Windows Kernel بدون WSL2/VM/Docker Desktop.",
+          "sourceSegmentRange": [
+            207,
+            208
+          ]
+        },
+        {
+          "type": "list",
+          "content": "Ubuntu Container على Fedora Host: نعم — الاتنين Linux user-space\nLinux Container على Windows: يحتاج Linux Kernel متاحًا\nWindows Container على Linux Host: لا",
+          "sourceSegmentRange": [
+            207,
+            222
+          ]
+        }
+      ]
+    },
+    {
+      "id": "manifest-list",
+      "heading": "Manifest List واختيار Image المناسبة",
       "diagramId": "ImageManifestDiagram",
       "diagramIds": [
         "ImageManifestDiagram"
       ],
       "blocks": [
         {
-          "type": "warning",
-          "content": "Linux Container يحتاج Linux Kernel · Windows Container يحتاج Windows Kernel. لا يمكن تشغيل Linux Container مباشرة فوق Windows Kernel بدون VM أو WSL2.",
+          "type": "definition",
+          "content": "Manifest List\nقائمة نسخ من نفس Image حسب Platform: linux/amd64 وlinux/arm64 وwindows/amd64 — Docker يختار المطابق عند Pull.",
           "sourceSegmentRange": [
-            280,
-            281
+            207,
+            208
           ]
         },
         {
-          "type": "list",
-          "content": "Ubuntu Container على Fedora Host: نعم — الاتنين Linux\nLinux Container على Windows Host: ليس مباشرة — يحتاج Linux Kernel (Docker Desktop / WSL2 / VM)\nWindows Container على Linux Host: لا",
+          "type": "takeaway",
+          "content": "عند Pull، Docker يحمّل فقط Layers المناسبة لـ OS وArchitecture الخاص بالـ Host.",
           "sourceSegmentRange": [
-            280,
-            281
-          ]
-        },
-        {
-          "type": "note",
-          "content": "Manifest List تختار النسخة المناسبة حسب OS وCPU Architecture عند Pull — مثل linux/amd64 وlinux/arm64.",
-          "sourceSegmentRange": [
-            280,
-            319
+            207,
+            222
           ]
         }
       ]
     },
     {
-      "id": "namespaces-cgroups",
-      "heading": "Namespaces و cgroups",
+      "id": "namespaces",
+      "heading": "Namespaces — العزل",
       "diagramId": "NamespacesCgroupsDiagram",
       "diagramIds": [
         "NamespacesCgroupsDiagram"
@@ -405,33 +498,69 @@
       "blocks": [
         {
           "type": "definition",
-          "content": "Namespaces\nتعزل ما تراه العملية: PID وNetwork وMount وHostname وIPC وUsers — كل Container يرى نسخة خاصة من موارد النظام.",
+          "content": "Namespaces\nتعزل ما تراه العملية: PID وNetwork وMount وHostname (UTS) وIPC وUsers — كل Container يرى نسخة خاصة من موارد النظام.",
           "sourceSegmentRange": [
-            320,
-            321
+            223,
+            224
           ]
         },
         {
-          "type": "definition",
-          "content": "cgroups\nتراقب وتحدد استهلاك الموارد: CPU وRAM وI/O وعدد Processes — تتابع Process وأبناءها كوحدة واحدة.",
+          "type": "note",
+          "content": "مثال: داخل Container التطبيق قد يرى نفسه PID 1، بينما على Host له PID مختلف — رؤية معزولة للـ Process tree.",
           "sourceSegmentRange": [
-            320,
-            321
-          ]
-        },
-        {
-          "type": "takeaway",
-          "content": "Namespaces = Isolation · cgroups = Resource Control — مع Image Layers وRuntime يكوّنوا فكرة Container.",
-          "sourceSegmentRange": [
-            320,
-            339
+            223,
+            238
           ]
         }
       ]
     },
     {
-      "id": "container-process-tree",
-      "heading": "الـ Container كـ Process Tree",
+      "id": "cgroups",
+      "heading": "cgroups — التحكم في الموارد",
+      "blocks": [
+        {
+          "type": "definition",
+          "content": "cgroups (Control Groups)\nتراقب وتحدد استهلاك الموارد: CPU وRAM وI/O وعدد Processes — تتابع Process وأبناءها كوحدة واحدة.",
+          "sourceSegmentRange": [
+            239,
+            240
+          ]
+        },
+        {
+          "type": "list",
+          "content": "Resource accounting وlimiting\nCPU وMemory وBlock I/O control\nProcess count control",
+          "sourceSegmentRange": [
+            239,
+            254
+          ]
+        }
+      ]
+    },
+    {
+      "id": "namespaces-cgroups-foundation",
+      "heading": "Namespaces + cgroups = أساس Container",
+      "blocks": [
+        {
+          "type": "comparison",
+          "content": "Namespaces | ماذا ترى العملية؟ → Isolation\ncgroups | كم مورد تستهلك؟ → Resource Control",
+          "sourceSegmentRange": [
+            239,
+            240
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Container = Process Group معزولة + Image Layers + Runtime. العزل عبر Namespaces والتحكم عبر cgroups.",
+          "sourceSegmentRange": [
+            239,
+            254
+          ]
+        }
+      ]
+    },
+    {
+      "id": "runc-process-tree",
+      "heading": "runc والـ Container كـ Process Tree",
       "diagramId": "ContainerProcessTreeDiagram",
       "diagramIds": [
         "ContainerProcessTreeDiagram"
@@ -439,18 +568,18 @@
       "blocks": [
         {
           "type": "paragraph",
-          "content": "في Linux الـ Container ليس كيانًا سحريًا — هو Process Tree. runc يشغّل main process داخل بيئة معزولة. داخل Container قد ترى نفسك PID 1، بينما على Host لك PID مختلف.",
+          "content": "في Linux الـ Container ليس كيانًا سحريًا — Process Tree. runc يشغّل main process داخل بيئة معزولة. Kernel يمكنه إرسال Signals (SIGTERM, SIGKILL) للـ main process.",
           "sourceSegmentRange": [
-            340,
-            341
+            255,
+            256
           ]
         },
         {
           "type": "note",
-          "content": "Docker لم يخترع كل شيء من الصفر — جمع Kernel features وImage وRegistry وCLI بطريقة سهلة للمطورين والـ DevOps.",
+          "content": "Docker لم يخترع كل شيء — Namespaces وcgroups موجودة منذ سنوات في Linux. Docker جمع Image وRegistry وCLI وRuntime بطريقة سهلة.",
           "sourceSegmentRange": [
-            340,
-            355
+            255,
+            270
           ]
         }
       ]
@@ -460,16 +589,42 @@
       "heading": "الصورة الكاملة للـ Container Architecture",
       "diagramId": "FullContainerArchitectureDiagram",
       "diagramIds": [
-        "FullContainerArchitectureDiagram",
-        "ContainerVsVmDiagram"
+        "FullContainerArchitectureDiagram"
       ],
       "blocks": [
         {
-          "type": "paragraph",
-          "content": "Host Kernel يوفّر Namespaces و cgroups. Container Runtime (Docker/containerd/runc) يشغّل Containers من Image Layers مع Writable Layer لكل instance.",
+          "type": "flow",
+          "content": "Physical / VM\n└── Host OS + Kernel\n    ├── Namespaces + cgroups\n    └── Container Runtime (Docker/containerd/runc)\n        ├── Container 1: Image Layers + Writable Layer\n        └── Container 2: Image Layers + Writable Layer",
           "sourceSegmentRange": [
-            340,
-            363
+            271,
+            286
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vm-vs-container-architecture",
+      "heading": "مقارنة: VM Architecture vs Container Architecture",
+      "diagramId": "ContainerVsVmDiagram",
+      "diagramIds": [
+        "ContainerVsVmDiagram",
+        "VmInternalStackDiagram"
+      ],
+      "blocks": [
+        {
+          "type": "comparison",
+          "content": "VM | Hypervisor → Guest Kernel + User Mode OS + App لكل VM\nContainer | Host Kernel → App + user-space files لكل Container بدون Guest OS",
+          "sourceSegmentRange": [
+            271,
+            272
+          ]
+        },
+        {
+          "type": "takeaway",
+          "content": "الـ VM قوية ومهمة — لكن تكرار Guest OS كامل هو المشكلة التي تحلها Containers معماريًا.",
+          "sourceSegmentRange": [
+            271,
+            286
           ]
         }
       ]
@@ -480,10 +635,24 @@
       "blocks": [
         {
           "type": "list",
-          "content": "المشكلة في VM: تكرار Guest OS كامل\nOS = Kernel Mode + User Mode\nContainer يستخدم Host Kernel ولا يحتاج Guest OS كامل\nImage = read-only layers قابلة لإعادة الاستخدام\nContainer = instance شغالة + writable layer\nLinux containers تحتاج Linux Kernel\nNamespaces للعزل · cgroups للتحكم في الموارد\nContainer في النهاية Process Tree معزولة",
+          "content": "المشكلة في VM: تكرار Guest OS كامل\nOS = Kernel Mode + User Mode\nContainer يستخدم Host Kernel\nImage = read-only layers · Container = instance + writable layer\nLinux containers تحتاج Linux Kernel\nNamespaces للعزل · cgroups للتحكم\nContainer = Process Tree معزولة\nDocker سهّل استخدام أفكار كانت موجودة مسبقًا",
           "sourceSegmentRange": [
-            356,
-            363
+            287,
+            302
+          ]
+        }
+      ]
+    },
+    {
+      "id": "key-ideas",
+      "heading": "أهم أفكار يجب حفظها",
+      "blocks": [
+        {
+          "type": "list",
+          "content": "المشكلة الأساسية في VM: تكرار OS كامل\nOS ينقسم إلى Kernel Mode و User Mode\nContainer يحتاج Kernel لكن لا يحتاج Guest OS كامل\nContainers تشارك Host Kernel\nImage = read-only layers قابلة لإعادة الاستخدام\nContainer = نسخة شغالة + Writable Layer\nLinux containers تحتاج Linux Kernel\nNamespaces = عزل · cgroups = تحكم في الموارد\nContainer = Process أو Process Group معزولة\nVM Template ≈ Container Image (لكن Clone أثقل)\nLayers أفضل من Flatten دائمًا\nDocker جمع تقنيات قديمة في تجربة سهلة",
+          "sourceSegmentRange": [
+            287,
+            302
           ]
         }
       ]
@@ -494,10 +663,10 @@
       "blocks": [
         {
           "type": "glossary",
-          "content": "Kernel | الجزء الأساسي من OS المسؤول عن الموارد والـ Hardware\nUser Mode | CLI وGUI وServices وTools في user-space\nShared Kernel | أكثر من Container يشارك نفس Host Kernel\nContainer Image | Template read-only من Layers وmetadata\nLayer | تغيير filesystem داخل Image\nWritable Layer | طبقة كتابة تُضاف عند تشغيل Container\nRegistry | مكان تخزين Images مثل Docker Hub\nNamespace | Kernel feature لعزل رؤية العمليات\nrunc | Low-level runtime لتشغيل container كـ isolated process\nManifest List | نسخ Image حسب OS وArchitecture",
+          "content": "Kernel | الجزء الأساسي من OS لإدارة الموارد والـ Hardware\nUser Mode | CLI وGUI وServices وTools في user-space\nShared Kernel | أكثر من Container يشارك Host Kernel\nContainer Image | Template read-only من Layers وmetadata\nLayer | تغيير filesystem داخل Image\nWritable Layer | طبقة كتابة تُضاف عند تشغيل Container\nRegistry | تخزين Images مثل Docker Hub\nRepository | مجموعة Images باسم واحد\nTag | إصدار Image مثل ubuntu:22.04\nNamespace | عزل رؤية العمليات (PID, Network, Mount...)\ncgroups | مراقبة وتحديد CPU/RAM/I/O\nrunc | Low-level runtime لتشغيل container كـ process\nManifest List | نسخ Image حسب OS وArchitecture",
           "sourceSegmentRange": [
-            356,
-            363
+            303,
+            318
           ]
         }
       ]
@@ -508,9 +677,9 @@
       "blocks": [
         {
           "type": "questions",
-          "content": "ما المشكلة الأساسية في Guest OS داخل كل VM؟\nما الفرق بين Kernel Mode و User Mode؟\nلماذا لا يحتوي Container على Kernel مستقل؟\nما الفرق بين Image و Container؟\nما معنى Layer داخل Image؟\nلماذا Linux Container يحتاج Linux Kernel؟\nهل يمكن Ubuntu Container على Fedora Host؟\nما وظيفة Namespaces و cgroups؟\nكيف يُعتبر Container Process Tree؟\nما دور Manifest List؟",
+          "content": "ما المشكلة الأساسية في Guest OS داخل كل VM؟\nما الفرق بين Kernel Mode و User Mode؟\nما المقصود بـ Shared Kernel؟\nلماذا Container ليس VM صغيرة؟\nما الفرق بين Image و Container؟\nما معنى Layer؟ ولماذا Layers أفضل من Flatten دائمًا؟\nما العلاقة بين VM Template و Container Image؟\nما الفرق بين Build و Pull و Run؟\nلماذا Linux Container يحتاج Linux Kernel؟\nهل Ubuntu Container يعمل على Fedora Host؟\nما وظيفة Manifest List؟\nما وظيفة Namespaces و cgroups؟\nكيف يُعتبر Container Process Tree؟\nما دور runc؟\nلماذا Docker سهّل انتشار Containers؟",
           "sourceSegmentRange": [
-            356,
+            319,
             363
           ]
         }
@@ -519,6 +688,6 @@
   ],
   "metadata": {
     "sourceSegmentCount": 364,
-    "blockCount": 43
+    "blockCount": 56
   }
 }

@@ -2,471 +2,666 @@
   "chapterNumber": 4,
   "title": "Introduction to Docker",
   "folderName": "04_Introduction_to_Docker",
-  "formattedAt": "2026-06-18T23:08:20.000Z",
-  "model": "gemini-3.1-pro-preview",
+  "formattedAt": "2026-06-21T19:41:27.801Z",
+  "model": "local-handbook-display",
   "sections": [
     {
-      "id": "chunk-0-intro-docker-containers",
-      "heading": "مقدمة عن تكنولوجيا الـ Containers وشركة Docker",
+      "id": "chapter-goals",
+      "heading": "أهداف الشابتر",
       "blocks": [
         {
-          "type": "paragraph",
-          "content": "آخر حتة في الـ Architecture قبل ما نبدأ نلغوص بيدينا في الـ Containers، تذكر إن الـ Containers ده Concept وزي ما الـ Virtual Machine نفسها Concept. الطريقة اللي بـ implement بيها الـ Containers، التكنولوجي اللي أنا محتاجها، زي مثلاً الـ Virtual Machine أنا محتاج تكنولوجي تعمل لي الـ Hypervisor وتعمل لي الحتة بتاعة الـ DevOps، التكنولوجي اللي بـ create بيها Virtual Machine وأـ start وأـ stop ومش عارف إيه وبتاع وحاجات زي كده. والـ Virtual Machine كمان فيها حاجات تانية، يعني فيها كمان أنا مثلاً هشوف النيتورك إزاي بتاعها والستوريج بتاعها والحاجات دي. فالتكنولوجيز دي كتيرة بقى، التكنولوجيز دي موجود منها كتير، زي ما التكنولوجيز بتاعة الـ VMs موجود منها كتير بتطبق الكونسبت بتاع الـ VM. كمان التكنولوجيز بتاعة الـ Containers كتيرة، آه، وبتطبق برضو التكنولوجيز بتاعة الكونتينرز وبتعمل كونتينرز وخلافه، أشهرهم على الإطلاق اللي إحنا هنركز عليها النهاردة اللي هي Docker. دوكر دي شركة اسمها Docker Inc. هي ما كانش اسمها كده، شركة مثلاً من 1999 أو 2000 حاجة زي كده، كان اسمها dotCloud باين أو بتاع، هتلاقي كاتب لكم في النوتس الحاجات ديت على الـ Repo يعني. المهم إن دوكر دي هي الشركة اللي خلت الـ Containers دي، تخرجها بقى من رحم اللينكس كيرنل واليونيكس كيرنل وتبقى متاحة للناس إن هي تستعملها.",
+          "type": "summary",
+          "content": "آخر جزء نظري في الـ Container Architecture قبل العمل العملي: نفهم Container كـ Concept مقابل Docker كـ Implementation، أنواع Containers، Docker Desktop، وأول تجربة hands-on عبر Play with Docker.",
           "sourceSegmentRange": [
             0,
-            2
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "فدوكر عندها تكنولوجي، عندها سوفتوير اسمه دوكر برضو، ما تتلخبطش، الشركة اسمها دوكر والسوفتوير اسمه دوكر. فعندها الدوكر ده والدوكر ده، زيه زي الـ Hyper-V كده في الويندوز، زيه زي الـ VMware. فالدوكر ده اللي بقدر بيه أعمل الـ Containers، وأقدر بيه إن أنا أعمل الحتة بتاعة الـ DevOps بتاعة الـ Containers، أنا أـ build الكونتينر وأـ build الـ Images وأقدر إن أنا أـ run وأـ execute الكونتينرز، وأقفل الكونتينرز وأـ execute. يستحسن طبعاً، والأحسن أكيد يعني تعمل لك أكاونت على دوكر، تخش على docker.com.",
-          "sourceSegmentRange": [
-            3,
-            5
-          ]
-        }
-      ]
-    },
-    {
-      "id": "chunk-0-docker-versions-and-containers",
-      "heading": "إصدارات Docker وأنواع الـ Containers",
-      "diagramId": "DockerDesktopDiagram",
-      "blocks": [
-        {
-          "type": "paragraph",
-          "content": "وتعمل لك أكاونت Free، ولما تعمل أكاونت Free بتاع دوكر ده، تبدأ إنك تقدر تـ install الدوكر. ودوكر دي الكومبوننت نفسها، السوفتوير ده فيه منه Two offerings:",
-          "sourceSegmentRange": [
-            6,
-            6
+            1
           ]
         },
         {
           "type": "list",
-          "content": "واحد منه اللي هو Community Edition (CE) وده عبارة عن Free و Open Source.\nوالتاني اللي هو Enterprise Edition (EE) وده بقى اللي بفلوس عشان فيه Features زيادة و Licenses زيادة وحاجات زي كده.",
+          "content": "الفرق بين Container Concept و Docker Technology\nDocker Inc مقابل Docker Software\nCommunity Edition و Enterprise Edition\nLinux Containers و Windows Containers\nDocker على Linux و Windows و Mac\nPlay with Docker\nأوامر: docker info · container run · ls · image ls · stop\nAlpine و Python و Nginx\nInteractive Mode مقابل Detached Mode\nPort Mapping",
           "sourceSegmentRange": [
-            7,
-            8
+            0,
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "id": "container-concept-vs-docker",
+      "heading": "الـ Container كـ Concept وليس Product واحد",
+      "diagramId": "ContainerPackageDiagram",
+      "diagramIds": [
+        "ContainerPackageDiagram",
+        "EvolutionTimelineDiagram"
+      ],
+      "blocks": [
+        {
+          "type": "comparison",
+          "content": "Virtual Machine Concept | يحتاج Hyper-V أو VMware أو Hypervisor\nContainer Concept | يحتاج Docker أو تقنيات أخرى لتنفيذ Build/Run/Stop/Manage",
+          "sourceSegmentRange": [
+            0,
+            1
           ]
         },
         {
-          "type": "paragraph",
-          "content": "في حتة كمان ممكن تلخبطنا فخلينا نركز فيها دلوقتي، فكرة الـ Containers. الكونتينرز أنواع، الكونتينرز نوعين حتى تسجيل هذا الفيديو. الطاهر المبارك كل ما هو كونتينر يا إما بينزل على ويندوز، يعني يبقى Windows Container، يا إما بينزل على لينكس. ما فيش حاجة تالتة، الكونتينر يا ويندوز فيستعمل الويندوز كيرنل، يا إما لينكس فيستعمل اللينكس كيرنل، كويس كده؟",
+          "type": "takeaway",
+          "content": "Container و VM كلاهما Concept — لكن التنفيذ العملي يحتاج Technology. أشهر implementation للـ Containers هو Docker.",
           "sourceSegmentRange": [
-            9,
-            11
+            0,
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docker-inc-vs-software",
+      "heading": "Docker Inc مقابل Docker Software",
+      "blocks": [
+        {
+          "type": "definition",
+          "content": "Docker Inc\nالشركة التي ساعدت في إخراج Containers من عالم Linux Kernel وجعلتها متاحة للمطورين — كانت سابقًا dotCloud (~2010).",
+          "sourceSegmentRange": [
+            8,
+            9
           ]
         },
         {
-          "type": "paragraph",
-          "content": "السوفتوير نفسه بتاع دوكر ده بينزل على ويندوز وعلى لينكس وعلى ماك. فالسوفتوير لو نزل مثلاً على لينكس، هيعمل مثلاً Linux Containers. لو نزل على ويندوز مثلاً، هيعمل مثلاً Windows Containers. تمام؟ طب لو نزل على ماك؟ دي بقى التريكاية. دلوقتي إنت لو نزلت دوكر ده على لينكس خلاص هتنزل Linux Containers وخلص الموضوع. لو نزلت دوكر على ويندوز أو على ماك، هنا دوكر هيبقى اسمه Docker Desktop، يعني الـ Version بتاع دوكر اللي بينزل على ويندوز اسمه Docker Desktop. والـ Version اللي بينزل على ماك اسمه Docker Desktop for Mac، كويس كده؟",
+          "type": "definition",
+          "content": "Docker Software\nالتكنولوجيا والأوامر لإدارة Container Lifecycle: Build و Pull و Run و Stop و Execute.",
           "sourceSegmentRange": [
-            12,
+            8,
+            9
+          ]
+        },
+        {
+          "type": "note",
+          "content": "لا تخلط: Docker اسم الشركة واسم السوفت وير معًا.",
+          "sourceSegmentRange": [
+            8,
+            15
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docker-hypervisor-analogy",
+      "heading": "Docker يشبه إيه في عالم الـ Virtualization؟",
+      "diagramId": "DeploymentComparisonDiagram",
+      "diagramIds": [
+        "DeploymentComparisonDiagram",
+        "HypervisorRoleDiagram"
+      ],
+      "blocks": [
+        {
+          "type": "comparison",
+          "content": "عالم VMs | Hyper-V / VMware / Hypervisor\nعالم Containers | Docker\nالهدف | تحويل Concept إلى شيء عملي قابل للإدارة",
+          "sourceSegmentRange": [
+            8,
+            9
+          ]
+        },
+        {
+          "type": "table",
+          "content": "العنصر | Virtual Machines | Containers\nالمفهوم | VM | Container\nالتكنولوجيا | Hypervisor | Docker\nوحدة التشغيل | VM كاملة | Container\nالإدارة | Start/Stop VM | Run/Stop Container\nالبيئة | Guest OS, IP, Storage | Image, Container, Network, Volumes",
+          "sourceSegmentRange": [
+            8,
+            9
+          ]
+        },
+        {
+          "type": "warning",
+          "content": "التشبيه للتقريب فقط — معمارية Containers مختلفة عن VMs.",
+          "sourceSegmentRange": [
+            8,
+            15
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docker-editions",
+      "heading": "Docker Editions: Community vs Enterprise",
+      "blocks": [
+        {
+          "type": "note",
+          "content": "يُستحسن إنشاء حساب مجاني على docker.com للوصول إلى Docker Hub و Play with Docker.",
+          "sourceSegmentRange": [
+            16,
             17
           ]
         },
         {
-          "type": "paragraph",
-          "content": "لو نزلته على ويندوز، هيبدأ يشوف بقى لو إنت عندك Hyper-V نازل على ويندوز (اللي هو التكنولوجي بتاعة مايكروسوفت اللي بتخليك تعمل Virtual Machines)، لو نازل عندك هيبدأ يقول لك إنت محتاج Linux Containers ولا لأ؟ خلي بالك، لو قلت له آه محتاج Linux Containers، اللي هيعمله إن هو هـ create VM لينكس على ويندوز. والـ Containers بتاعة اللينكس هيحطها جوه الـ VM دي. في الحالة دي تقدر وإنت على ويندوز تعمل Windows Containers و Linux Containers. الـ Windows Containers في الأصل طبعاً على الويندوز كيرنل، والـ Linux Containers على اللينكس VM اللي عملها Docker Desktop.",
+          "type": "table",
+          "content": "العنصر | Community Edition | Enterprise Edition\nالتكلفة | مجاني | مدفوع\nالمصدر | Open Source | Enterprise Offering\nالاستخدام | تعلم وتطوير | شركات وProduction كبيرة\nالمميزات | الأساسيات | Features وLicenses ودعم إضافي",
           "sourceSegmentRange": [
-            18,
-            21
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "شرحه برضو في ماك، لما تيجي تنزل على ماك هينزل لك Virtual Machine لينكس برضو. وجوه ماك تقدر تعمل Linux Containers. خلاص؟ عشان بس ما نتلخبطش، الكونتينر يا ويندوز يا لينكس. أما لو إنت هتنزل بقى Docker Desktop على ويندوز هيديك الأوبشن ده. وده أوبشن ظريف على فكرة مش موجود حتى في لينكس.",
-          "sourceSegmentRange": [
-            22,
-            26
+            16,
+            23
           ]
         }
       ]
     },
     {
-      "id": "chunk-0-play-with-docker",
-      "heading": "Docker Desktop Dashboard و Play with Docker",
+      "id": "container-types",
+      "heading": "أنواع الـ Containers: Linux و Windows",
+      "diagramId": "SharedKernelDiagram",
+      "diagramIds": [
+        "SharedKernelDiagram",
+        "ContainerVsVmDiagram"
+      ],
       "blocks": [
         {
-          "type": "paragraph",
-          "content": "لأن حتى كمان Docker Desktop بيديك شوية Tools ظريفة زيادة كمان، زي مثلاً Docker Dashboard وبتاع، يوريك الـ Containers اللي موجودة والـ Images اللي موجودة ومين شغال ومين مش شغال وبتاع. ده على فكرة By default مش موجودة على لينكس. بس إحنا هنشوف لها حل ما تقلقش، هنشوف لها حل يعني، أوكي؟ فخلينا كده نبدأ نجرب الكلام ده. وقبل ما هنجرب إن إحنا نعمل انستوليشن بتاع دوكر عندنا على لينكس وكده، خلينا الأول أوريكم حاجة.",
+          "type": "warning",
+          "content": "الـ Containers نوعان فقط: Windows Container (Windows Kernel) و Linux Container (Linux Kernel). لا يوجد Mac Container.",
           "sourceSegmentRange": [
-            27,
+            24,
+            25
+          ]
+        },
+        {
+          "type": "comparison",
+          "content": "Linux Container | يعتمد على Linux Kernel\nWindows Container | يعتمد على Windows Kernel\nMac Container | غير موجود — الاعتماد على Kernel compatibility",
+          "sourceSegmentRange": [
+            24,
+            31
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docker-on-linux",
+      "heading": "Docker على Linux",
+      "diagramId": "ContainerArchitectureDiagram",
+      "diagramIds": [
+        "ContainerArchitectureDiagram"
+      ],
+      "blocks": [
+        {
+          "type": "flow",
+          "content": "Docker on Linux → Linux Kernel → Linux Containers مباشرة",
+          "sourceSegmentRange": [
+            32,
             33
           ]
         },
         {
-          "type": "paragraph",
-          "content": "هنا على اللينكس ماشين. في كده Website من أو معمول، اللي عملاه دوكر، الشركة اللي هي دوكر نفسها، اسمه labs.play-with-docker.com. وده زي ما باين من اسمه، عبارة عن لاب. تقدر بالبراوزر بتاعك بس بدون ما تعمل انستول لأي حاجة خالص، من البراوزر بس هيعمل لك هو كده لاب صغير، تقدر إنك تجرب فيه دوكر وتلعب شوية كده بدوكر قبل ما تعمل انستول. في مشكلة بس صغيرة إن هو في أوقات كتيرة بيبقى بـ max الـ capacity، فيعني ما بيقبلش يوزرز زيادة. طبيعي يعني بيحصل، نعذر الناس يعني.",
+          "type": "takeaway",
+          "content": "على Linux Host، Docker يشغّل Linux Containers مباشرة بدون VM وسيطة.",
           "sourceSegmentRange": [
-            34,
-            42
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "لكن قبل ما تشتغل بيه، لازم تعمل Login. اللوجين بتاعك ده هيبقى لوجين بتاع دوكر. فإنت لازم الأول تروح على docker.com، ومن docker.com تـ create لك دوكر أكاونت. أوكي؟ بعد ما تعمل دوكر أكاونت، هتروح هنا وتعمل Login بالدوكر أكاونت بتاعك. فأنا هعمل هنا Login بالأكاونت بتاعي. الأكاونت بتاعي اسمه esamy76 وده اللي إنت هتشوف منه، ده اللي هيبقى الـ Repo بتاعي اللي إنت هتنزل منه الـ Images اللي إحنا عاملينها يعني. وهكتب الباسورد، أتمنى إن أكون فاكرها. مش محتاج أعمل Save. أتمنى إنه يكون شغال. للأسف هتلاقي تطلع لك رسالة أحياناً اللي هو معلش إحنا دلوقتي Out of capacity.",
-          "sourceSegmentRange": [
-            43,
-            53
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "هوقف الفيديو هستنى شوية وأجرب مرة تانية عشان نشتغل عليه قبل ما نعمل الانستوليشن عشان أوريك شكله عامل إزاي. يعني لو استنيت عليه كده مثلاً شوية ساعة، ساعتين، يوم، يومين، أسبوع، بتاع، هتلاقيه فتح معاك. إحنا بس عايزين نجرب دوكر قبل ما نبدأ نعمل انستول، لو حابب تجربه بنفسك كده قبل ما تعمل انستول. تلاقي إنك بعد ما يفتح معاك هيديك حوالي 4 ساعات إنك تقعد تلعب براحتك، ممكن تنزل Instance أو أكتر كمان. فأول حاجة تبدأ بيها إنك تقوله Add new instance. لما تقوله Add new instance، هـ create لك كده VM في اللاب. خليني برضو أحاول إن أكبر الفونت. شايف الفونت ده بيكبر إزاي؟ شكله ما بيكبرش بطريقة عادية يعني، على قد ما قدرت يعني. فده الـ Terminal بتاعي.",
-          "sourceSegmentRange": [
-            54,
-            64
+            32,
+            39
           ]
         }
       ]
     },
     {
-      "id": "chunk-0-exploring-docker-env",
-      "heading": "استكشاف بيئة Docker وتجربة أول Container",
+      "id": "docker-on-windows",
+      "heading": "Docker على Windows و Hyper-V",
+      "diagramId": "DockerDesktopDiagram",
+      "diagramIds": [
+        "DockerDesktopDiagram"
+      ],
       "blocks": [
         {
-          "type": "paragraph",
-          "content": "لو قلت له `docker version` هيوريني الـ versions بتاعة الكلاينت والسيرفر. لو قلت له `docker info` هيديني برضو info عن الكلاينت والسيرفر، وهتلاحظ إن أنا هنا ما عنديش ولا Container خالص ولا أي Image خالص ولا أي حاجة خالص. لو جيت كده قلت له مثلاً يعني:",
+          "type": "flow",
+          "content": "Windows Host → Docker Desktop → Hyper-V → Linux VM → Linux Containers\nWindows Host → Windows Kernel → Windows Containers",
           "sourceSegmentRange": [
-            65,
-            68
+            40,
+            41
           ]
         },
         {
-          "type": "code",
+          "type": "definition",
+          "content": "Hyper-V\nتقنية Microsoft للـ Virtualization — Docker Desktop يستخدمها لإنشاء Linux VM لتشغيل Linux Containers على Windows.",
+          "sourceSegmentRange": [
+            40,
+            47
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docker-desktop-features",
+      "heading": "Docker Desktop على Mac ومميزاته",
+      "diagramId": "DockerDesktopDiagram",
+      "diagramIds": [
+        "DockerDesktopDiagram"
+      ],
+      "blocks": [
+        {
+          "type": "flow",
+          "content": "Mac Host → Docker Desktop for Mac → Linux VM → Linux Containers",
+          "sourceSegmentRange": [
+            48,
+            49
+          ]
+        },
+        {
+          "type": "table",
+          "content": "العنصر | Docker على Linux | Docker Desktop\nالتشغيل | مباشر على Kernel | Desktop App وقد يستخدم VM\nLinux Containers | مباشرة | غالبًا عبر Linux VM\nWindows Containers | غير متاحة | متاحة على Windows\nDashboard | ليس افتراضيًا | موجود افتراضيًا",
+          "sourceSegmentRange": [
+            48,
+            55
+          ]
+        }
+      ]
+    },
+    {
+      "id": "play-with-docker",
+      "heading": "تجربة Docker بدون Installation: Play with Docker",
+      "blocks": [
+        {
+          "type": "definition",
+          "content": "Play with Docker\nOnline Lab على labs.play-with-docker.com — Terminal في المتصفح لتجربة Docker بدون تثبيت محلي.",
+          "sourceSegmentRange": [
+            56,
+            57
+          ]
+        },
+        {
+          "type": "steps",
+          "content": "إنشاء Docker Account على docker.com\nالدخول إلى labs.play-with-docker.com\nAdd New Instance → Terminal\nSession حوالي 4 ساعات",
+          "sourceSegmentRange": [
+            56,
+            57
+          ]
+        },
+        {
+          "type": "note",
+          "content": "رسالة Out of Capacity تعني ضغط على الخدمة — انتظر وحاول لاحقًا.",
+          "sourceSegmentRange": [
+            56,
+            63
+          ]
+        }
+      ]
+    },
+    {
+      "id": "first-docker-commands",
+      "heading": "أول أوامر Docker",
+      "diagramId": "ClientServerDiagram",
+      "diagramIds": [
+        "ClientServerDiagram"
+      ],
+      "blocks": [
+        {
+          "type": "command",
+          "content": "docker\nيعرض أوامر Docker الأساسية: Client و Server و Management Commands.",
+          "sourceSegmentRange": [
+            64,
+            65
+          ]
+        },
+        {
+          "type": "command",
+          "content": "docker info\nمعلومات عن البيئة: عدد Containers وImages وStorage Driver وVersion وOS وArchitecture.",
+          "sourceSegmentRange": [
+            64,
+            65
+          ]
+        },
+        {
+          "type": "note",
+          "content": "في بداية Lab غالبًا لا توجد Images محليًا.",
+          "sourceSegmentRange": [
+            64,
+            71
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alpine-interactive",
+      "heading": "تشغيل Alpine في Interactive Mode",
+      "diagramId": "DockerRunFlowDiagram",
+      "diagramIds": [
+        "DockerRunFlowDiagram"
+      ],
+      "blocks": [
+        {
+          "type": "definition",
+          "content": "Alpine Linux\nDistribution صغيرة جدًا (~5 MB) — مناسبة للتجارب والـ Containers الخفيفة.",
+          "sourceSegmentRange": [
+            72,
+            73
+          ]
+        },
+        {
+          "type": "command",
           "content": "docker container run -it alpine:latest",
           "sourceSegmentRange": [
-            69,
-            70
+            72,
+            73
           ]
         },
         {
-          "type": "paragraph",
-          "content": "دي نسخة من لينكس ومستعملة كتيرة جداً جداً في الـ Containers، لأن هي فعلاً نسخة صغيرة، يعني لينكس Image صغيرة جداً جداً جداً، السايز بتاعها 5 ميجا. فهقول له `-it`. و `-it` ده أنا هتكلم عليها بالتفصيل أكتر يعني، بس في عجالة كده، `-i` معناها Interactive، والـ `t` دي اللي بنكتبها `-i -t` دي اللي هي Terminal. يعني خليني أدخل جوه الكونتينر ووريني الـ Terminal بتاعة الكونتينر، واعمل Attach للـ Standard Input و Output. خليني أتعامل مع الكونتينر ده كأني دخلت عليه كأني عملت SSH كده على الكونتينر وشغل لي جوه الـ Shell. فحدوس Enter هيـ retrieve...",
+          "type": "comparison",
+          "content": "-i | Interactive — يبقي stdin مفتوحًا\n-t | TTY — يخصص Terminal\n-it معًا | دخول Shell داخل Container",
           "sourceSegmentRange": [
-            71,
+            72,
+            73
+          ]
+        },
+        {
+          "type": "steps",
+          "content": "البحث عن alpine:latest محليًا\nPull من Registry إن لم تكن موجودة\nإنشاء Container وتشغيله\nAttach للـ Terminal والدخول على Shell",
+          "sourceSegmentRange": [
+            72,
             79
           ]
         }
       ]
     },
     {
-      "id": "chunk-1-exploring_container_inside",
-      "heading": "استكشاف الكونتينر من الداخل وإغلاقه",
+      "id": "inside-alpine",
+      "heading": "استكشاف Alpine من الداخل",
       "blocks": [
         {
-          "type": "paragraph",
-          "content": "الإيمدج زي ما إنت شايف كده هتدخلني على terminal mode. ده كده أنا جوة الكونتينر. لو أنا جيت قلت له `hostname`، هيقول لي إن الكونتينر الـ hostname بتاعه ده، وكده الـ ID ده هو الـ hostname بتاع الكونتينر.",
+          "type": "command",
+          "content": "hostname\ncat /etc/os-release\nls\necho Hello Containers",
           "sourceSegmentRange": [
             80,
-            82
+            81
           ]
         },
         {
-          "type": "code",
-          "content": "cat /etc/*release*",
+          "type": "command",
+          "content": "exit\nيخرج من Shell — Container ينتقل إلى حالة Exited ولا يختفي.",
           "sourceSegmentRange": [
-            83,
-            84
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "عشان أجيب معلومات عن اللينكس ريليس، ده هيقول لي ده الـ version 3.15 Alpine Linux والـ URL والحاجات دي يعني.",
-          "sourceSegmentRange": [
-            84,
-            85
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "أقدر أنا جوة هنا أقول له مثلاً `ls` فأشوف الحاجات اللي موجودة.",
-          "sourceSegmentRange": [
-            86,
-            86
-          ]
-        },
-        {
-          "type": "code",
-          "content": "echo \"hello containers\"",
-          "sourceSegmentRange": [
-            87,
+            80,
             87
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "container-list",
+      "heading": "عرض الـ Containers: Running و Exited",
+      "diagramId": "ContainerLifecycleDiagram",
+      "diagramIds": [
+        "ContainerLifecycleDiagram"
+      ],
+      "blocks": [
         {
-          "type": "paragraph",
-          "content": "فهيكتب لي hello containers وهكذا يعني.",
-          "sourceSegmentRange": [
-            88,
-            88
-          ]
-        },
-        {
-          "type": "code",
-          "content": "exit",
+          "type": "comparison",
+          "content": "docker container ls | Running فقط\ndocker container ls -a | كل Containers بما فيها Exited/Stopped",
           "sourceSegmentRange": [
             88,
             89
           ]
         },
         {
-          "type": "paragraph",
-          "content": "عشان أخرج برة الكونتينر ده هقول له `exit`، وده هيقفل الكونتينر. الكونتينر كده الحالة بتاعته اسمها Exited.",
+          "type": "note",
+          "content": "Hostname داخل Container غالبًا مرتبط بـ Container ID. Docker يولّد اسمًا افتراضيًا إن لم تحدد --name.",
           "sourceSegmentRange": [
-            89,
-            89
+            88,
+            95
           ]
         }
       ]
     },
     {
-      "id": "chunk-1-querying_stopped_containers",
-      "heading": "الاستعلام عن حالة الكونتينرز المتوقفة",
+      "id": "python-container",
+      "heading": "تشغيل Python Container",
       "blocks": [
         {
-          "type": "paragraph",
-          "content": "لو جيت قلت له الكوماند ده:",
-          "sourceSegmentRange": [
-            90,
-            90
-          ]
-        },
-        {
-          "type": "code",
-          "content": "docker container ls -a",
-          "sourceSegmentRange": [
-            90,
-            91
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "عشان يجيب لي كل الكونتينرز اللي running واللي مش running. فهيقول لي إن فيه كونتينر ده الـ ID بتاعه، وتلاحظ إن الـ ID هو هو نفسه الـ hostname بتاع الكونتينر. دي الإيمدج بتاعته، وده الكوماند اللي كان running من حوالي دقيقة، والحالة بتاعته دلوقتي هو Exited وده النيم بتاعه، اسم عجيب ظريف كده.",
-          "sourceSegmentRange": [
-            91,
-            96
-          ]
-        }
-      ]
-    },
-    {
-      "id": "chunk-1-running_python_interactive",
-      "heading": "تشغيل Python في الـ Interactive Mode",
-      "blocks": [
-        {
-          "type": "paragraph",
-          "content": "بالمثل برضه أقدر إن أنا أقول له:",
+          "type": "command",
+          "content": "docker container run -it python",
           "sourceSegmentRange": [
             96,
             97
           ]
         },
         {
-          "type": "code",
-          "content": "docker container run -it python",
+          "type": "comparison",
+          "content": "Alpine Interactive | يدخل Shell\nPython Interactive | يدخل Python REPL مباشرة",
           "sourceSegmentRange": [
-            97,
-            98
+            96,
+            97
           ]
         },
         {
-          "type": "paragraph",
-          "content": "برضه هيجيب الإيمدج بتاعة بايثون، وهيشتغل في الـ interactive mode. وبعدين هنا إنت ممكن تتخيل إيه ممكن يكون الـ interactive mode بتاع إيمدج بايثون؟ ببساطة هتبقى البايثون إنتربريتر (Python Interpreter) اللي هو الـ REPL mode بتاع بايثون. وتلاحظ إن الإيمدج دي المرة دي أكبر شوية، أتقل شوية، لإن هي ما هياش Alpine إيمدج، لا دي إيمدج نازل فيها بايثون ومش عارفين وحاجات زي كده يعني. فتلاحظ إنه مدخلني على البايثون interactive mode، وقال لي إن ده بايثون مثلاً 3.10.2.",
+          "type": "table",
+          "content": "Image | الحجم التقريبي | السبب\nAlpine | ~5.5 MB | Linux صغير فقط\nPython | ~1 GB | Base OS + Python Runtime + Libraries + Dependencies",
           "sourceSegmentRange": [
-            98,
-            106
+            96,
+            97
           ]
         },
         {
-          "type": "paragraph",
-          "content": "هاجي هنا أقدر إن أنا برضه كالعادة أقول له:",
+          "type": "command",
+          "content": "print('Hello Python Container')\nexit()\nعند الخروج من REPL ينتهي Main Process ويصبح Container Exited.",
           "sourceSegmentRange": [
-            106,
-            107
-          ]
-        },
-        {
-          "type": "code",
-          "content": "print(\"hello python container\")",
-          "sourceSegmentRange": [
-            107,
-            108
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "عشان أتأكد إنه بيتفاعل معايا. وبعدين آجي أقول له `exit()` فهيقوم خارج برة الكونتينر خالص. بمجرد إن أنا خرجت برة بتاع بايثون، أنا خارج برة الكونتينر خالص.",
-          "sourceSegmentRange": [
-            108,
-            110
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "كالعادة برضه لو جيت قلت له الكوماند ده عشان نشوف الإيمدجز اللي موجودة:",
-          "sourceSegmentRange": [
-            110,
-            111
-          ]
-        },
-        {
-          "type": "code",
-          "content": "docker image ls",
-          "sourceSegmentRange": [
-            111,
-            111
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "هيقول لي إنت عندك واحدة اللي هي Alpine والتانية اللي هي بتاعة بايثون. الإيمدج دي كانت اتكريتت في المكان اللي أنا سحبتها منه، والسايز بتاعها. لاحظ إن الفرق في السايز عامل إزاي؟ الـ Alpine إيمدج 5.5 ميجا تقريباً، والبايثون إيمدج حوالي جيجا بايت يعني. أوكي؟ لإن طبعاً واضح إن الفرق في الحاجات اللي موجودة جوة الإيمدج دي.",
-          "sourceSegmentRange": [
-            112,
-            117
+            96,
+            103
           ]
         }
       ]
     },
     {
-      "id": "chunk-1-running_nginx_detached_mode",
-      "heading": "تشغيل NGINX في الـ Detached Mode و Port Mapping",
+      "id": "docker-images",
+      "heading": "عرض Images محليًا",
+      "diagramId": "ImageToContainerDiagram",
+      "diagramIds": [
+        "ImageToContainerDiagram"
+      ],
       "blocks": [
         {
-          "type": "paragraph",
-          "content": "من الحاجات اللي أقدر أعملها برضه إن أنا آجي هنا أجيب إيمدج فيها ويب سيرفيس، مثلاً حاجة زي NGINX. NGINX ده عبارة عن ويب سيرفيس، أو إنترنت إنفورميشن سيرفر و Load Balancer، في حاجة زي الـ IIS بتاع مايكروسوفت كده، بس هو Open Source ومستعمل كتير جداً جداً.",
+          "type": "command",
+          "content": "docker image ls\nأو docker images\nيعرض Repository و Tag و Image ID و Created و Size.",
           "sourceSegmentRange": [
-            118,
-            124
+            104,
+            105
           ]
         },
         {
-          "type": "paragraph",
-          "content": "فلو قلت له `docker container run -it` عشان أدخل جوة الكونتينر، لو فتحت الكونتينر في الـ interactive mode هيفتح لي الـ logs بتاعة الويب، وأنا مش عايز كده. أنا عايز أرنه في الـ background يشغل الويب سيرفيس، وأقدر إن أنا أستعمل الويب سيرفيس اللي في الكونتينر وهو running.",
+          "type": "note",
+          "content": "حجم Image يعتمد على المحتويات وعدد Layers والـ Base Image والمكتبات المثبتة.",
           "sourceSegmentRange": [
-            125,
-            125
+            104,
+            111
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nginx-and-modes",
+      "heading": "Nginx و Interactive vs Detached Mode",
+      "diagramId": "ContainerLifecycleDiagram",
+      "diagramIds": [
+        "ContainerLifecycleDiagram"
+      ],
+      "blocks": [
+        {
+          "type": "definition",
+          "content": "Nginx\nWeb Server و Reverse Proxy و Load Balancer — Open Source ومستخدم على نطاق واسع.",
+          "sourceSegmentRange": [
+            112,
+            113
           ]
         },
         {
-          "type": "paragraph",
-          "content": "فهقول له `-d` دي اللي هي detached mode، يعني ما تدخلنيش جوة الكونتينر، ده اللي هو عكس الـ `-it`، أنا عايزه يشتغل في الـ background مش عايز أشتغل معاه interactively. وكمان هقول له اعمل لي mapping للـ ports، دي ويب سيرفيس شغالة على port 80. فالـ `-p` ده بيعمل mapping للـ ports، بيماب الـ port 80 جوة الكونتينر لـ port 80 في الدوكر هوست (Docker Host) أو الماشين اللي شغال عليها الدوكر engine. أي حاجة على الهوست ده على port 80 يقوم مفوردها للكونتينر ده على port 80، كأنه بيعمل expose للـ port من جوة الكونتينر لبرة للهوست.",
+          "type": "table",
+          "content": "الخيار | الاسم | الاستخدام\n-it | Interactive + TTY | Shell أو REPL (Alpine/Python)\n-d | Detached Mode | Service في الخلفية (Nginx)\nالسلوك مع -it | يمسك Terminal ويدخلك جوه Container\nالسلوك مع -d | يرجعك للـ Host Terminal مباشرة",
           "sourceSegmentRange": [
-            126,
-            127
+            112,
+            119
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "port-mapping",
+      "heading": "تشغيل Nginx مع Port Mapping",
+      "diagramId": "DockerRunFlowDiagram",
+      "diagramIds": [
+        "DockerRunFlowDiagram",
+        "ClientServerDiagram"
+      ],
+      "blocks": [
         {
-          "type": "code",
+          "type": "command",
           "content": "docker container run -d -p 80:80 nginx:latest",
           "sourceSegmentRange": [
-            127,
-            128
+            120,
+            121
           ]
         },
         {
-          "type": "paragraph",
-          "content": "هتلاحظ إن هو بعد ما هيعمل pull للإيمدج، هتلاقي إنه مش هيعمل أي حاجة خالص وهيرجعني للترمينال بتاع الهوست عادي جداً جداً. لما أرجع للهوست لو قلت له `docker container ls` هيقول لي إنت عندك كونتينر ده الـ ID بتاعه، الإيمدج بتاعته NGINX، وفي docker-entrypoint سكريبت بيشغلها بقاله خمس أو سبع ثواني، والـ ports اللي هي 0.0.0.0:80->80/tcp يعني أي حاجة exposed من بورت 80 جوة الكونتينر لبورت 80 على الهوست. بمعنى إنه لو أنا جيت، طبعاً أنا في الهوست ما عنديش ويب براوزر، أنا فاتح الترمينال بس بتاعة الهوست، فلو جيت قلت له:",
+          "type": "definition",
+          "content": "Port Mapping -p 80:80\nHost Port 80 → Container Port 80 — أي Request على localhost:80 يصل لـ Nginx داخل Container.",
+          "sourceSegmentRange": [
+            120,
+            121
+          ]
+        },
+        {
+          "type": "steps",
+          "content": "البحث عن nginx:latest\nPull إن لزم\nإنشاء Container وتشغيل Entrypoint\nPort Mapping وDetached Mode\nالعودة للـ Terminal",
+          "sourceSegmentRange": [
+            120,
+            127
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nginx-running-ports",
+      "heading": "عرض Nginx Running وفهم Ports",
+      "blocks": [
+        {
+          "type": "command",
+          "content": "docker container ls\nيعرض Container ID و Image و Status و Ports و Names.",
           "sourceSegmentRange": [
             128,
+            129
+          ]
+        },
+        {
+          "type": "note",
+          "content": "0.0.0.0:80->80/tcp يعني Port 80 على Host (كل Interfaces) يتحول إلى Port 80 داخل Container عبر TCP.",
+          "sourceSegmentRange": [
+            128,
+            135
+          ]
+        }
+      ]
+    },
+    {
+      "id": "curl-test",
+      "heading": "اختبار Nginx باستخدام curl",
+      "blocks": [
+        {
+          "type": "command",
+          "content": "curl http://localhost\ncurl http://localhost:80",
+          "sourceSegmentRange": [
+            136,
             137
           ]
         },
         {
-          "type": "code",
-          "content": "curl http://localhost:80",
-          "sourceSegmentRange": [
-            138,
-            139
-          ]
-        },
-        {
           "type": "paragraph",
-          "content": "ودوست Enter، هلاقي بيديني response كده وهتلاقي فيه حاجة باينة لـ NGINX. ده response كده من بورت 80 من الهوست نفسه. أنا كده شغال على الهوست، فالهوست بيرد عليّ ده ليه؟ عشان الكونتينر running.",
+          "content": "لا Web Server على Host مباشرة — Docker يحوّل الطلب عبر Port Mapping إلى Nginx Container الشغال في الخلفية.",
           "sourceSegmentRange": [
-            140,
+            136,
             143
           ]
         }
       ]
     },
     {
-      "id": "chunk-1-stopping_container_reviewing_images",
-      "heading": "إيقاف الكونتينر ومراجعة الإيمدجز",
+      "id": "stop-container",
+      "heading": "إيقاف Container واختبار Port بعد Stop",
       "blocks": [
         {
-          "type": "paragraph",
-          "content": "لو أنا جيت حبيت أستوب الكونتينر، أنا مش فاكر كان الكونتينر الـ ID بتاعه إيه؟ خلينا نشوف اسم الكونتينر أو الـ ID بتاعه. هطلع فوق هنا كده:",
+          "type": "command",
+          "content": "docker container stop <id-or-name>\nيمكن استخدام Container ID كامل أو جزء منه أو الاسم.",
           "sourceSegmentRange": [
             144,
-            148
+            145
           ]
         },
         {
-          "type": "code",
-          "content": "docker container ls",
+          "type": "comparison",
+          "content": "بعد Stop | docker container ls لا يعرضه — ls -a يعرضه Stopped/Exited\ncurl localhost | يفشل — لا Container يستقبل على Port 80",
           "sourceSegmentRange": [
-            148,
-            149
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "مرة تانية، ممكن أستعمل الاسم بتاعه، وممكن أستعمل الـ ID. فممكن أقول له مثلاً الـ ID مثلاً 39d. هاجي أقول له كده:",
-          "sourceSegmentRange": [
-            149,
+            144,
             151
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "commands-review",
+      "heading": "مراجعة أوامر الشابتر",
+      "blocks": [
         {
-          "type": "code",
-          "content": "docker container stop 39d",
+          "type": "table",
+          "content": "الأمر | الوظيفة\ndocker | Help وأوامر عامة\ndocker info | معلومات البيئة\ndocker container run -it alpine:latest | Alpine تفاعلي\ndocker container ls / ls -a | Running / الكل\ndocker container run -it python | Python REPL\ndocker image ls | Images محلية\ndocker container run -d -p 80:80 nginx | Nginx في الخلفية\ncurl http://localhost | اختبار HTTP\ndocker container stop | إيقاف Container",
           "sourceSegmentRange": [
             152,
             153
           ]
         },
         {
-          "type": "paragraph",
-          "content": "كده أنا عملت stop. لو عملت تاني `docker container ls` مش هلاقيه لإن هو هيبقى من ضمن الـ stopped containers يعني لو دوست `-a` هلاقيه. لو المرة دي حاولت إن أنا أعمل curl تاني لبورت 80 من على الهوست، هلاقيه بيديني fail لإن الكونتينر stopped.",
+          "type": "table",
+          "content": "العنصر | Image | Container\nالمعنى | قالب جاهز | Instance من Image\nالحالة | ثابتة | Running / Exited\nالعرض | docker image ls | docker container ls\nالعلاقة | Image تنتج Containers | مبني من Image",
           "sourceSegmentRange": [
-            153,
-            157
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "لو رحت كده بصيت على الإيمدجز:",
-          "sourceSegmentRange": [
-            157,
-            157
-          ]
-        },
-        {
-          "type": "code",
-          "content": "docker image ls",
-          "sourceSegmentRange": [
-            157,
-            158
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "فهيوريني إن إنت عندك دلوقتي تلاتة إيمدجز: البايثون، والـ NGINX، والـ Alpine اللي إحنا نزلناه. ده كده بسرعة عشان أشوف إيه اللي حصل.",
-          "sourceSegmentRange": [
-            158,
+            152,
             159
           ]
         }
       ]
     },
     {
-      "id": "chunk-2-play-with-docker",
-      "heading": "تجربة Docker بدون تثبيت",
+      "id": "chapter-summary",
+      "heading": "الخلاصة العملية",
       "blocks": [
         {
-          "type": "paragraph",
-          "content": "يعني ألعب كده مع Docker، أشوف الدنيا شغالة إزاي من غير ما أحتاج إن أنا أنزل Docker عندي يعني.",
+          "type": "summary",
+          "content": "Container Concept و Docker Implementation — Docker Inc والسوفت وير — Linux/Windows Containers بدون Mac — Docker Desktop يستخدم Linux VM على Windows/Mac — Play with Docker للتجربة — Alpine و Python و Nginx عمليًا — Image vs Container و -it vs -d و Port Mapping.",
+          "sourceSegmentRange": [
+            152,
+            161
+          ]
+        }
+      ]
+    },
+    {
+      "id": "key-ideas",
+      "heading": "أهم أفكار يجب حفظها",
+      "blocks": [
+        {
+          "type": "list",
+          "content": "Container Concept · Docker Technology\nDocker Inc · Docker Software\nDocker ≈ Hyper-V/VMware من ناحية الدور العام\nLinux و Windows Containers فقط — لا Mac Container\nDocker على Linux مباشر · Desktop يستخدم VM\nPlay with Docker من المتصفح\n-it للتفاعل · -d للخدمات في الخلفية\n-p 80:80 = Host → Container\nls يعرض Running · ls -a يعرض الكل\nخروج Main Process → Exited",
+          "sourceSegmentRange": [
+            160,
+            161
+          ]
+        }
+      ]
+    },
+    {
+      "id": "glossary",
+      "heading": "مصطلحات مهمة",
+      "blocks": [
+        {
+          "type": "glossary",
+          "content": "Container | بيئة معزولة لتشغيل Process أو Service\nDocker | Technology لإدارة Containers و Images\nDocker Inc | الشركة المطورة لـ Docker\nDocker Desktop | إصدار Windows/Mac مع Dashboard وLinux VM\nCommunity Edition | مجاني Open Source\nEnterprise Edition | مدفوع مع دعم Enterprise\nLinux Container | يعتمد Linux Kernel\nWindows Container | يعتمد Windows Kernel\nImage | قالب filesystem وdependencies\nTag | إصدار Image مثل latest\nAlpine Linux | Distribution صغيرة للـ Containers\nInteractive Mode | تفاعل مباشر عبر Terminal\nDetached Mode | تشغيل في الخلفية\nPort Mapping | ربط Host Port بـ Container Port\ncurl | أداة لإرسال HTTP Requests من Terminal",
+          "sourceSegmentRange": [
+            160,
+            161
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-questions",
+      "heading": "أسئلة مراجعة",
+      "blocks": [
+        {
+          "type": "questions",
+          "content": "ما الفرق بين Container Concept و Docker Technology؟\nما الفرق بين Docker Inc و Docker Software؟\nما الفرق بين CE و EE؟\nلماذا لا يوجد Mac Container؟\nكيف يشغّل Docker Desktop Linux Containers على Windows؟\nما دور Hyper-V؟\nما هو Play with Docker؟\nماذا يفعل docker info؟\nماذا يحدث عند docker container run -it alpine:latest؟\nما معنى -i و -t و -d؟\nلماذا Alpine صغيرة وPython كبيرة؟\nما الفرق بين docker container ls و ls -a؟\nما الفرق بين Image و Container؟\nماذا يعني -p 80:80؟\nلماذا ينجح curl بعد تشغيل Nginx؟\nلماذا يفشل curl بعد stop؟\nما معنى 0.0.0.0:80->80/tcp؟",
           "sourceSegmentRange": [
             160,
             161
@@ -477,6 +672,6 @@
   ],
   "metadata": {
     "sourceSegmentCount": 162,
-    "blockCount": 51
+    "blockCount": 57
   }
 }
